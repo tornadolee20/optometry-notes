@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>目鏡大叔 - 眼軸長度 (AL) 估算工具</title>
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --bg-gray: #f8fafc;
+            --text-slate: #334155;
+            --border-slate: #e2e8f0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-gray);
+            color: var(--text-slate);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 8px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 24px;
+        }
+        .input-group {
+            margin-bottom: 16px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-slate);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+        .results {
+            margin-top: 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-slate);
+        }
+        .result-item {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .result-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+        .result-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        .warning-box {
+            font-size: 0.85rem;
+            background: #fff7ed;
+            border-left: 4px solid #f97316;
+            padding: 12px;
+            margin-top: 20px;
+            color: #9a3412;
+        }
+        .al-cr-ratio {
+            color: #dc2626;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦾 眼軸長度估算工具</h1>
+        <p class="subtitle">基於 2019-2024 最新視光學研究公式</p>
+        
+        <div class="input-group">
+            <label>年齡 (Age)</label>
+            <input type="number" id="age" value="10" step="1">
+        </div>
+        
+        <div class="input-group">
+            <label>性別 (Gender)</label>
+            <select id="gender">
+                <option value="0">男 (Male)</option>
+                <option value="1">女 (Female)</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>等效球鏡度數 (SER, D)</label>
+            <input type="number" id="ser" value="-3.00" step="0.25">
+        </div>
+        
+        <div class="input-group">
+            <label>平均角膜曲率半徑 (CR, mm)</label>
+            <input type="number" id="cr" value="7.80" step="0.01">
+        </div>
+
+        <button class="btn" onclick="calculate()">即時估算</button>
+
+        <div class="results" id="results" style="display:none;">
+            <div class="result-item">
+                <div class="result-title">Lingham 模型 (2024 最新) - 推薦參考</div>
+                <div class="result-value" id="res-lingham">-- mm</div>
+            </div>
+            <div class="result-item">
+                <div class="result-title">Morgan 模型 (2020 臨床廣泛使用)</div>
+                <div class="result-value" id="res-morgan">-- mm</div>
+            </div>
+            <div class="result-item">
+                <div class="result-title">Kim 模型 (2019 物理光學)</div>
+                <div class="result-value" id="res-kim">-- mm</div>
+            </div>
+            <div class="result-item">
+                <div class="result-title">AL/CR 比值 (判斷近視風險指標)</div>
+                <div class="result-value" id="res-ratio">--</div>
+            </div>
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ 賈維斯提醒：</strong>
+            估算公式存在誤差（約 ±0.73mm），僅可用於「風險分層」，<strong>不可</strong>用於年度進展追蹤。
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const age = parseFloat(document.getElementById('age').value);
+            const gender = parseFloat(document.getElementById('gender').value);
+            const ser = parseFloat(document.getElementById('ser').value);
+            const cr = parseFloat(document.getElementById('cr').value);
+
+            if (isNaN(age) || isNaN(ser) || isNaN(cr)) return;
+
+            // 1. Lingham 2024
+            const logAge = Math.log10(age);
+            const alLingham = 5.472 - (0.069 * age) + (3.06 * logAge) - (0.265 * gender) + (0.135 * ser) + (2.019 * cr) - (0.072 * ser * cr);
+
+            // 2. Morgan 2020
+            const alMorgan = 1 / ( (0.22273 / cr) + (0.00070 * ser) + 0.01368 );
+
+            // 3. Kim 2019
+            const alKim = (24.00 * (cr / 7.80)) - (ser * 0.40);
+
+            // Display
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('res-lingham').innerText = alLingham.toFixed(2) + " mm";
+            document.getElementById('res-morgan').innerText = alMorgan.toFixed(2) + " mm";
+            document.getElementById('res-kim').innerText = alKim.toFixed(2) + " mm";
+            
+            const ratio = alLingham / cr;
+            let ratioText = ratio.toFixed(3);
+            if (ratio > 3.0) {
+                ratioText += " (高風險 ⚠️)";
+                document.getElementById('res-ratio').className = "result-value al-cr-ratio";
+            } else {
+                document.getElementById('res-ratio').className = "result-value";
+            }
+            document.getElementById('res-ratio').innerText = ratioText;
+        }
+    </script>
+</body>
+</html>
