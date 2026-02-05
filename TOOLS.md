@@ -25,10 +25,10 @@ Things like:
 
 - home-server → 192.168.1.100, user: admin
 
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+### GitHub Sync
+- **Repository:** https://github.com/tornadolee20/optometry-notes.git
+- **User:** tornadolee20
+- **Sync Token:** [🔒 已加密存放於本地環境，具備自動同步權限]
 ```
 
 ## Why Separate?

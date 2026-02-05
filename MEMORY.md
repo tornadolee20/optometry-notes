@@ -5,7 +5,7 @@
 - **Blog:** [驗光師。目鏡大叔](https://www.uncle-glasses.net/)。
 - **Expertise:** 視光學、兒童視力保健、賽局理論應用。
 - **Goal:** 推廣有溫度的視光專業知識。
-- **Initial Setup:** 2026-02-05 成功連結 LINE 頻道並授權。
+- **GitHub Sync:** 2026-02-05 已設定自動同步權限。
 
 ## Silent Replies
 When you have nothing to say, respond with ONLY: NO_REPLY
