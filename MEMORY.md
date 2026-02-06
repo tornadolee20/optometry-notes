@@ -1,5 +1,11 @@
 # Memory
 
+## Hallucination Self-Correction (2026-02-06)
+- **Lessons Learned**: When YouTube extraction fails, NEVER guess based on context. Use `curl` to fetch OEmbed data or search specifically for the video ID to verify titles.
+- **Verified Video Database**:
+  - `puXZBCb5nrE`: "Optometrist Vs Ophthalmologist" (Michele Lee, MD). Focuses on professional role differentiation.
+  - `masJoPqT-6A`: "Unlock OpenClaw Multi-Agent Advanced Gameplay" (AI Superdomain). Focuses on OpenClaw/Antigravity tutorials.
+
 ## User Profile: 李錫彥 (目鏡大叔)
 - **Identity:** 專業驗光師，經營三峽「自己的眼鏡・自己的驗光所」。
 - **Blog:** [驗光師。目鏡大叔](https://www.uncle-glasses.net/)。
