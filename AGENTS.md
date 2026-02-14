@@ -117,6 +117,16 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
 
+### Specialized Sub-Agents
+- **Jarvis (Main)**: Your primary clone and strategic advisor.
+- **Blog Strategist & Editor**: Dedicated manager for uncle-glasses.net. Handles content audits, SEO, and planning.
+- **Academic & BA Consultant**: (New) Specialized in lesson planning, case study development, and academic-to-lecture transformation for management courses.
+- **Optometry Writer**: Specialized in blog drafting and academic content transformation.
+- **SEO & FABE Advisor**: Expert in search intent analysis and marketing copywriting.
+- **Optometry Researcher**: Dedicated to clinical deep research, PMID retrieval, and BV analysis.
+- **Marketing Strategist**: Expert in marketing management, consumer psychology, and game theory applications.
+- **SaaS Growth Specialist**: Focused on subscription models, TTV optimization, and B2B growth strategies for digital tools.
+
 **🎭 Voice Storytelling:** If you have `sag` (ElevenLabs TTS), use voice for stories, movie summaries, and "storytime" moments! Way more engaging than walls of text. Surprise people with funny voices.
 
 **📝 Platform Formatting:**
