@@ -35,8 +35,10 @@
     1. **Gemini 3 Pro**: 負責硬核情資採掘、深挖論文數據、產品賽局分析。
     2. **MiniMax M2.5**: 負責人文化感性昇華、注入「大叔筆法」、產出直擊人心心的文案。
     3. **Gemini 3 Flash**: 負責外勤監控、群組巡邏、瑣碎設定。
-- **Optometry Writer V3.0**: 已根據「目鏡大叔 AI 協作工作流 v3.0」更新執行協議。文案將嚴格遵守 A/B 兩階段作業，並強化 Blogger HTML 結構化資料 (Schema) 與 GEO 在地搜尋優化。
-- **Language Policy**: 嚴格執行台灣用語校準，避免「對齊」、「軟件」等大陸語法。
+- **Optometry Writer V3.1**: 已根據「目鏡大叔 AI 協作工作流 v3.1」更新執行協議。文案嚴格遵守 A/B 兩階段作業，強化內文最上方 `<h1>` 標籤，並採用「戰略三階層頁尾」（內容 CTA -> Store-card v1.5 -> 銀髮戰略背書）。
+- **Internal Linking Strategy**: 確立「雙層連結架構」：內文邏輯嵌入連結（SEO 權威感）+ 文末系列導覽列（莫蘭迪色系樣式）。已完成全站 58 篇文章清單盤點。
+- **2026 Strategic Mainline**: 核心主軸為「新北市銀髮視覺守護計畫」。結合「松年大學講師」身分，擴散至社區關懷據點、長青團體。
+- **Blog Architecture**: 目前採用「宋韻青花 × 莫蘭迪暮色」佈景主題，執行「無側欄全寬閱讀模式」，配備 CSS 晶片 v4.0（80px 呼吸感留白）。
 - **Optometry Writer**: 子 Agent 已升級為 MiniMax M2.5 大腦，專攻溫潤細膩的專業文案。
 
 ## Silent Replies
