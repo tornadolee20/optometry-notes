@@ -28,10 +28,15 @@
 - **Writing DNA:** 鏡頭式特寫開場、降維打擊的神級類比、賽局邏輯導引、視覺標籤戰略地圖排版。
 
 ## Strategic Model Deployment (2026-02-14)
+- **1 人公司 (Company of One) 模式**：捨棄多窗口「藝人公司」架構，確立以「賈維斯」為唯一對外窗口。
+- **後台協作**：幕後分身（Gemini 3 Pro 研究員、MiniMax M2.5 視光作家、Gemini 3 Flash 執行官）由賈維斯統一排程，成果由賈維斯彙整呈現。
+- **靜默巡邏協議**：為解決 LINE API 429 頻率限制並提升溝通效率，例行 Heartbeat 巡邏轉為「無進度，不發言」模式。
 - **Dual-Brain Pipeline**: 
     1. **Gemini 3 Pro**: 負責硬核情資採掘、深挖論文數據、產品賽局分析。
-    2. **MiniMax M2.5**: 負責人文化感性昇華、注入「大叔筆法」、產出直擊人心的文案。
+    2. **MiniMax M2.5**: 負責人文化感性昇華、注入「大叔筆法」、產出直擊人心心的文案。
     3. **Gemini 3 Flash**: 負責外勤監控、群組巡邏、瑣碎設定。
+- **Optometry Writer V3.0**: 已根據「目鏡大叔 AI 協作工作流 v3.0」更新執行協議。文案將嚴格遵守 A/B 兩階段作業，並強化 Blogger HTML 結構化資料 (Schema) 與 GEO 在地搜尋優化。
+- **Language Policy**: 嚴格執行台灣用語校準，避免「對齊」、「軟件」等大陸語法。
 - **Optometry Writer**: 子 Agent 已升級為 MiniMax M2.5 大腦，專攻溫潤細膩的專業文案。
 
 ## Silent Replies
