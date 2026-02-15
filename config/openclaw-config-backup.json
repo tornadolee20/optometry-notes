@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.13",
+    "lastTouchedAt": "2026-02-14T18:51:24.876Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-11T02:49:19.503Z",
+    "lastRunVersion": "2026.2.9",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "google-antigravity:tornadolee20@gmail.com": {
+        "provider": "google-antigravity",
+        "mode": "oauth"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "minimax": {
+        "baseUrl": "https://api.minimax.io/anthropic",
+        "api": "anthropic-messages",
+        "models": [
+          {
+            "id": "MiniMax-M2.5",
+            "name": "MiniMax M2.5",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 128000,
+            "maxTokens": "__REDACTED__"
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google-antigravity/gemini-3-flash"
+      },
+      "models": {
+        "google-antigravity/gemini-3-pro": {
+          "alias": "gemini-pro"
+        },
+        "google-antigravity/claude-3-5-sonnet-4.5": {
+          "alias": "claude-sonnet-4.5"
+        },
+        "minimax/MiniMax-M2.1": {
+          "alias": "minimax-old"
+        },
+        "minimax/MiniMax-M2.5": {
+          "alias": "minimax"
+        }
+      },
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "name": "賈維斯 (Jarvis)",
+        "skills": [
+          "optometry-writer",
+          "seo-fabe-advisor",
+          "blogwatcher",
+          "optometry-researcher",
+          "marketing-strategist",
+          "saas-growth-specialist"
+        ]
+      },
+      {
+        "id": "optometry-writer",
+        "name": "視光作家 (Optometry Writer)",
+        "model": "minimax/MiniMax-M2.1",
+        "skills": [
+          "optometry-writer"
+        ]
+      },
+      {
+        "id": "seo-fabe-advisor",
+        "name": "SEO & FABE 顧問",
+        "skills": [
+          "seo-fabe-advisor"
+        ]
+      },
+      {
+        "id": "optometry-researcher",
+        "name": "視光深度研究員",
+        "skills": [
+          "optometry-researcher"
+        ]
+      },
+      {
+        "id": "marketing-strategist",
+        "name": "市場心理戰略家",
+        "skills": [
+          "marketing-strategist"
+        ]
+      },
+      {
+        "id": "saas-growth-specialist",
+        "name": "SaaS 軟體增長專家",
+        "skills": [
+          "saas-growth-specialist"
+        ]
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "provider": "perplexity",
+        "perplexity": {
+          "model": "perplexity/sonar-pro"
+        }
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "channels": {
+    "line": {
+      "enabled": true,
+      "webhookPath": "/line/webhook",
+      "channelAccessToken": "__REDACTED__",
+      "channelSecret": "__REDACTED__",
+      "dmPolicy": "allowlist",
+      "allowFrom": [
+        "U24756b55a981721b40b00fa2ce068a76"
+      ],
+      "groupPolicy": "open",
+      "mediaMaxMb": 50
+    }
+  },
+  "gateway": {
+    "bind": "lan",
+    "controlUi": {
+      "allowInsecureAuth": true
+    }
+  },
+  "skills": {
+    "entries": {
+      "openai-image-gen": {
+        "apiKey": "__REDACTED__"
+      },
+      "openai-whisper-api": {
+        "apiKey": "__REDACTED__"
+      }
+    }
+  },
+  "plugins": {
+    "entries": {
+      "google-antigravity-auth": {
+        "enabled": true
+      },
+      "line": {
+        "enabled": true
+      },
+      "minimax-portal-auth": {
+        "enabled": true
+      }
+    }
+  }
+}
