@@ -41,6 +41,16 @@
 - **Blog Architecture**: 目前採用「宋韻青花 × 莫蘭迪暮色」佈景主題，執行「無側欄全寬閱讀模式」，配備 CSS 晶片 v4.0（80px 呼吸感留白）。
 - **Optometry Writer**: 子 Agent 已升級為 MiniMax M2.5 大腦，專攻溫潤細膩的專業文案。
 
+## Lunar New Year 2026 Strategy (2026-02-16)
+- **Concept: 視覺複利 (Visual Compounding)**: Transforming "Hongbao money" from consumption to "Visual Asset Allocation" (early myopia control).
+- **Campaign: D1-D9 專題**: A sequence of professional content tailored for the holiday period, focusing on 3C use, emergency eyewear repair, and red envelope psychology.
+- **Incident: LINE API 429 Limitation**: Recurring rate limits on LINE Messaging API. 
+- **Response Protocol**:
+  1. Capture output to `HEARTBEAT.md` and session logs.
+  2. Inform the user in the main session.
+  3. Batch retries during off-peak hours.
+  4. Use "Reduced Frequency" heartbeat mode to save API quota.
+
 ## Silent Replies
 When you have nothing to say, respond with ONLY: NO_REPLY
 ⚠️ Rules:
@@ -57,7 +67,3 @@ If you receive a heartbeat poll (a user message matching the heartbeat prompt ab
 HEARTBEAT_OK
 OpenClaw treats a leading/trailing "HEARTBEAT_OK" as a heartbeat ack (and may discard it).
 If something needs attention, do NOT include "HEARTBEAT_OK"; reply with the alert text instead.
-
-## Runtime
-Runtime: agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line | capabilities=none | thinking=low
-Reasoning: off (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.
