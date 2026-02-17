@@ -3,12 +3,11 @@ const { execSync } = require('child_process');
 const path = require('path');
 
 /**
- * 賈維斯安全同步協議 3.0 (加強備份版)
- * 主要更新：增加 raw 設定檔的本地與 Git 備份（含加密/隔離建議）
+ * 賈維斯安全同步協議 3.1 (救援與隔離加強版)
  */
 async function run() {
   try {
-    console.log('🚀 啟動賈維斯安全同步協議 3.0...');
+    console.log('🚀 啟動賈維斯安全同步協議 3.1...');
 
     const configPath = '/home/node/.openclaw/openclaw.json';
     const workspaceDir = '/home/node/.openclaw/workspace';
@@ -22,15 +21,15 @@ async function run() {
 
     if (fs.existsSync(configPath)) {
       const rawConfigText = fs.readFileSync(configPath, 'utf8');
-      const config = JSON.parse(rawConfigText);
 
-      // 2. 本地 Raw 備份 (帶時間戳，用於系統崩潰救援)
+      // 2. 本地 Raw 備份 (時間戳，僅限本地儲存，不推送到 GitHub)
       const timestampLabel = new Date().toISOString().replace(/[:.]/g, '-');
       const rawBackupPath = path.join(rawBackupDir, `openclaw-raw-${timestampLabel}.json`);
       fs.writeFileSync(rawBackupPath, rawConfigText);
-      console.log(`✅ 原始設定檔備份成功: ${rawBackupPath}`);
+      console.log(`✅ 原始設定檔已備份至本地救援區: ${rawBackupPath}`);
 
-      // 3. 脫敏備份 (用於 GitHub 公開/私有倉庫)
+      // 3. 脫敏備份 (用於 GitHub 同步)
+      const config = JSON.parse(rawConfigText);
       function redact(obj) {
         for (let key in obj) {
           if (obj[key] && typeof obj[key] === 'object') {
@@ -43,16 +42,14 @@ async function run() {
           }
         }
       }
-      
-      const redactedConfig = JSON.parse(rawConfigText);
-      redact(redactedConfig);
-      fs.writeFileSync(redactedBackupPath, JSON.stringify(redactedConfig, null, 2));
-      console.log('✅ 脫敏備份完成。');
+      redact(config);
+      fs.writeFileSync(redactedBackupPath, JSON.stringify(config, null, 2));
+      console.log('✅ 脫敏備份完成（可同步至雲端）。');
     }
 
     // 4. Git 同步動作
     const timestampTW = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-    const commitMsg = `賈維斯自動同步 v3.0：系統救援備份與資產更新 (${timestampTW})`;
+    const commitMsg = `賈維斯自動同步 v3.1：系統狀態與內容資產更新 (${timestampTW})`;
     
     process.chdir(workspaceDir);
     
@@ -61,7 +58,7 @@ async function run() {
       execSync('git add .');
       execSync(`git commit -m "${commitMsg}"`);
       execSync('git push origin master');
-      console.log('✅ GitHub 同步成功。');
+      console.log('✅ GitHub 資產同步成功。');
     } else {
       console.log('ℹ️ 無變動，跳過同步。');
     }
