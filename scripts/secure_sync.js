@@ -2,18 +2,35 @@ const fs = require('fs');
 const { execSync } = require('child_process');
 const path = require('path');
 
+/**
+ * 賈維斯安全同步協議 3.0 (加強備份版)
+ * 主要更新：增加 raw 設定檔的本地與 Git 備份（含加密/隔離建議）
+ */
 async function run() {
   try {
-    console.log('🚀 啟動賈維斯安全同步協議 2.0...');
+    console.log('🚀 啟動賈維斯安全同步協議 3.0...');
 
-    // 1. 定義路徑
     const configPath = '/home/node/.openclaw/openclaw.json';
-    const backupPath = '/home/node/.openclaw/workspace/config/openclaw-config-backup.json';
+    const workspaceDir = '/home/node/.openclaw/workspace';
+    const redactedBackupPath = path.join(workspaceDir, 'config/openclaw-config-backup.json');
+    const rawBackupDir = path.join(workspaceDir, 'config/raw_backups');
 
-    // 2. 讀取並脫敏設定檔
+    // 1. 確保備份資料夾存在
+    if (!fs.existsSync(rawBackupDir)) {
+        fs.mkdirSync(rawBackupDir, { recursive: true });
+    }
+
     if (fs.existsSync(configPath)) {
-      const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
-      
+      const rawConfigText = fs.readFileSync(configPath, 'utf8');
+      const config = JSON.parse(rawConfigText);
+
+      // 2. 本地 Raw 備份 (帶時間戳，用於系統崩潰救援)
+      const timestampLabel = new Date().toISOString().replace(/[:.]/g, '-');
+      const rawBackupPath = path.join(rawBackupDir, `openclaw-raw-${timestampLabel}.json`);
+      fs.writeFileSync(rawBackupPath, rawConfigText);
+      console.log(`✅ 原始設定檔備份成功: ${rawBackupPath}`);
+
+      // 3. 脫敏備份 (用於 GitHub 公開/私有倉庫)
       function redact(obj) {
         for (let key in obj) {
           if (obj[key] && typeof obj[key] === 'object') {
@@ -27,18 +44,18 @@ async function run() {
         }
       }
       
-      redact(config);
-      fs.writeFileSync(backupPath, JSON.stringify(config, null, 2));
-      console.log('✅ 設定檔脫敏備份完成。');
+      const redactedConfig = JSON.parse(rawConfigText);
+      redact(redactedConfig);
+      fs.writeFileSync(redactedBackupPath, JSON.stringify(redactedConfig, null, 2));
+      console.log('✅ 脫敏備份完成。');
     }
 
-    // 3. Git 同步動作
-    const timestamp = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
-    const commitMsg = `賈維斯自動同步：系統狀態與內容資產更新 (${timestamp})`;
+    // 4. Git 同步動作
+    const timestampTW = new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' });
+    const commitMsg = `賈維斯自動同步 v3.0：系統救援備份與資產更新 (${timestampTW})`;
     
-    process.chdir('/home/node/.openclaw/workspace');
+    process.chdir(workspaceDir);
     
-    // 檢查是否有變動
     const status = execSync('git status --porcelain').toString();
     if (status) {
       execSync('git add .');

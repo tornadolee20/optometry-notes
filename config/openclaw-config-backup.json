@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.2.13",
-    "lastTouchedAt": "2026-02-14T18:51:24.876Z"
+    "lastTouchedVersion": "2026.2.15",
+    "lastTouchedAt": "2026-02-17T12:53:16.160Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-11T02:49:19.503Z",
@@ -64,10 +64,6 @@
       },
       "compaction": {
         "mode": "safeguard"
-      },
-      "maxConcurrent": 4,
-      "subagents": {
-        "maxConcurrent": 8
       }
     },
     "list": [
@@ -131,9 +127,6 @@
         }
       }
     }
-  },
-  "messages": {
-    "ackReactionScope": "group-mentions"
   },
   "commands": {
     "native": "auto",
