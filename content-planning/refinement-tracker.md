@@ -18,9 +18,9 @@
 | 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [ ] 處理中 (v3.1) | 2026-02-17 |
 | 12 | 孩子近視的真相 | https://www.uncle-glasses.net/2025/09/child-myopia-vision-truth.html | [ ] 處理中 (v3.1) | 2026-02-17 |
 | 13 | 三峽兒童近視迷思 | https://www.uncle-glasses.net/2025/09/myopia-myths-kids-vision-sanxia.html | [ ] 處理中 (v3.1) | 2026-02-17 |
-| 14 | 驗光師的專業困境 | https://www.uncle-glasses.net/2025/08/optometrist-professional-dilemma.html | [ ] 待處理 | - |
-| 15 | 老花眼多焦點鏡片指南 | https://www.uncle-glasses.net/2025/08/multifocal-lenses-for-presbyopia-guide.html | [ ] 待處理 | - |
-| 16 | 土城配眼鏡推薦 | https://www.uncle-glasses.net/2025/08/tucheng-eyeglasses-recommend-sanjia.html | [ ] 待處理 | - |
+| 14 | 驗光師的專業困境 | https://www.uncle-glasses.net/2025/08/optometrist-professional-dilemma.html | [x] 已完成 (v3.1) | 2026-02-17 |
+| 15 | 老花眼多焦點鏡片指南 | https://www.uncle-glasses.net/2025/08/multifocal-lenses-for-presbyopia-guide.html | [x] 已完成 (v3.1) | 2026-02-17 |
+| 16 | 土城配眼鏡推薦 | https://www.uncle-glasses.net/2025/08/tucheng-eyeglasses-recommend-sanjia.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 17 | 台灣學生視力報告 | https://www.uncle-glasses.net/2025/08/taiwan-student-vision-report-93-113.html | [ ] 待處理 | - |
 | 18 | 多焦點鏡片難戴迷思 | https://www.uncle-glasses.net/2025/07/multifocal-lens-hard-to-wear-myth.html | [ ] 待處理 | - |
 | 19 | 夕陽下的牽手：長輩配鏡故事 | https://www.uncle-glasses.net/2025/06/elderly-couple-holding-hands-sunset-walking-glasses-fit.html | [ ] 待處理 | - |
