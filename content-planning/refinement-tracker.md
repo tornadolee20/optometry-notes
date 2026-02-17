@@ -12,9 +12,9 @@
 | 5 | 為什麼有散光，晚上開車特別痛苦？ | https://www.uncle-glasses.net/2025/12/astigmatism-night-driving.html | [x] 已完成 (v3.1) | 2026-02-16 |
 | 6 | 【三峽配眼鏡】40 歲後的隱形高跟鞋！ | https://www.uncle-glasses.net/2025/11/anti-aging-progressive-lenses-sanxia.html | [x] 已完成 (v3.1) | 2026-02-16 |
 | 7 | 【三峽驗光師】腸道不好眼睛也遭殃？ | https://www.uncle-glasses.net/2025/11/gut-eye-axis-vision-health.html | [x] 已完成 (v3.1) | 2026-02-16 |
-| 8 | 孩子近視飆升怎麼辦？別急著沒收手機 | https://www.uncle-glasses.net/2025/11/child-myopia-parenting-war-cooperation.html | [ ] 待處理 | - |
-| 9 | 【三峽驗光師】長輩怕跌倒、怕失智？ | https://www.uncle-glasses.net/2025/11/10-questions-about-aging-eyes.html | [ ] 待處理 | - |
-| 10 | 藍光終極指南！驗光師帶你戳破3大迷思 | https://www.uncle-glasses.net/2025/10/blue-light-myths-debunked-by-optometrist.html | [ ] 待處理 | - |
+| 8 | 孩子近視飆升怎麼辦？別急著沒收手機 | https://www.uncle-glasses.net/2025/11/child-myopia-parenting-war-cooperation.html | [x] 已完成 (v3.1) | 2026-02-17 |
+| 9 | 【三峽驗光師】長輩怕跌倒、怕失智？ | https://www.uncle-glasses.net/2025/11/10-questions-about-aging-eyes.html | [x] 已完成 (v3.1) | 2026-02-17 |
+| 10 | 藍光終極指南！驗光師帶你戳破3大迷思 | https://www.uncle-glasses.net/2025/10/blue-light-myths-debunked-by-optometrist.html | [ ] 處理中 (v3.1) | 2026-02-17 |
 | 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [ ] 待處理 | - |
 | 12 | 孩子近視的真相 | https://www.uncle-glasses.net/2025/09/child-myopia-vision-truth.html | [ ] 待處理 | - |
 | 13 | 三峽兒童近視迷思 | https://www.uncle-glasses.net/2025/09/myopia-myths-kids-vision-sanxia.html | [ ] 待處理 | - |
