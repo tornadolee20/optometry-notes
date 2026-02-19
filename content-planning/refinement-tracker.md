@@ -21,9 +21,9 @@
 | 14 | 驗光師的專業困境 | https://www.uncle-glasses.net/2025/08/optometrist-professional-dilemma.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 15 | 老花眼多焦點鏡片指南 | https://www.uncle-glasses.net/2025/08/multifocal-lenses-for-presbyopia-guide.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 16 | 土城配眼鏡推薦 | https://www.uncle-glasses.net/2025/08/tucheng-eyeglasses-recommend-sanjia.html | [x] 已完成 (v3.1) | 2026-02-17 |
-| 17 | 台灣學生視力報告 | https://www.uncle-glasses.net/2025/08/taiwan-student-vision-report-93-113.html | [ ] 待處理 | - |
-| 18 | 多焦點鏡片難戴迷思 | https://www.uncle-glasses.net/2025/07/multifocal-lens-hard-to-wear-myth.html | [ ] 待處理 | - |
-| 19 | 夕陽下的牽手：長輩配鏡故事 | https://www.uncle-glasses.net/2025/06/elderly-couple-holding-hands-sunset-walking-glasses-fit.html | [ ] 待處理 | - |
+| 17 | 台灣學生視力報告 | https://www.uncle-glasses.net/2025/08/taiwan-student-vision-report-93-113.html | [x] 已完成 (v3.1) | 2026-02-18 |
+| 18 | 多焦點鏡片難戴迷思 | https://www.uncle-glasses.net/2025/07/multifocal-lens-hard-to-wear-myth.html | [x] 已完成 (v3.1) | 2026-02-18 |
+| 19 | 夕陽下的牽手：長輩配鏡故事 | https://www.uncle-glasses.net/2025/06/elderly-couple-holding-hands-sunset-walking-glasses-fit.html | [x] 已完成 (v3.1) | 2026-02-18 |
 | 20 | 皮格馬力翁效應與視光 | https://www.uncle-glasses.net/2025/06/pygmalion-effect-optometry.html | [ ] 待處理 | - |
 | 21 | 眼鏡不舒服：三峽驗光體驗 | https://www.uncle-glasses.net/2025/06/uncomfortable-glasses-sanxia-eye-exam.html | [ ] 待處理 | - |
 | 22 | 看見從未存在的顏色 | https://www.uncle-glasses.net/2025/06/see-colors-that-never-existed.html | [ ] 待處理 | - |
