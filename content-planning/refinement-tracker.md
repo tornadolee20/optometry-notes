@@ -24,9 +24,9 @@
 | 17 | 台灣學生視力報告 | https://www.uncle-glasses.net/2025/08/taiwan-student-vision-report-93-113.html | [x] 已完成 (v3.1) | 2026-02-18 |
 | 18 | 多焦點鏡片難戴迷思 | https://www.uncle-glasses.net/2025/07/multifocal-lens-hard-to-wear-myth.html | [x] 已完成 (v3.1) | 2026-02-18 |
 | 19 | 夕陽下的牽手：長輩配鏡故事 | https://www.uncle-glasses.net/2025/06/elderly-couple-holding-hands-sunset-walking-glasses-fit.html | [x] 已完成 (v3.1) | 2026-02-18 |
-| 20 | 皮格馬力翁效應與視光 | https://www.uncle-glasses.net/2025/06/pygmalion-effect-optometry.html | [ ] 待處理 | - |
-| 21 | 眼鏡不舒服：三峽驗光體驗 | https://www.uncle-glasses.net/2025/06/uncomfortable-glasses-sanxia-eye-exam.html | [ ] 待處理 | - |
-| 22 | 看見從未存在的顏色 | https://www.uncle-glasses.net/2025/06/see-colors-that-never-existed.html | [ ] 待處理 | - |
+| 20 | 皮格馬力翁效應與視光 | https://www.uncle-glasses.net/2025/06/pygmalion-effect-optometry.html | [x] 已完成 (v3.1) | 2026-02-19 |
+| 21 | 眼鏡不舒服：三峽驗光體驗 | https://www.uncle-glasses.net/2025/06/uncomfortable-glasses-sanxia-eye-exam.html | [x] 已完成 (v3.1) | 2026-02-19 |
+| 22 | 看見從未存在的顏色 | https://www.uncle-glasses.net/2025/06/see-colors-that-never-existed.html | [x] 已完成 (v3.1) | 2026-02-19 |
 | 23 | 夜間駕駛：眩光與眼鏡 | https://www.uncle-glasses.net/2025/06/night-driving-vision-glare-glasses.html | [x] 已完成 (v3.1) | 2026-02-16 |
 | 24 | 老花眼指南：眼鏡選項 | https://www.uncle-glasses.net/2025/05/presbyopia-guide-glasses-options.html | [ ] 待處理 | - |
 | 25 | 夜間駕駛視覺方案 | https://www.uncle-glasses.net/2025/05/night-driving-vision-solution-uncle-glasses.html | [x] 已完成 (v3.1) | 2026-02-16 |
