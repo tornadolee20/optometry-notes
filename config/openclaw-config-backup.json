@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.2.17",
-    "lastTouchedAt": "2026-02-20T10:49:56.174Z"
+    "lastTouchedAt": "2026-02-20T12:48:33.230Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-11T02:49:19.503Z",
@@ -126,6 +126,15 @@
           "model": "perplexity/sonar-pro"
         }
       }
+    }
+  },
+  "audio": {
+    "transcription": {
+      "command": [
+        "/app/skills/openai-whisper-api/scripts/transcribe.sh",
+        "{path}"
+      ],
+      "timeoutSeconds": 30
     }
   },
   "commands": {

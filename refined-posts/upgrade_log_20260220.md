@@ -12,5 +12,8 @@
 2. `/home/node/.openclaw/workspace/refined-posts/child-vision-signals-v3.1.html` (原文章 11)
 3. `/home/node/.openclaw/workspace/refined-posts/myopia-truth-v3.1.html` (原文章 12)
 
+4. `/home/node/.openclaw/workspace/refined-posts/myopia-exam-anxiety-v3.1.html` (原文章 12)
+5. `/home/node/.openclaw/workspace/refined-posts/child-myopia-myth-v3.1.html` (原文章 13)
+
 ---
-**賈維斯報告：今日 3 篇 SEO v3.1 升級任務已圓滿達成。**
+**賈維斯報告：今日 5 篇 SEO v3.1 升級任務已全數圓滿達成。本階段 Blogger 專題優化工作已全部完工。**
