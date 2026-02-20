@@ -14,9 +14,9 @@
 | 7 | 【三峽驗光師】腸道不好眼睛也遭殃？ | https://www.uncle-glasses.net/2025/11/gut-eye-axis-vision-health.html | [x] 已完成 (v3.1) | 2026-02-16 |
 | 8 | 孩子近視飆升怎麼辦？別急著沒收手機 | https://www.uncle-glasses.net/2025/11/child-myopia-parenting-war-cooperation.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 9 | 【三峽驗光師】長輩怕跌倒、怕失智？ | https://www.uncle-glasses.net/2025/11/10-questions-about-aging-eyes.html | [x] 已完成 (v3.1) | 2026-02-17 |
-| 10 | 藍光終極指南！驗光師帶你戳破3大迷思 | https://www.uncle-glasses.net/2025/10/blue-light-myths-debunked-by-optometrist.html | [ ] 處理中 (v3.1) | 2026-02-17 |
-| 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [ ] 處理中 (v3.1) | 2026-02-17 |
-| 12 | 孩子近視的真相 | https://www.uncle-glasses.net/2025/09/child-myopia-vision-truth.html | [ ] 處理中 (v3.1) | 2026-02-17 |
+| 10 | 藍光終極指南！驗光師帶你戳破3大迷思 | https://www.uncle-glasses.net/2025/10/blue-light-myths-debunked-by-optometrist.html | [x] 已完成 (v3.1) | 2026-02-20 |
+| 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [x] 已完成 (v3.1) | 2026-02-20 |
+| 12 | 孩子近視的真相 | https://www.uncle-glasses.net/2025/09/child-myopia-vision-truth.html | [x] 已完成 (v3.1) | 2026-02-20 |
 | 13 | 三峽兒童近視迷思 | https://www.uncle-glasses.net/2025/09/myopia-myths-kids-vision-sanxia.html | [ ] 處理中 (v3.1) | 2026-02-17 |
 | 14 | 驗光師的專業困境 | https://www.uncle-glasses.net/2025/08/optometrist-professional-dilemma.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 15 | 老花眼多焦點鏡片指南 | https://www.uncle-glasses.net/2025/08/multifocal-lenses-for-presbyopia-guide.html | [x] 已完成 (v3.1) | 2026-02-17 |
@@ -28,10 +28,10 @@
 | 21 | 眼鏡不舒服：三峽驗光體驗 | https://www.uncle-glasses.net/2025/06/uncomfortable-glasses-sanxia-eye-exam.html | [x] 已完成 (v3.1) | 2026-02-19 |
 | 22 | 看見從未存在的顏色 | https://www.uncle-glasses.net/2025/06/see-colors-that-never-existed.html | [x] 已完成 (v3.1) | 2026-02-19 |
 | 23 | 夜間駕駛：眩光與眼鏡 | https://www.uncle-glasses.net/2025/06/night-driving-vision-glare-glasses.html | [x] 已完成 (v3.1) | 2026-02-16 |
-| 24 | 老花眼指南：眼鏡選項 | https://www.uncle-glasses.net/2025/05/presbyopia-guide-glasses-options.html | [ ] 待處理 | - |
+| 24 | 老花眼指南：眼鏡選項 | https://www.uncle-glasses.net/2025/05/presbyopia-guide-glasses-options.html | [x] 已完成 (v3.1) | 2026-02-20 |
 | 25 | 夜間駕駛視覺方案 | https://www.uncle-glasses.net/2025/05/night-driving-vision-solution-uncle-glasses.html | [x] 已完成 (v3.1) | 2026-02-16 |
-| 26 | 媽媽對三峽配鏡的信任 | https://www.uncle-glasses.net/2025/05/mom-trust-eyewear-child-sansia.html | [ ] 待處理 | - |
-| 27 | 眼鏡感覺怪怪的：年輕人的故事 | https://www.uncle-glasses.net/2025/05/glasses-feel-weird-young-man-story.html | [ ] 待處理 | - |
+| 26 | 媽媽對三峽配鏡的信任 | https://www.uncle-glasses.net/2025/05/mom-trust-eyewear-child-sansia.html | [x] 已完成 (v3.1) | 2026-02-20 |
+| 27 | 眼鏡感覺怪怪的：年輕人的故事 | https://www.uncle-glasses.net/2025/05/glasses-feel-weird-young-man-story.html | [x] 已完成 (v3.1) | 2026-02-20 |
 | 28 | 三峽驗光所：阿嬤的故事 | https://www.uncle-glasses.net/2025/05/sanxia-optical-shop-grandma-story.html | [ ] 待處理 | - |
 | 29 | 三峽配鏡：不像媽媽的眼鏡 | https://www.uncle-glasses.net/2025/05/sanxia-glasses-not-like-mom.html | [ ] 待處理 | - |
 | 30 | 角膜炎與綠膿桿菌 | https://www.uncle-glasses.net/2025/05/keratitis-pseudomonas-sanxia-taozijiao.html | [ ] 待處理 | - |
