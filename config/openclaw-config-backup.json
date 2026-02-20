@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastTouchedVersion": "2026.2.15",
-    "lastTouchedAt": "2026-02-17T12:53:16.160Z"
+    "lastTouchedVersion": "2026.2.17",
+    "lastTouchedAt": "2026-02-20T10:49:56.174Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-11T02:49:19.503Z",
@@ -134,6 +134,15 @@
     "restart": true
   },
   "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "allowFrom": [
+        "8005743631"
+      ],
+      "groupPolicy": "allowlist",
+      "streamMode": "partial"
+    },
     "line": {
       "enabled": true,
       "webhookPath": "/line/webhook",
@@ -172,6 +181,9 @@
         "enabled": true
       },
       "minimax-portal-auth": {
+        "enabled": true
+      },
+      "telegram": {
         "enabled": true
       }
     }
