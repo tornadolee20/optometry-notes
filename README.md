@@ -31,9 +31,6 @@
 - **實體門市**：[自己的眼鏡・自己的驗光所](https://www.uncle-glasses.net/p/about.html) (新北市三峽區)
 - **專業部落格**：[驗光師。目鏡大叔](https://www.uncle-glasses.net/)
 - **影音頻道**：[YouTube - 我是目鏡大叔](https://www.youtube.com/@uncleglasses20)
-- **Facebook 粉專 (個人轉粉專)**：[李錫彥](https://www.facebook.com/li.xi.yan.595964/)
-- **Facebook 官方帳號**：[自己的眼鏡・自己的驗光所](https://www.facebook.com/Uncleglasses1720/)
-- **Instagram**：[uncleglasses6978](https://www.instagram.com/uncleglasses6978/)
 
 ---
 *© 2026 李錫彥 (tornadolee20). Powered by Jarvis (OpenClaw Agent).*

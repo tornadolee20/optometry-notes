@@ -1,19 +1,35 @@
-# Jarvis Memory Index (LDB System v1.0)
+# Memory
 
-> 本文件為賈維斯記憶系統的「總目錄索引」，詳細內容按主題存放於 `/memory/topics/` 資料夾中。
+## Hallucination Self-Correction (2026-02-06)
+- **Lessons Learned**: When YouTube extraction fails, NEVER guess based on context. Use `curl` to fetch OEmbed data or search specifically for the video ID to verify titles.
+- **Verified Video Database**:
+  - `puXZBCb5nrE`: "Optometrist Vs Ophthalmologist" (Michele Lee, MD). Focuses on professional role differentiation.
+  - `masJoPqT-6A`: "Unlock OpenClaw Multi-Agent Advanced Gameplay" (AI Superdomain). Focuses on OpenClaw/Antigravity tutorials.
 
-## 🧠 記憶主題索引 (Memory Topics)
-- [[memory/topics/user_profile_persona.md | 用戶畫像與分身協議]]: 大叔偏好、靈魂協議 (System 1/2)。
-- [[memory/topics/ai_prompts_tools.md | 戰術工具箱]]: 15 套核心 Prompts (費曼、IG 演算法優化等)。
-- [[memory/topics/protocols_media.md | 交互與媒體協議]]: 語音協議、無感媒體處理、群組守護規則。
-- [[memory/topics/strategic_deployment.md | 戰略佈局與基建]]: Zeabur 配置、2026 銀髮主線、SEO 精修進度。
-- [[memory/topics/hallucination_corrections.md | 幻覺修正與經驗錄]]: 影片解碼、PDF 讀取等歷史錯誤校正。
-- [[memory/topics/campaigns_lunar_new_year.md | 專題活動紀錄]]: 2026 過年專題 (D1-D14)。
+## User Profile: 李錫彥 (目鏡大叔)
+- **Identity:** 專業驗光師，經營三峽「自己的眼鏡・自己的驗光所」。
+- **Blog:** [驗光師。目鏡大叔](https://www.uncle-glasses.net/)。
+- **Expertise:** 視光學、兒童視力保健、賽局理論應用。
+- **Goal:** 推廣有溫度的視光專業知識。
+- **GitHub Sync:** 2026-02-05 已設定自動同步權限。
 
-## 📜 核心規則 (Core Rules)
-1. **主題化存儲**: 新知識必須根據主題存入對應的 `.md` 文件，禁止在 `MEMORY.md` 堆疊雜訊。
-2. **脫水原則**: 僅記錄具備決策價值、長期重複使用的「高純度情資」。
-3. ** GitHub 同步**: 每次更新主題文件後，應配合 `secure_sync.js` 進行雲端備份。
+## Silent Replies
+When you have nothing to say, respond with ONLY: NO_REPLY
+⚠️ Rules:
+- It must be your ENTIRE message — nothing else
+- Never append it to an actual response (never include "NO_REPLY" in real replies)
+- Never wrap it in markdown or code blocks
+❌ Wrong: "Here's help... NO_REPLY"
+❌ Wrong: "NO_REPLY"
+✅ Right: NO_REPLY
 
----
-*Updated: 2026-02-21 — 大腦重構工程正式結案。*
+## Heartbeats
+Heartbeat prompt: Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.
+If you receive a heartbeat poll (a user message matching the heartbeat prompt above), and there is nothing that needs attention, reply exactly:
+HEARTBEAT_OK
+OpenClaw treats a leading/trailing "HEARTBEAT_OK" as a heartbeat ack (and may discard it).
+If something needs attention, do NOT include "HEARTBEAT_OK"; reply with the alert text instead.
+
+## Runtime
+Runtime: agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line | capabilities=none | thinking=low
+Reasoning: off (hidden unless on/stream). Toggle /reasoning; /status shows Reasoning when enabled.
