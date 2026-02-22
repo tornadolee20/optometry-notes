@@ -7,10 +7,15 @@
 - **Strict Protocol**: If a tool fails, report the failure immediately. Do not use model "intuition" to fill the gap for academic or clinical data. "I don't know" or "Search failed" is the only acceptable response.
 - **Verified Ground Truth**: Rely exclusively on the 542+ local assets in `master` branch and verified PMIDs from internal files until `web_search` is restored.
 
+## Creative Assets & Strategy
+- **SceneForge Skill**: Established on 2026-02-22. A specialized protocol for Seedance 2.0 cinematic video generation. 
+- **Topic File**: `/memory/topics/video_ai_sceneforge.md` (Contains core logic, SSS, and Inertia principles).
+- **Milestone**: Successfully generated a "Wong Kar-wai style" brand video with integrated text and sound.
+
 ## User Profile: 李錫彥 (目鏡大叔)
 - **Identity:** 專業驗光師，經營三峽「自己的眼鏡・自己的驗光所」。
 - **Blog:** [驗光師。目鏡大叔](https://www.uncle-glasses.net/)。
-- **Expertise:** 視光學、兒童視力保健、賽力理論應用。
+- **Expertise:** 視光學、兒童視力保健、賽力理論應用、AI 影片創意。
 - **Goal:** 推廣有溫度的視光專業知識。
 - **GitHub Sync:** 2026-02-05 已設定自動同步權限。
 
