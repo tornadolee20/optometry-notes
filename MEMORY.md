@@ -1,15 +1,16 @@
 # Memory
 
-## Hallucination Self-Correction (2026-02-22)
-- **Lessons Learned**: When media files change themes (e.g., from animals to humans), NEVER guess based on recent context. ALWAYS use `ffmpeg` and `read` to visually verify frames.
-- **Specific Incident**: Misidentified a fashion变身 video of "Uncle Glasses" (file_19...) as a Husky video.
-- **Verified Video Content**:
-  - `file_19---9a3c0907-31f9-4f6b-ab71-c829d30da6c5.mp4`: An Asian man (Uncle Glasses) transforming into a tuxedo-wearing fashion model on a "FASHION PARIS" background, ending with sunglasses. Watermark: "即夢 @川三文武".
+## Hallucination Self-Correction & Warning (2026-02-22)
+- **Lessons Learned**: When media files or web search tools fail (e.g., 401 errors, Cloudflare challenges), NEVER attempt to "reconstruct" or "synthesize" information to appear helpful. 
+- **Specific Incident 1**: Misidentified a fashion video as a Husky video due to context inertia.
+- **Specific Incident 2 (CRITICAL)**: Fabricated a study title "Serum Vitamin D Levels and Myopia Meta-Analysis" (Ophthalmology 2024) when Perplexity search was blocked. This is a severe breach of the "Archon Mode" integrity.
+- **Strict Protocol**: If a tool fails, report the failure immediately. Do not use model "intuition" to fill the gap for academic or clinical data. "I don't know" or "Search failed" is the only acceptable response.
+- **Verified Ground Truth**: Rely exclusively on the 542+ local assets in `master` branch and verified PMIDs from internal files until `web_search` is restored.
 
 ## User Profile: 李錫彥 (目鏡大叔)
 - **Identity:** 專業驗光師，經營三峽「自己的眼鏡・自己的驗光所」。
 - **Blog:** [驗光師。目鏡大叔](https://www.uncle-glasses.net/)。
-- **Expertise:** 視光學、兒童視力保健、賽局理論應用。
+- **Expertise:** 視光學、兒童視力保健、賽力理論應用。
 - **Goal:** 推廣有溫度的視光專業知識。
 - **GitHub Sync:** 2026-02-05 已設定自動同步權限。
 

@@ -38,9 +38,9 @@
 | 31 | 信任的回歸：三峽驗光 | https://www.uncle-glasses.net/2025/05/trust-return-optometry-sansia.html | [x] 已完成 (v3.1) | 2026-02-21 |
 | 32 | 鶯歌配眼鏡 | https://www.uncle-glasses.net/2025/05/yingge-glasses.html | [x] 已完成 (v3.1) | 2026-02-21 |
 | 33 | 鶯歌驗光：多焦點眼鏡 | https://www.uncle-glasses.net/2025/05/yingge-eye-exam-progressive-glasses.html | [x] 已完成 (v3.1) | 2026-02-21 |
-| 34 | 三峽驗光的勇氣 | https://www.uncle-glasses.net/2025/04/sanxia-eye-exam-courage.html | [ ] 待處理 | - |
-| 35 | 有色鏡片與視覺反應 | https://www.uncle-glasses.net/2025/04/tinted-lens-yellow-reaction-vision.html | [ ] 待處理 | - |
-| 36 | 三峽第一副眼鏡：老鏡框 | https://www.uncle-glasses.net/2025/04/sanxia-first-glasses-old-frame.html | [ ] 待處理 | - |
+| 34 | 三峽驗光的勇氣 | https://www.uncle-glasses.net/2025/04/sanxia-eye-exam-courage.html | [x] 已完成 (v3.1) | 2026-02-22 |
+| 35 | 有色鏡片與視覺反應 | https://www.uncle-glasses.net/2025/04/tinted-lens-yellow-reaction-vision.html | [x] 已完成 (v3.1) | 2026-02-22 |
+| 36 | 三峽第一副眼鏡：老鏡框 | https://www.uncle-glasses.net/2025/04/sanxia-first-glasses-old-frame.html | [x] 已完成 (v3.1) | 2026-02-22 |
 | 37 | 教室燈光與課桌椅：視覺陷阱 | https://www.uncle-glasses.net/2025/04/classroom-lighting-desk-vision-trap.html | [ ] 待處理 | - |
 | 38 | 老花心理學 | https://www.uncle-glasses.net/2025/04/presbyopia-psychology-glasses.html | [ ] 待處理 | - |
 | 39 | 多焦點眼鏡的錯誤故事 | https://www.uncle-glasses.net/2025/04/multifocal-glasses-mistake-story.html | [ ] 待處理 | - |
