@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.2.17",
-    "lastTouchedAt": "2026-02-20T12:48:33.230Z"
+    "lastTouchedAt": "2026-02-22T09:13:05.282Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-11T02:49:19.503Z",
@@ -51,9 +51,6 @@
       "models": {
         "google-antigravity/gemini-3-pro": {
           "alias": "gemini-pro"
-        },
-        "google-antigravity/claude-3-5-sonnet-4.5": {
-          "alias": "claude-sonnet-4.5"
         },
         "minimax/MiniMax-M2.1": {
           "alias": "minimax-old"
