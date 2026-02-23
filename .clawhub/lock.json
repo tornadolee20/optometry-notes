@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "skills": {
+    "shelly-seo-analyzer": {
+      "version": "1.0.0",
+      "installedAt": 1771824606298
+    },
+    "video-understand": {
+      "version": "1.0.1",
+      "installedAt": 1771824630980
+    }
+  }
+}

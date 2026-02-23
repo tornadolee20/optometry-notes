@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賈維斯戰略看板 | v3.2</title>
+    <style>
+        :root {
+            --primary: #ff4b2b;
+            --secondary: #4facfe;
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text: #e0e0e0;
+            --accent: #00f2fe;
+            --warn: #f9d423;
+        }
+        body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); padding: 20px; margin: 0; line-height: 1.5; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { margin: 0; font-size: 24px; letter-spacing: 2px; color: var(--primary); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--card-bg); border-radius: 16px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #222; position: relative; overflow: hidden; }
+        .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
+        .card.blue::before { background: var(--secondary); }
+        .card.warn::before { background: var(--warn); }
+        .card h2 { font-size: 18px; margin-top: 0; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; color: var(--secondary); }
+        .stat-group { display: flex; flex-direction: column; gap: 12px; }
+        .stat-item { display: flex; justify-content: space-between; font-size: 14px; border-bottom: 1px solid #222; padding-bottom: 8px; }
+        .label { color: #888; }
+        .value { font-weight: 600; color: var(--accent); }
+        .achievements { list-style: none; padding: 0; margin: 0; }
+        .achievements li { margin-bottom: 12px; padding-left: 25px; position: relative; font-size: 14px; }
+        .achievements li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+        .progress-bar { height: 8px; background: #333; border-radius: 4px; margin-top: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); width: 62%; }
+        .security-alert { background: rgba(249, 212, 35, 0.1); border: 1px solid var(--warn); border-radius: 8px; padding: 15px; margin-top: 10px; font-size: 13px; color: var(--warn); }
+        .footer { text-align: center; margin-top: 40px; color: #555; font-size: 12px; letter-spacing: 1px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🦾 賈維斯戰略看板</h1>
+        <div style="text-align: right">
+            <div style="font-size: 12px; color: #888;">戰略基準日</div>
+            <div style="font-weight: bold; color: var(--accent);">2026-02-23</div>
+        </div>
+    </div>
+    
+    <div class="grid">
+        <!-- 系統狀態 -->
+        <div class="card">
+            <h2>🦞 龍蝦生命體徵</h2>
+            <div class="stat-group">
+                <div class="stat-item"><span class="label">系統版本</span><span class="value">v2026.2.17</span></div>
+                <div class="stat-item"><span class="label">核心憲法</span><span class="value">AGENTS.md 3.2</span></div>
+                <div class="stat-item"><span class="label">部署環境</span><span class="value">Zeabur Cloud</span></div>
+                <div class="stat-item"><span class="label">主動巡航</span><span class="value">已啟動</span></div>
+            </div>
+        </div>
+
+        <!-- 今日戰果 -->
+        <div class="card blue">
+            <h2>🚀 今日重大成就</h2>
+            <ul class="achievements">
+                <li><b>原廠資料庫</b>: 640 份手冊完成在地化</li>
+                <li><b>神諭技能</b>: claw-oracle 成功入魂</li>
+                <li><b>同步協議</b>: 04:00 UTC 全量同步完成</li>
+                <li><b>智慧金句</b>: 開工策展日誌已存檔</li>
+            </ul>
+        </div>
+
+        <!-- 目標進度 -->
+        <div class="card">
+            <h2>🎯 本週戰略進度</h2>
+            <div class="stat-group">
+                <div>
+                    <div class="stat-item" style="border:0; padding:0;"><span class="label">全站 SEO 優化</span><span class="value">62%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 62%;"></div></div>
+                </div>
+                <div>
+                    <div class="stat-item" style="border:0; padding:0;"><span class="label">智慧資產提煉</span><span class="value">85%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="stat-item"><span class="label">繪圖技能測試</span><span class="value">待啟動</span></div>
+            </div>
+        </div>
+
+        <!-- 安全警告 -->
+        <div class="card warn">
+            <h2>🛡️ 數位防禦監控</h2>
+            <div class="stat-group">
+                <div class="stat-item"><span class="label">防火牆狀態</span><span class="value" style="color:var(--warn)">有漏洞</span></div>
+            </div>
+            <div class="security-alert">
+                <b>CRITICAL:</b> Control UI 門戶未關。建議修補 gateway.patch 以啟動 Rate Limiting 與強制驗證。
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        POWERED BY OPENCLAW | STRATEGIC CLONE: JARVIS v3.2
+    </div>
+</body>
+</html>
