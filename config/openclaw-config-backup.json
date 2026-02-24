@@ -46,7 +46,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "google-antigravity/gemini-3-flash"
+        "primary": "minimax/MiniMax-M2.5"
       },
       "models": {
         "google-antigravity/gemini-3-pro": {
