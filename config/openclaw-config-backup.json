@@ -1,7 +1,7 @@
 {
   "meta": {
     "lastTouchedVersion": "2026.2.17",
-    "lastTouchedAt": "2026-02-23T02:09:04.825Z"
+    "lastTouchedAt": "2026-02-25T13:15:50.469Z"
   },
   "wizard": {
     "lastRunAt": "2026-02-11T02:49:19.503Z",
@@ -125,15 +125,21 @@
           "model": "perplexity/sonar-pro"
         }
       }
-    }
-  },
-  "audio": {
-    "transcription": {
-      "command": [
-        "/app/skills/openai-whisper-api/scripts/transcribe.sh",
-        "{path}"
-      ],
-      "timeoutSeconds": 30
+    },
+    "media": {
+      "audio": {
+        "enabled": true,
+        "models": [
+          {
+            "type": "cli",
+            "command": "/app/skills/openai-whisper-api/scripts/transcribe.sh",
+            "args": [
+              "{path}"
+            ],
+            "timeoutSeconds": 30
+          }
+        ]
+      }
     }
   },
   "commands": {
@@ -145,6 +151,7 @@
     "telegram": {
       "enabled": true,
       "dmPolicy": "allowlist",
+      "botToken": "__REDACTED__",
       "allowFrom": [
         "8005743631"
       ],
