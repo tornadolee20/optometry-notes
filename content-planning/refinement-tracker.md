@@ -50,9 +50,9 @@
 | 43 | 微塑膠與乾眼症 | https://www.uncle-glasses.net/2025/03/microplastic-eye-dryness.html | [x] 已完成 (v3.1) | 2026-02-24 |
 | 44 | 降低配鏡決策成本的行銷 | https://www.uncle-glasses.net/2025/03/lower-decision-cost-marketing-eyewear.html | [x] 已完成 (v3.1) | 2026-02-24 |
 | 45 | 17 年老眼鏡維修 | https://www.uncle-glasses.net/2025/02/17-year-old-glasses-repair.html | [x] 已完成 (v3.1) | 2026-02-24 |
-| 46 | 如何識別輿論陷阱 | https://www.uncle-glasses.net/2025/01/how-to-identify-public-opinion-traps.html | [ ] 待處理 | - |
-| 47 | 護眼最佳照明 | https://www.uncle-glasses.net/2024/10/best-lighting-for-eye-health.html | [ ] 待處理 | - |
-| 48 | Google 評論折扣的長期風險 | https://www.uncle-glasses.net/2024/09/google-review-discount-long-term-risk.html | [ ] 待處理 | - |
+| 46 | 如何識別輿論陷阱 | https://www.uncle-glasses.net/2025/01/how-to-identify-public-opinion-traps.html | [x] 已完成 (v3.1) | 2026-02-25 |
+| 47 | 護眼最佳照明 | https://www.uncle-glasses.net/2024/10/best-lighting-for-eye-health.html | [x] 已完成 (v3.1) | 2026-02-25 |
+| 48 | Google 評論折扣的長期風險 | https://www.uncle-glasses.net/2024/09/google-review-discount-long-term-risk.html | [x] 已完成 (v3.1) | 2026-02-25 |
 | 49 | 失智症早期訊號：視覺警告 | https://www.uncle-glasses.net/2024/09/dementia-early-signs-vision-warning.html | [ ] 待處理 | - |
 | 50 | 處理負面評論建立品牌信譽 | https://www.uncle-glasses.net/2024/09/handle-negative-reviews-build-brand-reputation.html | [ ] 待處理 | - |
 | 51 | 糖類對視力的隱藏危險 | https://www.uncle-glasses.net/2024/08/hidden-dangers-of-sugar-on-vision.html | [ ] 待處理 | - |
