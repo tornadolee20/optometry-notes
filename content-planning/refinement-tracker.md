@@ -53,9 +53,9 @@
 | 46 | 如何識別輿論陷阱 | https://www.uncle-glasses.net/2025/01/how-to-identify-public-opinion-traps.html | [x] 已完成 (v3.1) | 2026-02-25 |
 | 47 | 護眼最佳照明 | https://www.uncle-glasses.net/2024/10/best-lighting-for-eye-health.html | [x] 已完成 (v3.1) | 2026-02-25 |
 | 48 | Google 評論折扣的長期風險 | https://www.uncle-glasses.net/2024/09/google-review-discount-long-term-risk.html | [x] 已完成 (v3.1) | 2026-02-25 |
-| 49 | 失智症早期訊號：視覺警告 | https://www.uncle-glasses.net/2024/09/dementia-early-signs-vision-warning.html | [ ] 待處理 | - |
-| 50 | 處理負面評論建立品牌信譽 | https://www.uncle-glasses.net/2024/09/handle-negative-reviews-build-brand-reputation.html | [ ] 待處理 | - |
-| 51 | 糖類對視力的隱藏危險 | https://www.uncle-glasses.net/2024/08/hidden-dangers-of-sugar-on-vision.html | [ ] 待處理 | - |
+| 49 | 失智症早期訊號：視覺警告 | https://www.uncle-glasses.net/2024/09/dementia-early-signs-vision-warning.html | [x] 已完成 (v3.1) | 2026-02-26 |
+| 50 | 處理負面評論建立品牌信譽 | https://www.uncle-glasses.net/2024/09/handle-negative-reviews-build-brand-reputation.html | [x] 已完成 (v3.1) | 2026-02-26 |
+| 51 | 糖類對視力的隱藏危險 | https://www.uncle-glasses.net/2024/08/hidden-dangers-of-sugar-on-vision.html | [x] 已完成 (v3.1) | 2026-02-26 |
 | 52 | Omega 脂肪酸對眼睛的影響 | https://www.uncle-glasses.net/2023/07/how-omega-fatty-acids-affect-your-eyes.html | [ ] 待處理 | - |
 | 53 | 正確處理藍光的方法 | https://www.uncle-glasses.net/2023/07/how-to-deal-with-blue-light-the-right-way.html | [ ] 待處理 | - |
 | 54 | 博客來事件隨筆 | https://www.uncle-glasses.net/2023/07/blog-post.html | [ ] 待處理 | - |
