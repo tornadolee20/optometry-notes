@@ -59,7 +59,7 @@
 | 52 | Omega 脂肪酸對眼睛的影響 | https://www.uncle-glasses.net/2023/07/how-omega-fatty-acids-affect-your-eyes.html | [x] 已完成 (v3.1) | 2026-02-27 |
 | 53 | 正確處理藍光的方法 | https://www.uncle-glasses.net/2023/07/how-to-deal-with-blue-light-the-right-way.html | [x] 已完成 (v3.1) | 2026-02-27 |
 | 54 | 博客來事件隨筆 | https://www.uncle-glasses.net/2023/07/blog-post.html | [x] 已完成 (v3.1) | 2026-02-27 |
-| 55 | 損失趨避心理 | https://www.uncle-glasses.net/2022/05/loss-aversion.html | [ ] 待處理 | - |
-| 56 | 錨定效應應用 | https://www.uncle-glasses.net/2022/05/anchoring-effect.html | [ ] 待處理 | - |
-| 57 | 生活隨筆：配鏡價值 | https://www.uncle-glasses.net/2022/05/blog-post.html | [ ] 待處理 | - |
+| 55 | 損失趨避心理 | https://www.uncle-glasses.net/2022/05/loss-aversion.html | [x] 已完成 (v3.1) | 2026-02-28 |
+| 56 | 錨定效應應用 | https://www.uncle-glasses.net/2022/05/anchoring-effect.html | [x] 已完成 (v3.1) | 2026-02-28 |
+| 57 | 生活隨筆：配鏡價值 | https://www.uncle-glasses.net/2022/05/blog-post.html | [x] 已完成 (v3.1) | 2026-02-28 |
 | 58 | 驗光師的觀察室：初次隨筆 | https://www.uncle-glasses.net/2018/05/blog-post.html | [ ] 待處理 | - |
