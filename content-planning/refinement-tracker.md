@@ -15,7 +15,7 @@
 | 8 | 孩子近視飆升怎麼辦？別急著沒收手機 | https://www.uncle-glasses.net/2025/11/child-myopia-parenting-war-cooperation.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 9 | 【三峽驗光師】長輩怕跌倒、怕失智？ | https://www.uncle-glasses.net/2025/11/10-questions-about-aging-eyes.html | [x] 已完成 (v3.1) | 2026-02-17 |
 | 10 | 藍光終極指南！驗光師帶你戳破3大迷思 | https://www.uncle-glasses.net/2025/10/blue-light-myths-debunked-by-optometrist.html | [x] 已完成 (v3.1) | 2026-02-20 |
-| 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [x] 已完成 (v3.1) | 2026-02-20 |
+| 11 | 我家孩子是不是近視了？5個視力求救訊號 | https://www.uncle-glasses.net/2025/09/children-vision-problem-5-signs.html | [x] 完成 (v3.1) | 2026-02-20 |
 | 12 | 孩子近視的真相 | https://www.uncle-glasses.net/2025/09/child-myopia-vision-truth.html | [x] 已完成 (v3.1) | 2026-02-20 |
 | 13 | 三峽兒童近視迷思 | https://www.uncle-glasses.net/2025/09/myopia-myths-kids-vision-sanxia.html | [x] 已完成 (v3.1) | 2026-03-01 |
 | 14 | 驗光師的專業困境 | https://www.uncle-glasses.net/2025/08/optometrist-professional-dilemma.html | [x] 已完成 (v3.1) | 2026-02-17 |
@@ -63,3 +63,4 @@
 | 56 | 錨定效應應用 | https://www.uncle-glasses.net/2022/05/anchoring-effect.html | [x] 已完成 (v3.1) | 2026-02-28 |
 | 57 | 生活隨筆：配鏡價值 | https://www.uncle-glasses.net/2022/05/blog-post.html | [x] 已完成 (v3.1) | 2026-02-28 |
 | 58 | 驗光師的觀察室：初次隨筆 | https://www.uncle-glasses.net/2018/05/blog-post.html | [x] 已完成 (v3.1) | 2026-03-01 |
+| 59 | 【三峽驗光師】遮雨棚下的一堂課 | https://www.uncle-glasses.net/2026/03/awning-lesson-child-myopia-story.html | [x] 已完成 (v3.1) | 2026-03-06 |
