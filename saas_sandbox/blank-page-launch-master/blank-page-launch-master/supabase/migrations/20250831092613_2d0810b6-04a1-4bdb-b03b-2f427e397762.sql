@@ -1,0 +1,134 @@
+
+CREATE OR REPLACE FUNCTION public.admin_grant_free_subscription(
+  _store_id uuid,
+  _duration_days integer,
+  _reason text DEFAULT NULL,
+  _notes text DEFAULT NULL,
+  _auto_renew boolean DEFAULT false
+) RETURNS TABLE (
+  store_id uuid,
+  plan_type text,
+  status text,
+  expires_at timestamptz,
+  trial_ends_at timestamptz,
+  auto_renew boolean
+)
+LANGUAGE plpgsql
+SECURITY DEFINER
+SET search_path TO public
+AS $function$
+DECLARE
+  _current_expires_at timestamptz;
+  _trial_ends_at timestamptz;
+  _base_ts timestamptz;
+  _new_expires_at timestamptz;
+  _plan text;
+  _is_admin boolean;
+BEGIN
+  -- 只有超級管理員或管理員可以執行
+  _is_admin := is_super_admin() OR has_role(auth.uid(), 'admin'::app_role);
+  IF NOT _is_admin THEN
+    RAISE EXCEPTION 'Not authorized';
+  END IF;
+
+  IF _duration_days IS NULL OR _duration_days <= 0 THEN
+    RAISE EXCEPTION 'duration_days must be positive';
+  END IF;
+
+  -- 確認店家存在
+  IF NOT EXISTS (SELECT 1 FROM public.stores s WHERE s.id = _store_id) THEN
+    RAISE EXCEPTION 'Store not found';
+  END IF;
+
+  -- 確保店家為 active
+  UPDATE public.stores 
+     SET status = 'active', updated_at = timezone('utc', now())
+   WHERE id = _store_id AND status <> 'active';
+
+  -- 依期間對應方案
+  IF _duration_days >= 365 THEN
+    _plan := 'yearly';
+  ELSIF _duration_days >= 90 THEN
+    _plan := 'quarterly';
+  ELSIF _duration_days >= 30 THEN
+    _plan := 'monthly';
+  ELSE
+    _plan := 'trial';
+  END IF;
+
+  -- 取得目前訂閱狀態
+  SELECT s.expires_at, s.trial_ends_at
+  INTO _current_expires_at, _trial_ends_at
+  FROM public.store_subscriptions s
+  WHERE s.store_id = _store_id
+  LIMIT 1;
+
+  -- 基準時間為：現有 expires_at / trial_ends_at / 現在 的最大值
+  _base_ts := GREATEST(
+    COALESCE(_current_expires_at, '-infinity'),
+    COALESCE(_trial_ends_at, '-infinity'),
+    timezone('utc', now())
+  );
+
+  _new_expires_at := _base_ts + make_interval(days => _duration_days);
+
+  -- Upsert 訂閱
+  INSERT INTO public.store_subscriptions (
+    store_id, plan_type, status, expires_at, trial_ends_at, auto_renew, payment_source, created_at, updated_at
+  ) VALUES (
+    _store_id,
+    _plan,
+    CASE WHEN _plan = 'trial' THEN 'trial' ELSE 'active' END,
+    _new_expires_at,
+    CASE WHEN _plan = 'trial' THEN _new_expires_at ELSE _trial_ends_at END,
+    _auto_renew,
+    'admin_granted',
+    timezone('utc', now()),
+    timezone('utc', now())
+  )
+  ON CONFLICT (store_id)
+  DO UPDATE SET
+    plan_type = EXCLUDED.plan_type,
+    status = CASE WHEN EXCLUDED.plan_type = 'trial' THEN 'trial' ELSE 'active' END,
+    expires_at = GREATEST(
+      COALESCE(public.store_subscriptions.expires_at, '-infinity'),
+      COALESCE(public.store_subscriptions.trial_ends_at, '-infinity'),
+      timezone('utc', now())
+    ) + make_interval(days => _duration_days),
+    trial_ends_at = CASE 
+      WHEN EXCLUDED.plan_type = 'trial' THEN GREATEST(
+        COALESCE(public.store_subscriptions.expires_at, '-infinity'),
+        COALESCE(public.store_subscriptions.trial_ends_at, '-infinity'),
+        timezone('utc', now())
+      ) + make_interval(days => _duration_days)
+      ELSE public.store_subscriptions.trial_ends_at
+    END,
+    auto_renew = _auto_renew,
+    payment_source = 'admin_granted',
+    updated_at = timezone('utc', now())
+  RETURNING store_id, plan_type, status, expires_at, trial_ends_at, auto_renew
+  INTO store_id, plan_type, status, expires_at, trial_ends_at, auto_renew;
+
+  -- 紀錄操作
+  INSERT INTO public.activity_logs (
+    entity_type, entity_id, activity_type, description, performed_by, metadata, created_at
+  ) VALUES (
+    'store',
+    _store_id::text,
+    'subscription_granted',
+    'Admin granted free subscription (extension from existing expiry)',
+    COALESCE(auth.uid()::text, 'system'),
+    jsonb_build_object(
+      'duration_days', _duration_days,
+      'plan_type', _plan,
+      'reason', _reason,
+      'notes', _notes,
+      'new_expires_at', _new_expires_at,
+      'auto_renew', _auto_renew
+    ),
+    timezone('utc', now())
+  );
+
+  RETURN;
+END;
+$function$;

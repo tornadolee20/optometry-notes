@@ -1,0 +1,226 @@
+{
+  "main": {
+    "id": "1b09c57b90522e14",
+    "type": "split",
+    "children": [
+      {
+        "id": "864b990e3770dab9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8d47e108351c3bd2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "07-長篇專欄與企劃/視力1.0的迷思-完整版.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "視力1.0的迷思-完整版"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "523d11571bb27853",
+    "type": "split",
+    "children": [
+      {
+        "id": "385b8dff2ab78923",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1efca5647594f845",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "檔案瀏覽器"
+            }
+          },
+          {
+            "id": "d8d231a9f4b50a73",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜尋"
+            }
+          },
+          {
+            "id": "6757c88ebe222fb5",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "書籤"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "d9f3b389470f25b4",
+    "type": "split",
+    "children": [
+      {
+        "id": "1c03472811b2af6e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be821805985f37c0",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "08-視力保健手冊推廣計畫/視力保健手冊/完整手冊_V19.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "完整手冊_V19 的反向連結"
+            }
+          },
+          {
+            "id": "0960557810176f23",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "08-視力保健手冊推廣計畫/視力保健手冊/完整手冊_V19.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "完整手冊_V19 的對外連結"
+            }
+          },
+          {
+            "id": "ef14494abd2809c5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "標籤"
+            }
+          },
+          {
+            "id": "0fc81af0f26fc041",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "所有屬性"
+            }
+          },
+          {
+            "id": "763a219052f5f249",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "08-視力保健手冊推廣計畫/視力保健手冊/完整手冊_V19.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "完整手冊_V19 的大綱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:開啟快速切換": false,
+      "graph:查看關聯圖": false,
+      "canvas:建立新畫布": false,
+      "daily-notes:開啟今天的每日筆記": false,
+      "templates:插入模板": false,
+      "command-palette:開啟命令面板": false,
+      "bases:建立新的 base": false
+    }
+  },
+  "active": "8d47e108351c3bd2",
+  "lastOpenFiles": [
+    "06-模板 (Templates)/概念卡-HFC-1.md",
+    "04-知識卡片/20260307-山桑子萃取物改善眼睛睫狀肌收縮.md",
+    "02-文獻與期刊/長達 12 週的山桑子萃取物 (Vaccinium myrtillus L.) 可改善眼睛睫狀肌收縮的客觀結果：隨機、雙盲、安慰劑對照、平行組比較試驗.pdf",
+    "04-知識卡片/行銷卡-遮雨棚下的一堂課.md",
+    "04-知識卡片/行銷卡-視力1.0的迷思.md",
+    "06-模板 (Templates)/行銷卡-MarketingNote.md",
+    "08-視力保健手冊推廣計畫/視力保健手冊/完整手冊_V20.md",
+    "10-歷史文章智庫/2026-03-04-【三峽驗光師】遮雨棚下的一堂課：一段我看不見的畫面，卻改變了一個孩子的人生.md",
+    "07-長篇專欄與企劃/曼陀羅九宮格-2026選題規劃.md",
+    "07-長篇專欄與企劃/視力1.0的迷思-完整版.md",
+    "07-長篇專欄與企劃/遮雨棚下的一堂課-完整版.md",
+    "07-長篇專欄與企劃/選題庫.md",
+    "07-長篇專欄與企劃/2026-選題規劃.md",
+    "07-長篇專欄與企劃/2026-選題-顧問團對決.md",
+    "07-長篇專欄與企劃/2026-選題-D1-配鏡流程-EEAT版.md",
+    "07-長篇專欄與企劃/2026-過年專題-D1-光明燈與視覺正義.md",
+    "06-模板 (Templates)/概念卡-ConceptNote.md",
+    "06-模板 (Templates)/專案卡-ProjectNote.md",
+    "06-模板 (Templates)/文獻卡-PaperNote.md",
+    "01-專家與MOC/專家與學者索引.md",
+    "04-知識卡片/目鏡大叔金句庫.md",
+    "04-知識卡片/文獻卡-[近視控制] Cao 2025 - 0.01%阿托品聯合光學療法對快速惡化低度近視兒童的效果.md",
+    "04-知識卡片/概念卡-[mRCRP與周邊離焦量限制].md",
+    "04-知識卡片/20260306-0.01%阿托品結合不同光學療法控制低度近視.md",
+    "06-模板 (Templates)",
+    "02-文獻與期刊/0.01% 阿托品滴眼液結合不同光學療法控制中國兒童低度近視的效果.pdf",
+    "README.md",
+    "2026-03-05.md",
+    "05-營運SOP與模板/論文模板.md",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_MASSIVE_V24.docx",
+    "08-視力保健手冊推廣計畫/manual/SOLID_MOE_REPORT_V25.docx",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_REPORT.docx",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_LEGACY_REPORT_V32.docx",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_MASSIVE_REPORT_V23.docx",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_FULL_V22.docx",
+    "08-視力保健手冊推廣計畫/manual/ULTIMATE_MOE_FINAL_REPORT_V30.docx",
+    "未命名.canvas"
+  ]
+}
