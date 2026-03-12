@@ -1,2 +1,3 @@
 - [x] 2026-03-09: 每兩天國外研究追蹤任務（阿托平+組合療法） - 已完成追蹤，並產出存檔於 knowledge/research/2026-03-11-atropine-combo-therapy.md
 - [x] 2026-03-11: 每兩天國外研究追蹤任務（阿托平+組合療法） - 已完成追蹤，並產出存檔於 knowledge/research/2026-03-11-atropine-combo-therapy.md
+- [x] 2026-03-11: 賈維斯安全同步協議 v3.1：已執行原始檔本地備援與脫敏 GitHub 同步。
