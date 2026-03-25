@@ -17,3 +17,16 @@ Thumbs.db
 # 備份檔案
 *.bak
 backup/
+
+# AI Agents & IDE 快取 (避免混淆與被追蹤)
+.gemini/
+.cursor/
+.windsurf/
+
+# .agents/ 的 cache 排除，但 workflows/skills 需同步
+.agents/.cache/
+.agents/sessions/
+
+# .claude/ 的本機設定排除，但 skills 需同步
+.claude/settings.local.json
+.claude/todos/
