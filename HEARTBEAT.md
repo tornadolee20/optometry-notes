@@ -1,5 +1,31 @@
-# HEARTBEAT.md
+# HEARTBEAT.md — 賈維斯心跳檢查清單
 
-# Keep this file empty (or with only comments) to skip heartbeat API calls.
+---
 
-# Add tasks below when you want the agent to check something periodically.
+## 每次心跳必做（所有心跳）
+
+- [ ] 檢查 `Inbox/待深處理.md` 是否有積壓超過 7 天的項目
+  - 若有 → 推送提醒：「有 X 篇文章等待 Claude 深處理，最舊的是 [日期]」
+- [ ] 檢查 `Inbox/手機收集箱.md` 是否有未分類項目超過 3 筆
+  - 若有 → 推送提醒：「收集箱有 X 筆待整理」
+
+---
+
+## 每週一額外執行
+
+- [ ] 掃描知識卡片 `maturity: 🌱` 超過 14 天未更新的項目
+  - 若有 → 推送提醒：「有 X 張知識卡片孤立超過 2 週，需要連結」
+- [ ] 確認本週是否有新文章發布
+  - 若無 → 推送提醒：「本週尚未發布文章，選題規劃 P0 還有 X 篇待寫」
+
+---
+
+## 推送格式（簡潔）
+
+```
+📋 系統週報
+- 待深處理：X 篇（最舊：MM/DD）
+- 孤立卡片：X 張
+- 本週發文：有/無
+→ 需要 Claude 處理：是/否
+```

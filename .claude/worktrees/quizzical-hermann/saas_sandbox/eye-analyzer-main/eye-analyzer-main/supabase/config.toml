@@ -1,0 +1,10 @@
+project_id = "cdkthmopnkvxgvieuvsp"
+
+[functions.send-expiry-reminder]
+verify_jwt = false
+
+[functions.payment-webhook]
+verify_jwt = false
+
+[functions.send-payment-confirmed]
+verify_jwt = false

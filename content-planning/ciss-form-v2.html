@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISS V-15 雙眼視覺症狀量表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+        body { 
+            font-family: 'Noto Sans TC', sans-serif; 
+            background-color: #f8fafc; 
+            color: #1e293b;
+            line-height: 1.6;
+            margin: 0; padding: 0;
+        }
+        .option-btn.active { 
+            background-color: #2563eb !important; 
+            color: white !important; 
+            border-color: #2563eb !important; 
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px -4px rgba(37, 99, 235, 0.35);
+        }
+        .option-btn:active { transform: scale(0.95); }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .sticky-score { box-shadow: 0 -8px 30px -5px rgba(0, 0, 0, 0.08); }
+        .q-card { 
+            transition: all 0.4s ease; 
+            border-left: 4px solid transparent; 
+            padding-left: 0.75rem;
+        }
+        .q-card.answered { 
+            border-left-color: #22c55e; 
+            opacity: 0.7; 
+        }
+        .q-card.answered:hover { opacity: 1; }
+        @keyframes scoreUp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        .score-bounce { animation: scoreUp 0.35s ease; }
+    </style>
+</head>
+<body class="py-6 px-3 md:py-12">
+    <div class="max-w-3xl mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-200 fade-in">
+        
+        <!-- Header -->
+        <div class="bg-gradient-to-br from-blue-700 via-blue-600 to-indigo-800 p-8 md:p-10 text-white text-center">
+            <h1 class="text-2xl md:text-4xl font-black mb-2 tracking-tight">CISS V-15</h1>
+            <p class="text-lg md:text-xl font-bold mb-2">雙眼視覺症狀量表</p>
+            <div class="h-1 w-12 bg-blue-400 mx-auto rounded-full opacity-50 mb-3"></div>
+            <p class="text-blue-100 opacity-80 text-xs md:text-sm italic">Convergence Insufficiency Symptom Survey</p>
+        </div>
+
+        <!-- Instructions -->
+        <div class="p-6 md:p-8 bg-blue-50/50 border-b border-blue-100">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-100">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-blue-600 text-white text-[10px] font-black px-2 py-0.5 rounded mr-2 uppercase">Staff</span>
+                        <span class="font-bold text-blue-900 text-xs">臨床人員指示</span>
+                    </div>
+                    <p class="text-slate-600 italic leading-relaxed text-xs md:text-sm">請逐題照唸題目給受測者聽。若受測者回答「有」，請進一步詢問頻率選項。請勿舉例說明。</p>
+                </div>
+                <div class="bg-white p-4 rounded-2xl shadow-sm border border-indigo-100">
+                    <div class="flex items-center mb-2">
+                        <span class="bg-indigo-600 text-white text-[10px] font-black px-2 py-0.5 rounded mr-2 uppercase">Subject</span>
+                        <span class="font-bold text-indigo-900 text-xs">受測者指示</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-sm">以下問題關於您閱讀或近距離工作時的感受。請判斷是否有此症狀並告知發生頻率。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Dots -->
+        <div class="px-6 md:px-8 pt-5 pb-1">
+            <div class="flex items-center justify-center gap-1 md:gap-1.5 flex-wrap" id="progress-dots"></div>
+            <p class="text-center text-[10px] text-slate-400 mt-2">點擊圓點可快速跳至該題</p>
+        </div>
+
+        <!-- Questions -->
+        <div id="quiz-container" class="p-6 md:p-10 space-y-10">
+            <div class="text-center py-16 text-slate-400">
+                <p class="font-medium">測驗模組載入中...</p>
+            </div>
+        </div>
+
+        <!-- Sticky Score -->
+        <div class="sticky bottom-0 bg-white/95 backdrop-blur-md border-t border-slate-100 p-4 flex justify-between items-center sticky-score z-10">
+            <div class="flex items-center space-x-3">
+                <div class="bg-blue-50 p-2.5 rounded-xl">
+                    <span class="text-slate-500 text-[9px] font-black uppercase tracking-widest block mb-0.5">SCORE</span>
+                    <div class="flex items-baseline leading-none">
+                        <span id="total-score" class="text-2xl md:text-3xl font-black text-blue-600 mr-1">0</span>
+                        <span class="text-slate-400 text-xs font-bold">/ 60</span>
+                    </div>
+                </div>
+            </div>
+            <div id="progress-container" class="text-right">
+                <div id="progress-text" class="text-slate-500 text-xs font-bold mb-1">完成度 0 / 15</div>
+                <div class="w-28 md:w-32 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-blue-600 transition-all duration-300 rounded-full" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div id="analysis-section" class="hidden p-8 md:p-10 bg-slate-900 text-white fade-in">
+            <h3 class="text-xl md:text-2xl font-black mb-6 flex items-center tracking-tight">
+                <span class="w-10 h-10 bg-blue-500 rounded-2xl flex items-center justify-center mr-4 shadow-lg shadow-blue-500/30 text-lg">📊</span>
+                專業分析結果報告
+            </h3>
+            <div id="result-box" class="p-6 md:p-8 rounded-[2rem] bg-slate-800 border border-slate-700 relative overflow-hidden">
+                <div id="result-badge" class="absolute top-4 right-4 md:right-6 text-[10px] font-black py-1 px-3 rounded-full uppercase tracking-tighter">Result</div>
+                <div id="result-title" class="text-xl md:text-2xl font-black mb-3 pr-16">計算中...</div>
+                <div id="result-desc" class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">請完成所有題目以查看臨床建議。</div>
+                <div id="result-cta" class="hidden pt-5 border-t border-slate-700 flex flex-wrap gap-3">
+                    <a href="https://lin.ee/FRKWMif" target="_blank" rel="noopener"
+                        class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg shadow-green-500/30 text-sm no-underline">
+                        💬 加 LINE 諮詢大叔
+                    </a>
+                    <button onclick="resetQuiz()" class="inline-flex items-center bg-slate-700 hover:bg-slate-600 text-slate-300 font-bold py-3 px-5 rounded-xl transition-all duration-300 text-sm">
+                        🔄 重新填寫
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="p-6 md:p-10 bg-slate-50 border-t border-slate-100">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                <h5 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center">
+                    <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></span>
+                    使用說明與聲明
+                </h5>
+                <div class="text-xs md:text-sm text-slate-600 space-y-3 leading-relaxed">
+                    <p class="font-medium text-slate-800">【CISS 問卷使用說明】</p>
+                    <p>
+                        本問卷根據 Convergence Insufficiency Symptom Survey (CISS V-15) 原始英文版自行翻譯為繁體中文，僅供臨床篩通與家長自我概覽參考，<span class="text-blue-600 font-bold">非官方授權版本，不作為正式診斷依據。</span>
+                    </p>
+                    <div class="pt-3 border-t border-slate-100">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase mb-1">References:</p>
+                        <p class="text-[11px] text-slate-500 italic">
+                            Rouse M, et al. (2004). Validity and reliability of the CISS. Optom Vis Sci. PMID: 15545807
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="p-4 md:p-6 text-center text-[10px] text-slate-400 bg-white border-t border-slate-50">
+            &copy; 2026 社團法人新北市驗光師公會 專業翻譯提供
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var questions = [
+                "閱讀或做近距離工作時，眼睛會感到疲累嗎？",
+                "閱讀或做近距離工作時，眼睛會感到不舒服嗎？",
+                "閱讀或做近距離工作時，會頭痛嗎？",
+                "閱讀或做近距離工作時，會想睡覺嗎？",
+                "閱讀或做近距離工作時，會失去專注力嗎？",
+                "閱讀或做近距離工作時，有記不住剛剛閱讀過的內容嗎？",
+                "閱讀或做近距離工作時，會看到雙重影像嗎？",
+                "閱讀或做近距離工作時，會看到文字在移動、跳動、游動或漂浮嗎？",
+                "您有覺得自己閱讀變得很慢嗎？",
+                "閱讀或做近距離工作時，眼睛會感到疼痛嗎？",
+                "閱讀或做近距離工作時，眼睛會感到乾澀嗎？",
+                "閱讀或做近距離工作時，眼睛周圍會有「被拉扯」的感覺嗎？",
+                "閱讀或做近距離工作時，會注意到文字變模糊或忽清忽糊嗎？",
+                "閱讀時，會跳行或找不到剛才閱讀到哪裡嗎？",
+                "閱讀時，會需要重複閱讀同一行嗎？"
+            ];
+
+            var options = ["從不", "偶爾", "有時候", "經常有", "總是"];
+            var answers = new Array(15).fill(null);
+            var container = document.getElementById('quiz-container');
+            var dotsContainer = document.getElementById('progress-dots');
+
+            // Render progress dots
+            var dotsHTML = '';
+            for (var i = 0; i < 15; i++) {
+                dotsHTML += '<button onclick="scrollToQ(' + i + ')" id="dot-' + i + '" class="w-6 h-6 md:w-7 md:h-7 rounded-full bg-slate-100 border-2 border-slate-200 text-[9px] font-bold text-slate-400 transition-all duration-300 hover:border-blue-300 flex items-center justify-center">' + (i+1) + '</button>';
+            }
+            dotsContainer.innerHTML = dotsHTML;
+
+            // Render Questions
+            container.innerHTML = '';
+            questions.forEach(function(q, qIndex) {
+                var qDiv = document.createElement('div');
+                qDiv.className = 'q-card fade-in';
+                qDiv.id = 'q-card-' + qIndex;
+                var btnsHTML = '';
+                options.forEach(function(opt, oIndex) {
+                    btnsHTML += '<button onclick="selectOption(' + qIndex + ', ' + oIndex + ')" id="btn-' + qIndex + '-' + oIndex + '" class="option-btn bg-white border-2 border-slate-100 py-2.5 md:py-3.5 px-1 text-[10px] md:text-sm rounded-xl md:rounded-2xl text-slate-500 font-bold hover:border-blue-200 hover:bg-blue-50 transition-all duration-300"><div class="text-[8px] md:text-[9px] opacity-40 mb-0.5 tracking-tighter">' + oIndex + ' 分</div>' + opt + '</button>';
+                });
+                qDiv.innerHTML = '<div class="mb-2"><p class="text-slate-800 font-bold mb-5 flex items-start text-base md:text-lg leading-snug"><span class="bg-blue-600 text-white rounded-xl w-8 h-8 md:w-9 md:h-9 flex items-center justify-center text-xs md:text-sm mr-3 md:mr-4 shrink-0 mt-0.5 shadow-md shadow-blue-200 font-black" id="badge-' + qIndex + '">' + (qIndex + 1) + '</span>' + q + '</p><div class="grid grid-cols-5 gap-1.5 md:gap-2.5 pl-0 md:pl-12">' + btnsHTML + '</div></div>';
+                container.appendChild(qDiv);
+            });
+
+            window.scrollToQ = function(idx) {
+                var el = document.getElementById('q-card-' + idx);
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            };
+
+            window.selectOption = function(qIdx, val) {
+                for (var i = 0; i < 5; i++) {
+                    document.getElementById('btn-' + qIdx + '-' + i).classList.remove('active');
+                }
+                document.getElementById('btn-' + qIdx + '-' + val).classList.add('active');
+                answers[qIdx] = val;
+
+                // Mark card as answered
+                document.getElementById('q-card-' + qIdx).classList.add('answered');
+                document.getElementById('badge-' + qIdx).className = 'bg-green-500 text-white rounded-xl w-8 h-8 md:w-9 md:h-9 flex items-center justify-center text-xs md:text-sm mr-3 md:mr-4 shrink-0 mt-0.5 shadow-md shadow-green-200 font-black';
+                document.getElementById('dot-' + qIdx).className = 'w-6 h-6 md:w-7 md:h-7 rounded-full bg-green-500 border-2 border-green-500 text-[9px] font-bold text-white transition-all duration-300 flex items-center justify-center';
+
+                updateUI();
+
+                // Auto scroll to next unanswered
+                var nextIdx = -1;
+                for (var j = qIdx + 1; j < 15; j++) {
+                    if (answers[j] === null) { nextIdx = j; break; }
+                }
+                if (nextIdx !== -1) {
+                    setTimeout(function() { scrollToQ(nextIdx); }, 350);
+                }
+            };
+
+            window.resetQuiz = function() {
+                for (var i = 0; i < 15; i++) {
+                    answers[i] = null;
+                    for (var j = 0; j < 5; j++) {
+                        document.getElementById('btn-' + i + '-' + j).classList.remove('active');
+                    }
+                    document.getElementById('q-card-' + i).classList.remove('answered');
+                    document.getElementById('badge-' + i).className = 'bg-blue-600 text-white rounded-xl w-8 h-8 md:w-9 md:h-9 flex items-center justify-center text-xs md:text-sm mr-3 md:mr-4 shrink-0 mt-0.5 shadow-md shadow-blue-200 font-black';
+                    document.getElementById('dot-' + i).className = 'w-6 h-6 md:w-7 md:h-7 rounded-full bg-slate-100 border-2 border-slate-200 text-[9px] font-bold text-slate-400 transition-all duration-300 hover:border-blue-300 flex items-center justify-center';
+                }
+                document.getElementById('analysis-section').classList.add('hidden');
+                document.getElementById('result-cta').classList.add('hidden');
+                updateUI();
+                scrollToQ(0);
+            };
+
+            function updateUI() {
+                var score = 0;
+                var answeredCount = 0;
+                for (var i = 0; i < 15; i++) {
+                    if (answers[i] !== null) {
+                        score += answers[i];
+                        answeredCount++;
+                    }
+                }
+
+                var scoreEl = document.getElementById('total-score');
+                scoreEl.innerText = score;
+                scoreEl.classList.remove('score-bounce');
+                void scoreEl.offsetWidth;
+                scoreEl.classList.add('score-bounce');
+
+                document.getElementById('progress-text').innerText = '完成度 ' + answeredCount + ' / 15';
+                document.getElementById('progress-bar').style.width = ((answeredCount / 15) * 100) + '%';
+
+                if (answeredCount === 15) {
+                    var analysisSection = document.getElementById('analysis-section');
+                    analysisSection.classList.remove('hidden');
+                    setTimeout(function() { analysisSection.scrollIntoView({ behavior: 'smooth' }); }, 200);
+
+                    var resultTitle = document.getElementById('result-title');
+                    var resultDesc = document.getElementById('result-desc');
+                    var resultBox = document.getElementById('result-box');
+                    var resultBadge = document.getElementById('result-badge');
+                    var resultCta = document.getElementById('result-cta');
+                    resultCta.classList.remove('hidden');
+
+                    if (score <= 15) {
+                        resultTitle.innerText = "症狀輕微，定期追蹤即可";
+                        resultTitle.className = "text-xl md:text-2xl font-black mb-3 text-green-400 pr-16";
+                        resultDesc.innerText = "目前得分顯示您的視覺系統勻稱健康。建議維持良好的閱讀與用眼姿勢，每 20-30 分鐘讓眼睛遠眺休息，並持續年度視力健康檢查。";
+                        resultBox.className = "p-6 md:p-8 rounded-[2rem] bg-green-950/20 border border-green-500/30 relative overflow-hidden";
+                        resultBadge.className = "absolute top-4 right-4 md:right-6 text-[10px] font-black py-1 px-3 rounded-full bg-green-500 text-white uppercase tracking-tighter";
+                        resultBadge.innerText = "Low Risk";
+                    } else if (score <= 21) {
+                        resultTitle.innerText = "有明顯症狀，建議功能檢查";
+                        resultTitle.className = "text-xl md:text-2xl font-black mb-3 text-orange-400 pr-16";
+                        resultDesc.innerText = "得分顯示您可能有中度的雙眼視覺失調風險。這些症狀可能正影響您的專注力與閱讀效率。建議儘早預約專業視光師進行「雙眼視覺功能篩查」，確認是否有隱斜位或調節力不足。";
+                        resultBox.className = "p-6 md:p-8 rounded-[2rem] bg-orange-950/20 border border-orange-500/30 relative overflow-hidden";
+                        resultBadge.className = "absolute top-4 right-4 md:right-6 text-[10px] font-black py-1 px-3 rounded-full bg-orange-500 text-white uppercase tracking-tighter";
+                        resultBadge.innerText = "Moderate Risk";
+                    } else {
+                        resultTitle.innerText = "症狀顯著，強烈建議專業評估";
+                        resultTitle.className = "text-xl md:text-2xl font-black mb-3 text-red-400 pr-16";
+                        resultDesc.innerText = "您的分數已顯著高於臨床常態值。這代表視覺壓力極可能正影響您的日常生活、學習或工作表現。強烈建議立即尋求視光師進行「完整的雙眼視覺評估與調節功能測量」，找出精確的視覺訓練或光學矯正方案。";
+                        resultBox.className = "p-6 md:p-8 rounded-[2rem] bg-red-950/20 border border-red-500/30 relative overflow-hidden";
+                        resultBadge.className = "absolute top-4 right-4 md:right-6 text-[10px] font-black py-1 px-3 rounded-full bg-red-500 text-white uppercase tracking-tighter";
+                        resultBadge.innerText = "High Risk";
+                    }
+                }
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* 
+   目鏡大叔部落格 - 行動端閱讀體驗優化 CSS (Pro Version)
+   請將此段代碼複製至 Blogger 後台：
+   「主題」->「自訂」->「進階」->「新增 CSS」
+*/
+
+/* --- 1. 核心穩定性與現代排版基礎 (Core Stability & Modern Base) --- */
+:root {
+  --reading-width: 100%;
+  --base-spacing: 16px;
+  --touch-target-min: 44px; /* 符合 Apple/Google 觸控標準 */
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: 100%; /* 防止 iOS 旋轉時字體意外放大 */
+  scroll-behavior: smooth; /* 頁面內錨點平滑捲動 */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit !important;
+}
+
+body {
+  overflow-x: hidden !important; /* 絕對防止水平外溢與左右晃動 */
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  /* 針對近代手機 (如 iPhone 瀏海屏) 的滿版安全距離適配 */
+  padding-left: env(safe-area-inset-left) !important;
+  padding-right: env(safe-area-inset-right) !important;
+  text-rendering: optimizeLegibility; /* 提升中文網頁字體渲染品質 */
+}
+
+/* --- 2. 行動端專屬斷點優化 (Mobile-Specific Optimizations) --- */
+@media screen and (max-width: 768px) {
+  
+  /* 佈局容器：保留邊際呼吸空間，防止文字貼死螢幕邊緣 */
+  .main-inner, .content-outer, .post-outer, .column-center-inner {
+    padding-left: var(--base-spacing) !important;
+    padding-right: var(--base-spacing) !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: var(--reading-width) !important;
+    max-width: 100vw !important;
+  }
+
+  /* 網站標題：使用現代 CSS clamp() 實現流暢縮放，避免僵硬斷行 */
+  #header-inner h1, .Header h1 {
+    font-size: clamp(1.5rem, 5vw, 2rem) !important;
+    line-height: 1.25 !important;
+    padding: 12px 0 !important;
+    word-wrap: break-word !important;
+    hyphens: auto; /* 允許過長單字自動連字號斷行 */
+  }
+
+  /* 文章標題：維持層次感與易讀性 */
+  .post-title, .post-title a {
+    font-size: clamp(1.3rem, 4.5vw, 1.6rem) !important;
+    line-height: 1.35 !important;
+    word-wrap: break-word !important;
+    margin-bottom: 0.5em !important;
+  }
+
+  /* 內文閱讀：黃金比例行高與微調字距 */
+  .post-body {
+    font-size: 18px !important;
+    line-height: 1.75 !important; /* 1.7-1.8 是繁體中文最佳行高 */
+    letter-spacing: 0.03em !important; /* 微調字距減少擁擠感 */
+    color: #333333 !important;
+    word-break: break-word !important; /* 確保長網址或無空格英文不破版 */
+    overflow-wrap: break-word !important;
+  }
+
+  /* 導覽選單：順滑的水平滑動體驗 (Horizontal Scroll Nav) */
+  .tabs-inner .widget ul {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important; /* 啟動 iOS 原生順滑滾動動態 */
+    padding-bottom: 8px !important; /* 留出滾動條區域 */
+    border: none !important;
+    scrollbar-width: none; /* Firefox 隱藏底部滾動條 */
+  }
+  
+  .tabs-inner .widget ul::-webkit-scrollbar {
+    display: none; /* Chrome/Safari 隱藏底部滾動條，保持介面乾淨 */
+  }
+  
+  .tabs-inner .widget li {
+    flex: 0 0 auto !important;
+    margin-right: 12px !important;
+  }
+  
+  .tabs-inner .widget li a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 8px 12px !important;
+    min-height: var(--touch-target-min) !important; /* 確保手機點擊不會誤觸 */
+  }
+
+  /* 多媒體自適應：強制鎖定最大寬度不破版 */
+  .post-body img, .post-body video {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 4px; /* 增加極細微的視覺倒角，質感提升 */
+  }
+  
+  /* Iframe 特殊處理 (如 Google Maps 嵌入) 保持完美長寬比 */
+  .post-body iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    aspect-ratio: 16 / 9; /* 現代防破版神器，自動計算高度 */
+    height: auto !important;
+    border-radius: 8px !important; 
+  }
+}
+
+/* --- 3. 語義化 UI 組件 (Semantic UI Components) --- */
+
+/* 重點提示框 (引言/金句) */
+blockquote.note {
+  border-left: 4px solid #c0392b !important;
+  background-color: #fdfaf6 !important; /* 溫潤的紙質底色，降低視覺疲勞 */
+  margin: 1.8em 0 !important;
+  padding: 1.2em 1.5em !important;
+  color: #4a4a4a !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-size: 0.95em !important;
+  line-height: 1.8 !important;
+  word-wrap: break-word !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.02) !important; /* 微弱陰影增添層次 */
+}
+
+/* 作者名片區塊 */
+.store-card {
+  border: 1px solid #eaeaea !important;
+  padding: 24px !important;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04) !important;
+  margin: 24px 0 !important;
+  max-width: 100% !important;
+  word-wrap: break-word !important;
+}
+
+/* FAQ 項目優化 (配合 blog-post 新增的 class) */
+.faq-item {
+  background: #f8f9fa !important;
+  padding: 16px !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
+  border-left: 3px solid #6c757d !important;
+}
+
+.faq-item b {
+  color: #2c3e50 !important;
+  display: block !important;
+  margin-bottom: 8px !important;
+  font-size: 1.05em !important;
+}

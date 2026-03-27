@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myopia Warroom | 全年齡視力風險儀表板</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Libraries for Export, QR, and Charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --panel-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-yellow: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e1b4b 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            font-size: 2.5rem;
+            background: -webkit-linear-gradient(45deg, #60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            margin-top: 0;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select,
+        input[type="range"] {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+
+        input[type="range"] {
+            padding: 0;
+            height: 6px;
+            -webkit-appearance: none;
+            background: #334155;
+            border: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent-blue);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+        }
+
+        .value-display {
+            float: right;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        button.primary-btn {
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        button.primary-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        button.action-btn {
+            background: transparent;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        button.action-btn:hover {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .metric-value {
+            font-size: 2.2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .metric-label {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-sub {
+            color: #64748b;
+            font-size: 0.75rem;
+            margin-top: 0.2rem;
+        }
+
+        .risk-indicator {
+            height: 4px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            transition: background-color 0.3s ease;
+        }
+
+        .report-section {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .ai-summary {
+            background: rgba(59, 130, 246, 0.08);
+            border-left: 4px solid var(--accent-blue);
+            padding: 1.5rem;
+            border-radius: 4px 12px 12px 4px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .ai-mode-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+        }
+
+        .mode-btn {
+            background: none;
+            border: 1px solid var(--text-muted);
+            color: var(--text-muted);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mode-btn.active {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .qr-section {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .qr-section h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.9rem;
+            color: #334155;
+        }
+
+        .qr-section p {
+            font-size: 0.75rem;
+            margin: 0.5rem 0 0 0;
+            color: #64748b;
+        }
+
+        .chart-container {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-border);
+            height: 250px;
+        }
+
+        /* Color States */
+        .color-green {
+            color: var(--accent-green);
+        }
+
+        .color-yellow {
+            color: var(--accent-yellow);
+        }
+
+        .color-red {
+            color: var(--accent-red);
+        }
+
+        .color-purple {
+            color: var(--accent-purple);
+        }
+
+        .bg-green {
+            background-color: var(--accent-green);
+        }
+
+        .bg-yellow {
+            background-color: var(--accent-yellow);
+        }
+
+        .bg-red {
+            background-color: var(--accent-red);
+        }
+
+        .bg-purple {
+            background-color: var(--accent-purple);
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .report-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Overlay */
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .top-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Myopia Warroom</h1>
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">全年齡視力風險儀表板・PR值常模・回診軌跡追蹤</p>
+    </header>
+
+    <div class="container" id="report-container">
+
+        <!-- Input Panel -->
+        <div class="panel" data-html2canvas-ignore>
+            <h2>📝 病患建檔與基礎數據</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>病患代號/姓名</label>
+                    <input type="text" id="input-name" value="小明">
+                </div>
+                <div class="form-group">
+                    <label>年齡 (歲)</label>
+                    <input type="number" id="input-age" value="8" min="3" max="18">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>身高 (cm) <span style="font-weight:normal; font-size:0.8em;">(Lingham公式必需)</span></label>
+                <input type="number" id="input-height" value="130" min="90" max="200">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label>等效球面 (SE)</label>
+                    <input type="number" id="input-se" value="-2.00" step="0.25">
+                </div>
+                <div class="form-group">
+                    <label>角膜屈光 (Km)</label>
+                    <input type="number" id="input-km" value="43.00" step="0.25">
+                </div>
+            </div>
+
+            <h2 style="margin-top: 1.5rem;">🎮 防控方案模擬器</h2>
+
+            <div class="form-group">
+                <label>每日戶外活動 <span class="value-display" id="val-outdoor">60 分鐘</span></label>
+                <input type="range" id="sim-outdoor" min="0" max="180" step="15" value="60">
+            </div>
+
+            <div class="form-group">
+                <label>每日 3C 螢幕時間 <span class="value-display" id="val-screen">3 小時</span></label>
+                <input type="range" id="sim-screen" min="0" max="8" step="0.5" value="3">
+            </div>
+
+            <div class="form-group">
+                <label>處方式控制方案</label>
+                <select id="sim-strategy">
+                    <option value="0">無控制 (一般單焦眼鏡)</option>
+                    <option value="0.3">低濃度阿托品 0.01%</option>
+                    <option value="0.5" selected>周邊離焦鏡片 (DIMS/HALT)</option>
+                    <option value="0.6">角膜塑型片 (Ortho-K) / 高濃度阿托品</option>
+                </select>
+            </div>
+
+            <button class="primary-btn" onclick="runAnalysis()">🚀 運行運算模型與存檔</button>
+        </div>
+
+        <!-- Output Panel -->
+        <div class="panel" id="export-area">
+            <div class="top-actions" data-html2canvas-ignore>
+                <button class="action-btn" onclick="clearHistory()">🗑️ 清除歷史紀錄</button>
+                <button class="action-btn" style="border-color: var(--accent-purple); color: var(--accent-purple);"
+                    onclick="exportReport()">⬇️ 匯出 PDF/圖片給家長</button>
+            </div>
+
+            <h2 style="clear: both;">📊 視力風險分析報告 <span id="report-name"
+                    style="color:var(--accent-blue); font-size: 1rem; margin-left: auto;">- 小明</span></h2>
+
+            <!-- Metrics Grid -->
+            <div class="results-grid">
+                <!-- AXL & PR Card -->
+                <div class="metric-card">
+                    <div class="metric-label">眼軸長度 (AXL)</div>
+                    <div class="metric-value color-blue" id="res-axl">--</div>
+                    <div class="metric-sub">
+                        同齡百分位：<strong id="res-pr" style="font-size: 1.1rem;">--</strong>
+                        <br><span id="pr-desc" style="font-size:0.7rem;"></span>
+                    </div>
+                    <div class="risk-indicator bg-blue" id="ind-axl"></div>
+                </div>
+
+                <!-- AL/CR Card -->
+                <div class="metric-card">
+                    <div class="metric-label">眼軸/角膜曲率比 (AL/CR)</div>
+                    <div class="metric-value" id="res-alcr">--</div>
+                    <div class="metric-sub" id="lbl-alcr">結構性近視風險指數</div>
+                    <div class="risk-indicator" id="ind-alcr"></div>
+                </div>
+
+                <!-- Intervention Card -->
+                <div class="metric-card">
+                    <div class="metric-label">模擬：度數防護力</div>
+                    <div class="metric-value color-green" id="res-reduction">--</div>
+                    <div class="metric-sub">預估年度成長：<strong id="res-progression">-- D/yr</strong></div>
+                    <div class="risk-indicator bg-green"></div>
+                </div>
+            </div>
+
+            <!-- Report Body: AI + QR -->
+            <div class="report-section">
+                <!-- AI Output -->
+                <div class="ai-summary">
+                    <div class="ai-mode-toggle" data-html2canvas-ignore>
+                        <button class="mode-btn active" onclick="switchMode('parent', this)">👩‍👦 焦慮家長模式</button>
+                        <button class="mode-btn" onclick="switchMode('pro', this)">🔬 專業人員模式</button>
+                    </div>
+                    <h3
+                        style="margin-top:0; color:var(--accent-blue); display:flex; align-items:center; gap:0.5rem; font-size:1.1rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        AI 報告解讀
+                    </h3>
+                    <div id="ai-text" style="font-size: 0.95rem;">
+                        等待數據輸入...
+                    </div>
+                </div>
+
+                <!-- SEO QR Code Section -->
+                <div class="qr-section">
+                    <h4>📱 大叔衛教專區</h4>
+                    <div id="qrcode"></div>
+                    <p id="qr-desc">掃描了解「為什麼度數越來越深」</p>
+                </div>
+            </div>
+
+            <!-- History Chart -->
+            <div class="chart-container">
+                <canvas id="historyChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        // State
+        let currentMode = 'parent';
+        let qrCode = null;
+        let historyChart = null;
+
+        // --- Mock Normative Data (PR Values) ---
+        // Simplified mapping for AL means based on age (rough estimates for demo)
+        const AL_NORMS = {
+            6: { mean: 22.4, sd: 0.7 },
+            8: { mean: 23.0, sd: 0.8 },
+            10: { mean: 23.5, sd: 0.8 },
+            12: { mean: 24.0, sd: 0.9 },
+            14: { mean: 24.3, sd: 0.9 },
+            16: { mean: 24.5, sd: 1.0 }
+        };
+
+        // UI Listeners
+        document.getElementById('sim-outdoor').addEventListener('input', (e) => {
+            document.getElementById('val-outdoor').innerText = `${e.target.value} 分鐘`;
+            calculateRisk(false); // don't save to history on slider drag
+        });
+        document.getElementById('sim-screen').addEventListener('input', (e) => {
+            document.getElementById('val-screen').innerText = `${e.target.value} 小時`;
+            calculateRisk(false);
+        });
+        document.getElementById('sim-strategy').addEventListener('change', () => calculateRisk(false));
+
+        function switchMode(mode, btn) {
+            document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentMode = mode;
+            calculateRisk(false);
+        }
+
+        function getPR(age, axl) {
+            // Find closest age norm
+            let closestAge = 8;
+            let minDiff = 99;
+            for (let a in AL_NORMS) {
+                if (Math.abs(a - age) < minDiff) {
+                    minDiff = Math.abs(a - age);
+                    closestAge = a;
+                }
+            }
+
+            const norm = AL_NORMS[closestAge];
+            // Calculate Z-score
+            const z = (axl - norm.mean) / norm.sd;
+
+            // Approximation of CDF for normal distribution
+            const p = 1 / (1 + Math.exp(-1.702 * z));
+            const pr = Math.round(p * 100);
+
+            return {
+                pr: Math.max(1, Math.min(99, pr)),
+                mean: norm.mean
+            };
+        }
+
+        function runAnalysis() {
+            calculateRisk(true); // Save to history
+        }
+
+        function calculateRisk(saveToHistory = false) {
+            const name = document.getElementById('input-name').value;
+            document.getElementById('report-name').innerText = `- ${name}`;
+
+            const age = parseFloat(document.getElementById('input-age').value);
+            const height = parseFloat(document.getElementById('input-height').value);
+            const se = parseFloat(document.getElementById('input-se').value);
+            const km = parseFloat(document.getElementById('input-km').value);
+
+            const outdoorMins = parseFloat(document.getElementById('sim-outdoor').value);
+            const screenHours = parseFloat(document.getElementById('sim-screen').value);
+            const strategyFactor = parseFloat(document.getElementById('sim-strategy').value);
+
+            // 1. Math
+            const cr = 337.5 / km;
+            let axl = 4.203 + (2.330 * cr) - (0.420 * se) + (0.008 * height);
+            const alcr = axl / cr;
+
+            // 2. Base Progression
+            let baseProgression = age < 12 ? 0.75 : (age < 16 ? 0.50 : 0.25);
+            if (alcr > 3.0) baseProgression += 0.25;
+            if (se < -3.0 && age < 10) baseProgression += 0.25;
+
+            // 3. Modifiers
+            const outdoorReduction = Math.min((outdoorMins / 120) * 0.3, 0.3);
+            const screenPenalty = (screenHours / 8) * 0.25;
+
+            const lifestyleProgression = (baseProgression - (baseProgression * outdoorReduction)) + screenPenalty;
+            const finalProgression = lifestyleProgression * (1 - strategyFactor);
+            const reductionPct = Math.round(((baseProgression - finalProgression) / baseProgression) * 100);
+
+            // 4. PR Calculation
+            const normData = getPR(age, axl);
+            const pr = normData.pr;
+
+            // 5. Update UI values
+            document.getElementById('res-axl').innerText = axl.toFixed(2);
+            document.getElementById('res-alcr').innerText = alcr.toFixed(2);
+            document.getElementById('res-progression').innerText = `${finalProgression.toFixed(2)} D/yr`;
+            document.getElementById('res-reduction').innerText = `${reductionPct}%`;
+
+            const prEl = document.getElementById('res-pr');
+            const prDesc = document.getElementById('pr-desc');
+            prEl.innerText = `PR ${pr}`;
+
+            let colorPr = 'color-green';
+            if (pr > 85) colorPr = 'color-red';
+            else if (pr > 70) colorPr = 'color-yellow';
+            prEl.className = colorPr;
+
+            if (pr > 85) prDesc.innerText = `長度超過同齡 ${pr}%，高度危險`;
+            else if (pr > 50) prDesc.innerText = `長度略高於平均，需留意`;
+            else prDesc.innerText = `小於平均值，非常健康`;
+
+            // Color Coding ALCR
+            const elAlcr = document.getElementById('res-alcr');
+            const indAlcr = document.getElementById('ind-alcr');
+            if (alcr > 3.0) {
+                elAlcr.className = 'metric-value color-red';
+                indAlcr.className = 'risk-indicator bg-red';
+            } else if (alcr > 2.9) {
+                elAlcr.className = 'metric-value color-yellow';
+                indAlcr.className = 'risk-indicator bg-yellow';
+            } else {
+                elAlcr.className = 'metric-value color-green';
+                indAlcr.className = 'risk-indicator bg-green';
+            }
+
+            // Generate Texts and QR
+            generateAIText(currentMode, alcr, reductionPct, finalProgression, strategyFactor, pr, name);
+            generateQR(screenHours > 4 ? "screen" : (outdoorMins < 60 ? "outdoor" : "general"));
+
+            // 6. History Management
+            if (saveToHistory) {
+                saveHistory(name, axl.toFixed(2), finalProgression.toFixed(2));
+            }
+            renderChart(name);
+        }
+
+        function generateAIText(mode, alcr, reductionPct, progression, strategyFactor, pr, name) {
+            const textEl = document.getElementById('ai-text');
+
+            let html = "";
+            if (mode === 'parent') {
+                html = `<p><strong>${name} 的爸爸媽媽您好：</strong></p>`;
+
+                if (pr > 85) {
+                    html += `<p>這份數據我們需要提高警覺。${name} 目前的眼軸長度在全台灣同年齡的孩子裡，擊敗了 <strong>${pr}%</strong> 的人 (PR ${pr})。這代表眼球就像吹氣球一樣長得太快了，如果不踩煞車，變成高度近視的機率很高。</p>`;
+                } else {
+                    html += `<p>好消息！${name} 目前的眼球發育比例在常規平均區間 (PR ${pr})，還在安全的防護罩內，請繼續保持。</p>`;
+                }
+
+                if (reductionPct > 40) {
+                    html += `<p>根據您選擇的「護眼方案 (如離焦鏡片) 加上增加戶外時間」，系統預估這張防護網可以幫孩子<span class="color-green">擋下高達 ${reductionPct}% 的度數增加</span>！(我們目標今年控制在 ${progression.toFixed(2)} 度內)。這個做法非常正確，太陽光就是最天然的散瞳劑，請務必堅持！</p>`;
+                } else {
+                    html += `<p>目前的防護力可能還不夠緊密 (僅阻擋 ${reductionPct}%)。大叔強烈建議：每天一定要擠出「120分鐘戶外時間」，或者與我們討論更進階的控制鏡片。現在踩煞車絕對來得及！</p>`;
+                }
+            } else {
+                html = `<p><strong>臨床評估報告 (Clinical Assessment) - ${name}：</strong></p>`;
+                html += `<ul>`;
+                html += `<li><strong>眼軸常模百分位 (Normative PR)：</strong> PR ${pr}。${pr > 85 ? '<span class="color-red">顯示早發性軸性增長 (axial elongation) 趨勢。</span>' : '位於常模 1SD 內。'}</li>`;
+                html += `<li><strong>結構性比值 (AL/CR Ratio)：</strong> ${alcr.toFixed(2)} ${alcr > 3.0 ? '<span class="color-red">(高風險 > 3.0)</span>' : '(正常)'}。</li>`;
+
+                let strategyName = "一般單焦眼鏡 (SV)";
+                if (strategyFactor == 0.3) strategyName = "低濃度阿托品 (0.01%)";
+                if (strategyFactor == 0.5) strategyName = "周邊離焦鏡片 (DIMS/HALT)";
+                if (strategyFactor == 0.6) strategyName = "角膜塑型片 (Ortho-K)";
+
+                html += `<li><strong>治療預測成效 (Estimated Efficacy)：</strong> 處方介入 ${strategyName} 合併行為學衛教，模型預測可削弱 <strong>${reductionPct}%</strong> 的真性近視進展。</li>`;
+                html += `<li><strong>預後與處置 (Prognosis)：</strong> 預期年化進展率 (Annualized Progression) = ${progression.toFixed(2)} D/yr。建議光學生物測量 (IOLMaster) 進行每三個月之眼軸剛性追蹤。</li>`;
+                html += `</ul>`;
+            }
+            textEl.innerHTML = html;
+        }
+
+        function generateQR(context) {
+            // Context aware URL routing for SEO
+            let url = "https://uncleglasses.com/myopia-myths";
+            let desc = "掃描閱讀：為什麼度數會越來越深？";
+
+            if (context === "screen") {
+                url = "https://uncleglasses.com/blue-light-truth";
+                desc = "掃描閱讀：藍光眼鏡與 3C 護眼真相";
+            } else if (context === "outdoor") {
+                url = "https://uncleglasses.com/outdoor-treatment";
+                desc = "掃描閱讀：太陽光，最好的免費散瞳劑";
+            }
+
+            document.getElementById('qr-desc').innerText = desc;
+
+            const qrContainer = document.getElementById("qrcode");
+            qrContainer.innerHTML = "";
+
+            qrCode = new QRCode(qrContainer, {
+                text: url,
+                width: 100,
+                height: 100,
+                colorDark: "#0f172a",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        }
+
+        // --- LocalStorage History Tracking ---
+        function saveHistory(name, axl, prog) {
+            let key = `myopia_history_${name}`;
+            let history = JSON.parse(localStorage.getItem(key) || "[]");
+
+            // Create a date label (mocking sequential visits)
+            const today = new Date();
+            const dateStr = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
+
+            history.push({ date: dateStr, axl: parseFloat(axl), prog: parseFloat(prog) });
+            localStorage.setItem(key, JSON.stringify(history));
+        }
+
+        function clearHistory() {
+            const name = document.getElementById('input-name').value;
+            localStorage.removeItem(`myopia_history_${name}`);
+            renderChart(name);
+            alert("歷史紀錄已清除");
+        }
+
+        function renderChart(name) {
+            let key = `myopia_history_${name}`;
+            let history = JSON.parse(localStorage.getItem(key) || "[]");
+
+            const ctx = document.getElementById('historyChart').getContext('2d');
+
+            if (historyChart) {
+                historyChart.destroy();
+            }
+
+            // Provide dummy data if empty to show the chart structure
+            if (history.length === 0) {
+                history = [
+                    { date: '預設起點', axl: 23.0 },
+                    { date: '模擬下次', axl: 23.1 }
+                ];
+            }
+
+            const labels = history.map(h => h.date);
+            const data = history.map(h => h.axl);
+
+            historyChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '眼軸長度 (AXL mm)',
+                        data: data,
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#8b5cf6',
+                        pointRadius: 6,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#f8fafc' } }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#94a3b8' },
+                            title: { display: true, text: 'AXL (mm)', color: '#f8fafc' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#94a3b8' }
+                        }
+                    }
+                }
+            });
+        }
+
+        function exportReport() {
+            const loading = document.getElementById('loading');
+            loading.style.display = 'flex';
+
+            setTimeout(() => {
+                const target = document.getElementById('export-area');
+
+                html2canvas(target, {
+                    backgroundColor: '#1e293b',
+                    scale: 2 // High resolution
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `Vision-Passport-Report-${new Date().getTime()}.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    loading.style.display = 'none';
+
+                    // Show prompt for 5-star review (Optimization 4)
+                    setTimeout(() => {
+                        if (confirm("大叔的視覺化解說對您有幫助嗎？\n點擊「確定」前往 Google 給我們一個五星好評鼓勵吧！")) {
+                            window.open("https://g.page/r/your_google_review_link/review", "_blank");
+                        }
+                    }, 500);
+                });
+            }, 100);
+        }
+
+        // Initialize
+        window.onload = () => calculateRisk(false);
+    </script>
+</body>
+
+</html>

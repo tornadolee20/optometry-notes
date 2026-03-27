@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭視力紀錄 | 自己的眼鏡</title>
+    <meta name="description" content="追蹤家人的視力變化，掌握眼睛健康">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">👓</span>
+                <h1>家庭視力紀錄</h1>
+            </div>
+            <p class="tagline">自己的眼鏡・自己的驗光所</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Family Members Section -->
+            <section class="section members-section">
+                <div class="section-header">
+                    <h2>👨‍👩‍👧‍👦 家庭成員</h2>
+                    <button class="btn btn-primary" onclick="showAddMemberModal()">
+                        <span>+</span> 新增成員
+                    </button>
+                </div>
+                <div class="members-grid" id="membersGrid">
+                    <!-- Members will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Selected Member Details -->
+            <section class="section details-section" id="detailsSection" style="display: none;">
+                <div class="section-header">
+                    <h2 id="memberName">成員名稱</h2>
+                    <div class="header-actions">
+                        <button class="btn btn-primary" onclick="showAddRecordModal()">
+                            <span>+</span> 新增紀錄
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteMember()">刪除成員</button>
+                    </div>
+                </div>
+
+                <!-- Vision Chart -->
+                <div class="chart-container">
+                    <canvas id="visionChart"></canvas>
+                </div>
+
+                <!-- Records Table -->
+                <div class="records-table-container">
+                    <table class="records-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>右眼 (OD)</th>
+                                <th>左眼 (OS)</th>
+                                <th>右眼散光</th>
+                                <th>左眼散光</th>
+                                <th>備註</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsBody">
+                            <!-- Records will be rendered here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Empty State -->
+            <section class="empty-state" id="emptyState">
+                <div class="empty-icon">👁️</div>
+                <h3>開始記錄家人的視力</h3>
+                <p>點擊「新增成員」來建立第一位家庭成員</p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 自己的眼鏡・自己的驗光所｜三峽／鶯歌／樹林／土城</p>
+        </footer>
+    </div>
+
+    <!-- Add Member Modal -->
+    <div class="modal-overlay" id="addMemberModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>新增家庭成員</h3>
+                <button class="modal-close" onclick="closeModal('addMemberModal')">&times;</button>
+            </div>
+            <form onsubmit="addMember(event)">
+                <div class="form-group">
+                    <label for="memberNameInput">姓名</label>
+                    <input type="text" id="memberNameInput" required placeholder="例：小明">
+                </div>
+                <div class="form-group">
+                    <label for="memberBirthday">生日</label>
+                    <input type="date" id="memberBirthday">
+                </div>
+                <div class="form-group">
+                    <label for="memberRelation">關係</label>
+                    <select id="memberRelation">
+                        <option value="child">孩子</option>
+                        <option value="spouse">配偶</option>
+                        <option value="parent">父母</option>
+                        <option value="self">本人</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addMemberModal')">取消</button>
+                    <button type="submit" class="btn btn-primary">新增</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Record Modal -->
+    <div class="modal-overlay" id="addRecordModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>新增視力紀錄</h3>
+                <button class="modal-close" onclick="closeModal('addRecordModal')">&times;</button>
+            </div>
+            <form onsubmit="addRecord(event)">
+                <div class="form-group">
+                    <label for="recordDate">檢查日期</label>
+                    <input type="date" id="recordDate" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="odSphere">右眼度數 (OD)</label>
+                        <input type="number" id="odSphere" step="0.25" placeholder="-1.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="osSphere">左眼度數 (OS)</label>
+                        <input type="number" id="osSphere" step="0.25" placeholder="-1.25">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="odCylinder">右眼散光</label>
+                        <input type="number" id="odCylinder" step="0.25" placeholder="-0.50">
+                    </div>
+                    <div class="form-group">
+                        <label for="osCylinder">左眼散光</label>
+                        <input type="number" id="osCylinder" step="0.25" placeholder="-0.75">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="recordNote">備註</label>
+                    <textarea id="recordNote" rows="2" placeholder="例：散瞳後驗光"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addRecordModal')">取消</button>
+                    <button type="submit" class="btn btn-primary">儲存</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

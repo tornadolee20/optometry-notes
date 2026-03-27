@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPTIC WAR ROOM | 目鏡大叔 × 賈維斯</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="warroom.css">
+</head>
+
+<body>
+    <canvas id="particles"></canvas>
+    <div class="scanline-overlay"></div>
+
+    <!-- 頂部導航 -->
+    <header id="top-bar">
+        <div class="logo-group">
+            <div class="logo-ring">
+                <div class="logo-ring-inner">👓</div>
+            </div>
+            <div>
+                <h1 class="title-main">OPTIC WAR ROOM</h1>
+                <p class="title-sub">目鏡大叔 × 賈維斯 — 數位視界指揮部</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="live-clock" id="live-clock">--:--:--</div>
+            <button class="btn-action btn-load" id="btn-load-workspace" title="載入工作區">📂 載入工作區</button>
+            <div class="system-badge" id="system-badge">
+                <span class="dot-pulse offline"></span>
+                <span id="badge-text">AWAITING LINK</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主面板 -->
+    <div id="grid">
+
+        <!-- ====== 左側 ====== -->
+        <div class="col-left">
+            <section class="card card-soul">
+                <div class="card-header">
+                    <span class="card-icon">🧠</span>
+                    <h2>靈魂核心 SOUL</h2>
+                </div>
+                <div class="soul-ring-container">
+                    <canvas id="soul-radar" width="180" height="180"></canvas>
+                    <div class="soul-ring-label" id="soul-status">OFFLINE</div>
+                </div>
+                <div class="soul-content" id="soul-content">
+                    <p class="placeholder-text">請先按右上角「📂 載入工作區」以連結你的 optometry-notes 資料夾。</p>
+                </div>
+            </section>
+
+            <section class="card card-user">
+                <div class="card-header">
+                    <span class="card-icon">👤</span>
+                    <h2>指揮官檔案</h2>
+                </div>
+                <div class="user-content" id="user-content">
+                    <p class="placeholder-text">等待工作區連結...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ====== 中間 ====== -->
+        <div class="col-center">
+
+            <!-- Tab 導航 -->
+            <div class="tab-bar">
+                <button class="tab-btn active" data-tab="tab-evolution">⚡ 進化軌跡</button>
+                <button class="tab-btn" data-tab="tab-projects">📊 戰略專案</button>
+                <button class="tab-btn" data-tab="tab-memory-edit">📝 記憶編輯器</button>
+                <button class="tab-btn" data-tab="tab-heartbeat">💓 心跳設定</button>
+                <button class="tab-btn" data-tab="tab-file-viewer">📄 檔案檢視器</button>
+            </div>
+
+            <!-- Tab: 進化軌跡 -->
+            <section class="card tab-panel active" id="tab-evolution">
+                <div class="card-header">
+                    <span class="card-icon">⚡</span>
+                    <h2>進化軌跡 EVOLUTION</h2>
+                    <span class="version-tag">v2.0</span>
+                </div>
+                <div class="timeline" id="timeline"></div>
+            </section>
+
+            <!-- Tab: 戰略專案 -->
+            <section class="card tab-panel" id="tab-projects">
+                <div class="card-header">
+                    <span class="card-icon">📊</span>
+                    <h2>戰略專案 PROJECTS</h2>
+                    <button class="btn-action btn-refresh" id="btn-update-progress">🆙 推進進度</button>
+                </div>
+                <div class="projects-container" id="projects-container">
+                </div>
+            </section>
+
+            <!-- Tab: 記憶編輯器 -->
+            <section class="card tab-panel" id="tab-memory-edit">
+                <div class="card-header">
+                    <span class="card-icon">📝</span>
+                    <h2>記憶編輯器 MEMORY.md</h2>
+                    <button class="btn-action btn-save" id="btn-save-memory" disabled>💾 儲存</button>
+                </div>
+                <textarea id="memory-editor" class="code-editor"
+                    placeholder="載入工作區後，MEMORY.md 的內容將顯示在此處。你可以直接編輯並按「儲存」寫回檔案。" disabled></textarea>
+            </section>
+
+            <!-- Tab: 心跳設定 -->
+            <section class="card tab-panel" id="tab-heartbeat">
+                <div class="card-header">
+                    <span class="card-icon">💓</span>
+                    <h2>心跳設定 HEARTBEAT.md</h2>
+                    <button class="btn-action btn-save" id="btn-save-heartbeat" disabled>💾 儲存</button>
+                </div>
+                <textarea id="heartbeat-editor" class="code-editor" placeholder="編輯 HEARTBEAT.md 的內容，控制賈維斯的自動巡邏任務。"
+                    disabled></textarea>
+            </section>
+
+            <!-- Tab: 檔案檢視器 -->
+            <section class="card tab-panel" id="tab-file-viewer">
+                <div class="card-header">
+                    <span class="card-icon">📄</span>
+                    <h2>檔案檢視器</h2>
+                    <select id="file-selector" class="file-select" disabled>
+                        <option value="">— 載入工作區後選擇檔案 —</option>
+                    </select>
+                </div>
+                <div id="file-viewer-content" class="file-viewer-area">
+                    <p class="placeholder-text">選擇一個 .md 檔案來預覽其內容。</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- ====== 右側 ====== -->
+        <div class="col-right">
+            <section class="card card-skills">
+                <div class="card-header">
+                    <span class="card-icon">🛠️</span>
+                    <h2>技能庫 SKILLS</h2>
+                </div>
+                <div class="skills-grid" id="skills-grid"></div>
+            </section>
+
+            <!-- 檔案完整性 -->
+            <section class="card card-integrity">
+                <div class="card-header">
+                    <span class="card-icon">🔒</span>
+                    <h2>檔案完整性</h2>
+                    <button class="btn-action btn-scan" id="btn-scan" disabled>🔍 掃描</button>
+                </div>
+                <div class="integrity-list" id="integrity-list">
+                    <p class="placeholder-text">載入工作區後按「掃描」檢查核心檔案。</p>
+                </div>
+            </section>
+
+            <!-- 堡壘終端 -->
+            <section class="card card-terminal">
+                <div class="card-header">
+                    <span class="card-icon">🛡️</span>
+                    <h2>堡壘終端 FORTRESS</h2>
+                </div>
+                <div class="terminal" id="terminal"></div>
+            </section>
+
+            <!-- 操作按鈕組 -->
+            <div class="action-group">
+                <button class="btn-action btn-export" id="btn-export" disabled>📦 備份導出</button>
+                <button class="btn-action btn-refresh" id="btn-refresh" disabled>🔄 重新載入</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast 通知 -->
+    <div id="toast-container"></div>
+
+    <script src="warroom.js"></script>
+</body>
+
+</html>

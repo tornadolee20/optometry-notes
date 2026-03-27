@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>賈維斯 - YouTube 影片抓取橋樑</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 40px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 600px; width: 100%; }
+        h1 { color: #1a73e8; margin-bottom: 20px; font-size: 24px; }
+        p { color: #5f6368; line-height: 1.6; }
+        .input-group { margin-top: 25px; }
+        input { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        button { margin-top: 15px; width: 100%; padding: 12px; background: #1a73e8; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #1557b0; }
+        .status { margin-top: 20px; padding: 15px; border-radius: 8px; display: none; }
+        .info { background: #e8f0fe; color: #1967d2; }
+        .error { background: #fce8e6; color: #c5221f; }
+        .step { margin-top: 20px; border-left: 4px solid #1a73e8; padding-left: 15px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🦾 賈維斯影片抓取橋樑</h1>
+        <p>大叔，因為伺服器直接存取 YouTube 會被擋，我們需要透過這個橋樑來協助抓取。</p>
+        
+        <div class="step">
+            <p><strong>第一步：匯入授權 (Cookies)</strong><br>
+            請先在你的 Chrome 安裝 <a href="https://chrome.google.com/webstore/detail/get-cookies-txt-locally/ccmclokmhdnhblnmaphjnklkhpkjgeic" target="_blank">Get cookies.txt locally</a> 插件，匯出 YouTube 的 cookies 檔案。</p>
+        </div>
+
+        <div class="input-group">
+            <label><strong>第二步：貼上 YouTube 網址</strong></label>
+            <input type="text" id="yt-url" placeholder="https://www.youtube.com/watch?v=...">
+            <button onclick="startBridge()">請求賈維斯抓取</button>
+        </div>
+
+        <div id="status" class="status info">
+            正在通知賈維斯啟動後台引擎...
+        </div>
+
+        <div class="step" style="margin-top:30px; border-color: #34a853;">
+            <p><strong>大叔請注意：</strong><br>
+            點擊按鈕後，我會在 LINE 上提示你如何將 Cookies 傳給我。一旦完成對接，以後你就再也不用看到這張網頁，直接在 LINE 丟連結我就能抓了！</p>
+        </div>
+    </div>
+
+    <script>
+        function startBridge() {
+            const url = document.getElementById('yt-url').value;
+            if(!url) return alert('請輸入網址');
+            document.getElementById('status').style.display = 'block';
+            // 這裡可以透過 API 通知 OpenClaw 啟動任務
+            alert('已觸發指令！請回到 LINE 查看賈維斯的下一步引導。');
+        }
+    </script>
+</body>
+</html>

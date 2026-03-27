@@ -1,0 +1,18 @@
+project_id = "wfaqnahahygtieyjnlji"
+
+[functions.generate-review]
+verify_jwt = false
+
+[functions.disaster-recovery-manager]
+verify_jwt = false
+
+[functions.google-places-search]
+verify_jwt = false
+
+[functions.setup-super-admin]
+verify_jwt = false
+
+# Feature flags for humanized reviews (all default to true)
+# Set any to 'false' to disable specific features
+[functions.generate-review.env]
+HUMANIZE_REVIEWS_ENABLED = "true"

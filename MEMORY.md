@@ -62,6 +62,13 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 ### Git 狀態
 - 70+ 個檔案待提交（含新知識卡片、研究筆記、Workflows 更新）
 
+## 護航者測試機制 (2026-03-26)
+- **觀光客測試法 (Tour Testing)**：AI 生成程式與文案的防禦力基石。
+- 在三 AI 協作體系中，Antigravity （目鏡大叔）應扮演**「除錯導遊」**。
+- 測試盲點：不只測試正向流程（商業區），必須強力挑戰邊緣/極端情境（破舊區：如最難搞的家長、異常參數輸入）。
+- **驗光隱喻**：只追求程式成功執行等於「假性1.0視力」，優秀的 AI 驗光師應深入檢查「調節力疲勞（系統隱患）」。
+
+
 ## 運行環境 (Runtime)
 運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
 推理模式：預設關閉（除非開啟流式傳輸）。使用 /reasoning 切換；/status 可查看目前狀態。
