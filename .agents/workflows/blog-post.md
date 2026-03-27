@@ -190,8 +190,15 @@ description: 目鏡大叔部落格文章的完整產出流程（含 Blogger HTML
     "name": "自己的眼鏡",
     "url": "https://www.uncle-glasses.net"
   },
-  "datePublished": "發布日期",
-  "dateModified": "修改日期",
+  "datePublished": "YYYY-MM-DDT10:00:00+08:00",
+  "dateModified": "YYYY-MM-DDT10:00:00+08:00",
+  // ⚠️ 日期格式規則：
+  // - 必須使用完整 ISO 8601 格式含台灣時區 +08:00
+  // - 時間固定填 10:00:00（不需知道實際發布時間）
+  // - datePublished = 文章初次發布日
+  // - dateModified  = 本次修改或發布日（兩者可相同）
+  // ✅ 正確範例："2026-03-27T10:00:00+08:00"
+  // ❌ 錯誤範例："2026-03-27"（缺少時間與時區）
   "keywords": ["依文章主題填入"]
 }
 ```
