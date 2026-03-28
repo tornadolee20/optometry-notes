@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>關於我 | 目鏡大叔</title>
+
+  <!-- === Google SEO 結構化資料：目鏡大叔數位名片 === -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://www.uncle-glasses.net/#person-lxy",
+      "name": "李錫彥",
+      "alternateName": "目鏡大叔",
+      "jobTitle": "驗光師",
+      "description": "新北市三峽執業驗光師，元培醫事科技大學視光學系暨企管所碩士，現任新北市驗光師公會常務理事及臺灣視光視力保健學會常務理事，專注兒童近視照護、老花多焦點配鏡與視光衛教推廣。",
+      "url": "https://www.uncle-glasses.net/p/blog-page_30.html",
+      "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgoWnielvqHm1Drb5LiCXuyep2-SpbQwx9lqJY3KjH2aUtGAU8br-jyvAq8GixW9CgioVPnatFFxXWFe3up_ffFJUuBlquGkAb_1WwXgr078wU_2gkZTH2hDJTo9wPQr9VuH7tDW766GOaViNKlc6AqcUcyJgTqi0SNeKWSka9wC1hMxJGLzGkdXdLOqVgF/s1920/uncle_glasses_face3.jpg",
+      "sameAs": [
+        "https://www.uncle-glasses.net/"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "驗光師執照",
+          "credentialCategory": "license",
+          "identifier": "驗師字第 000760 號",
+          "recognizedBy": {
+            "@type": "GovernmentOrganization",
+            "name": "中華民國衛生福利部"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "企業管理研究所視光產業組 碩士",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "元培醫事科技大學"
+          }
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "元培醫事科技大學",
+          "department": "視光學系"
+        },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "元培醫事科技大學",
+          "department": "企業管理研究所視光產業組"
+        }
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "name": "社團法人新北市驗光師公會",
+          "identifier": "會員編號 000021"
+        },
+        {
+          "@type": "Organization",
+          "name": "臺灣視光視力保健學會"
+        }
+      ],
+      "worksFor": {
+        "@type": "Optician",
+        "@id": "https://www.uncle-glasses.net/#optician",
+        "name": "自己的眼鏡・自己的驗光所",
+        "foundingDate": "2014-02-17",
+        "url": "https://www.uncle-glasses.net/"
+      }
+    }
+  ]
+  </script>
+  <!-- === 結構化資料結束 === -->
+
+  <style>
+    /* 基本設定 */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.9;
+      background-color: #FDFCF9;
+      color: #2C2416;
+    }
+    /* 內容容器 */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    /* 圖文混合的開場區塊 */
+    .intro-block {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 2em;
+    }
+    .intro-block .text-content {
+      flex: 1;
+    }
+    .intro-block .image-container {
+      flex-shrink: 0;
+      width: 150px;
+    }
+    .profile-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 { font-family: 'Playfair Display', serif; }
+    h1 {
+      font-size: 2.5em;
+      color: #2C2416;
+      margin-top: 0;
+    }
+    h2 {
+      color: #2980b9 !important;
+      margin-top: 2.5em;
+      font-size: 1.6em;
+    }
+    p { margin: 1em 0; font-size: 1.1em; }
+    strong { color: #C67B5C; font-weight: 600; }
+
+    /* 簽名檔樣式 */
+    .signature {
+      text-align: center;
+      color: #8B8275;
+      font-size: 0.9em;
+      margin: 4em 0 1em 0;
+    }
+
+    /* 探索路徑按鈕區塊 */
+    .cta-grid {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 1.5em;
+      flex-wrap: wrap;
+    }
+    .cta-button {
+      background-color: #f0f2f5;
+      color: #3d4a59;
+      border: 1px solid #e0e2e5;
+      border-radius: 12px;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease-in-out;
+    }
+    .cta-button:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 15px rgba(60, 64, 67, 0.1);
+      border-color: #cdd0d3;
+      color: #000;
+    }
+    .cta-button i {
+      font-size: 1.4em;
+    }
+
+    /* 手機版響應式調整 */
+    @media (max-width: 600px) {
+      .intro-block {
+        flex-direction: column;
+      }
+      .intro-block .image-container {
+        width: 160px;
+        margin: 0 auto 1em;
+      }
+      h1 { font-size: 2.2em; text-align: center; }
+      .cta-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta-button {
+        width: 80%;
+        justify-content: center;
+      }
+      #credentials {
+        padding: 1.5rem !important;
+      }
+    }
+
+    /* ===== 深色模式修復 (2026-03-28) ===== */
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #2F2B26 !important;
+        color: #E9E4D9 !important;
+      }
+      h1 {
+        color: #E9E4D9 !important;
+      }
+      h2 {
+        color: #7BAFD4 !important;
+      }
+      strong {
+        color: #E8A87C !important;
+      }
+      /* 修正 PROFESSIONAL BACKGROUND 卡片 */
+      #credentials {
+        background: #1E2A38 !important;
+        border-left-color: #4A7FA0 !important;
+        color: #C7D2E0 !important;
+      }
+      #credentials h2 {
+        color: #8AB4CC !important;
+      }
+      #credentials ul {
+        color: #C7D2E0 !important;
+      }
+      #credentials li {
+        color: #C7D2E0 !important;
+      }
+      /* 修正底部三個按鈕 */
+      .cta-button {
+        background-color: #2A3340 !important;
+        color: #E9E4D9 !important;
+        border-color: #3A4D60 !important;
+      }
+      .cta-button:hover {
+        background-color: #364555 !important;
+        color: #ffffff !important;
+      }
+      /* 簽名檔 */
+      .signature {
+        color: #9BA5AF !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <h1>關於我｜目鏡大叔</h1>
+
+  <div class="intro-block">
+    <div class="text-content">
+      <p>嗨，我是目鏡大叔</p>
+      <p>你也許是因為眼鏡的問題來到這裡，但我想告訴你，其實我們在處理的，不只是「視力」，而是<strong>「看清楚這回事」</strong>。</p>
+      <p>我是一位在三峽開店十多年的驗光師，也是這間名叫《自己的眼鏡》的負責人。但我同時也是一個喜歡聽故事、愛觀察人、對行銷與學習有點偏執的中年大叔。</p>
+    </div>
+    <div class="image-container">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvGYr10htFF2aKENLE8HpPQnw2KSOvdjSIHJAmoUxCUSC4vA1NaDduLJRE5kPlbejtKjnUimEU7jZze_BS8fIYw4QElXXX6QGsbJ5ZXHk7zA200D2kB6ZVN_XsBL7wTuwGeUY9C2vV7WLud11NE6kobjCy-Q3UwR_J0AAmUOF5fAzTT9TSUOp4ZyXYZMhk/s900/uncle_glasses_face2.jpg" alt="目鏡大叔 李錫彥 驗光師" class="profile-image">
+    </div>
+  </div>
+
+  <p>在這裡，我不只幫人配眼鏡，也在透過一篇篇文字，陪你找回生活的焦點。</p>
+
+  <h2>為什麼寫這個部落格？</h2>
+  <p>一開始只是想記錄一些門市裡的真實故事，但沒想到很多人是看了文章才來找我們。</p>
+  <p>他們說：「我看了你寫的某篇故事，覺得這間店有一點不一樣。」我才發現，原來文字也可以像鏡片一樣，幫助別人看清楚什麼。</p>
+  <p>所以我持續寫，寫那些眼鏡後面，其實是<strong>情感的故事</strong>；寫我每天在店裡觀察到的<strong>人情互動</strong>；也寫我<strong>讀書、學行銷、玩 AI、搞懂顧客心思</strong>的過程。</p>
+
+  <h2>如果你現在也在看不清楚什麼…</h2>
+  <p>不管是眼睛，還是心裡。我都歡迎你來聊聊。</p>
+  <p>因為這裡不是只為了賣眼鏡，這裡是一間，希望你走出去的時候，<strong>不只看得見，更願意看自己一眼</strong>的店。</p>
+
+  <div class="separator" style="clear: both;"><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibYHspc15dlLp3O-wg1DwtQRiIRvA9fuRh48IKljUkH79CDGVikn1z3Nj2qoxTrgd6DKyqrIh23LmKkFQa_aQXCpxKaU2SrCQrhoWqCKBcMTaP0fReUZP8g24sKVIiBtIKtNHVvMH7A39nEp5wsNfBWwPvmsDCMa1fd0XKJo3b0z8MiySzuZxQfZZSZUsS/s1920/uncle_glasses_face3.jpg" style="display: block; padding: 1em 0; text-align: center; "><img alt="" border="0" width="600" data-original-height="1279" data-original-width="1920" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEibYHspc15dlLp3O-wg1DwtQRiIRvA9fuRh48IKljUkH79CDGVikn1z3Nj2qoxTrgd6DKyqrIh23LmKkFQa_aQXCpxKaU2SrCQrhoWqCKBcMTaP0fReUZP8g24sKVIiBtIKtNHVvMH7A39nEp5wsNfBWwPvmsDCMa1fd0XKJo3b0z8MiySzuZxQfZZSZUsS/s600/uncle_glasses_face3.jpg"/></a></div>
+
+  <!-- 專業背景區塊 -->
+  <section id="credentials" style="margin-top:2.5rem;padding:1.5rem 2rem;background:#f5f3f0;border-left:4px solid #8a8078;border-radius:6px;font-size:0.95rem;line-height:2.2;">
+    <h2 style="font-size:1rem;font-weight:600;color:#5a5450;margin:0 0 1rem 0;letter-spacing:.05em;margin-top:0 !important;">PROFESSIONAL BACKGROUND</h2>
+    <ul style="list-style:none;padding:0;margin:0;color:#4a4440;">
+      <li>🎓&ensp;元培醫事科技大學 視光學系</li>
+      <li>🎓&ensp;元培醫事科技大學 企業管理研究所 視光產業組（碩士）</li>
+      <li>📋&ensp;驗光師執照　驗師字第 000760 號</li>
+      <li>🏛️&ensp;社團法人新北市驗光師公會　常務理事／總監</li>
+      <li>🏛️&ensp;臺灣視光視力保健學會　常務理事</li>
+      <li>🏪&ensp;自己的眼鏡有限公司　創立於 2014 年（民國 103 年）</li>
+      <li>🏥&ensp;自己的驗光所　設立於 2017 年（民國 106 年）</li>
+      <li>🎤&ensp;定期受邀擔任社區及企業視力保健衛教講師</li>
+    </ul>
+  </section>
+
+  <div class="signature">
+    自己的眼鏡 · 三峽 · 目鏡大叔出品 ✍️<br>
+    你可以從這裡開始探索：
+  </div>
+
+  <div class="cta-grid">
+    <a href="/search/label/驗光故事" class="cta-button">
+      <i class="fas fa-heart"></i>
+      <span>驗光故事</span>
+    </a>
+    <a href="/search/label/生活從容" class="cta-button">
+      <i class="fas fa-infinity"></i>
+      <span>找回從容</span>
+    </a>
+    <a href="/search/label/大叔隨筆" class="cta-button">
+      <i class="fas fa-feather-alt"></i>
+      <span>大叔隨筆</span>
+    </a>
+  </div>
+
+</div>
+
+</body>
+</html>
