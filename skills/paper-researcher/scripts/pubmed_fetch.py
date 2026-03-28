@@ -231,6 +231,16 @@ def format_inbox_entry(domain, papers):
     return "\n".join(lines)
 
 
+def get_existing_pmids():
+    """讀取 Inbox 中已存在的 PMID，避免重複寫入"""
+    if not os.path.exists(INBOX_PATH):
+        return set()
+    with open(INBOX_PATH, "r", encoding="utf-8") as f:
+        content = f.read()
+    import re
+    return set(re.findall(r'pubmed\.ncbi\.nlm\.nih\.gov/(\d+)/', content))
+
+
 def append_to_inbox(content):
     """將內容附加到 Inbox/待深處理.md"""
     with open(INBOX_PATH, "a", encoding="utf-8") as f:
@@ -255,13 +265,18 @@ def run():
     date_from, date_to = get_date_range(days_back=4)
     write_log(f"搜尋日期範圍：{date_from} → {date_to}")
 
+    # 讀取 Inbox 已有 PMID，防止重複
+    existing_pmids = get_existing_pmids()
+    if existing_pmids:
+        write_log(f"Inbox 已有 {len(existing_pmids)} 筆 PMID，將自動跳過重複")
+
     total_papers = 0
     total_topics_with_results = 0
     inbox_chunks = []
 
     for domain in RESEARCH_DOMAINS:
         write_log(f"處理領域：{domain['label']}")
-        seen_pmids = set()
+        seen_pmids = set(existing_pmids)  # 包含 Inbox 已有的
         domain_papers = []
 
         for query in domain["queries"]:
