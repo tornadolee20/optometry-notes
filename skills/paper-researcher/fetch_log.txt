@@ -1,0 +1,48 @@
+[2026-03-29 00:53:46] === PubMed Fetch 開始 ===
+[2026-03-29 00:53:46] 搜尋日期範圍：2026/03/25 → 2026/03/29
+[2026-03-29 00:53:46] 處理領域：🔴 近視控制
+[2026-03-29 00:54:00] === PubMed Fetch 開始 ===
+[2026-03-29 00:54:00] 搜尋日期範圍：2026/03/25 → 2026/03/29
+[2026-03-29 00:54:00] 處理領域：🔴 近視控制
+[2026-03-29 00:54:03]   [(myopia control) AND (Taiwan OR Chinese ...] → 1 篇
+[2026-03-29 00:54:05]   [orthokeratology randomized controlled tr...] → 0 篇
+[2026-03-29 00:54:06]   [low-dose atropine myopia rebound...] → 0 篇
+[2026-03-29 00:54:07]   [myopia progression children intervention...] → 0 篇
+[2026-03-29 00:54:07]   小計：1 篇
+[2026-03-29 00:54:07] 處理領域：🔴 兒童視力發展
+[2026-03-29 00:54:09]   [amblyopia dichoptic therapy children...] → 0 篇
+[2026-03-29 00:54:10]   [convergence insufficiency reading childr...] → 0 篇
+[2026-03-29 00:54:11]   [pediatric vision screening preschool...] → 0 篇
+[2026-03-29 00:54:13]   [accommodative esotropia children treatme...] → 0 篇
+[2026-03-29 00:54:13]   本次無新論文
+[2026-03-29 00:54:13] 處理領域：🟡 數位眼疲勞
+[2026-03-29 00:54:14]   [accommodative fatigue near work digital ...] → 0 篇
+[2026-03-29 00:54:15]   [NIBUT dry eye office workers screen time...] → 0 篇
+[2026-03-29 00:54:17]   [computer vision syndrome prevalence...] → 0 篇
+[2026-03-29 00:54:18]   [blue light filter screen fatigue...] → 0 篇
+[2026-03-29 00:54:18]   本次無新論文
+[2026-03-29 00:54:18] 處理領域：🟡 雙眼視覺
+[2026-03-29 00:54:19]   [convergence insufficiency CITT treatment...] → 0 篇
+[2026-03-29 00:54:21]   [vertical phoria prism adaptation...] → 0 篇
+[2026-03-29 00:54:22]   [binocular vision dysfunction headache...] → 0 篇
+[2026-03-29 00:54:23]   [fusional vergence range clinical...] → 0 篇
+[2026-03-29 00:54:23]   本次無新論文
+[2026-03-29 00:54:23] 處理領域：🟢 老花多焦點
+[2026-03-29 00:54:25]   [progressive addition lens freeform desig...] → 0 篇
+[2026-03-29 00:54:26]   [trifocal IOL presbyopia outcomes...] → 0 篇
+[2026-03-29 00:54:27]   [multifocal contact lens presbyopia...] → 0 篇
+[2026-03-29 00:54:29]   [reading glasses occupational presbyopia...] → 0 篇
+[2026-03-29 00:54:29]   本次無新論文
+[2026-03-29 00:54:29] 處理領域：🟢 眼睛與全身健康
+[2026-03-29 00:54:30]   [diabetic retinopathy AI screening Taiwan...] → 0 篇
+[2026-03-29 00:54:31]   [retinal biomarker Alzheimer dementia...] → 0 篇
+[2026-03-29 00:54:33]   [hypertension retinal vascular changes...] → 0 篇
+[2026-03-29 00:54:36]   [retinal imaging cardiovascular biomarker...] → 2 篇
+[2026-03-29 00:54:36]   小計：2 篇
+[2026-03-29 00:54:36] 處理領域：🟢 視覺營養飲食
+[2026-03-29 00:54:37]   [lutein zeaxanthin myopia children...] → 0 篇
+[2026-03-29 00:54:38]   [omega-3 fatty acid dry eye treatment...] → 0 篇
+[2026-03-29 00:54:40]   [gut microbiome eye health...] → 0 篇
+[2026-03-29 00:54:41]   [vitamin D myopia outdoor activity...] → 0 篇
+[2026-03-29 00:54:41]   本次無新論文
+[2026-03-29 00:54:41] === 完成：3 篇論文寫入 Inbox/待深處理.md ===
