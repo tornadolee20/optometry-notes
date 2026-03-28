@@ -30,3 +30,9 @@ backup/
 # .claude/ 的本機設定排除，但 skills 需同步
 .claude/settings.local.json
 .claude/todos/
+.claude/worktrees/
+
+# 根目錄暫存檔
+temp_*.txt
+temp_*.py
+recent_files.txt
