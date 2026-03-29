@@ -1,0 +1,264 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 150 18% 95%;
+    --foreground: 155 25% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 155 25% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 155 25% 10%;
+    
+    /* 品牌主色 - 現代深墨綠 */
+    --primary: 160 84% 24%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 150 12% 93%;
+    --secondary-foreground: 155 25% 10%;
+    
+    --muted: 150 10% 92%;
+    --muted-foreground: 150 8% 45%;
+    
+    --accent: 155 18% 91%;
+    --accent-foreground: 160 84% 18%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 150 20% 88%;
+    --input: 150 20% 88%;
+    --ring: 160 84% 24%;
+    --radius: 0.625rem;
+    
+    /* 品牌拓展色 */
+    --brand-emerald: 160 84% 24%;
+    --brand-emerald-light: 160 60% 45%;
+    --brand-slate: 155 10% 55%;
+    --brand-amber: 38 92% 50%;
+    --brand-rose: 347 77% 50%;
+    --brand-violet: 262 83% 58%;
+    
+    /* Admin 專屬 - 帶綠調的深色 */
+    --sidebar: 158 35% 9%;
+    --sidebar-foreground: 150 12% 78%;
+    --sidebar-accent: 160 84% 24%;
+    --sidebar-muted: 155 20% 14%;
+
+    /* 語義化狀態色 */
+    --status-success-bg: 145 80% 95%;
+    --status-success-fg: 152 69% 20%;
+    --status-success-border: 149 50% 80%;
+    --status-error-bg: 0 86% 97%;
+    --status-error-fg: 0 72% 43%;
+    --status-error-border: 0 60% 85%;
+    --status-warning-bg: 48 96% 95%;
+    --status-warning-fg: 21 78% 27%;
+    --status-warning-border: 46 65% 80%;
+    --status-info-bg: 214 95% 96%;
+    --status-info-fg: 224 76% 48%;
+    --status-info-border: 214 60% 83%;
+  }
+  
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 210 20% 98%;
+    --card: 224 40% 8%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 40% 8%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 160 60% 45%;
+    --primary-foreground: 224 71% 4%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 218 11% 65%;
+    --accent: 215 28% 17%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 160 60% 45%;
+
+    /* 語義化狀態色（暗色模式） */
+    --status-success-bg: 152 40% 12%;
+    --status-success-fg: 145 60% 65%;
+    --status-success-border: 152 35% 22%;
+    --status-error-bg: 0 45% 12%;
+    --status-error-fg: 0 60% 70%;
+    --status-error-border: 0 40% 22%;
+    --status-warning-bg: 38 45% 12%;
+    --status-warning-fg: 38 70% 65%;
+    --status-warning-border: 38 40% 22%;
+    --status-info-bg: 214 45% 12%;
+    --status-info-fg: 214 70% 70%;
+    --status-info-border: 214 40% 22%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: 100%;
+  }
+  
+  button, [role="button"] {
+    touch-action: manipulation;
+  }
+  
+  input, textarea, select {
+    font-size: 16px;
+  }
+  
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.3); }
+  50% { box-shadow: 0 0 20px 10px hsl(var(--primary) / 0.1); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
+.animate-slide-up { animation: slideUp 0.5s ease-out; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 3s ease infinite; }
+
+@layer components {
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--accent)) 100%);
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
+  }
+  
+  .section-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+  
+  .brand-shadow {
+    box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.15);
+  }
+  
+  .nav-blur {
+    backdrop-filter: blur(20px);
+    background: hsl(var(--background) / 0.8);
+  }
+
+  /* Admin 後台 - 現代深色側邊欄 */
+  .admin-sidebar {
+    background: hsl(var(--sidebar));
+    color: hsl(var(--sidebar-foreground));
+  }
+
+  /* 精緻網點背景 */
+  .admin-dots-bg {
+    background-image: radial-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* 玻璃態 */
+  .admin-glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(16px) saturate(1.5);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* 卡片光澤 */
+  .admin-card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .admin-card-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.03), transparent);
+    transition: left 0.6s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .admin-card-shine:hover::before {
+    left: 100%;
+  }
+
+  /* 統計卡片懸浮 */
+  .admin-stat-glow {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .admin-stat-glow:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px -12px hsl(var(--primary) / 0.2);
+  }
+
+  /* 側邊欄導航項 */
+  .admin-nav-item {
+    @apply relative flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    color: hsl(var(--sidebar-foreground) / 0.6);
+  }
+  .admin-nav-item:hover {
+    color: hsl(var(--sidebar-foreground));
+    background: hsl(var(--sidebar-foreground) / 0.06);
+  }
+  .admin-nav-item.active {
+    color: hsl(var(--primary-foreground));
+    background: hsl(var(--sidebar-accent));
+  }
+  .admin-nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 24px;
+    border-radius: 0 4px 4px 0;
+    background: hsl(var(--sidebar-accent));
+  }
+}

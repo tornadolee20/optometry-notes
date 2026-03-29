@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /store/create
+Disallow: /scan
+Disallow: /app
+
+Sitemap: https://myownreviews.com/sitemap.xml

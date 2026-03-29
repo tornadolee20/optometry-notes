@@ -1,0 +1,31 @@
+project_id = "wfaqnahahygtieyjnlji"
+
+[functions.generate-review]
+verify_jwt = false
+
+[functions.disaster-recovery-manager]
+verify_jwt = false
+
+[functions.google-places-search]
+verify_jwt = false
+
+[functions.setup-super-admin]
+verify_jwt = false
+
+# Feature flags for humanized reviews (all default to true)
+# Set any to 'false' to disable specific features
+[functions.frontend-error]
+verify_jwt = false
+
+[functions.generate-template-keywords]
+verify_jwt = false
+
+[functions.telegram-send-alert]
+verify_jwt = false
+
+[functions.generate-brand-keywords]
+verify_jwt = false
+
+[functions.generate-review.env]
+HUMANIZE_REVIEWS_ENABLED = "true"
+HUMANIZE_REVIEWS_ENABLED = "true"
