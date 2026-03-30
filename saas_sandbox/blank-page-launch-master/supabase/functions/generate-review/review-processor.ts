@@ -36,7 +36,7 @@ const MAX_RECENT_TONES = 5;
 const MAX_RECENT_STRUCTURES = 5;
 
 export async function processReviewRequest(requestData: RequestBody): Promise<ResponseData> {
-  const { storeName, address, area: providedArea, keywords: rawKeywords = [], customFeelings: rawCustomFeelings = [], description, reviewStyle, enforceNegativeWhenNeeded, industry, keywordCount: requestKeywordCount } = requestData;
+  const { storeName, address, area: providedArea, keywords: rawKeywords = [], customFeelings: rawCustomFeelings = [], description, reviewStyle, enforceNegativeWhenNeeded, industry, keywordCount: requestKeywordCount, persona } = requestData;
 
   // === Step 0: Input sanitization ===
   const sanitizedKeywords = sanitizeKeywords(rawKeywords);
@@ -146,7 +146,8 @@ export async function processReviewRequest(requestData: RequestBody): Promise<Re
     humanizationResult.microEvent, enforcedNegative ? null : humanizationResult.painPoint,
     humanizationResult.interjections, humanizationResult.perspective,
     humanizationResult.isHumanized, effectiveKeywordCount,
-    toneOption.promptHint, toneIntensity
+    toneOption.promptHint, toneIntensity,
+    persona
   );
 
   // === Step 1: AI Generation ===

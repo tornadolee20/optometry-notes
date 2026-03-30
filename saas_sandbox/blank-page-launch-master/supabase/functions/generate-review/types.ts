@@ -16,6 +16,11 @@ export interface RequestBody {
   complianceMode?: boolean;
   enforceNegativeWhenNeeded?: boolean;
   keywordCount?: number;
+  persona?: {
+    gender: 'male' | 'female';
+    ageGroup: 'student' | 'worker' | 'parent' | 'elder';
+    writingStyle: 'concise' | 'narrative' | 'detailed';
+  };
 }
 
 // 回應數據類型

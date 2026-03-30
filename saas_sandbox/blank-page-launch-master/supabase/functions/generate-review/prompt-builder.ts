@@ -1,5 +1,5 @@
 import { CustomerType } from './types.ts';
-import { SPECIAL_WRITING_STYLES } from './templates.ts';
+import { SPECIAL_WRITING_STYLES, PersonaConfig, buildPersonaPrompt } from './templates.ts';
 import { generateIndustryPromptAddition, getIndustryLanguageEnhancement } from './utils/industry-context.ts';
 import { getSoftWordCountRange } from './humanization/word-count-flexibility.ts';
 
@@ -24,7 +24,8 @@ export function createSystemPrompt(
   isHumanized: boolean = false,
   keywordCount?: number,
   tonePromptHint?: string,
-  toneIntensity?: string
+  toneIntensity?: string,
+  persona?: PersonaConfig
 ): string {
   
   const hasCustomFeelings = customFeelings && customFeelings.length > 0;
@@ -102,6 +103,9 @@ export function createSystemPrompt(
 - 不要加正向緩和語氣`;
   }
 
+  // Persona section — real customer identity drives voice
+  const personaSection = persona ? buildPersonaPrompt(persona) : '';
+
   // Tone personality section — the key to voice diversity
   let tonePersonality = '';
   if (tonePromptHint) {
@@ -121,6 +125,7 @@ export function createSystemPrompt(
 - ${styleDesc}
 - 星等參考：${starRating ?? '自動'}（不在文中提及）
 ${tonePersonality}
+${personaSection}
 ${negativeEnforcement}
 
 ### 關鍵字
