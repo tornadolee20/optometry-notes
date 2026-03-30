@@ -8,7 +8,15 @@ export interface PersonaConfig {
   writingStyle: 'concise' | 'narrative' | 'detailed';
 }
 
+/** 根據關鍵字數量自動決定評論長度 */
+export function deriveWritingStyle(keywordCount: number): PersonaConfig['writingStyle'] {
+  if (keywordCount <= 3) return 'concise';
+  if (keywordCount <= 5) return 'narrative';
+  return 'detailed';
+}
+
 interface PersonaSelectorProps {
+  keywordCount: number;          // 由 ReviewContent 傳入，決定 writingStyle
   onConfirm: (persona: PersonaConfig) => void;
   onSkip: () => void;
 }
@@ -16,7 +24,6 @@ interface PersonaSelectorProps {
 interface OptionItem<T extends string> {
   value: T;
   label: string;
-  sub?: string;
 }
 
 const genderOptions: OptionItem<PersonaConfig['gender']>[] = [
@@ -29,12 +36,6 @@ const ageGroupOptions: OptionItem<PersonaConfig['ageGroup']>[] = [
   { value: 'worker', label: '上班族' },
   { value: 'parent', label: '家長' },
   { value: 'elder', label: '長輩' },
-];
-
-const writingStyleOptions: OptionItem<PersonaConfig['writingStyle']>[] = [
-  { value: 'concise', label: '簡短', sub: '約 80 字' },
-  { value: 'narrative', label: '自然', sub: '約 150 字' },
-  { value: 'detailed', label: '詳細', sub: '約 250 字' },
 ];
 
 function CardOption<T extends string>({
@@ -58,29 +59,29 @@ function CardOption<T extends string>({
           : "border-border bg-card text-foreground hover:border-primary/40 hover:bg-muted/50"
       )}
     >
-      <span className="block font-semibold">{item.label}</span>
-      {item.sub && (
-        <span className={cn("block text-xs mt-0.5", selected ? "text-primary/70" : "text-muted-foreground")}>
-          {item.sub}
-        </span>
-      )}
+      {item.label}
     </button>
   );
 }
 
-export const PersonaSelector = ({ onConfirm, onSkip }: PersonaSelectorProps) => {
+export const PersonaSelector = ({ keywordCount, onConfirm, onSkip }: PersonaSelectorProps) => {
   const [gender, setGender] = useState<PersonaConfig['gender'] | null>(null);
   const [ageGroup, setAgeGroup] = useState<PersonaConfig['ageGroup'] | null>(null);
-  const [writingStyle, setWritingStyle] = useState<PersonaConfig['writingStyle'] | null>(null);
 
-  const isComplete = gender && ageGroup && writingStyle;
+  const isComplete = gender && ageGroup;
+
+  const handleConfirm = () => {
+    if (!isComplete) return;
+    const writingStyle = deriveWritingStyle(keywordCount);
+    onConfirm({ gender, ageGroup, writingStyle });
+  };
 
   return (
     <div className="rounded-2xl border border-border bg-card p-5 space-y-5">
       {/* Header */}
       <div className="text-center space-y-1">
         <h3 className="text-lg font-bold">讓評論更像你</h3>
-        <p className="text-sm text-muted-foreground">3 秒選完，評論更自然</p>
+        <p className="text-sm text-muted-foreground">2 秒選完，評論更自然</p>
       </div>
 
       {/* Gender */}
@@ -103,19 +104,9 @@ export const PersonaSelector = ({ onConfirm, onSkip }: PersonaSelectorProps) => 
         </div>
       </div>
 
-      {/* Writing Style */}
-      <div className="space-y-2">
-        <p className="text-sm font-medium text-muted-foreground">評論長度</p>
-        <div className="grid grid-cols-3 gap-2">
-          {writingStyleOptions.map((o) => (
-            <CardOption key={o.value} item={o} selected={writingStyle === o.value} onSelect={setWritingStyle} />
-          ))}
-        </div>
-      </div>
-
       {/* Confirm Button */}
       <Button
-        onClick={() => isComplete && onConfirm({ gender, ageGroup, writingStyle })}
+        onClick={handleConfirm}
         disabled={!isComplete}
         className="w-full min-h-[48px] text-base font-semibold rounded-xl shadow-md"
       >

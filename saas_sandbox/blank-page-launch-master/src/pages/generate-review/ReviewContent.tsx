@@ -132,6 +132,7 @@ export const ReviewContent = ({ store, keywords, onKeywordsUpdate }: ReviewConte
 
       {showPersonaSelector ? (
         <PersonaSelector
+          keywordCount={selectedKeywords.length + customFeelings.length}
           onConfirm={handlePersonaConfirm}
           onSkip={handlePersonaSkip}
         />
