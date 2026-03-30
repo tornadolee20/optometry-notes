@@ -6,6 +6,7 @@ import type { Store } from "@/types/store";
 import { isEducationInstitution, isOpticalStore } from "@/utils/keyword-utils";
 import { SentimentAnalyzer, type SentimentResult, type ReviewStyleResult, type ComplianceResult, type GuidelinesResult } from "@/utils/sentiment-analyzer";
 import { generateShortNegativeReview } from "@/utils/short-negative-review";
+import type { PersonaConfig } from "@/components/review/PersonaSelector";
 
 export const useReviewGenerator = (store: Store | null) => {
   const { toast } = useToast();
@@ -21,7 +22,7 @@ export const useReviewGenerator = (store: Store | null) => {
     };
   }, []);
 
-  const generateReview = async (selectedKeywords: string[], customFeelings: string[] = []) => {
+  const generateReview = async (selectedKeywords: string[], customFeelings: string[] = [], persona?: PersonaConfig) => {
     if (!store) return;
     
     if (selectedKeywords.length < 3 && customFeelings.length < 3) {
@@ -144,7 +145,8 @@ export const useReviewGenerator = (store: Store | null) => {
             useRandomTemperature: true,
             complianceMode: complianceCheck.isCompliant,
             enforceNegativeWhenNeeded: sentimentAnalysis.negativeCount >= 3 || customFeelings.length >= 3,
-            keywordCount: allUserInput.length
+            keywordCount: allUserInput.length,
+            ...(persona ? { persona } : {}),
           }),
         }
       );

@@ -11,6 +11,7 @@ import { isSandboxStore } from "@/config/sandbox";
 import { supabase } from "@/integrations/supabase/client";
 import { Badge } from "@/components/ui/badge";
 import type { Keyword } from "@/types/store";
+import { PersonaSelector, type PersonaConfig } from "@/components/review/PersonaSelector";
 
 interface ReviewContentProps {
   store: Store;
@@ -25,6 +26,9 @@ export const ReviewContent = ({ store, keywords, onKeywordsUpdate }: ReviewConte
   const { generatedReview, isGenerating, generateReview, cancelGeneration } = useReviewGenerator(store);
   const [toneVariations, setToneVariations] = useState<{ label: string; review: string }[]>([]);
   const [isGeneratingTones, setIsGeneratingTones] = useState(false);
+  const [persona, setPersona] = useState<PersonaConfig | null>(null);
+  const [showPersonaSelector, setShowPersonaSelector] = useState(false);
+  const [personaSkipped, setPersonaSkipped] = useState(false);
 
   const isSandbox = isSandboxStore(store.email);
 
@@ -68,12 +72,34 @@ export const ReviewContent = ({ store, keywords, onKeywordsUpdate }: ReviewConte
     }
   };
 
-  const handleGenerateReview = () => {
+  const triggerGeneration = (resolvedPersona?: PersonaConfig | null) => {
+    const p = resolvedPersona ?? persona ?? undefined;
     if (isSandbox && multiToneEnabled) {
       generateMultiTone();
     } else {
-      generateReview(selectedKeywords, customFeelings);
+      generateReview(selectedKeywords, customFeelings, p);
     }
+  };
+
+  const handleGenerateReview = () => {
+    // Show persona selector if not yet chosen and not skipped
+    if (!persona && !personaSkipped) {
+      setShowPersonaSelector(true);
+      return;
+    }
+    triggerGeneration();
+  };
+
+  const handlePersonaConfirm = (p: PersonaConfig) => {
+    setPersona(p);
+    setShowPersonaSelector(false);
+    triggerGeneration(p);
+  };
+
+  const handlePersonaSkip = () => {
+    setPersonaSkipped(true);
+    setShowPersonaSelector(false);
+    triggerGeneration(null);
   };
 
   return (
@@ -104,13 +130,20 @@ export const ReviewContent = ({ store, keywords, onKeywordsUpdate }: ReviewConte
         />
       )}
 
-      <ReviewGenerateButtonImproved
-        isGenerating={isGenerating || isGeneratingTones}
-        hasGeneratedReview={!!generatedReview || toneVariations.length > 0}
-        onGenerate={handleGenerateReview}
-        onCancel={cancelGeneration}
-        disabled={(selectedKeywords.length + customFeelings.length) < 3}
-      />
+      {showPersonaSelector ? (
+        <PersonaSelector
+          onConfirm={handlePersonaConfirm}
+          onSkip={handlePersonaSkip}
+        />
+      ) : (
+        <ReviewGenerateButtonImproved
+          isGenerating={isGenerating || isGeneratingTones}
+          hasGeneratedReview={!!generatedReview || toneVariations.length > 0}
+          onGenerate={handleGenerateReview}
+          onCancel={cancelGeneration}
+          disabled={(selectedKeywords.length + customFeelings.length) < 3}
+        />
+      )}
 
       {/* Multi-tone results */}
       {toneVariations.length > 0 && (
