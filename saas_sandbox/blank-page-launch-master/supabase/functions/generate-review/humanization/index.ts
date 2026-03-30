@@ -15,7 +15,7 @@ import {
   generateEmotionalCurve,
   enforceFlexibleParagraphs 
 } from './sentence-rhythm.ts';
-import { isWithinFlexibleRange } from './word-count-flexibility.ts';
+import { isWithinFlexibleRange, getValidationWordCountRange } from './word-count-flexibility.ts';
 
 export interface HumanizationConfig {
   industry: string;
@@ -75,7 +75,8 @@ export function generateHumanizationElements(config: HumanizationConfig): Humani
 // Post-process generated review with humanization
 export function applyHumanizationPostProcessing(
   text: string, 
-  humanizationResult: HumanizationResult
+  humanizationResult: HumanizationResult,
+  keywordCount?: number
 ): string {
   if (!humanizationResult.isHumanized) {
     return text;
@@ -83,18 +84,33 @@ export function applyHumanizationPostProcessing(
 
   let processedText = text;
 
-  // 1. Apply word slippage for natural imperfection
-  processedText = applyWordSlippage(processedText);
+  const charCount = () => processedText.replace(/\s+/g, '').length;
+  const maxChars = keywordCount !== undefined
+    ? getValidationWordCountRange(keywordCount).max
+    : Infinity;
 
-  // 2. Shuffle sentence rhythm
+  // 1. Apply word slippage for natural imperfection (generally char-neutral, but guard)
+  if (charCount() < maxChars) {
+    processedText = applyWordSlippage(processedText);
+  }
+
+  // 2. Shuffle sentence rhythm — no char change, always run
   processedText = shuffleSentenceRhythm(processedText);
 
-  // 3. Insert abrupt sentences occasionally
-  processedText = insertAbruptSentences(processedText);
+  // 3. Insert abrupt sentences occasionally — adds chars, tentative apply
+  if (charCount() < maxChars) {
+    const candidate = insertAbruptSentences(processedText);
+    if (candidate.replace(/\s+/g, '').length <= maxChars) {
+      processedText = candidate;
+    }
+  }
 
-  // 4. Enforce flexible paragraph structure
-  if (isFeatureEnabled('flexible_word_count')) {
-    processedText = enforceFlexibleParagraphs(processedText);
+  // 4. Enforce flexible paragraph structure — guard against overflow
+  if (isFeatureEnabled('flexible_word_count') && charCount() < maxChars) {
+    const candidate = enforceFlexibleParagraphs(processedText);
+    if (candidate.replace(/\s+/g, '').length <= maxChars) {
+      processedText = candidate;
+    }
   }
 
   return processedText;

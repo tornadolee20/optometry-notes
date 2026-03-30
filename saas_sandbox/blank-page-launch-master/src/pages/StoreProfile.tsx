@@ -198,8 +198,10 @@ const StoreProfile = () => {
       setIsLoading(false);
       return;
     }
+    // 等待 auth session 還原完成再查詢，避免 auth.uid() 為 null 導致 RLS 拒絕
+    if (!isAuthReady) return;
     fetchStoreData();
-  }, [storeId, retryCount, isAuthReady]); // Add isAuthReady as dependency
+  }, [storeId, retryCount, isAuthReady]);
 
   useEffect(() => {
     if (storeId) {

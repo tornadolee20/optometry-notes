@@ -193,7 +193,7 @@ export async function processReviewRequest(requestData: RequestBody): Promise<Re
 
   // 2b. Humanization post-processing (skip for negative reviews to avoid positive insertions)
   if (humanizationResult.isHumanized && !enforcedNegative) {
-    review = applyHumanizationPostProcessing(review, humanizationResult);
+    review = applyHumanizationPostProcessing(review, humanizationResult, effectiveKeywordCount);
   }
 
   // 2c. Proper noun limits

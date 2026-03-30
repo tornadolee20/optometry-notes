@@ -29,14 +29,53 @@ Deno.serve(async (req) => {
       Deno.env.get('SUPABASE_SERVICE_ROLE_KEY') ?? ''
     )
 
+    // Role guard: only super_admin can access backup manager
+    const authHeader = req.headers.get('authorization')
+    if (!authHeader?.startsWith('Bearer ')) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
+    const token = authHeader.replace('Bearer ', '')
+    const { data: claimsData, error: claimsError } = await supabase.auth.getClaims(token)
+    if (claimsError || !claimsData?.claims) {
+      return new Response(
+        JSON.stringify({ error: 'Unauthorized' }),
+        { status: 401, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
+    const userId = claimsData.claims.sub
+    const { data: roleData } = await supabase
+      .from('user_roles')
+      .select('role')
+      .eq('user_id', userId)
+      .eq('role', 'super_admin')
+      .single()
+
+    if (!roleData) {
+      return new Response(
+        JSON.stringify({ error: 'Forbidden: super_admin role required' }),
+        { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      )
+    }
+
     const url = new URL(req.url)
     const action = url.searchParams.get('action')
 
-    console.log(`Backup Manager: ${action} action requested`)
+    console.log(`Backup Manager: ${action} action requested by user ${userId}`)
 
     switch (action) {
-      case 'create_backup':
-        return await createBackup(req, supabase)
+      case 'create_backup': {
+        const result = await createBackup(req, supabase)
+        const httpStatus = result.success ? 200 : 500
+        return new Response(
+          JSON.stringify(result),
+          { status: httpStatus, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        )
+      }
       case 'list_backups':
         return await listBackups(supabase)
       case 'restore_backup':
@@ -73,9 +112,6 @@ async function createBackup(req: Request, supabase: any) {
   const backupName = requestData.backup_name || 
     `${requestData.backup_type}-backup-${timestamp.split('T')[0]}`
 
-  // Start background backup process
-  EdgeRuntime.waitUntil(performBackupProcess(backupId, requestData, supabase))
-
   // Create backup record
   const { data: backup, error: backupError } = await supabase
     .from('system_backups')
@@ -99,16 +135,26 @@ async function createBackup(req: Request, supabase: any) {
     throw backupError
   }
 
-  return new Response(
-    JSON.stringify({
+  // Run backup process inline with dedicated error handling
+  try {
+    await performBackupProcess(backupId, requestData, supabase)
+    return {
       success: true,
       backup_id: backupId,
       backup_name: backupName,
-      status: 'initiated',
-      message: 'Backup process started'
-    }),
-    { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-  )
+      status: 'completed',
+      message: 'Backup process completed'
+    }
+  } catch (error) {
+    console.error('[BackupManager] performBackupProcess failed', { backupId, error })
+    return {
+      success: false,
+      backup_id: backupId,
+      backup_name: backupName,
+      status: 'failed',
+      error: error instanceof Error ? error.message : String(error)
+    }
+  }
 }
 
 async function performBackupProcess(backupId: string, request: BackupRequest, supabase: any) {

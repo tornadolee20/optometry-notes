@@ -181,8 +181,10 @@ async function createBackup(request: BackupRequest, userId?: string): Promise<an
     before_state: { request }
   });
 
-  // Background task to complete backup
-  EdgeRuntime.waitUntil(completeBackupProcess(backupId, request));
+  // Fire-and-forget: run backup process asynchronously, errors are caught inside
+  completeBackupProcess(backupId, request).catch(error => {
+    console.error(`Background backup process failed for ${backupId}:`, error);
+  });
 
   return backup;
 }
@@ -292,8 +294,10 @@ async function performRecovery(request: RecoveryRequest, userId?: string): Promi
     before_state: { recovery_request: request, backup_info: backup }
   });
 
-  // Background task to perform recovery
-  EdgeRuntime.waitUntil(performRecoveryProcess(eventId, request, backup));
+  // Fire-and-forget: run recovery process asynchronously, errors are caught inside
+  performRecoveryProcess(eventId, request, backup).catch(error => {
+    console.error(`Background recovery process failed for ${eventId}:`, error);
+  });
 
   return {
     recovery_id: eventId,

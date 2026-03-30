@@ -1,0 +1,1 @@
+DELETE FROM public.function_usage_logs WHERE function_name = 'generate-review';

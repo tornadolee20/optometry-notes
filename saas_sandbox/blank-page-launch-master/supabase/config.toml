@@ -1,5 +1,8 @@
 project_id = "wfaqnahahygtieyjnlji"
 
+[functions.backup-manager]
+verify_jwt = false
+
 [functions.generate-review]
 verify_jwt = false
 

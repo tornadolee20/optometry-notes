@@ -61,7 +61,7 @@ export const StoreListItem: React.FC<StoreListItemProps> = ({
         <div className="flex-1 min-w-0">
           {/* Top row: name + badges */}
           <div className="flex items-center gap-2 flex-wrap mb-1.5">
-            <Link to={`/admin/store/${store.id}`} className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
+            <Link to={`/store/${store.id}`} className="text-sm font-semibold text-foreground hover:text-primary transition-colors">
               {store.store_name}
             </Link>
             {isSandboxStore(store.email) && (
@@ -130,7 +130,7 @@ export const StoreListItem: React.FC<StoreListItemProps> = ({
         {/* Actions */}
         <div className="flex items-center gap-1.5 flex-shrink-0">
           <Button variant="ghost" size="sm" className="h-7 text-xs px-2.5" asChild>
-            <Link to={`/admin/store/${store.id}`}>
+            <Link to={`/store/${store.id}`}>
               詳情 <ExternalLink className="h-3 w-3 ml-1" />
             </Link>
           </Button>
@@ -143,7 +143,7 @@ export const StoreListItem: React.FC<StoreListItemProps> = ({
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-44">
               <DropdownMenuItem asChild>
-                <Link to={`/admin/store/${store.id}`}>
+                <Link to={`/store/${store.id}`}>
                   <Edit className="h-3.5 w-3.5 mr-2" />
                   編輯
                 </Link>

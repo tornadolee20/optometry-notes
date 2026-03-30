@@ -21,33 +21,5 @@ BEGIN
   END IF;
 END $$;
 
--- 2) Upsert admin-related records by email (role mapping). These rows will link by email.
-INSERT INTO public.users (email, role, name, is_active)
-VALUES
-  ('admin@test.com',   'super_admin', 'Test Super Admin', true),
-  ('manager@test.com', 'admin',       'Test Admin',       true),
-  ('user@test.com',    'manager',     'Test Manager',     true),
-  ('demo@test.com',    'user',        'Test User',        true)
-ON CONFLICT (email) DO UPDATE SET
-  role = EXCLUDED.role,
-  name = EXCLUDED.name,
-  is_active = true,
-  updated_at = now();
-
--- 3) Optional personal admin account mapping
-INSERT INTO public.users (email, role, name, is_active)
-VALUES
-  ('tornadolee20@yahoo.com.tw', 'super_admin', 'Personal Admin Account', true)
-ON CONFLICT (email) DO UPDATE SET
-  role = 'super_admin',
-  name = 'Personal Admin Account',
-  is_active = true,
-  updated_at = now();
-
--- 4) Show results
-SELECT email, role, name, is_active, created_at, updated_at
-FROM public.users
-WHERE email IN (
-  'admin@test.com','manager@test.com','user@test.com','demo@test.com','tornadolee20@yahoo.com.tw'
-)
-ORDER BY role DESC, email ASC;
+-- 2) Hardcoded seed accounts removed for security.
+--    Admin accounts should be created via Supabase Dashboard or a secure setup script.

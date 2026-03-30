@@ -19,7 +19,7 @@ const AdminLogin = () => {
   useEffect(() => {
     const checkConnection = async () => {
       try {
-        const { error } = await supabase.from('stores').select('count').limit(1);
+        const { error } = await supabase.from('stores').select('id').limit(1);
         if (error) {
           toast({
             variant: "destructive",

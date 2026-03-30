@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -463,6 +463,16 @@ const Register = () => {
               <form onSubmit={handleSubmit}>
                 {renderStepContent()}
                 
+                {/* 同意條款提示 */}
+                {currentStep === totalSteps && (
+                  <p className="text-xs text-muted-foreground text-center mt-6">
+                    註冊即表示您同意本站的{' '}
+                    <Link to="/terms-of-service" className="underline hover:text-foreground transition-colors">服務條款</Link>
+                    {' '}與{' '}
+                    <Link to="/privacy-policy" className="underline hover:text-foreground transition-colors">隱私權政策</Link>
+                  </p>
+                )}
+
                 {/* 導航按鈕 */}
                 <div className="flex gap-3 mt-8">
                   {currentStep > 1 && <Button type="button" variant="outline" onClick={handlePrevStep} className="flex-1 border-brand-sage/30 text-brand-sage-dark hover:bg-brand-sage/10" disabled={isLoading}>

@@ -1,47 +1,96 @@
 
 
-# 店家自助轉移管理權 — 實作計畫
+## Plan: Limit Humanization Word Count Growth for 5-6 Keyword Reviews
 
-## 概述
-讓店家擁有者從自己的儀表板 (`/store/:id`) 發起管理權轉移，複用現有 `StoreTransferModal`。
+### Problem
+Humanization post-processing (`applyWordSlippage`, `shuffleSentenceRhythm`, `insertAbruptSentences`, `enforceFlexibleParagraphs`) can inflate 5-6 keyword reviews well past target ranges (e.g. 197→280+).
 
----
+### Changes
 
-## 1. 資料庫遷移
+**File 1: `supabase/functions/generate-review/humanization/index.ts`**
 
-新增一條 RLS INSERT policy 到 `store_transfer_requests`：
+Modify `applyHumanizationPostProcessing` signature to accept optional `keywordCount`:
 
-```sql
--- 給 store owner 用的：允許店家擁有者為自己的店建立轉移請求
--- 【未來重構注意】改成 store_owners 多對多時，改查 store_owners.user_id + is_primary
-CREATE POLICY "Store owners can create transfer requests"
-ON public.store_transfer_requests
-FOR INSERT TO authenticated
-WITH CHECK (
-  store_id IN (
-    SELECT id FROM public.stores WHERE user_id = auth.uid()
-  )
-);
+```ts
+export function applyHumanizationPostProcessing(
+  text: string, 
+  humanizationResult: HumanizationResult,
+  keywordCount?: number
+): string
 ```
 
----
+Before each word-count-increasing step (`applyWordSlippage`, `insertAbruptSentences`, `enforceFlexibleParagraphs`), check current char count against `getValidationWordCountRange(keywordCount).max`. If already at or above max, skip the step. If between min and max, only apply the step if the result doesn't exceed max (apply tentatively, revert if over).
 
-## 2. 前端修改
+`shuffleSentenceRhythm` does not add characters (only reorders), so it runs unconditionally.
 
-**`src/pages/StoreProfile.tsx`**
-- Import `StoreTransferModal` 和 `ArrowRightLeft` icon
-- 新增 `showTransferModal` state
-- 在「快速操作」區塊（grid）末尾加一個「轉移管理權」按鈕（僅 `isOwner` 時顯示）
-- 渲染 `StoreTransferModal`，傳入 `storeId`、`storeName`、`currentOwnerEmail`
+Specific guard logic:
+```ts
+import { getValidationWordCountRange } from './word-count-flexibility.ts';
 
-不需要修改其他檔案，`StoreTransferModal` 已經包含完整的 insert 邏輯、console.log 連結、clipboard 複製、Telegram 通知。
+// Inside applyHumanizationPostProcessing:
+const charCount = () => processedText.replace(/\s+/g, '').length;
+const maxChars = keywordCount !== undefined 
+  ? getValidationWordCountRange(keywordCount).max 
+  : Infinity;
 
----
+// 1. Word slippage — generally char-neutral, but guard anyway
+if (charCount() < maxChars) {
+  processedText = applyWordSlippage(processedText);
+}
 
-## 修改檔案清單
+// 2. Shuffle — no char change, always run
+processedText = shuffleSentenceRhythm(processedText);
 
-| 檔案 | 改動 |
-|---|---|
-| 資料庫遷移 (新) | 新增 store owners INSERT policy |
-| `src/pages/StoreProfile.tsx` | 加轉移按鈕 + modal |
+// 3. Abrupt sentences — adds chars, tentative apply
+if (charCount() < maxChars) {
+  const candidate = insertAbruptSentences(processedText);
+  if (candidate.replace(/\s+/g, '').length <= maxChars) {
+    processedText = candidate;
+  }
+}
+
+// 4. Flexible paragraphs — may add newlines only, but guard
+if (isFeatureEnabled('flexible_word_count') && charCount() < maxChars) {
+  const candidate = enforceFlexibleParagraphs(processedText);
+  if (candidate.replace(/\s+/g, '').length <= maxChars) {
+    processedText = candidate;
+  }
+}
+```
+
+**File 2: `supabase/functions/generate-review/review-processor.ts`**
+
+Update the call site at line 196 to pass `effectiveKeywordCount`:
+```ts
+review = applyHumanizationPostProcessing(review, humanizationResult, effectiveKeywordCount);
+```
+
+**File 3: `supabase/functions/generate-review/review-validator.ts`**
+
+Add early-exit for 5-6 keyword reviews that are already within an acceptable zone. After computing `wordCount` and `range`, before the expansion logic:
+
+```ts
+// For 5-6 keywords: if already >= base max but within validation tolerance, accept as-is
+if (keywordCount && keywordCount >= 5) {
+  const baseRange = getBaseWordCountRange(keywordCount);
+  if (wordCount >= baseRange.max && wordCount <= range.max) {
+    console.log(`5-6 keyword review at ${wordCount} chars, above base max ${baseRange.max} but within tolerance ${range.max}, accepting as-is`);
+    return review;
+  }
+}
+```
+
+This requires importing `getBaseWordCountRange` alongside `getValidationWordCountRange`.
+
+### Files Modified
+| File | Change |
+|------|--------|
+| `humanization/index.ts` | Add `keywordCount` param, guard each post-processing step against max |
+| `review-processor.ts` | Pass `effectiveKeywordCount` to `applyHumanizationPostProcessing` |
+| `review-validator.ts` | Import `getBaseWordCountRange`, early-exit for 5-6 kw reviews near base max |
+
+### What stays unchanged
+- `word-count-flexibility.ts` — all range functions untouched
+- `sentence-rhythm.ts`, `modules.ts` — internal logic untouched
+- `generateHumanizationElements` — pre-processing element selection untouched
 

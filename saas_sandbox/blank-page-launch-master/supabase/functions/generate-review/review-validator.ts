@@ -1,7 +1,7 @@
 import { CustomerType } from './types.ts';
 import { generateWithOpenAI, generateWithPerplexity } from './ai-generators.ts';
 import { openAIApiKey, perplexityApiKey } from './config.ts';
-import { getValidationWordCountRange } from './humanization/word-count-flexibility.ts';
+import { getValidationWordCountRange, getBaseWordCountRange } from './humanization/word-count-flexibility.ts';
 
 export async function validateAndFixWordCount(
   review: string,
@@ -23,6 +23,15 @@ export async function validateAndFixWordCount(
   if (wordCount >= range.min && wordCount <= range.max) {
     console.log(`評論字數符合要求 (${range.min}-${range.max})`);
     return review;
+  }
+
+  // For 5-6 keywords: if already >= base max but within validation tolerance, accept as-is
+  if (keywordCount && keywordCount >= 5) {
+    const baseRange = getBaseWordCountRange(keywordCount);
+    if (wordCount >= baseRange.max && wordCount <= range.max) {
+      console.log(`5-6 keyword review at ${wordCount} chars, above base max ${baseRange.max} but within tolerance ${range.max}, accepting as-is`);
+      return review;
+    }
   }
   
   // 如果字數不足，嘗試擴展

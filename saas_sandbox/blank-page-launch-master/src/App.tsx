@@ -31,6 +31,8 @@ const TruthfulAnalytics = lazy(() => import("./pages/TruthfulAnalytics"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const DemoLandingPage = lazy(() => import("./pages/DemoLandingPage"));
 const AcceptTransfer = lazy(() => import("./pages/AcceptTransfer"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 
 // 設計系統展示
 const ColorPalette = lazy(() => import("./components/design/ColorPalette"));
@@ -203,6 +205,16 @@ const App = () => (
                 <SetupSuperAdmin />
               </Suspense>
             </SimpleProtectedRoute>
+          } />
+          <Route path="/privacy-policy" element={
+            <Suspense fallback={<LoadingSpinner text="載入隱私權政策..." />}>
+              <PrivacyPolicy />
+            </Suspense>
+          } />
+          <Route path="/terms-of-service" element={
+            <Suspense fallback={<LoadingSpinner text="載入服務條款..." />}>
+              <TermsOfService />
+            </Suspense>
           } />
           <Route path="*" element={<NotFound />} />
         </Routes>

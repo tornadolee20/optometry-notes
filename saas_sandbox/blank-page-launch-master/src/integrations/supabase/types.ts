@@ -158,6 +158,13 @@ export type Database = {
             referencedRelation: "stores"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "bank_transfer_submissions_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       customer_acquisition_funnel: {
@@ -235,6 +242,13 @@ export type Database = {
             referencedRelation: "stores"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "customer_behavior_metrics_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       customer_keyword_logs: {
@@ -268,6 +282,13 @@ export type Database = {
             columns: ["store_id"]
             isOneToOne: false
             referencedRelation: "stores"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "customer_keyword_logs_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
             referencedColumns: ["id"]
           },
         ]
@@ -548,6 +569,13 @@ export type Database = {
             columns: ["store_id"]
             isOneToOne: false
             referencedRelation: "stores"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "industry_requests_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
             referencedColumns: ["id"]
           },
         ]
@@ -861,6 +889,13 @@ export type Database = {
             referencedRelation: "stores"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "store_keywords_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       store_subscriptions: {
@@ -911,6 +946,13 @@ export type Database = {
             referencedRelation: "stores"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "store_subscriptions_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
+            referencedColumns: ["id"]
+          },
         ]
       }
       store_transfer_requests: {
@@ -953,6 +995,13 @@ export type Database = {
             columns: ["store_id"]
             isOneToOne: false
             referencedRelation: "stores"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "store_transfer_requests_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores_public"
             referencedColumns: ["id"]
           },
         ]
@@ -1344,7 +1393,39 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      stores_public: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          google_review_url: string | null
+          id: string | null
+          industry: string | null
+          status: Database["public"]["Enums"]["store_status"] | null
+          store_name: string | null
+          store_number: number | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          google_review_url?: string | null
+          id?: string | null
+          industry?: string | null
+          status?: Database["public"]["Enums"]["store_status"] | null
+          store_name?: string | null
+          store_number?: number | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          google_review_url?: string | null
+          id?: string | null
+          industry?: string | null
+          status?: Database["public"]["Enums"]["store_status"] | null
+          store_name?: string | null
+          store_number?: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       accept_store_transfer: { Args: { _token: string }; Returns: Json }

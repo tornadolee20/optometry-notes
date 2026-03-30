@@ -189,12 +189,21 @@ serve(async (req) => {
     const payload = JSON.parse(rawPayload)
     console.log('Payment webhook received:', payload)
 
-    const { 
-      event_type, 
-      payment_data, 
-      customer_data, 
-      subscription_data 
-    } = payload
+    const event_type = payload?.event_type
+    const payment_data = payload?.payment_data
+    const customer_data = payload?.customer_data
+    const subscription_data = payload?.subscription_data
+
+    if (!event_type || typeof event_type !== 'string') {
+      console.error('Missing or invalid event_type in webhook payload')
+      return new Response(
+        JSON.stringify({ error: 'Missing required field: event_type' }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          status: 400,
+        }
+      )
+    }
 
     switch (event_type) {
       case 'payment.succeeded':
