@@ -69,8 +69,8 @@ const EnterpriseAdminDashboard = () => {
       startOfToday.setHours(0, 0, 0, 0);
 
       const [storesRes, subsRes, todayUsersRes] = await Promise.all([
-        supabase.from('stores').select('id, status, created_at'),
-        supabase.from('store_subscriptions').select('id, status, plan_type, expires_at'),
+        supabase.from('stores').select('id, status, created_at').limit(5000),
+        supabase.from('store_subscriptions').select('id, status, plan_type, expires_at').limit(5000),
         supabase.from('users').select('id', { count: 'exact', head: true })
           .gte('created_at', startOfToday.toISOString()),
       ]);

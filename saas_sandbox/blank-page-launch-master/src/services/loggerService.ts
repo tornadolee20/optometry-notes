@@ -186,8 +186,12 @@ export class LoggerService {
 
   private setupUnloadHandler(): void {
     window.addEventListener('beforeunload', () => {
+      // Flush pending logs to Supabase on page unload
+      // sendBeacon to /api/logs is not used (endpoint doesn't exist)
+      // Instead, attempt a synchronous flush via the existing flushLogs mechanism
       if (this.queue.length > 0) {
-        navigator.sendBeacon('/api/logs', JSON.stringify(this.queue));
+        console.debug('[Logger] Flushing', this.queue.length, 'pending logs on unload');
+        this.flushLogs().catch(() => {});
       }
     });
   }

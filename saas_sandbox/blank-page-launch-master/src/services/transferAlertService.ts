@@ -40,8 +40,8 @@ export const sendTransferAlert = async (params: {
         severity: 'warning',
       },
     });
-  } catch {
+  } catch (err) {
     // Non-critical: don't block the main flow
-    console.warn('Transfer Telegram alert failed (non-critical)');
+    console.warn('Transfer Telegram alert failed (non-critical):', err);
   }
 };

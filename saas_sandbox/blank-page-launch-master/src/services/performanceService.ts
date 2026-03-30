@@ -36,6 +36,10 @@ export class PerformanceService {
   private interactions: number = 0;
   private errors: number = 0;
   private performanceObserver?: PerformanceObserver;
+  private interactionsInitialized = false;
+  private clickHandler?: () => void;
+  private keydownHandler?: () => void;
+  private scrollHandler?: () => void;
 
   constructor() {
     this.sessionId = this.generateSessionId();
@@ -173,32 +177,37 @@ export class PerformanceService {
    * 觀察用戶交互
    */
   private observeUserInteractions(): void {
+    if (this.interactionsInitialized) return;
+    this.interactionsInitialized = true;
+
     try {
-      // 監控點擊事件
-      document.addEventListener('click', () => {
-        this.interactions++;
-        this.recordInteraction('click');
-      });
+      // 儲存 handler 參考，以便 destroy() 時移除
+      this.clickHandler = () => { this.interactions++; this.recordInteraction('click'); };
+      this.keydownHandler = () => { this.interactions++; this.recordInteraction('keydown'); };
 
-      // 監控鍵盤事件
-      document.addEventListener('keydown', () => {
-        this.interactions++;
-        this.recordInteraction('keydown');
-      });
-
-      // 監控滾動事件
-      let scrollTimeout: NodeJS.Timeout;
-      document.addEventListener('scroll', () => {
+      let scrollTimeout: ReturnType<typeof setTimeout>;
+      this.scrollHandler = () => {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
           this.interactions++;
           this.recordInteraction('scroll');
         }, 100);
-      });
+      };
+
+      document.addEventListener('click', this.clickHandler);
+      document.addEventListener('keydown', this.keydownHandler);
+      document.addEventListener('scroll', this.scrollHandler);
 
     } catch (error) {
       logError("用戶交互觀察設置失敗", "performance", {}, error as Error);
     }
+  }
+
+  public destroy(): void {
+    if (this.clickHandler) document.removeEventListener('click', this.clickHandler);
+    if (this.keydownHandler) document.removeEventListener('keydown', this.keydownHandler);
+    if (this.scrollHandler) document.removeEventListener('scroll', this.scrollHandler);
+    this.interactionsInitialized = false;
   }
 
   /**

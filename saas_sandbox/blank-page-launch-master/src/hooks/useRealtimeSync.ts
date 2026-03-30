@@ -159,10 +159,14 @@ export const useRealtimeSync = ({
   }, [connect, disconnect]);
 
   // Periodic connection check
+  // Use ref to avoid interval resetting on every checkConnection reference change
+  const checkConnectionRef = useRef(checkConnection);
+  useEffect(() => { checkConnectionRef.current = checkConnection; }, [checkConnection]);
+
   useEffect(() => {
-    const interval = setInterval(checkConnection, 30000);
+    const interval = setInterval(() => checkConnectionRef.current(), 30000);
     return () => clearInterval(interval);
-  }, [checkConnection]);
+  }, []);
 
   return {
     status,
