@@ -2,10 +2,16 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
+export type ToneStyle =
+  | 'casual' | 'warm' | 'humorous' | 'professional'
+  | 'storytelling' | 'friend-rec' | 'surprised'
+  | 'local' | 'first-timer' | 'concise-punch';
+
 export interface PersonaConfig {
   gender: 'male' | 'female';
   ageGroup: 'student' | 'worker' | 'parent' | 'elder';
   writingStyle: 'concise' | 'narrative' | 'detailed';
+  toneStyle?: ToneStyle;
 }
 
 /** 根據關鍵字數量自動決定評論長度 */
@@ -16,7 +22,7 @@ export function deriveWritingStyle(keywordCount: number): PersonaConfig['writing
 }
 
 interface PersonaSelectorProps {
-  keywordCount: number;          // 由 ReviewContent 傳入，決定 writingStyle
+  keywordCount: number;
   onConfirm: (persona: PersonaConfig) => void;
   onSkip: () => void;
 }
@@ -24,6 +30,7 @@ interface PersonaSelectorProps {
 interface OptionItem<T extends string> {
   value: T;
   label: string;
+  emoji?: string;
 }
 
 const genderOptions: OptionItem<PersonaConfig['gender']>[] = [
@@ -38,27 +45,44 @@ const ageGroupOptions: OptionItem<PersonaConfig['ageGroup']>[] = [
   { value: 'elder', label: '長輩' },
 ];
 
+const toneStyleOptions: OptionItem<ToneStyle>[] = [
+  { value: 'casual',        label: '口語直白',  emoji: '💬' },
+  { value: 'warm',          label: '溫暖感性',  emoji: '🤍' },
+  { value: 'humorous',      label: '幽默風趣',  emoji: '😄' },
+  { value: 'professional',  label: '專業分析',  emoji: '🔬' },
+  { value: 'storytelling',  label: '說故事',    emoji: '📖' },
+  { value: 'friend-rec',    label: '朋友推薦',  emoji: '👋' },
+  { value: 'surprised',     label: '驚喜發現',  emoji: '😲' },
+  { value: 'local',         label: '在地熟客',  emoji: '📍' },
+  { value: 'first-timer',   label: '初次體驗',  emoji: '✨' },
+  { value: 'concise-punch', label: '精簡有力',  emoji: '⚡' },
+];
+
 function CardOption<T extends string>({
   item,
   selected,
   onSelect,
+  compact = false,
 }: {
   item: OptionItem<T>;
   selected: boolean;
   onSelect: (v: T) => void;
+  compact?: boolean;
 }) {
   return (
     <button
       type="button"
       onClick={() => onSelect(item.value)}
       className={cn(
-        "min-h-[52px] w-full rounded-xl border-2 px-4 py-3 text-sm font-medium transition-all duration-150",
+        "w-full rounded-xl border-2 font-medium transition-all duration-150",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        compact ? "min-h-[44px] px-2 py-2 text-xs" : "min-h-[52px] px-4 py-3 text-sm",
         selected
           ? "border-primary bg-primary/10 text-primary shadow-sm scale-[1.02]"
           : "border-border bg-card text-foreground hover:border-primary/40 hover:bg-muted/50"
       )}
     >
+      {item.emoji && <span className="mr-1">{item.emoji}</span>}
       {item.label}
     </button>
   );
@@ -67,13 +91,14 @@ function CardOption<T extends string>({
 export const PersonaSelector = ({ keywordCount, onConfirm, onSkip }: PersonaSelectorProps) => {
   const [gender, setGender] = useState<PersonaConfig['gender'] | null>(null);
   const [ageGroup, setAgeGroup] = useState<PersonaConfig['ageGroup'] | null>(null);
+  const [toneStyle, setToneStyle] = useState<ToneStyle | null>(null);
 
-  const isComplete = gender && ageGroup;
+  const isComplete = gender && ageGroup && toneStyle;
 
   const handleConfirm = () => {
     if (!isComplete) return;
     const writingStyle = deriveWritingStyle(keywordCount);
-    onConfirm({ gender, ageGroup, writingStyle });
+    onConfirm({ gender, ageGroup, writingStyle, toneStyle });
   };
 
   return (
@@ -81,7 +106,7 @@ export const PersonaSelector = ({ keywordCount, onConfirm, onSkip }: PersonaSele
       {/* Header */}
       <div className="text-center space-y-1">
         <h3 className="text-lg font-bold">讓評論更像你</h3>
-        <p className="text-sm text-muted-foreground">2 秒選完，評論更自然</p>
+        <p className="text-sm text-muted-foreground">選一選，評論更自然</p>
       </div>
 
       {/* Gender */}
@@ -104,7 +129,23 @@ export const PersonaSelector = ({ keywordCount, onConfirm, onSkip }: PersonaSele
         </div>
       </div>
 
-      {/* Confirm Button */}
+      {/* Tone Style — 10 options */}
+      <div className="space-y-2">
+        <p className="text-sm font-medium text-muted-foreground">你的寫作風格</p>
+        <div className="grid grid-cols-2 gap-2">
+          {toneStyleOptions.map((o) => (
+            <CardOption
+              key={o.value}
+              item={o}
+              selected={toneStyle === o.value}
+              onSelect={setToneStyle}
+              compact
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Confirm */}
       <Button
         onClick={handleConfirm}
         disabled={!isComplete}

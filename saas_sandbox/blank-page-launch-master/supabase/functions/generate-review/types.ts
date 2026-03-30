@@ -20,6 +20,7 @@ export interface RequestBody {
     gender: 'male' | 'female';
     ageGroup: 'student' | 'worker' | 'parent' | 'elder';
     writingStyle: 'concise' | 'narrative' | 'detailed';
+    toneStyle?: 'casual' | 'warm' | 'humorous' | 'professional' | 'storytelling' | 'friend-rec' | 'surprised' | 'local' | 'first-timer' | 'concise-punch';
   };
 }
 

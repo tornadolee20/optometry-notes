@@ -15,11 +15,16 @@ export const SPECIAL_WRITING_STYLES = {
 export type Gender = 'male' | 'female';
 export type AgeGroup = 'student' | 'worker' | 'parent' | 'elder';
 export type WritingStyle = 'concise' | 'narrative' | 'detailed';
+export type ToneStyle =
+  | 'casual' | 'warm' | 'humorous' | 'professional'
+  | 'storytelling' | 'friend-rec' | 'surprised'
+  | 'local' | 'first-timer' | 'concise-punch';
 
 export interface PersonaConfig {
   gender: Gender;
   ageGroup: AgeGroup;
   writingStyle: WritingStyle;
+  toneStyle?: ToneStyle;
 }
 
 // 8 種人格聲音：具體的行為描述，而非抽象標籤
@@ -80,6 +85,39 @@ const WRITING_STYLE_MODIFIERS: Record<WritingStyle, string> = {
     '哪個細節最印象深刻、最後感受如何。細節要具體，不要空洞的形容詞。',
 };
 
+// 10 種顧客自選寫作風格
+const TONE_STYLE_PROMPTS: Record<ToneStyle, string> = {
+  'casual':
+    '【口語直白】說話自然隨性，像跟朋友聊天，不咬文嚼字。句子短、接地氣，用詞生活化，讀起來像在說話不像在寫作文。',
+
+  'warm':
+    '【溫暖感性】文字有溫度，注重情感描述，讓人感受到真實的人情味。多用感受性詞彙，細節描述帶有情感，讀完有暖意。',
+
+  'humorous':
+    '【幽默風趣】帶一點輕鬆的語氣，偶爾用誇張或有趣的比喻，讀起來不沉悶。笑點要自然，不要刻意搞笑，保持真實感。',
+
+  'professional':
+    '【專業分析】理性客觀，注重細節描述。會比較不同面向（流程、品質、時間效率），像一個在各地嘗試過的業界人士留下的評價。',
+
+  'storytelling':
+    '【說故事】有起有伏，像在說一段小插曲。有開頭情境、中間轉折、結尾感受，整篇有節奏感，讀完有畫面。',
+
+  'friend-rec':
+    '【朋友推薦】語氣像在叫好朋友一定要來，真誠有說服力。會具體說「為什麼你應該來」，不是空泛稱讚。',
+
+  'surprised':
+    '【驚喜發現】一開始沒有特別期待，甚至有點擔心，結果超出預期。整篇圍繞著「沒想到」「原來」「比想像中好多了」的語氣展開。',
+
+  'local':
+    '【在地熟客】像常來的老主顧，對這裡熟悉且有歸屬感。語氣輕鬆，偶爾比較「以前」和「現在」，或跟附近其他地方對比。',
+
+  'first-timer':
+    '【初次體驗】第一次來，帶著新鮮感和觀察視角。會描述「第一眼的感覺」「第一次注意到的細節」，語氣略帶驚喜和探索感。',
+
+  'concise-punch':
+    '【精簡有力】字少話精，每句都有重量，不廢話不重複。像寫廣告文案一樣，每個字都值得保留，讀完印象深刻。',
+};
+
 // 組合人設 prompt
 export function buildPersonaPrompt(config: PersonaConfig): string {
   const voiceKey = `${config.gender}-${config.ageGroup}`;
@@ -88,9 +126,13 @@ export function buildPersonaPrompt(config: PersonaConfig): string {
 
   if (!voice) return '';
 
+  const toneSection = config.toneStyle && TONE_STYLE_PROMPTS[config.toneStyle]
+    ? `\n### 寫作風格（顧客自選，請嚴格貫徹）\n${TONE_STYLE_PROMPTS[config.toneStyle]}\n`
+    : '';
+
   return `
 ### 說話者人設（最高優先，整篇評論必須貫徹）
 ${voice}
 ${styleModifier}
-請讓整篇評論的用詞、句式、節奏都符合這個人設，不要中途切換成其他語氣。`;
+${toneSection}請讓整篇評論的用詞、句式、節奏都符合這個人設，不要中途切換成其他語氣。`;
 }
