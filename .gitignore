@@ -36,3 +36,14 @@ backup/
 temp_*.txt
 temp_*.py
 recent_files.txt
+
+# 大型二進位檔（不推上 GitHub）
+ffmpeg-7.0.2-amd64-static/
+media/
+apps/
+bin/
+avatars/
+
+# Dropbox 防污染：巢狀同名資料夾
+*/*/.dropbox
+*/*/.dropbox.cache
