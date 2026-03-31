@@ -9,6 +9,8 @@ import { StoreQRCode } from "@/components/store/StoreQRCode";
 import { KeywordManagerCompact } from "@/components/store/improved/KeywordManagerCompact";
 import { OversizedKeywordsPanel } from "@/components/admin/OversizedKeywordsPanel";
 import { ReviewSystemUrl } from "@/components/store/ReviewSystemUrl";
+import { storeNumberToCode } from "@/utils/referral-code";
+import { toast } from "@/hooks/use-toast";
 import { PopularCustomFeelings } from "@/components/admin/PopularCustomFeelings";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -638,11 +640,39 @@ const StoreProfile = () => {
 
             <PopularCustomFeelings storeId={store.id} />
 
-            <ReviewSystemUrl 
-              storeId={store.id} 
+            <ReviewSystemUrl
+              storeId={store.id}
               reviewUrl={reviewUrl}
-              storeNumber={formattedStoreNumber} 
+              storeNumber={formattedStoreNumber}
             />
+
+            {/* 推薦碼 */}
+            <Card className="border border-border">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                  推薦碼
+                  <span className="text-xs font-normal text-muted-foreground">介紹新店家加入，成交後獲得回饋</span>
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <code className="flex-1 bg-muted rounded-lg px-4 py-2 text-base font-mono font-semibold tracking-widest text-center">
+                    {storeNumberToCode(store.store_number)}
+                  </code>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => {
+                      navigator.clipboard.writeText(storeNumberToCode(store.store_number));
+                      toast({ title: "推薦碼已複製" });
+                    }}
+                  >
+                    複製
+                  </Button>
+                </div>
+                <p className="text-xs text-muted-foreground">把推薦碼告訴朋友，讓他們在註冊時填入，成交後我們會主動聯繫確認回饋方式。</p>
+              </CardContent>
+            </Card>
 
             <div id="qr-section">
               <StoreQRCode 

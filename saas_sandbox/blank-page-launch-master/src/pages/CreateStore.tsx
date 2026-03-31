@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/hooks/useAuth";
+import { isValidReferralCode } from "@/utils/referral-code";
 
 interface FormState {
   store_name: string;
@@ -17,6 +18,7 @@ interface FormState {
   description?: string;
   google_review_url?: string;
   industry?: string;
+  referred_by_code?: string;
 }
 
 const CreateStore = () => {
@@ -35,6 +37,7 @@ const CreateStore = () => {
     description: "",
     google_review_url: "",
     industry: "",
+    referred_by_code: "",
   });
 
   useEffect(() => {
@@ -108,6 +111,13 @@ const CreateStore = () => {
       return;
     }
 
+    // 推薦碼格式驗證（選填，但填了就必須正確）
+    const referralCode = form.referred_by_code?.trim().toUpperCase() || '';
+    if (referralCode && !isValidReferralCode(referralCode)) {
+      toast({ title: "推薦碼格式不正確", description: "推薦碼格式為 STORE000017，請確認後再試" });
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       if (!user) {
@@ -154,6 +164,7 @@ const CreateStore = () => {
         store_name: form.store_name.trim(),
         email: form.email.trim(),
         phone: form.phone.trim(),
+        referred_by_code: referralCode || null,
         address: form.address.trim(),
         description: form.description?.trim() || null,
         google_review_url: form.google_review_url?.trim() || null,
@@ -265,6 +276,20 @@ const CreateStore = () => {
               <div className="grid gap-2">
                 <Label htmlFor="description">店家簡介（選填）</Label>
                 <Textarea id="description" name="description" value={form.description} onChange={onChange} placeholder="簡短介紹您的店家特色…" />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="referred_by_code">推薦碼（選填）</Label>
+                <Input
+                  id="referred_by_code"
+                  name="referred_by_code"
+                  value={form.referred_by_code}
+                  onChange={onChange}
+                  placeholder="STORE000017"
+                  className="font-mono uppercase"
+                  maxLength={11}
+                />
+                <p className="text-xs text-muted-foreground">如果是朋友或合作夥伴介紹，請填入對方的推薦碼</p>
               </div>
 
               <div className="flex gap-3 pt-2">

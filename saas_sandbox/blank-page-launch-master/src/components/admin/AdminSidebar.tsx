@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { 
+import {
   LayoutDashboard, Store, Settings, TrendingUp,
-  LogOut, Home, ChevronRight, BookOpen
+  LogOut, Home, ChevronRight, BookOpen, Gift
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent,
@@ -17,6 +17,7 @@ const navigationItems = [
   { title: "儀表板", href: "/admin/dashboard", icon: LayoutDashboard },
   { title: "店家管理", href: "/admin/stores", icon: Store },
   { title: "數據報表", href: "/admin/reports", icon: TrendingUp },
+  { title: "推薦獎金", href: "/admin/referrals", icon: Gift },
   { title: "系統管理", href: "/admin/system", icon: Settings },
   { title: "操作手冊", href: "/admin/manual", icon: BookOpen },
 ];

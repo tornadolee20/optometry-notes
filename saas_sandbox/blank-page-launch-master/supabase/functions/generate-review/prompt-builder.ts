@@ -25,7 +25,8 @@ export function createSystemPrompt(
   keywordCount?: number,
   tonePromptHint?: string,
   toneIntensity?: string,
-  persona?: PersonaConfig
+  persona?: PersonaConfig,
+  visitReason?: string
 ): string {
   
   const hasCustomFeelings = customFeelings && customFeelings.length > 0;
@@ -103,6 +104,16 @@ export function createSystemPrompt(
 - 不要加正向緩和語氣`;
   }
 
+  // Visit reason — anchors the narrative opening and enforces logic consistency
+  const isReturnVisit = visitReason && (visitReason.includes('再訪') || visitReason.includes('又來') || visitReason.includes('複查') || visitReason.includes('好久沒來'));
+  const visitReasonSection = visitReason
+    ? `\n### 來訪原因（必須作為破題的觸發點，自然帶入）
+來訪原因：${visitReason}
+${isReturnVisit
+  ? '⚠️ 這是再訪顧客：開場白必須體現「再次來訪」的語氣（例：「又來了」「這次特地再來」「上次來過，這次…」），嚴禁使用「意外發現」「第一次來」「偶然路過」等初訪語氣'
+  : '開場白的語氣必須與來訪原因一致，不能自相矛盾'}\n`
+    : '';
+
   // Persona section — real customer identity drives voice
   const personaSection = persona ? buildPersonaPrompt(persona) : '';
 
@@ -126,6 +137,7 @@ export function createSystemPrompt(
 - 星等參考：${starRating ?? '自動'}（不在文中提及）
 ${tonePersonality}
 ${personaSection}
+${visitReasonSection}
 ${negativeEnforcement}
 
 ### 關鍵字
@@ -142,28 +154,44 @@ ${opening.replace('{storeName}', storeName)}
 1. 破題 — 一個具體觸發點切入（聽說／路過／再訪／特定需求），1-2 句，不要從「這家店很棒」開始
 2. 進入體驗 — 依時間或空間順序描述真實發生的事，畫面要具體
 3. 關鍵時刻 — 一個讓你印象最深的細節，要有畫面感、要夠具體
-4. 收束 — 結尾句必須是「具體行動」或「身體/情緒感受」，從以下方向擇一：
-   - 行動：「已經叫我媽也來了」「下次換鏡片還是會回來」「朋友問我去哪配的我直接傳地址」
-   - 感受：「出門時眼睛舒服多了，整個人也放鬆」「走出來的時候心情很好」「比預期輕鬆很多」
-   - 對比：「比上次在別家配的體驗好太多」「沒想到驗光可以這麼不有壓力」
+4. 收束 — 結尾句必須包含「身體或感官的具體描述」＋「行動或情緒」，二選一方向：
+   - 身體感受型：「出門時眼睛清晰多了，走到停車場才發現自己一直在微笑」「戴著新眼鏡走出去，整個人輕了一截」「離開的時候眼睛舒服到忘記剛剛有點緊張」
+   - 行動型（含身體感受）：「已經傳地址給同事了，他上週一直說眼睛痠」「下次換鏡片還是會回來，這種不被催的感覺難得」
    - 絕對禁止用「推薦」「建議大家」「整體來說」「總體而言」「五星」收尾
+   - 禁止以小缺點作為最後一句，小缺點必須放在中段
+
+### 段落與排版
+- 全文分為 **2～3 段**，段落之間空一行（用空行分隔，不要全部擠在一起）
+- 每段聚焦一個主題：第一段破題＋進入體驗、第二段關鍵時刻＋小缺點（如有）、第三段結尾感受
+- 每段 2～4 句，不要一段塞超過 5 句
 
 ### 句子節奏（人寫文字的關鍵）
 - 長短交錯：每段至少要有一句 8 字以內的短句（例：「就這樣」「真的很意外」「沒想到耶」「舒服多了」）
 - 禁止連續 3 句以上使用相同長度的句子
 - 每句開頭字不可連續重複：禁止連續 2 句以上用「讓」「這」「我」「他」開頭
 
-### 重複詞頻上限（超過即重寫）
+### 「讓」字替換規則（最高優先，硬性執行）
+全文「讓」字只能出現 **2 次**。超過時，第 3 個以後的「讓」必須用以下方式改寫：
+- 「讓我感到」→「感覺」「心裡覺得」「有種」
+- 「讓我覺得」→「整個人」「自然就」
+- 「讓人感受到」→「能感受到」「看得出來」「明顯感覺到」
+- 「讓我有更多了解」→「對這件事多了了解」「才知道原來」
+- 「讓我驚喜」→「真的出乎意料」「沒想到」「意外地」
+生成完畢後請自我檢查全文「讓」的出現次數，超過即替換。
+
+### 其他詞頻上限
 - 「真的」全文最多出現 2 次
-- 「讓」全文最多出現 3 次
 - 「就」全文最多出現 3 次
+- 「非常」全文最多出現 1 次
 - 同一個形容詞全文不可重複使用
 
 ### 語感守則
 - 全文使用繁體中文，嚴禁夾雜任何英文單字或縮寫（包含 OK、Browse、Check、VIP、CP值 等，一律改用中文：貴賓、性價比）
 - 連接詞：使用「${industryLanguage.naturalConnectors?.slice(0, 3).join('」「') || '後來」「結果'}」等
 - 行業詞彙：${industryLanguage.vocabularyPatterns?.slice(0, 3).join('、') || '專業服務'}
-- 禁止自行生成 AI 套話（用戶自訂感受除外）：「無可挑剔」「完全可以說是」「不負眾望」「超乎預期」「令人驚艷」「讓我驚豔」「讓人驚豔」「五星推薦」「強力推薦大家」「相當到位」「專業的對話」
+- 禁止自行生成 AI 套話（用戶自訂感受除外）：「無可挑剔」「完全可以說是」「不負眾望」「超乎預期」「令人驚艷」「讓我驚豔」「讓人驚豔」「五星推薦」「強力推薦大家」「相當到位」「專業的對話」「環境非常舒適」「讓人感覺放鬆」「讓人覺得放鬆」「環境很舒適」「氛圍很好」
+- 禁止使用「首先」「其次」「最後」等條列式連接詞，評論不是報告
+- 正面評論可以包含一個小缺點（如「假日人有點多」「停車稍微不方便」），這讓評論更真實可信；但小缺點應放在中段，結尾仍須落在正面感受或具體行動上
 - ${nameRule}
 - 僅文字，不用表情符號
 - Google規範：禁仇恨/歧視/個資/威脅/交換利益/刷評暗示

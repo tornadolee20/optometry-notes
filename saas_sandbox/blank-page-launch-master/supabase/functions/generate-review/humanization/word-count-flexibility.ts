@@ -3,10 +3,10 @@
 // Base ranges by keyword count
 export function getBaseWordCountRange(keywordCount: number): { min: number; max: number } {
   switch (keywordCount) {
-    case 3: return { min: 80, max: 120 };
-    case 4: return { min: 100, max: 140 };
-    case 5: return { min: 130, max: 170 };
-    default: return { min: 190, max: 230 }; // 6+
+    case 3: return { min: 80,  max: 130 };  // concise：略放寬上限，避免截斷
+    case 4: return { min: 120, max: 180 };  // narrative：對齊 ~150字目標
+    case 5: return { min: 150, max: 200 };  // narrative：同上
+    default: return { min: 200, max: 260 }; // detailed：6+ keywords
   }
 }
 

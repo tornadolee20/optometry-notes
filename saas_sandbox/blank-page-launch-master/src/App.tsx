@@ -46,6 +46,7 @@ const EnterpriseReports = lazy(() => import("./pages/admin/EnterpriseReports"));
 const SystemManagement = lazy(() => import("./pages/admin/SystemManagement"));
 const AdminManual = lazy(() => import("./pages/admin/AdminManual"));
 const SetupSuperAdmin = lazy(() => import("./pages/admin/SetupSuperAdmin"));
+const ReferralManagement = lazy(() => import("./pages/admin/ReferralManagement"));
 
 const queryClient = new QueryClient();
 
@@ -115,6 +116,11 @@ const App = () => (
                       <Route path="reports" element={
                         <Suspense fallback={<LoadingSpinner text="載入數據報表..." />}>
                           <EnterpriseReports />
+                        </Suspense>
+                      } />
+                      <Route path="referrals" element={
+                        <Suspense fallback={<LoadingSpinner text="載入推薦獎金..." />}>
+                          <ReferralManagement />
                         </Suspense>
                       } />
                       <Route path="system" element={

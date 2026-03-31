@@ -645,6 +645,15 @@ export function generateIndustryPromptAddition(industry?: string): string {
 - 避免過度誇大或虛假宣傳`;
   }
 
+  // 行業專屬禁用詞
+  const industryBannedWords: Record<string, string> = {
+    optical: '嚴禁使用「師傅」，光學從業人員一律稱「驗光師」或「眼鏡師」或「店員」；嚴禁使用「老師」',
+    medical_health: '嚴禁使用「師傅」，醫療人員依實際職稱稱呼（醫師、護理師、治療師）',
+    salon_beauty: '可用「設計師」「老師」，嚴禁使用「師傅」',
+  };
+  const bannedLine = industryBannedWords[getIndustryCategory(industry) ?? '']
+    ? `- 人員稱謂：${industryBannedWords[getIndustryCategory(industry) ?? '']}\n` : '';
+
   return `
 ### ${context.category}專業指引
 - 行業特色：${context.description}
@@ -652,7 +661,7 @@ export function generateIndustryPromptAddition(industry?: string): string {
 - 常用詞彙：運用「${context.vocabularyPatterns.slice(0, 4).join('」、「')}」等相關表達
 - 體驗描述：可參考「${context.commonSentences.slice(0, 2).join('」或「')}」的描述方式
 - 合規提醒：${context.complianceReminders.slice(0, 2).join('；')}
-
+${bannedLine}
 請確保評論內容符合${context.category}的專業特性，使用相關的行業詞彙和體驗描述。`;
 }
 

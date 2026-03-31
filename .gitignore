@@ -29,6 +29,8 @@ backup/
 
 # .claude/ 的本機設定排除，但 skills 需同步
 .claude/settings.local.json
+.claude/settings.local.json.tmp.*
+.claude/scheduled_tasks.lock
 .claude/todos/
 .claude/worktrees/
 
