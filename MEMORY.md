@@ -69,6 +69,9 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - **驗光隱喻**：只追求程式成功執行等於「假性1.0視力」，優秀的 AI 驗光師應深入檢查「調節力疲勞（系統隱患）」。
 
 
+## MYOWNREVIEWS 專案 (2026-04-02)
+- [MYOWNREVIEWS 技術細節](memory/project_myownreviews.md) — Supabase ref、部署指令、產業模板架構、推薦碼設計
+
 ## 運行環境 (Runtime)
 運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
 推理模式：預設關閉（除非開啟流式傳輸）。使用 /reasoning 切換；/status 可查看目前狀態。
