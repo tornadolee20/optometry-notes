@@ -1,0 +1,233 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #04
+  文章卡片視覺升級
+  ── 升級項目 ─────────────────────────────────────────
+  ① 縮圖 hover 時輕微放大（zoom）
+  ② 卡片整體 hover 上浮陰影
+  ③ 「繼續閱讀」按鈕升級為品牌色膠囊樣式
+  ④ 分類標籤 badge（Label chip）
+  ⑤ 推薦文章卡片添加漸層遮罩標題可讀性提升
+  ⑥ 首頁文章列表左側加上品牌色邊線裝飾
+  ⑦ 深色模式全部適配
+  ── 安裝方式 ─────────────────────────────────────────
+  方法 A（建議）：Blogger 後台 → 主題 → 自訂 → 新增 CSS
+                   貼上 <style> 內的全部 CSS
+  方法 B：版面配置 → 新增小工具 → HTML/JavaScript → 貼上全部
+════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ═══════════════════════════════════════════════════
+   ① 文章列表卡片（.index-post）升級
+   ═══════════════════════════════════════════════════ */
+
+/* 整體卡片 hover 上浮 */
+.index-post {
+  transition: transform 0.28s cubic-bezier(.25,.8,.25,1),
+              box-shadow 0.28s cubic-bezier(.25,.8,.25,1) !important;
+  border-left: 3px solid transparent;
+  will-change: transform;
+}
+.index-post:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(52,86,139,0.13) !important;
+  border-left-color: #34568B;
+}
+
+/* 縮圖 zoom */
+.post-thumbnail {
+  overflow: hidden !important;
+  border-radius: 10px !important;
+}
+.post-thumbnail img {
+  transition: transform 0.45s cubic-bezier(.25,.8,.25,1) !important;
+  display: block;
+  width: 100%;
+}
+.index-post:hover .post-thumbnail img {
+  transform: scale(1.06);
+}
+
+/* ═══════════════════════════════════════════════════
+   ② 「繼續閱讀」按鈕升級
+   ═══════════════════════════════════════════════════ */
+a.read-more,
+.read-more-link,
+.post-body a[href*="/"][class*="more"] {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 18px !important;
+  background: transparent !important;
+  color: #34568B !important;
+  border: 1.5px solid #34568B !important;
+  border-radius: 20px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  text-decoration: none !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+  margin-top: 10px;
+}
+a.read-more::after,
+.read-more-link::after {
+  content: ' →';
+  transition: transform 0.2s ease;
+}
+a.read-more:hover,
+.read-more-link:hover {
+  background: #34568B !important;
+  color: #fff !important;
+}
+a.read-more:hover::after,
+.read-more-link:hover::after {
+  transform: translateX(3px);
+}
+
+/* ═══════════════════════════════════════════════════
+   ③ 文章標籤 / Label chip
+   ═══════════════════════════════════════════════════ */
+.post-labels a,
+.labels a,
+span.post-labels a {
+  display: inline-block !important;
+  padding: 2px 10px !important;
+  background: rgba(52,86,139,0.09) !important;
+  color: #34568B !important;
+  border-radius: 12px !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  text-decoration: none !important;
+  margin: 2px 3px !important;
+  transition: background 0.18s ease !important;
+  border: 1px solid rgba(52,86,139,0.18) !important;
+}
+.post-labels a:hover,
+.labels a:hover {
+  background: rgba(52,86,139,0.18) !important;
+  text-decoration: none !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   ④ 推薦文章卡片（recommended-item）升級
+   ═══════════════════════════════════════════════════ */
+.recommended-item {
+  position: relative;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+  transition: transform 0.28s cubic-bezier(.25,.8,.25,1),
+              box-shadow 0.28s ease !important;
+  text-decoration: none !important;
+}
+.recommended-item:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 14px 40px rgba(52,86,139,0.16) !important;
+}
+
+/* 縮圖 zoom */
+.recommended-item img {
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1) !important;
+  display: block;
+  width: 100%;
+}
+.recommended-item:hover img {
+  transform: scale(1.08);
+}
+
+/* 底部漸層遮罩（讓標題在圖上更易讀）*/
+.recommended-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 55%;
+  background: linear-gradient(
+    to top,
+    rgba(15,30,55,0.72) 0%,
+    rgba(15,30,55,0) 100%
+  );
+  border-radius: 0 0 14px 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.recommended-item:hover::after {
+  opacity: 1;
+}
+
+/* 卡片標題 hover 高亮 */
+.recommended-item-content h5 {
+  transition: color 0.2s ease !important;
+}
+.recommended-item:hover .recommended-item-content h5 {
+  color: #34568B !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   ⑤ 文章標題下劃線動畫
+   ═══════════════════════════════════════════════════ */
+h3.post-title a,
+h2.post-title a {
+  position: relative;
+  text-decoration: none !important;
+  background-image: linear-gradient(#34568B, #34568B) !important;
+  background-size: 0% 2px !important;
+  background-repeat: no-repeat !important;
+  background-position: left bottom !important;
+  transition: background-size 0.3s ease !important;
+  padding-bottom: 2px;
+}
+h3.post-title a:hover,
+h2.post-title a:hover {
+  background-size: 100% 2px !important;
+  color: #34568B !important;
+}
+
+/* ═══════════════════════════════════════════════════
+   ⑥ 深色模式適配
+   ═══════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  .index-post:hover {
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35) !important;
+    border-left-color: #A7C4BC !important;
+  }
+  a.read-more, .read-more-link {
+    color: #A7C4BC !important;
+    border-color: #A7C4BC !important;
+  }
+  a.read-more:hover, .read-more-link:hover {
+    background: #A7C4BC !important;
+    color: #1a2a3a !important;
+  }
+  .post-labels a, .labels a {
+    background: rgba(167,196,188,0.12) !important;
+    color: #A7C4BC !important;
+    border-color: rgba(167,196,188,0.25) !important;
+  }
+  .post-labels a:hover, .labels a:hover {
+    background: rgba(167,196,188,0.22) !important;
+  }
+  h3.post-title a, h2.post-title a {
+    background-image: linear-gradient(#A7C4BC, #A7C4BC) !important;
+  }
+  h3.post-title a:hover, h2.post-title a:hover {
+    color: #A7C4BC !important;
+  }
+  .recommended-item:hover .recommended-item-content h5 {
+    color: #A7C4BC !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   ⑦ 手機微調
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .index-post:hover {
+    transform: none; /* 手機不做上浮避免卡頓 */
+  }
+  .recommended-item:hover {
+    transform: none;
+  }
+}
+</style>

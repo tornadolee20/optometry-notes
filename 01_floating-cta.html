@@ -1,0 +1,209 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #01
+  浮動聯絡按鈕（LINE + 電話）
+  ── 設計規格 ─────────────────────────────────────────
+  • 右下角固定浮動，主色 LINE 綠 #06C755
+  • 預設顯示 LINE 圖示，點擊後展開電話按鈕
+  • 脈動光暈動畫吸引點擊
+  • 捲動 > 300px 才完全顯示（不影響首屏）
+  • RWD：手機/桌機均適配
+  ── 安裝方式 ─────────────────────────────────────────
+  Blogger 後台 → 版面配置 → 新增小工具 → HTML/JavaScript
+  貼上本檔案全部內容 → 儲存
+  ⚠️ 請修改下方 JS 區塊中的 LINE_ID 與 PHONE
+════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ═══ 容器 ═══════════════════════════════════════════ */
+.ug-float {
+  position: fixed;
+  bottom: 28px;
+  right: 22px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.4s ease;
+}
+
+/* ═══ 共用圓形按鈕 ════════════════════════════════════ */
+.ug-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  text-decoration: none !important;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+.ug-float a:hover {
+  transform: scale(1.13) !important;
+}
+
+/* ═══ LINE 主按鈕 ════════════════════════════════════ */
+.ug-line-btn {
+  width: 58px;
+  height: 58px;
+  background: #06C755;
+  box-shadow: 0 4px 18px rgba(6,199,85,0.45) !important;
+  animation: ug-pulse 2.8s ease-in-out infinite;
+}
+.ug-line-btn svg { width: 32px; height: 32px; fill: #fff; }
+
+/* ═══ 電話副按鈕 ══════════════════════════════════════ */
+.ug-phone-btn {
+  width: 48px;
+  height: 48px;
+  background: #34568B;
+  box-shadow: 0 4px 14px rgba(52,86,139,0.38) !important;
+  opacity: 0;
+  transform: translateY(12px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(.34,1.56,.64,1) !important;
+}
+.ug-phone-btn svg { width: 24px; height: 24px; fill: #fff; }
+
+/* 展開狀態 */
+.ug-float.open .ug-phone-btn {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ═══ 標籤提示 ════════════════════════════════════════ */
+.ug-float .ug-tip {
+  position: absolute;
+  right: 68px;
+  white-space: nowrap;
+  background: rgba(20,20,20,0.82);
+  color: #fff;
+  font-size: 12.5px;
+  line-height: 1;
+  padding: 6px 11px;
+  border-radius: 7px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  font-family: 'Noto Serif TC', 'Microsoft JhengHei', sans-serif;
+  letter-spacing: 0.03em;
+}
+.ug-float .ug-tip::after {
+  content: '';
+  position: absolute;
+  left: 100%; top: 50%;
+  transform: translateY(-50%);
+  border: 5px solid transparent;
+  border-left-color: rgba(20,20,20,0.82);
+}
+.ug-line-btn:hover ~ .ug-tip-line,
+.ug-phone-btn:hover ~ .ug-tip-phone,
+.ug-line-wrap:hover .ug-tip-line,
+.ug-phone-wrap:hover .ug-tip-phone {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ═══ 脈動動畫 ═══════════════════════════════════════ */
+@keyframes ug-pulse {
+  0%, 100% { box-shadow: 0 4px 18px rgba(6,199,85,0.45); }
+  50% {
+    box-shadow: 0 4px 26px rgba(6,199,85,0.65),
+                0 0 0 10px rgba(6,199,85,0.10);
+  }
+}
+
+/* ═══ 深色模式 ════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  .ug-float .ug-tip {
+    background: rgba(240,240,240,0.90);
+    color: #1a1a1a;
+  }
+  .ug-float .ug-tip::after {
+    border-left-color: rgba(240,240,240,0.90);
+  }
+}
+
+/* ═══ 手機調整 ════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .ug-float { bottom: 18px; right: 14px; }
+  .ug-line-btn { width: 52px; height: 52px; }
+  .ug-line-btn svg { width: 28px; height: 28px; }
+  .ug-phone-btn { width: 44px; height: 44px; }
+  .ug-float .ug-tip { display: none; }
+}
+</style>
+
+<!-- 浮動按鈕 HTML -->
+<div class="ug-float" id="ugFloat">
+
+  <!-- 電話按鈕（次要，展開後顯示）-->
+  <div class="ug-phone-wrap" style="position:relative;">
+    <a class="ug-phone-btn" id="ugPhoneBtn" href="tel:+886229680099" title="撥打電話預約">
+      <!-- Phone SVG -->
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.56.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.29 21 3 13.71 3 4.5c0-.55.45-1 1-1H7.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.23 1.01L6.6 10.8z"/>
+      </svg>
+    </a>
+    <span class="ug-tip ug-tip-phone" style="bottom:12px;">📞 來電預約</span>
+  </div>
+
+  <!-- LINE 主按鈕 -->
+  <div class="ug-line-wrap" style="position:relative;">
+    <a class="ug-line-btn" id="ugLineBtn" href="#" target="_blank" rel="noopener" title="LINE 聯絡目鏡大叔">
+      <!-- LINE SVG -->
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.07 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+    </a>
+    <span class="ug-tip ug-tip-line" style="bottom:16px;">💬 LINE 諮詢</span>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  /* ══ ⚙️ 請修改這兩行 ════════════════════════════════ */
+  var LINE_ID = 'uncleglasses';       /* 你的 LINE ID（不含 @）*/
+  var PHONE   = '+886229680099';      /* 你的電話號碼          */
+  /* ═════════════════════════════════════════════════ */
+
+  var wrap    = document.getElementById('ugFloat');
+  var lineBtn = document.getElementById('ugLineBtn');
+  var phoneBtn= document.getElementById('ugPhoneBtn');
+
+  // 設定連結
+  lineBtn.href  = 'https://line.me/ti/p/~' + LINE_ID;
+  phoneBtn.href = 'tel:' + PHONE;
+
+  // LINE 按鈕首次點擊展開副按鈕，再次點擊才開啟 LINE
+  var expanded = false;
+  lineBtn.addEventListener('click', function (e) {
+    if (!expanded) {
+      e.preventDefault();
+      wrap.classList.add('open');
+      expanded = true;
+    }
+  });
+
+  // 點擊外部收合
+  document.addEventListener('click', function (e) {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('open');
+      expanded = false;
+    }
+  });
+
+  // 捲動顯示控制（初始半透明，滾動後完整顯示）
+  wrap.style.opacity = '0.55';
+  window.addEventListener('scroll', function () {
+    wrap.style.opacity = (window.pageYOffset > 250) ? '1' : '0.55';
+  }, { passive: true });
+
+})();
+</script>

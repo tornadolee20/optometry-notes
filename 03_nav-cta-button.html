@@ -1,0 +1,153 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #03
+  導覽列 CTA「立即預約」按鈕 + 黏性導覽列
+  ── 設計規格 ─────────────────────────────────────────
+  • JS 動態注入「立即預約」按鈕到 .main-nav 右側
+  • 按鈕色：品牌深藍 #34568B，hover 時深化並微微上浮
+  • 捲動超過 80px → 導覽列變黏性（sticky）並加陰影
+  • 深色模式自動適配
+  • 手機：按鈕縮小為圖示+文字，節省空間
+  ── 安裝方式 ─────────────────────────────────────────
+  Blogger 後台 → 版面配置 → 新增小工具 → HTML/JavaScript
+  貼上本檔案全部內容 → 儲存
+  ⚠️ 修改下方 CTA_URL 為你的預約頁面網址
+════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ═══ 預約按鈕 ════════════════════════════════════════ */
+.ug-nav-cta {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px !important;
+  background: #34568B !important;
+  color: #ffffff !important;
+  border-radius: 20px !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  font-family: 'Inter', 'Noto Serif TC', sans-serif !important;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-decoration: none !important;
+  border: none;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.22s ease,
+              box-shadow 0.22s ease,
+              transform 0.2s ease !important;
+  box-shadow: 0 2px 10px rgba(52,86,139,0.30);
+  /* 覆蓋原本導覽連結樣式 */
+  border-bottom: none !important;
+}
+
+.ug-nav-cta::before {
+  content: '📅';
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ug-nav-cta:hover {
+  background: #2a4070 !important;
+  box-shadow: 0 4px 18px rgba(52,86,139,0.45) !important;
+  transform: translateY(-2px) !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.ug-nav-cta:active {
+  transform: translateY(0) !important;
+}
+
+/* ═══ 黏性導覽列 ══════════════════════════════════════ */
+/* 捲動後透過 JS 加上 .ug-sticky class */
+.ug-sticky #header-wrapper,
+.ug-sticky .header-wrapper,
+.ug-sticky .Header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  background: rgba(248,246,242,0.92) !important;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08) !important;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* 深色模式黏性導覽 */
+@media (prefers-color-scheme: dark) {
+  .ug-sticky #header-wrapper,
+  .ug-sticky .header-wrapper,
+  .ug-sticky .Header {
+    background: rgba(47,43,38,0.94) !important;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3) !important;
+  }
+  .ug-nav-cta {
+    background: #A7C4BC !important;
+    color: #1a2a3a !important;
+    box-shadow: 0 2px 10px rgba(167,196,188,0.3) !important;
+  }
+  .ug-nav-cta:hover {
+    background: #8ab0a8 !important;
+    color: #0f1e2d !important;
+  }
+}
+
+/* ═══ 手機版 ═════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .ug-nav-cta {
+    padding: 6px 13px !important;
+    font-size: 12px !important;
+  }
+  .ug-nav-cta::before {
+    display: none;
+  }
+}
+</style>
+
+<script>
+(function () {
+  /* ══ ⚙️ 修改預約連結 ═══════════════════════════════ */
+  var CTA_URL  = 'https://www.uncle-glasses.net/p/contact.html'; /* 預約/聯絡頁 */
+  var CTA_TEXT = '立即預約';
+  /* ═════════════════════════════════════════════════ */
+
+  function injectCTA() {
+    var nav = document.querySelector('.main-nav')
+           || document.querySelector('#PageList1 .widget-content')
+           || document.querySelector('nav');
+    if (!nav || document.querySelector('.ug-nav-cta')) return;
+
+    var btn = document.createElement('a');
+    btn.className   = 'ug-nav-cta';
+    btn.href        = CTA_URL;
+    btn.textContent = CTA_TEXT;
+    btn.title       = '預約驗光諮詢';
+    nav.appendChild(btn);
+  }
+
+  /* ── 黏性導覽列 ──────────────────────────────────── */
+  function handleSticky() {
+    if (window.pageYOffset > 80) {
+      document.body.classList.add('ug-sticky');
+    } else {
+      document.body.classList.remove('ug-sticky');
+    }
+  }
+
+  // DOM 載入後注入
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectCTA);
+  } else {
+    injectCTA();
+  }
+
+  // 延遲補注入（Blogger 動態載入保險）
+  setTimeout(injectCTA, 800);
+
+  window.addEventListener('scroll', handleSticky, { passive: true });
+  handleSticky();
+
+})();
+</script>

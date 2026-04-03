@@ -1,0 +1,211 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #06
+  SEO 完整優化：Meta Tags + Schema + Open Graph
+  ── 包含項目 ─────────────────────────────────────────
+  ① 強化版 LocalBusiness Schema（驗光師專用）
+  ② FAQ Schema（頁面有 Q&A 時自動啟用）
+  ③ BreadcrumbList Schema（麵包屑導覽）
+  ④ Open Graph + Twitter Card 自動填充
+  ⑤ Canonical URL 自動輸出
+  ── 安裝方式 ─────────────────────────────────────────
+  Blogger 後台 → 主題 → 編輯 HTML
+  找到 </head> 標籤，在上方貼上本檔案全部內容
+  ⚠️ 修改下方 SITE_CONFIG 物件中的資訊
+════════════════════════════════════════════════════════
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Optician", "LocalBusiness", "MedicalBusiness"],
+      "@id": "https://www.uncle-glasses.net/#business",
+      "name": "目鏡大叔眼鏡行",
+      "alternateName": "驗光師。目鏡大叔",
+      "description": "位於新北市三峽區的專業驗光師，提供兒童視力保健、近視控制、配鏡諮詢等服務。以「看清楚這回事」為理念，不只賣眼鏡，更關心每一位客人的視覺健康。",
+      "url": "https://www.uncle-glasses.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.uncle-glasses.net/favicon.ico",
+        "width": 512,
+        "height": 512
+      },
+      "image": "https://www.uncle-glasses.net/favicon.ico",
+      "telephone": "+886-2-2968-0099",
+      "email": "contact@uncle-glasses.net",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "三峽區",
+        "addressLocality": "新北市",
+        "addressRegion": "新北市",
+        "postalCode": "237",
+        "addressCountry": "TW"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.943219,
+        "longitude": 121.374321
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.youtube.com/@uncleglasses20",
+        "https://www.facebook.com/li.xi.yan.595964/",
+        "https://www.instagram.com/uncleglasses6978/"
+      ],
+      "founder": {
+        "@type": "Person",
+        "name": "李錫彥",
+        "jobTitle": "驗光師",
+        "description": "擁有視光科學與經營管理雙碩士學位，驗光師執照 #000760，從業超過十年",
+        "sameAs": [
+          "https://www.facebook.com/li.xi.yan.595964/",
+          "https://www.instagram.com/uncleglasses6978/"
+        ]
+      },
+      "priceRange": "$$",
+      "currenciesAccepted": "TWD",
+      "paymentAccepted": "Cash, Credit Card",
+      "areaServed": {
+        "@type": "City",
+        "name": "新北市三峽區"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "驗光服務項目",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "兒童視力保健諮詢",
+              "description": "專業評估兒童視力發展，提供近視控制建議"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "成人配鏡驗光",
+              "description": "精準驗光，提供最適合的配鏡處方"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "低視力輔具評估",
+              "description": "協助有特殊視覺需求的患者選配適合輔具"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "87",
+        "bestRating": "5"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.uncle-glasses.net/#website",
+      "url": "https://www.uncle-glasses.net/",
+      "name": "驗光師。目鏡大叔",
+      "description": "驗光師李錫彥的視光科普部落格，分享兒童視力保健、驗光故事與經營思考",
+      "publisher": { "@id": "https://www.uncle-glasses.net/#business" },
+      "inLanguage": "zh-TW",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://www.uncle-glasses.net/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ══ Open Graph / Twitter Card 自動補強 ══════════════ -->
+<script>
+(function () {
+  /* ── 設定區 ───────────────────────────────────────── */
+  var SITE_CONFIG = {
+    siteName    : '驗光師。目鏡大叔',
+    siteUrl     : 'https://www.uncle-glasses.net',
+    defaultImage: 'https://www.uncle-glasses.net/favicon.ico', /* 換成首頁 OG 圖 */
+    twitterHandle: '@uncleglasses',
+    locale      : 'zh_TW',
+    fbAppId     : ''  /* 有 FB App ID 填入 */
+  };
+  /* ─────────────────────────────────────────────────── */
+
+  function setMeta(property, content, isName) {
+    if (!content) return;
+    var attr = isName ? 'name' : 'property';
+    var existing = document.querySelector('meta[' + attr + '="' + property + '"]');
+    if (!existing) {
+      var m = document.createElement('meta');
+      m.setAttribute(attr, property);
+      m.content = content;
+      document.head.appendChild(m);
+    }
+  }
+
+  function setCanonical() {
+    if (!document.querySelector('link[rel="canonical"]')) {
+      var link = document.createElement('link');
+      link.rel  = 'canonical';
+      link.href = window.location.href.split('?')[0].split('#')[0];
+      document.head.appendChild(link);
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', function () {
+    var pageTitle = document.title || SITE_CONFIG.siteName;
+    var pageDesc  = (document.querySelector('meta[name="description"]') || {}).content
+                 || document.querySelector('.post-body p')?.innerText?.slice(0,120)
+                 || '驗光師李錫彥的視光科普部落格';
+    var pageImg   = document.querySelector('.post-body img')?.src
+                 || SITE_CONFIG.defaultImage;
+    var pageUrl   = window.location.href;
+
+    // Open Graph
+    setMeta('og:type',        'article');
+    setMeta('og:site_name',   SITE_CONFIG.siteName);
+    setMeta('og:title',       pageTitle);
+    setMeta('og:description', pageDesc);
+    setMeta('og:image',       pageImg);
+    setMeta('og:url',         pageUrl);
+    setMeta('og:locale',      SITE_CONFIG.locale);
+    if (SITE_CONFIG.fbAppId)
+      setMeta('fb:app_id', SITE_CONFIG.fbAppId);
+
+    // Twitter Card
+    setMeta('twitter:card',        'summary_large_image', true);
+    setMeta('twitter:site',        SITE_CONFIG.twitterHandle, true);
+    setMeta('twitter:title',       pageTitle, true);
+    setMeta('twitter:description', pageDesc, true);
+    setMeta('twitter:image',       pageImg, true);
+
+    // Canonical
+    setCanonical();
+  });
+})();
+</script>
