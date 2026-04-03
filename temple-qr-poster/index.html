@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宮廟 QR 立牌 · YAML 產生器 for NANO BANNER 2</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #0f0f1a;
+  color: #e8e8f0;
+  font-family: "Noto Sans TC", "Segoe UI", sans-serif;
+  font-size: 14px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: linear-gradient(90deg, #1a0a00, #2d1500, #1a0a00);
+  border-bottom: 2px solid #B8860B;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+}
+header h1 { font-size: 1.05rem; color: #FFD700; letter-spacing: .08em; font-weight: bold; }
+header span { font-size: .72rem; color: #888; margin-left: auto; }
+
+.app {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  flex: 1;
+  height: calc(100vh - 53px);
+}
+
+/* ── 左側設定面板 ── */
+.panel-left {
+  background: #13131f;
+  border-right: 1px solid #2a2a3e;
+  overflow-y: auto;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: .7rem;
+  color: #FFD700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: 14px 0 7px;
+  border-top: 1px solid #2a2a3e;
+  margin-top: 10px;
+}
+.section-title:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+
+.field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.field label { font-size: .72rem; color: #aaa; }
+
+.field input[type="text"],
+.field input[type="url"],
+.field input[type="number"],
+.field textarea,
+.field select {
+  background: #1c1c2e;
+  border: 1px solid #333;
+  border-radius: 6px;
+  color: #e8e8f0;
+  padding: 7px 10px;
+  font-size: .82rem;
+  font-family: inherit;
+  transition: border-color .2s;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none; border-color: #B8860B;
+}
+.field textarea { resize: vertical; min-height: 54px; line-height: 1.5; }
+
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.field-row .field { margin-bottom: 0; }
+
+.color-row { display: flex; align-items: center; gap: 8px; }
+.color-row input[type="color"] {
+  width: 36px; height: 28px;
+  border: 1px solid #444; border-radius: 4px;
+  padding: 2px; background: #1c1c2e; cursor: pointer;
+}
+.color-row input[type="text"] {
+  flex: 1; padding: 5px 8px; font-size: .78rem; font-family: monospace;
+  background: #1c1c2e; border: 1px solid #333; border-radius: 6px; color: #e8e8f0;
+}
+
+.range-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+.range-row input[type="range"] { flex: 1; accent-color: #FFD700; }
+.range-row .val { font-size: .78rem; color: #FFD700; min-width: 36px; text-align: right; }
+
+.toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
+.toggle-btn {
+  padding: 5px 12px; border-radius: 20px;
+  border: 1px solid #444; background: #1c1c2e; color: #aaa;
+  font-size: .72rem; cursor: pointer; transition: all .2s;
+}
+.toggle-btn.active { background: #2d1500; border-color: #FFD700; color: #FFD700; }
+
+.file-pick-btn {
+  display: block; padding: 8px 14px;
+  background: #1c1c2e; border: 1px dashed #B8860B; border-radius: 6px;
+  color: #FFE082; font-size: .8rem; cursor: pointer; text-align: center;
+  transition: all .2s;
+}
+.file-pick-btn:hover { background: #2a2a1a; border-color: #FFD700; color: #FFD700; }
+
+.generate-btn {
+  margin-top: 18px; padding: 12px;
+  background: linear-gradient(135deg, #8B0000, #B8860B, #8B0000);
+  border: none; border-radius: 8px;
+  color: #FFD700; font-size: .9rem; font-weight: bold;
+  letter-spacing: .1em; cursor: pointer; width: 100%;
+}
+.generate-btn:hover { filter: brightness(1.1); }
+
+.convert-btn {
+  margin-top: 6px; padding: 7px 12px; width: 100%;
+  background: #1c2d3a; border: 1px solid #2a6496; border-radius: 6px;
+  color: #7ec8e3; font-size: .8rem; cursor: pointer; transition: all .2s;
+}
+.convert-btn:hover { background: #1e3a4a; border-color: #5bc0de; color: #fff; }
+
+.bg-status-msg {
+  font-size: .7rem; margin-top: 4px; min-height: 16px;
+  transition: color .3s;
+}
+
+.gdrive-guide {
+  background: #111827;
+  border: 1px solid #2a3a4a;
+  border-left: 3px solid #2a6496;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  font-size: .72rem;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+.guide-title { color: #7ec8e3; font-weight: bold; margin-bottom: 6px; }
+.gdrive-guide ol { padding-left: 16px; }
+.gdrive-guide strong { color: #e8e8f0; }
+
+/* ── 右側 YAML 輸出 ── */
+.panel-right { background: #0d0d16; display: flex; flex-direction: column; }
+
+.yaml-toolbar {
+  background: #13131f; border-bottom: 1px solid #2a2a3e;
+  padding: 10px 16px; display: flex; align-items: center; gap: 10px;
+}
+.yaml-toolbar span { font-size: .72rem; color: #FFD700; letter-spacing: .06em; }
+.badge {
+  background: #1c2d0a; border: 1px solid #3a6b10; color: #7ec850;
+  font-size: .65rem; padding: 2px 8px; border-radius: 10px;
+}
+.action-btn {
+  padding: 5px 14px; background: #1c1c2e; border: 1px solid #444;
+  border-radius: 6px; color: #aaa; font-size: .75rem; cursor: pointer; transition: all .2s;
+}
+.action-btn:hover { border-color: #FFD700; color: #FFD700; }
+.action-btn.green {
+  background: linear-gradient(135deg, #1a3d0a, #2a5c14);
+  border-color: #4a8c20; color: #a0e060; font-weight: bold;
+}
+.action-btn.green:hover { border-color: #7ec850; color: #c8f080; }
+.action-btn.copied { border-color: #4CAF50; color: #4CAF50; }
+.ml-auto { margin-left: auto; }
+
+#yaml-output {
+  flex: 1; background: transparent; border: none;
+  color: #c8e6c9;
+  font-family: "Fira Code", "Cascadia Code", "Courier New", monospace;
+  font-size: .78rem; line-height: 1.65;
+  padding: 16px 20px; resize: none; outline: none;
+  overflow-y: auto; white-space: pre;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0d0d16; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⛩ 宮廟 QR 立牌・YAML 產生器</h1>
+  <span>for NANO BANNER 2</span>
+</header>
+
+<div class="app">
+
+  <!-- ══ 左側設定面板 ══ -->
+  <div class="panel-left">
+
+    <div class="section-title">▌ 版型</div>
+    <div class="field">
+      <label>立牌尺寸</label>
+      <select id="cfg-size">
+        <option value="A4">A4 直式（210×297mm）</option>
+        <option value="A3">A3 直式（297×420mm）</option>
+        <option value="A5">A5 直式（148×210mm）</option>
+        <option value="SQ">正方形 600×600px</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>解析度</label>
+      <select id="cfg-dpi">
+        <option value="300">300 dpi（印刷）</option>
+        <option value="150">150 dpi（預覽）</option>
+        <option value="72">72 dpi（螢幕）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>版型配置</label>
+      <div class="toggle-group">
+        <button class="toggle-btn active" data-layout="dual">雙區（香客＋店家）</button>
+        <button class="toggle-btn" data-layout="visitor">單區（僅香客）</button>
+        <button class="toggle-btn" data-layout="merchant">單區（僅店家）</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>色彩模式</label>
+      <select id="cfg-colormode">
+        <option value="CMYK">CMYK（印刷）</option>
+        <option value="RGB">RGB（螢幕）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>輸出格式</label>
+      <select id="cfg-format">
+        <option value="PNG">PNG</option>
+        <option value="PDF">PDF</option>
+        <option value="SVG">SVG</option>
+        <option value="JPG">JPG</option>
+      </select>
+    </div>
+
+    <div class="section-title">▌ 宮廟識別</div>
+    <div class="field"><label>宮廟名稱</label><input type="text" id="cfg-temple" value="鶯歌永福宮"></div>
+    <div class="field"><label>主祀神明（選填）</label><input type="text" id="cfg-deity" placeholder="例：福德正神（土地公）"></div>
+    <div class="field"><label>地址（選填）</label><input type="text" id="cfg-address" placeholder="例：新北市鶯歌區…"></div>
+
+    <div class="section-title">▌ 主區（香客 QR）</div>
+    <div class="field"><label>主標題</label><input type="text" id="cfg-headline" value="把心願交給土地公"></div>
+    <div class="field">
+      <label>副說明（換行用 \n）</label>
+      <textarea id="cfg-subtext">掃描 QR code，寫下你拜伯公的真實感受\n讓更多人知道這裡的好</textarea>
+    </div>
+    <div class="field"><label>香客 QR Code 連結</label><input type="url" id="cfg-qr1url" value="https://forms.gle/example_visitor"></div>
+    <div class="field"><label>香客 QR 標籤</label><input type="text" id="cfg-qr1label" value="【香客祈福與評論專用 QR code】"></div>
+    <div class="field"><label>條列說明 1</label><input type="text" id="cfg-b1" value="寫下今天來拜伯公的心情、感受與想說的話"></div>
+    <div class="field"><label>條列說明 2</label><input type="text" id="cfg-b2" value="我們會幫您整理成一段順口的文字，方便貼到本宮的 Google 評論"></div>
+
+    <div class="section-title" id="sub-title">▌ 副區（店家 QR）</div>
+    <div id="sub-fields">
+      <div class="field"><label>副區標題</label><input type="text" id="cfg-sub-h" value="店家洽詢"></div>
+      <div class="field"><label>副標說明</label><input type="text" id="cfg-sub-sh" value="給有開店的信眾"></div>
+      <div class="field">
+        <label>說明內文</label>
+        <textarea id="cfg-sub-desc">想在自己的店裡，讓客人掃碼在評論裡留下真實感受，請掃描下方 QR code，加好友了解「自己的評論系統」。</textarea>
+      </div>
+      <div class="field"><label>店家 QR Code 連結</label><input type="url" id="cfg-qr2url" value="https://line.me/R/ti/p/example_merchant"></div>
+      <div class="field"><label>店家 QR 標籤</label><input type="text" id="cfg-qr2label" value="【店家專用 | 自己的評論系統】"></div>
+    </div>
+
+    <div class="section-title">▌ 配色</div>
+    <div class="field">
+      <label>主區背景（深）</label>
+      <div class="color-row">
+        <input type="color" id="cp-mf" value="#8B0000" oninput="sync(this,'cfg-mf')">
+        <input type="text" id="cfg-mf" value="#8B0000" oninput="sync(this,'cp-mf')">
+      </div>
+    </div>
+    <div class="field">
+      <label>主區背景（淺）</label>
+      <div class="color-row">
+        <input type="color" id="cp-mt" value="#4A0000" oninput="sync(this,'cfg-mt')">
+        <input type="text" id="cfg-mt" value="#4A0000" oninput="sync(this,'cp-mt')">
+      </div>
+    </div>
+    <div class="field">
+      <label>副區背景（深）</label>
+      <div class="color-row">
+        <input type="color" id="cp-sf" value="#1B5E20" oninput="sync(this,'cfg-sf')">
+        <input type="text" id="cfg-sf" value="#1B5E20" oninput="sync(this,'cp-sf')">
+      </div>
+    </div>
+    <div class="field">
+      <label>副區背景（淺）</label>
+      <div class="color-row">
+        <input type="color" id="cp-st" value="#0A3D0A" oninput="sync(this,'cfg-st')">
+        <input type="text" id="cfg-st" value="#0A3D0A" oninput="sync(this,'cp-st')">
+      </div>
+    </div>
+    <div class="field">
+      <label>金色</label>
+      <div class="color-row">
+        <input type="color" id="cp-gold" value="#FFD700" oninput="sync(this,'cfg-gold')">
+        <input type="text" id="cfg-gold" value="#FFD700" oninput="sync(this,'cp-gold')">
+      </div>
+    </div>
+
+    <div class="section-title">▌ 背景圖（主神／宮廟外觀）</div>
+
+    <!-- Step 1：貼 Google Drive 分享連結 -->
+    <div class="field">
+      <label>① 貼上 Google Drive 分享連結</label>
+      <input type="url" id="cfg-gdrive-raw" placeholder="https://drive.google.com/file/d/…/view">
+      <button class="convert-btn" onclick="convertDriveURL()">🔄 轉換成直連 URL</button>
+    </div>
+
+    <!-- Step 2：自動填入的直連 URL（可手動修改） -->
+    <div class="field">
+      <label>② 直連圖片 URL（自動填入，可手動貼其他來源）</label>
+      <input type="url" id="cfg-bgurl" placeholder="https://drive.google.com/uc?export=view&id=…">
+      <div id="bg-status" class="bg-status-msg"></div>
+    </div>
+
+    <!-- 說明步驟 -->
+    <div class="gdrive-guide">
+      <div class="guide-title">📋 Google Drive 操作步驟</div>
+      <ol>
+        <li>把宮廟照片上傳到 <strong>Google 雲端硬碟</strong></li>
+        <li>對檔案右鍵 → <strong>共用</strong></li>
+        <li>存取權改為「<strong>知道連結的人都可以檢視</strong>」</li>
+        <li>複製連結，貼到上方欄位 ①</li>
+        <li>按「🔄 轉換」，直連 URL 自動填入 ②</li>
+      </ol>
+    </div>
+
+    <!-- 預覽區 -->
+    <div id="bg-preview" style="display:none;margin-bottom:8px;">
+      <img id="bg-img" style="width:100%;border-radius:6px;border:1px solid #444;max-height:130px;object-fit:cover;" alt="預覽">
+      <div style="font-size:.68rem;color:#666;margin-top:3px;">⚠️ 若預覽無法顯示屬正常（瀏覽器跨域限制），NANO BANNER 2 仍可正確讀取</div>
+    </div>
+
+    <div class="field"><label>圖片說明（alt text）</label><input type="text" id="cfg-bgalt" placeholder="例：永福宮土地公神像"></div>
+    <div class="field">
+      <label>透明度</label>
+      <div class="range-row">
+        <input type="range" id="cfg-bgopacity" min="0" max="60" value="30">
+        <span class="val" id="opacity-val">30%</span>
+      </div>
+    </div>
+    <div class="field">
+      <label>混合模式</label>
+      <select id="cfg-blend">
+        <option value="normal">Normal（一般）</option>
+        <option value="multiply">Multiply（加深）</option>
+        <option value="screen">Screen（提亮）</option>
+        <option value="overlay">Overlay（疊加）</option>
+        <option value="soft_light">Soft Light（柔光）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>圖片適應</label>
+      <select id="cfg-bgfit">
+        <option value="cover">Cover（填滿）</option>
+        <option value="contain">Contain（完整）</option>
+      </select>
+    </div>
+
+    <div class="section-title">▌ 裝飾元素</div>
+    <div class="field">
+      <label>四角圓形紋樣</label>
+      <select id="cfg-corner">
+        <option value="shou">壽字幾何紋（方格連環線）</option>
+        <option value="fu">福字幾何紋（連環方形）</option>
+        <option value="bagua">八卦紋（乾坤卦象）</option>
+        <option value="ruyi">如意雲紋圓</option>
+        <option value="lotus">蓮花紋（八瓣向心）</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>四角圓形尺寸（% 海報寬）</label>
+      <div class="range-row">
+        <input type="range" id="cfg-cornersize" min="6" max="18" value="10">
+        <span class="val" id="corner-val">10%</span>
+      </div>
+    </div>
+    <div class="field">
+      <label>分隔帶樣式</label>
+      <select id="cfg-divider">
+        <option value="ruyi_pattern">回字紋連續帶</option>
+        <option value="double_line">雙層金線</option>
+        <option value="dotted_gold">金色點線帶</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>分隔帶高度</label>
+      <div class="range-row">
+        <input type="range" id="cfg-dividerh" min="6" max="30" value="14">
+        <span class="val" id="divider-val">14px</span>
+      </div>
+    </div>
+
+    <div class="section-title">▌ 後製與輸出</div>
+    <div class="field-row">
+      <div class="field"><label>出血邊（mm）</label><input type="number" id="cfg-bleed" value="3" min="0" max="10"></div>
+      <div class="field"><label>安全區（mm）</label><input type="number" id="cfg-safe" value="5" min="0" max="20"></div>
+    </div>
+
+    <button class="generate-btn" onclick="generateYAML()">⚡ 生成 YAML 指令</button>
+
+  </div><!-- /panel-left -->
+
+  <!-- ══ 右側 YAML 輸出 ══ -->
+  <div class="panel-right">
+    <div class="yaml-toolbar">
+      <span>YAML OUTPUT</span>
+      <span class="badge" id="yaml-badge">等待生成…</span>
+      <button class="action-btn green ml-auto" onclick="downloadYAML()">⬇ 下載 .yaml</button>
+      <button class="action-btn" id="copy-btn" onclick="copyYAML()">複製</button>
+    </div>
+    <textarea id="yaml-output" readonly spellcheck="false"># 按左側「⚡ 生成 YAML 指令」開始</textarea>
+  </div>
+
+</div><!-- /app -->
+
+<script>
+/* ── 顏色同步 ── */
+function sync(el, targetId) {
+  document.getElementById(targetId).value = el.value;
+}
+
+/* ── Range 滑桿 ── */
+document.getElementById("cfg-bgopacity").addEventListener("input", function() {
+  document.getElementById("opacity-val").textContent = this.value + "%";
+});
+document.getElementById("cfg-cornersize").addEventListener("input", function() {
+  document.getElementById("corner-val").textContent = this.value + "%";
+});
+document.getElementById("cfg-dividerh").addEventListener("input", function() {
+  document.getElementById("divider-val").textContent = this.value + "px";
+});
+
+/* ── 版型切換 ── */
+document.querySelectorAll("[data-layout]").forEach(btn => {
+  btn.addEventListener("click", function() {
+    document.querySelectorAll("[data-layout]").forEach(b => b.classList.remove("active"));
+    this.classList.add("active");
+    const show = this.dataset.layout !== "visitor";
+    document.getElementById("sub-fields").style.display = show ? "" : "none";
+    document.getElementById("sub-title").style.display  = show ? "" : "none";
+  });
+});
+
+/* ── Google Drive URL 轉換 ── */
+function convertDriveURL() {
+  const raw   = document.getElementById("cfg-gdrive-raw").value.trim();
+  const status = document.getElementById("bg-status");
+
+  if (!raw) {
+    status.textContent = "⚠️ 請先貼上 Google Drive 分享連結";
+    status.style.color = "#f59e0b";
+    return;
+  }
+
+  // 支援格式：
+  // https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+  // https://drive.google.com/open?id=FILE_ID
+  let fileId = null;
+
+  const matchFile = raw.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+  const matchOpen = raw.match(/[?&]id=([a-zA-Z0-9_-]+)/);
+
+  if (matchFile) {
+    fileId = matchFile[1];
+  } else if (matchOpen) {
+    fileId = matchOpen[1];
+  }
+
+  if (!fileId) {
+    status.textContent = "❌ 無法辨識連結格式，請確認是 Google Drive 檔案連結";
+    status.style.color = "#f87171";
+    return;
+  }
+
+  const directURL = "https://drive.google.com/uc?export=view&id=" + fileId;
+  document.getElementById("cfg-bgurl").value = directURL;
+
+  // 嘗試預覽（可能因跨域受限）
+  const img = document.getElementById("bg-img");
+  img.src = directURL;
+  document.getElementById("bg-preview").style.display = "block";
+
+  status.textContent = "✓ 轉換成功！直連 URL 已填入";
+  status.style.color = "#4ade80";
+}
+
+/* ── 取得 layout ── */
+function getLayout() {
+  return document.querySelector("[data-layout].active")?.dataset.layout || "dual";
+}
+
+/* ── 輔助：取值 ── */
+function v(id) {
+  const el = document.getElementById(id);
+  return el ? el.value : "";
+}
+
+/* ════════════════════════════════════════
+   YAML 生成器（純字串陣列，無巢狀 template literal）
+   ════════════════════════════════════════ */
+function generateYAML() {
+  const layout  = getLayout();
+  const hasMain = layout !== "merchant";
+  const hasSub  = layout !== "visitor";
+  const gold    = v("cfg-gold");
+  const csz     = v("cfg-cornersize");
+
+  const sizeMap = {
+    "A4": { w: "210mm",  h: "297mm",  pw: 2480, ph: 3508, ratio: "3:4" },
+    "A3": { w: "297mm",  h: "420mm",  pw: 3508, ph: 4961, ratio: "3:4" },
+    "A5": { w: "148mm",  h: "210mm",  pw: 1748, ph: 2480, ratio: "3:4" },
+    "SQ": { w: "600px",  h: "600px",  pw: 600,  ph: 600,  ratio: "1:1" }
+  };
+  const sz = sizeMap[v("cfg-size")] || sizeMap["A4"];
+
+  const cornerMap = {
+    "shou":  "壽字幾何紋（方格連環線，內縮漸層，廟宇正統）",
+    "fu":    "福字幾何紋（連環方形對稱排列）",
+    "bagua": "八卦紋（乾坤卦象放射排列）",
+    "ruyi":  "如意雲紋圓（四如意對稱，卷雲向心）",
+    "lotus": "蓮花紋（八瓣向心，花心圓點）"
+  };
+  const cpLabel = cornerMap[v("cfg-corner")] || cornerMap["shou"];
+
+  const bgUrl  = v("cfg-bgurl").trim();
+  const hasBg  = bgUrl !== "";
+  const bgAlt  = v("cfg-bgalt") || v("cfg-temple") + "背景圖";
+  const bgOpacity = (parseInt(v("cfg-bgopacity")) / 100).toFixed(2);
+
+  const subtext = v("cfg-subtext").replace(/\\n/g, "\n        ");
+
+  /* 各區塊 */
+  const header = [
+    "# ════════════════════════════════════════════════════════",
+    "# NANO BANNER 2 — 宮廟 QR 立牌生成指令",
+    "# 宮廟：" + v("cfg-temple") + "  |  生成：" + new Date().toLocaleString("zh-TW"),
+    "# 版型：" + layout + "  |  尺寸：" + sz.w + " × " + sz.h + "  |  " + sz.ratio,
+    "# ════════════════════════════════════════════════════════",
+    "",
+    "poster:",
+    "  meta:",
+    '    title: "' + v("cfg-temple") + '"',
+    "    orientation: portrait",
+    '    aspect_ratio: "' + sz.ratio + '"',
+    "    total_sections: " + (hasMain && hasSub ? 2 : 1),
+    "    print_spec:",
+    '      width: "'  + sz.w  + '"',
+    '      height: "' + sz.h  + '"',
+    "      pixel_width: "  + sz.pw,
+    "      pixel_height: " + sz.ph,
+    "      resolution: " + v("cfg-dpi") + "dpi",
+    "      color_mode: "  + v("cfg-colormode"),
+    "      output_format: " + v("cfg-format"),
+    "      bleed: "    + v("cfg-bleed") + "mm",
+    "      safe_zone: " + v("cfg-safe")  + "mm"
+  ];
+
+  const designLang = [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # 全域設計語言",
+    "  # ────────────────────────────────────────",
+    "  design_language:",
+    "    style: 傳統廟宇金紅喜慶風",
+    "    color_palette:",
+    '      primary_red:    "' + v("cfg-mf") + '"   # 深暗紅，主背景',
+    '      bright_red:     "' + v("cfg-mt") + '"   # 稍亮紅，漸層用',
+    '      gold_text:      "' + gold        + '"   # 標題金字',
+    '      ivory_white:    "#FFFDE7"                 # 內文白/米黃',
+    '      accent_green:   "' + v("cfg-sf") + '"   # 下方店家區深綠',
+    '      bright_green:   "' + v("cfg-st") + '"   # 下方漸層亮綠',
+    '      border_gold:    "#B8860B"                 # 邊框深金',
+    '      highlight_gold: "#FFE082"                 # 邊框亮光金',
+    '      bullet_red:     "#CC1111"                 # 條列圖示紅',
+    "    typography:",
+    '      primary_font:    "傳統宋體 / 明朝體（帶襯線，廟宇感）"',
+    '      secondary_font:  "Noto Sans TC 黑體（內文說明）"',
+    '      decorative_font: "隸書風（副標、QR 標籤）"',
+    "    texture:",
+    "      background_noise:   true",
+    "      noise_opacity:      0.08",
+    "      vignette:           true",
+    '      subtle_pattern:     "細格紋底紋疊加 10% 透明度"'
+  ];
+
+  const outerFrame = [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # 外框裝飾系統",
+    "  # ────────────────────────────────────────",
+    "  outer_frame:",
+    "    type: 多層複合邊框",
+    "    layers:",
+    "      - layer: 1",
+    "        style: 實線描邊",
+    '        color: "' + gold + '"',
+    "        thickness: 3px",
+    "        inset: 8px",
+    "      - layer: 2",
+    "        style: 虛點線 / 細格裝飾帶",
+    '        color: "#B8860B"',
+    "        thickness: 2px",
+    "        inset: 14px",
+    "      - layer: 3",
+    "        style: 鏤空中式回紋帶",
+    '        color: "' + gold + '"',
+    "        height: 20px",
+    "        pattern: 回字紋連續重複",
+    "        position: top & bottom edges",
+    "",
+    "    corner_medallions:",
+    "      positions: [top-left, top-right, bottom-left, bottom-right]",
+    "      shape: 圓形",
+    '      diameter: "' + csz + '% of poster width"   # 相對尺寸，印刷高解析同樣適用',
+    "      design:",
+    "        style:          " + cpLabel,
+    "        rendering:      向量幾何線條，線寬均等",
+    "        inner_lines:    多層同心幾何連環紋，由外向內漸縮",
+    '        line_color:     "' + gold + '"',
+    '        line_weight:    "1.5-2px（等比縮放）"',
+    "        fill:           深紅底 + 金色幾何線條，無色塊填充",
+    "        outer_ring:     金色雙圓環描邊（外粗內細）",
+    '        glow:           "外發光 blur:12px rgba(255,215,0,0.45)"',
+    '        inset_glow:     "內發光 blur:6px  rgba(255,215,0,0.15)"',
+    "      background:",
+    "        type: radial_gradient",
+    '        center: "#6B0000"',
+    '        edge:   "#3B0000"',
+    "      border:",
+    '        outer: "3px solid ' + gold + '"',
+    '        inner: "1px solid #FFE082"',
+    "        inner_inset: 6px",
+    '      shadow: "drop-shadow 0 0 8px rgba(255,215,0,0.5)"',
+    "      note: 四角對稱，不放置任何文字或符號"
+  ];
+
+  const bgBlock = hasBg ? [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # 背景圖層（主神 / 宮廟外觀）",
+    "  # ────────────────────────────────────────",
+    "  background_image:",
+    "    enabled: true",
+    '    image_url: "' + bgUrl + '"',
+    '    alt: "' + bgAlt + '"',
+    "    opacity: " + bgOpacity + "   # 建議 0.25~0.40 讓主神形象明顯",
+    "    blend_mode: " + v("cfg-blend"),
+    "    object_fit: " + v("cfg-bgfit"),
+    "    object_position: center top   # 主神通常在畫面上方",
+    "    z_index: 0",
+    "    cors_note: >",
+    "      Google Drive 需設為「任何人都可以檢視」。",
+    "      若圖片不顯示，改用 Imgur 或直接上傳至 NANO BANNER 2 的 assets 資料夾。"
+  ] : [
+    "",
+    "  background_image:",
+    "    enabled: false"
+  ];
+
+  const sectionMain = hasMain ? [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # SECTION 1：主視覺區（紅底）",
+    "  # ────────────────────────────────────────",
+    "  section_main:",
+    "    flex_weight: 1",
+    "    background:",
+    "      type: radial_gradient",
+    "      colors:",
+    '        center: "' + v("cfg-mf") + '"',
+    '        edge:   "' + v("cfg-mt") + '"',
+    '      overlay_texture: "細點/布紋 8% 不透明"',
+    '    padding: "16px 44px 18px"',
+    "",
+    "    # ── 廟名橫匾",
+    "    temple_header_banner:",
+    '      text: "' + v("cfg-temple") + '"',
+    "      shape: 廟牌橫匾形（上緣弧形裝飾頂）",
+    "      background:",
+    "        type: linear_gradient",
+    "        angle: 90deg",
+    '        stops: [{color: "#5C0000", pos: "0%"}, {color: "#8B0000", pos: "50%"}, {color: "#5C0000", pos: "100%"}]',
+    "      border:",
+    "        style: 雙層金邊",
+    '        outer: "2px solid ' + gold + '"',
+    '        inner: "1px solid #B8860B"',
+    "        radius: 4px",
+    "        top_decoration: 中式卷草弧線 + 如意紋",
+    "        side_scrolls:   兩側對稱卷草裝飾紋",
+    '      padding: "8px 40px"',
+    '      shadow: "0 2px 10px rgba(0,0,0,0.6)"',
+    "      typography:",
+    "        font:           傳統宋體 粗體",
+    '        font_size:      "7% of poster width"',
+    "        white_space:    nowrap",
+    '        color:          "' + gold + '"',
+    "        letter_spacing: 0.2em",
+    '        text_shadow:    "1px 1px 4px rgba(0,0,0,0.7)"',
+    "",
+    "    # ── 主標題",
+    "    headline_1:",
+    '      text: "' + v("cfg-headline") + '"',
+    "      typography:",
+    "        font:           粗體宋體",
+    '        font_size:      "11% of poster width"',
+    "        max_lines:      1",
+    "        auto_fit:       true   # 若文字超寬自動縮小至單行",
+    "        white_space:    nowrap",
+    '        color:          "' + gold + '"',
+    "        letter_spacing: 0.05em",
+    '        text_shadow:    "2px 2px 6px rgba(0,0,0,0.7)"',
+    "      alignment: center",
+    "",
+    "    # ── 副說明",
+    "    subtext_1:",
+    "      text: |",
+    "        " + subtext,
+    "      typography:",
+    "        font:        Noto Sans TC",
+    '        font_size:   "md（海報寬 ~4%）"',
+    '        color:       "#FFFDE7"',
+    "        line_height: 1.75",
+    "      alignment: center",
+    "",
+    "    # ── 雙欄：左 QR / 右說明",
+    "    content_row:",
+    "      layout: row",
+    "      align_items: flex-start",
+    "      gap: 18px",
+    "",
+    "      left_column:",
+    '        flex: "0 0 44%"',
+    "        qr_code_primary:",
+    "          frame:",
+    "            background: white",
+    "            padding: 14px",
+    "            border:",
+    "              style: 雙層",
+    '              outer: "3px solid ' + gold + '"',
+    '              inner: "1px solid #B8860B"',
+    "            border_radius: 10px",
+    '            shadow: "0 4px 14px rgba(0,0,0,0.5)"',
+    "          qr:",
+    '            url: "' + v("cfg-qr1url") + '"',
+    '            size: "左欄寬 90%"',
+    "            error_correction: H",
+    "",
+    "      right_column:",
+    '        flex: "1"',
+    "        qr_label:",
+    '          text: "' + v("cfg-qr1label") + '"',
+    "          typography:",
+    "            font:           隸書風",
+    '            font_size:      "sm"',
+    '            color:          "' + gold + '"',
+    "            letter_spacing: 0.04em",
+    "        bullet_list:",
+    "          items:",
+    "            - icon:",
+    "                shape:      圓形",
+    "                size:       22px",
+    '                background: "#CC1111"',
+    '                symbol:     "☸"',
+    '                symbol_color: "#FFFFFF"',
+    '              text: "' + v("cfg-b1") + '"',
+    "              typography:",
+    '                font_size:   "md"',
+    '                color:       "#FFFDE7"',
+    "                line_height: 1.65",
+    "            - icon:",
+    "                shape:      圓形",
+    "                size:       22px",
+    '                background: "#CC1111"',
+    '                symbol:     "☸"',
+    '                symbol_color: "#FFFFFF"',
+    '              text: "' + v("cfg-b2") + '"',
+    "              typography:",
+    '                font_size:   "md"',
+    '                color:       "#FFFDE7"',
+    "                line_height: 1.65"
+  ] : [];
+
+  const divider = [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # 分隔線",
+    "  # ────────────────────────────────────────",
+    "  divider:",
+    "    type: " + v("cfg-divider"),
+    '    color: "' + gold + '"',
+    "    height: " + v("cfg-dividerh") + "px",
+    "    pattern: 連續中式回字紋 + 雙層金線",
+    "    opacity: 0.88"
+  ];
+
+  const sectionSub = hasSub ? [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # SECTION 2：店家洽詢區（綠底）",
+    "  # ────────────────────────────────────────",
+    "  section_merchant:",
+    "    background:",
+    "      type: radial_gradient",
+    "      colors:",
+    '        center: "' + v("cfg-sf") + '"',
+    '        edge:   "' + v("cfg-st") + '"',
+    '      overlay_texture: "細點 8% 不透明"',
+    '    padding: "14px 28px 18px"',
+    "    inner_frame:",
+    '      border: "2px solid #B8860B"',
+    "      border_radius: 6px",
+    "      inset: 8px",
+    "",
+    "    # ── 雙欄：左文字 / 右 QR",
+    "    content_row:",
+    "      layout: row",
+    "      align_items: center",
+    "      gap: 16px",
+    "",
+    "      left_column:",
+    '        flex: "1"',
+    "        headline_2:",
+    '          text: "' + v("cfg-sub-h") + '"',
+    "          typography:",
+    "            font:           粗體宋體",
+    '            font_size:      "2xl（海報寬 ~10%）"',
+    '            color:          "' + gold + '"',
+    "            letter_spacing: 0.1em",
+    '            text_shadow:    "1px 1px 4px rgba(0,0,0,0.5)"',
+    "        subheading_2:",
+    '          text: "' + v("cfg-sub-sh") + '"',
+    "          typography:",
+    '            font_size: "md"',
+    '            color:     "#FFFDE7"',
+    "        description_2:",
+    '          text: "' + v("cfg-sub-desc").replace(/"/g, '\\"') + '"',
+    "          typography:",
+    '            font_size:   "sm-md"',
+    '            color:       "#FFFDE7"',
+    "            line_height: 1.8",
+    "",
+    "      right_column:",
+    '        flex: "0 0 38%"',
+    "        qr_code_secondary:",
+    "          frame:",
+    "            background: white",
+    "            padding: 10px",
+    '            border: "2px solid ' + gold + '"',
+    "            border_radius: 8px",
+    '            shadow: "0 3px 8px rgba(0,0,0,0.4)"',
+    "          qr:",
+    '            url: "' + v("cfg-qr2url") + '"',
+    '            size: "右欄寬 90%"',
+    "            error_correction: H",
+    "        qr_label:",
+    '          text: "' + v("cfg-qr2label") + '"',
+    "          typography:",
+    "            font:           隸書風",
+    '            font_size:      "sm"',
+    '            color:          "' + gold + '"',
+    "            letter_spacing: 0.03em"
+  ] : [];
+
+  const postProcess = [
+    "",
+    "  # ────────────────────────────────────────",
+    "  # 全域光效與後製",
+    "  # ────────────────────────────────────────",
+    "  post_processing:",
+    "    vignette:",
+    "      enabled: true",
+    '      color: "rgba(0,0,0,0.4)"',
+    '      spread: "30% from edges"',
+    "      feather: smooth",
+    "    overall_glow:",
+    "      type: 金色邊框外發光",
+    '      color: "rgba(255,215,0,0.15)"',
+    "      blur: 8px",
+    "    print_ready:",
+    "      bleed: "      + v("cfg-bleed") + "mm",
+    "      resolution: " + v("cfg-dpi")   + "dpi",
+    "      color_mode: " + v("cfg-colormode"),
+    "      safe_zone: "  + v("cfg-safe")  + "mm from trim edge",
+    "      print_marks: " + (v("cfg-format") === "PDF" ? "true" : "false"),
+    "",
+    "# ─── END OF POSTER SPEC ───────────────────"
+  ];
+
+  /* 合併所有區塊 */
+  const allLines = [].concat(
+    header, designLang, outerFrame, bgBlock,
+    sectionMain, divider, sectionSub, postProcess
+  );
+  const yaml = allLines.join("\n");
+
+  document.getElementById("yaml-output").value = yaml;
+  const lineCount = allLines.length;
+  document.getElementById("yaml-badge").textContent = "✓ " + lineCount + " 行 · 就緒";
+  document.getElementById("yaml-badge").style.background    = "#0a2d0a";
+  document.getElementById("yaml-badge").style.borderColor   = "#3a6b10";
+  document.getElementById("yaml-badge").style.color         = "#7ec850";
+}
+
+/* ── 下載 ── */
+function downloadYAML() {
+  const content = document.getElementById("yaml-output").value;
+  if (!content || content.startsWith("#")) {
+    const fname = (v("cfg-temple") || "temple") + "-qr-poster.yaml";
+    const blob = new Blob([content], { type: "text/yaml;charset=utf-8" });
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = fname;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }
+  // 若尚未生成，先生成再下載
+  generateYAML();
+  setTimeout(() => {
+    const c2 = document.getElementById("yaml-output").value;
+    const fname = (v("cfg-temple") || "temple") + "-qr-poster.yaml";
+    const blob = new Blob([c2], { type: "text/yaml;charset=utf-8" });
+    const url  = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = fname;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a); URL.revokeObjectURL(url);
+  }, 50);
+}
+
+/* ── 複製 ── */
+function copyYAML() {
+  const content = document.getElementById("yaml-output").value;
+  if (!content) return;
+  navigator.clipboard.writeText(content).then(() => {
+    const btn = document.getElementById("copy-btn");
+    btn.textContent = "✓ 已複製";
+    btn.classList.add("copied");
+    setTimeout(() => { btn.textContent = "複製"; btn.classList.remove("copied"); }, 2000);
+  });
+}
+
+/* ── 頁面載入後自動生成 ── */
+window.addEventListener("load", generateYAML);
+</script>
+</body>
+</html>

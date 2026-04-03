@@ -1,0 +1,128 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #02
+  閱讀進度條 + 預估閱讀時間
+  ── 設計規格 ─────────────────────────────────────────
+  • 頂部固定進度條，滾動時即時更新
+  • 顏色沿用主題色 #34568B（深藍）→ #A7C4BC（鼠尾草）漸層
+  • 深色模式自動切換漸層
+  • 文章頁自動計算並顯示「約 X 分鐘閱讀」
+  • 不干擾首頁顯示
+  ── 安裝方式 ─────────────────────────────────────────
+  Blogger 後台 → 版面配置 → 新增小工具 → HTML/JavaScript
+  貼上本檔案全部內容 → 儲存（建議放在頁首附近）
+════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ═══ 進度條本體 ══════════════════════════════════════ */
+#ug-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  z-index: 99999;
+  background: linear-gradient(90deg, #34568B 0%, #5B8DB8 50%, #A7C4BC 100%);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px rgba(52, 86, 139, 0.5);
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* 完成時閃爍效果 */
+#ug-progress-bar.complete {
+  animation: ug-progress-done 0.6s ease forwards;
+}
+
+@keyframes ug-progress-done {
+  0%   { box-shadow: 0 0 8px rgba(52,86,139,0.5); }
+  50%  { box-shadow: 0 0 18px rgba(167,196,188,0.9); width: 100%; }
+  100% { opacity: 0; width: 100%; }
+}
+
+/* ═══ 深色模式 ════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  #ug-progress-bar {
+    background: linear-gradient(90deg, #A7C4BC 0%, #7EB5B0 50%, #5B8DB8 100%);
+    box-shadow: 0 0 8px rgba(167,196,188,0.6);
+  }
+}
+
+/* ═══ 文章頁閱讀時間標籤 ══════════════════════════════ */
+.ug-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #7a6e62;
+  font-family: 'Inter', 'Noto Serif TC', sans-serif;
+  letter-spacing: 0.02em;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+.ug-read-time::before {
+  content: '⏱';
+  font-size: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  .ug-read-time { color: #a09890; }
+}
+</style>
+
+<!-- 進度條元素 -->
+<div id="ug-progress-bar"></div>
+
+<script>
+(function () {
+  var bar = document.getElementById('ug-progress-bar');
+
+  /* ── 1. 捲動進度條 ─────────────────────────────── */
+  function updateProgress() {
+    var scrollTop  = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight  = document.documentElement.scrollHeight
+                     - document.documentElement.clientHeight;
+    if (docHeight <= 0) return;
+
+    var pct = Math.min((scrollTop / docHeight) * 100, 100);
+    bar.style.width = pct + '%';
+
+    if (pct >= 99.5) {
+      bar.classList.add('complete');
+    } else {
+      bar.classList.remove('complete');
+    }
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress(); // 初始化
+
+  /* ── 2. 預估閱讀時間（僅文章頁）────────────────── */
+  // Blogger 文章頁面通常有 .post-body 或 #Blog1 元素
+  window.addEventListener('DOMContentLoaded', function () {
+    var articleBody = document.querySelector('.post-body')
+                   || document.querySelector('article')
+                   || document.querySelector('.entry-content');
+    if (!articleBody) return;
+
+    // 計算字數（中文約 300 字/分鐘，含空白換行）
+    var text      = articleBody.innerText || articleBody.textContent || '';
+    var charCount = text.replace(/\s+/g, '').length;
+    var minutes   = Math.max(1, Math.ceil(charCount / 300));
+
+    // 插入到 post-header 或文章標題下方
+    var timeTag = document.createElement('span');
+    timeTag.className   = 'ug-read-time';
+    timeTag.textContent = '約 ' + minutes + ' 分鐘';
+
+    var metaLine = document.querySelector('.post-header-line-1')
+                || document.querySelector('.post-header')
+                || document.querySelector('h3.post-title')
+                || document.querySelector('h1.post-title');
+    if (metaLine) {
+      metaLine.appendChild(timeTag);
+    }
+  });
+
+})();
+</script>

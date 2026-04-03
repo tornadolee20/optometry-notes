@@ -1,0 +1,284 @@
+<!--
+════════════════════════════════════════════════════════
+  目鏡大叔部落格優化包 #05
+  返回頂部按鈕 + 社群媒體側邊欄
+  ── 設計規格 ─────────────────────────────────────────
+  • 捲動 > 400px 後右下角出現「↑」返回頂部按鈕
+  • 點擊平滑捲動至頂部
+  • 左側固定社群媒體快速連結欄（桌機版）
+  • 手機版社群改為置底橫排
+  • 深色模式全部適配
+  ── 安裝方式 ─────────────────────────────────────────
+  Blogger 後台 → 版面配置 → 新增小工具 → HTML/JavaScript
+  貼上本檔案全部內容 → 儲存
+  ⚠️ 修改下方社群媒體網址
+════════════════════════════════════════════════════════
+-->
+
+<style>
+/* ═══ 返回頂部按鈕 ════════════════════════════════════ */
+#ug-back-top {
+  position: fixed;
+  bottom: 96px;     /* 在浮動聯絡按鈕上方 */
+  right: 22px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(248,246,242,0.92);
+  border: 1.5px solid rgba(52,86,139,0.25);
+  color: #34568B;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9998;
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 0.3s ease,
+              transform 0.3s cubic-bezier(.34,1.56,.64,1),
+              background 0.2s ease,
+              box-shadow 0.2s ease;
+  box-shadow: 0 3px 12px rgba(52,86,139,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-decoration: none;
+  user-select: none;
+}
+#ug-back-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+#ug-back-top:hover {
+  background: #34568B;
+  color: #fff;
+  box-shadow: 0 5px 20px rgba(52,86,139,0.35);
+  border-color: transparent;
+}
+#ug-back-top svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ═══ 深色模式：返回頂部 ══════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  #ug-back-top {
+    background: rgba(58,54,48,0.92);
+    border-color: rgba(167,196,188,0.25);
+    color: #A7C4BC;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+  }
+  #ug-back-top:hover {
+    background: #A7C4BC;
+    color: #1a2a3a;
+  }
+}
+
+/* ═══ 社群側欄（桌機）════════════════════════════════ */
+#ug-social-side {
+  position: fixed;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 900;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.ug-social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1),
+              box-shadow 0.22s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+  position: relative;
+}
+.ug-social-icon:hover {
+  transform: scale(1.18) translateX(3px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  z-index: 1;
+}
+.ug-social-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: #fff;
+}
+
+/* 各平台顏色 */
+.ug-social-yt  { background: #FF0000; }
+.ug-social-fb  { background: #1877F2; }
+.ug-social-ig  { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.ug-social-th  { background: #000000; }
+.ug-social-line{ background: #06C755; }
+
+/* 社群側欄 tooltip */
+.ug-social-icon .ug-s-tip {
+  position: absolute;
+  left: calc(100% + 10px);
+  white-space: nowrap;
+  background: rgba(20,20,20,0.82);
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 9px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-4px);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  font-family: 'Noto Serif TC', sans-serif;
+}
+.ug-social-icon:hover .ug-s-tip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 分隔線 */
+.ug-side-divider {
+  width: 1px;
+  height: 28px;
+  background: rgba(52,86,139,0.2);
+}
+
+/* 桌機才顯示側欄 */
+@media (max-width: 900px) {
+  #ug-social-side { display: none; }
+}
+
+/* ═══ 手機底部社群列 ══════════════════════════════════ */
+#ug-social-mobile {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  background: rgba(248,246,242,0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(52,86,139,0.12);
+  padding: 8px 0 env(safe-area-inset-bottom, 8px);
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  #ug-social-mobile { display: flex; }
+}
+@media (prefers-color-scheme: dark) {
+  #ug-social-mobile {
+    background: rgba(47,43,38,0.96);
+    border-top-color: rgba(167,196,188,0.15);
+  }
+}
+.ug-social-mobile-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none !important;
+  color: #555 !important;
+  font-size: 10px;
+  transition: transform 0.2s ease;
+}
+.ug-social-mobile-icon:hover {
+  transform: translateY(-2px);
+}
+.ug-social-mobile-icon svg {
+  width: 22px;
+  height: 22px;
+}
+.ug-social-mobile-icon span {
+  font-size: 9.5px;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+}
+@media (prefers-color-scheme: dark) {
+  .ug-social-mobile-icon { color: #a0a0a0 !important; }
+}
+
+/* 手機底部列高補償（避免內容被遮住）*/
+@media (max-width: 900px) {
+  body { padding-bottom: 58px !important; }
+}
+</style>
+
+<!-- 返回頂部按鈕 -->
+<div id="ug-back-top" title="回到頂部" role="button" aria-label="回到頁面頂部">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+  </svg>
+</div>
+
+<!-- 桌機社群側欄 -->
+<nav id="ug-social-side" aria-label="社群媒體連結">
+  <a class="ug-social-icon ug-social-yt" href="https://www.youtube.com/@uncleglasses20" target="_blank" rel="noopener" title="YouTube">
+    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    <span class="ug-s-tip">YouTube</span>
+  </a>
+  <a class="ug-social-icon ug-social-fb" href="https://www.facebook.com/li.xi.yan.595964/" target="_blank" rel="noopener" title="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span class="ug-s-tip">Facebook</span>
+  </a>
+  <a class="ug-social-icon ug-social-ig" href="https://www.instagram.com/uncleglasses6978/" target="_blank" rel="noopener" title="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    <span class="ug-s-tip">Instagram</span>
+  </a>
+  <div class="ug-side-divider"></div>
+  <a class="ug-social-icon ug-social-line" href="https://line.me/ti/p/~uncleglasses" target="_blank" rel="noopener" title="LINE">
+    <svg viewBox="0 0 24 24"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.07 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    <span class="ug-s-tip">LINE 諮詢</span>
+  </a>
+</nav>
+
+<!-- 手機底部社群列 -->
+<nav id="ug-social-mobile" aria-label="社群媒體連結（手機）">
+  <a class="ug-social-mobile-icon" href="https://www.youtube.com/@uncleglasses20" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="#FF0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+    <span>YouTube</span>
+  </a>
+  <a class="ug-social-mobile-icon" href="https://www.facebook.com/li.xi.yan.595964/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="#1877F2"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    <span>Facebook</span>
+  </a>
+  <a class="ug-social-mobile-icon" href="https://www.instagram.com/uncleglasses6978/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><defs><linearGradient id="ig-grad" x1="30%" y1="107%" x2="90%" y2="0%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></linearGradient></defs><path fill="url(#ig-grad)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+    <span>Instagram</span>
+  </a>
+  <a class="ug-social-mobile-icon" href="https://line.me/ti/p/~uncleglasses" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="#06C755"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.07 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+    <span>LINE</span>
+  </a>
+</nav>
+
+<script>
+(function () {
+  var btn = document.getElementById('ug-back-top');
+  if (!btn) return;
+
+  // 顯示/隱藏
+  window.addEventListener('scroll', function () {
+    if (window.pageYOffset > 400) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  }, { passive: true });
+
+  // 平滑回到頂部
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
