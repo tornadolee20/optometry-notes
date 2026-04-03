@@ -6,6 +6,15 @@
   - `puXZBCb5nrE`: "Optometrist Vs Ophthalmologist" (Michele Lee, MD). 重點在於臨床角色差異化。
 - **多模態優先 (2026-02-27)**：Gemini 3 具備原生的多模態讀取能力。遇到 PDF、圖片等非純文字檔案時，應**優先使用 `view_file` 直接讀取**，而非嘗試開發複雜的解析腳本（繞遠路）。
 
+## 重大故障與教訓 (2026-03-31)
+- **Dropbox Git 損壞事件**：
+  - **現象**：VS Code 出現 `Git: fatal: unable to read tree`，`.git/` 資料夾遺失大量物件，`.claude/scheduled_tasks.lock` 導致連線鎖死。
+  - **原因**：Dropbox 的 Smart Sync 與 Git 的檔案操作衝突，且 `.lock` 檔案被同步到不同電腦導致全域鎖定。
+  - **解決方案**：
+    1. 將目錄遷移至非 Dropbox 路徑（如 `C:\Users\USER\optometry-notes`）。
+    2. `.gitignore` 必須包含 `.claude/*.lock` 與臨時設定檔。
+    3. 嚴禁在 Dropbox/雲端同步資料夾內直接運行 Git 倉庫。
+
 ## 自動進度記憶 (2026-03-19)
 - **主動日誌寫入**：當完成重要里程碑、資料萃取、腳本建置或大批量處理任務後，必須**主動且自動**將工作內容與進度重點寫入 `memory/YYYY-MM-DD.md` 日誌中，絕對不需要等待使用者的提醒指令。
 
@@ -68,6 +77,12 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - 測試盲點：不只測試正向流程（商業區），必須強力挑戰邊緣/極端情境（破舊區：如最難搞的家長、異常參數輸入）。
 - **驗光隱喻**：只追求程式成功執行等於「假性1.0視力」，優秀的 AI 驗光師應深入檢查「調節力疲勞（系統隱患）」。
 
+
+## 頂級 Agent 協作心法 (2026-04-02)
+- **驗證者的真義**："Your job is not to confirm the implementation works — it's to try to break it." (不要證明它能運作，要試圖弄壞它)。不管是進行「家長群組壓力測試」或程式碼驗證，皆須抱持此破壞性測試心態。
+- **拒絕大腦外包 (Always synthesize)**：上位 Agent (Coordinator) 絕對不能對下屬說「基於你的發現幫我做」。必須親自吸收資訊，統整出「確切的範圍（如檔案行號、具體業務情境）與最終解法」，再精確發派。
+- **平行處理是超能力**：探索性質的研究任務應同步發散與多向進行 (Parallelism is your superpower)；只有寫入與實作任務才需序列化執行。
+- **驗證者合約完整版**：含 PASS/FAIL/PARTIAL 報告格式、兩大失敗模式、對抗性探針 SOP → `obsidian-vault/04-知識卡片/20260403-ClaudeCode系統提示詞與多Agent架構解析.md`
 
 ## 運行環境 (Runtime)
 運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
