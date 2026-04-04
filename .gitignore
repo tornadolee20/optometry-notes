@@ -5,6 +5,10 @@
 *.secret
 keys/
 
+# Google OAuth2 憑證（絕對不能推上去）
+credentials.json
+token.json
+
 # Python / Node 暫存
 __pycache__/
 node_modules/
