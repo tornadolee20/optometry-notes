@@ -103,6 +103,14 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - 層2: Plugin 打包 → `plugins/claude/uncle-glasses/`（commands/agents/skills）
 - 層3: 本地 MCP Server → 雙引擎（見上方）
 
+## SaaS 一人公司 AI 董事會 (2026-04-04)
+- **多軸 MCP 伺服器**：成功將 Google Sheets API 接入私有 MCP 伺服器 (`uncle-glasses-mcp`)。系統現在具備跨越「視光筆記 (`04-知識卡片`, `10-歷史文章智庫`)」與「雲端 SaaS 營運資料庫」的雙軌並行抓取能力。
+- **角色的極致切換**：在 `.agents/workflows/saas-board.md` 建立三人董事會會議模型。
+  - **營運主管**：直呼 `query_saas_database` 爬取 Google Sheets 尋找漏斗痛點。
+  - **行銷長 CMO**：將痛點轉化為留存挽回郵件設計。
+  - **技術長 CTO**：用防禦型觀光客測試心態，負責抓出 UI 防呆與麻瓜體驗邏輯漏洞。
+- **核心戰略升級**：所有會議結論可全自動儲存至 Obsidian 專屬分類 `09-SaaS產品與行銷`。這標誌著系統從「知識筆記工具」正式升格為「自動化虛擬新創團隊」。
+
 ## 運行環境 (Runtime)
 運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
 推理模式：預設關閉（除非開啟流式傳輸）。使用 /reasoning 切換；/status 可查看目前狀態。

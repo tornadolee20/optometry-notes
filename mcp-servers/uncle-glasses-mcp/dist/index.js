@@ -5,6 +5,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import matter from "gray-matter";
+import { google } from "googleapis";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const VAULT_ROOT = path.resolve(__dirname, "../../../obsidian-vault");
 const server = new Server({
@@ -73,7 +74,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
         tools: [
             {
                 name: "search_obsidian",
-                description: "搜尋目鏡大叔 Obsidian 知識庫中的「知識卡片」與「歷史文章智庫」。支援正規表達式搜尋內文與檔名，回傳卡片標籤與相關內文片段。",
+                description: "搜尋目鏡大叔 Obsidian 知識庫中的「知識卡片」、「歷史文章智庫」、「視力保健手冊推廣計畫」與「SaaS產品與行銷」。支援正規表達式搜尋內文與檔名，回傳卡片標籤與相關內文片段。",
                 inputSchema: {
                     type: "object",
                     properties: {
@@ -106,11 +107,29 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
                         },
                         contentType: {
                             type: "string",
-                            enum: ["04-知識卡片", "10-歷史文章智庫"],
+                            enum: ["04-知識卡片", "10-歷史文章智庫", "08-視力保健手冊推廣計畫", "09-SaaS產品與行銷"],
                             description: "要存入的資料夾類型"
                         }
                     },
                     required: ["title", "content", "tags", "contentType"]
+                }
+            },
+            {
+                name: "query_saas_database",
+                description: "讀取大叔綁定的 SaaS 產品 (MYOWNREVIEWS) 雲端營運表單。從指定的 Google Sheets 試算表中抓取指定範圍內的資料。回傳值將是每一行資料的陣列。",
+                inputSchema: {
+                    type: "object",
+                    properties: {
+                        spreadsheetId: {
+                            type: "string",
+                            description: "目標 Google 試算表 ID（網址中的亂碼部分），如果不確定，請預設使用 '1HQ_BspxHnBYag7mibmt05f3GO63uGeV28sv8Dr4fIb4'"
+                        },
+                        range: {
+                            type: "string",
+                            description: "讀取的範圍名稱，例如 'Sheet1!A1:D50'"
+                        }
+                    },
+                    required: ["spreadsheetId", "range"]
                 }
             }
         ]
@@ -125,9 +144,19 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
         const cardsDir = path.join(VAULT_ROOT, "04-知識卡片");
         const historyDir = path.join(VAULT_ROOT, "10-歷史文章智庫");
+        const planDir = path.join(VAULT_ROOT, "08-視力保健手冊推廣計畫");
+        const saasDir = path.join(VAULT_ROOT, "09-SaaS產品與行銷");
         const cards = await searchObsidianDir(cardsDir, query, "04-知識卡片");
         const history = await searchObsidianDir(historyDir, query, "10-歷史文章智庫");
-        const combined = [...cards, ...history];
+        const plans = await searchObsidianDir(planDir, query, "08-視力保健手冊推廣計畫");
+        let saasCards = [];
+        try {
+            saasCards = await searchObsidianDir(saasDir, query, "09-SaaS產品與行銷");
+        }
+        catch {
+            // Ignore if dir doesn't exist yet
+        }
+        const combined = [...cards, ...history, ...plans, ...saasCards];
         if (combined.length === 0) {
             return {
                 content: [{ type: "text", text: `未找到符合 "${query}" 的知識卡片或文章。` }]
@@ -193,6 +222,47 @@ ${c.snippet}
                 }
             ]
         };
+    }
+    // === Tool 3: Query SaaS Database (Google Sheets) ===
+    if (request.params.name === "query_saas_database") {
+        const { spreadsheetId, range } = request.params.arguments;
+        if (!spreadsheetId || !range) {
+            throw new Error("Missing required arguments (spreadsheetId, range).");
+        }
+        const keyPath = path.resolve(__dirname, "../../../../.agents/keys/myownreviews-sa.json");
+        try {
+            const auth = new google.auth.GoogleAuth({
+                keyFile: keyPath,
+                scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+            });
+            const sheets = google.sheets({ version: 'v4', auth });
+            const response = await sheets.spreadsheets.values.get({
+                spreadsheetId,
+                range,
+            });
+            const rows = response.data.values;
+            if (!rows || rows.length === 0) {
+                return {
+                    content: [{ type: "text", text: `工作表 ${spreadsheetId} 在範圍 ${range} 未找到任何資料。` }]
+                };
+            }
+            // Format output as a markdown table for Claude to read easily
+            const header = rows[0].join(' | ');
+            const separator = rows[0].map(() => '---').join(' | ');
+            const body = rows.slice(1).map(r => r.join(' | ')).join('\n');
+            const markdownTable = `${header}\n${separator}\n${body}`;
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: `📊 成功抓取表單資料：\n\n${markdownTable}\n\n請根據以上數據進行分析。`
+                    }
+                ]
+            };
+        }
+        catch (error) {
+            throw new Error(`Google Sheets API 錯誤: ${error.message}`);
+        }
     }
     throw new Error(`Tool not found: ${request.params.name}`);
 });
