@@ -60,7 +60,9 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 | SEO 策略 | `references/GEO-AI可搜尋性策略.md` |
 | 法律合規 | `references/驗光師文案法律須知.md` |
 | 專題企劃 | `obsidian-vault/07-長篇專欄與企劃/` |
-| 草稿內容 | `content-planning/` |
+| 任務卡 (Handoff) | `Inbox/待Antigravity圖文審核.md` |
+| 自動發佈腳本 | `publish_to_blogger.py` / `check_and_publish.py` |
+| 圖片庫 | `/media/` |
 | 進度日誌 | `memory/` |
 
 ### 進行中工作
@@ -97,6 +99,13 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 | `uncle-glasses-obsidian` (Jarvis 建) | `mcp-servers/uncle-glasses-mcp/` | search_obsidian / create_obsidian_card | **可直接寫入 Obsidian 知識卡片** |
 
 重啟 Claude Code 即自動載入兩組工具。
+
+## 內容發佈自動化與 EEAT 標準 (2026-04-04)
+- **EEAT 權威性強化**：針對 YMYL 內容，必須包含「專業審核聲明」與「官方參考文獻清單」，並搭配雙層 Schema (Article + FAQPage)。
+- **Blogger 自動發佈**：部署 `publish_to_blogger.py`，支援從 HTML 標籤自動擷取標題與內容並推送至 Blogger 後台。
+- **跨 Agent 協作流程**：
+  - **協作入口**：`Inbox/待Antigravity圖文審核.md`（Claude Code 寫卡，Antigravity 執行生圖與優化）。
+  - **自動偵測機**：`check_and_publish.py` 掃描任務卡，完成後自動觸發 Blogger API 發佈。
 
 ## Claude Plugin 升級計畫 (2026-04-03~04) ✅ 三層全部完成
 - 層1: Skills frontmatter — 早已完成
