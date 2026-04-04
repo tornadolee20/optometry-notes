@@ -88,6 +88,21 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - **平行處理是超能力**：探索性質的研究任務應同步發散與多向進行 (Parallelism is your superpower)；只有寫入與實作任務才需序列化執行。
 - **驗證者合約完整版**：含 PASS/FAIL/PARTIAL 報告格式、兩大失敗模式、對抗性探針 SOP → `obsidian-vault/04-知識卡片/20260403-ClaudeCode系統提示詞與多Agent架構解析.md`
 
+## MCP Server 雙引擎 (2026-04-04) ✅ 已完成部署
+兩台 MCP Server 並存，各有專長，`.claude/settings.json` 已雙雙註冊：
+
+| Server | 路徑 | 工具 | 特色 |
+|--------|------|------|------|
+| `uncle-glasses` (Claude 建) | `mcp-server/uncle-glasses/` | search_knowledge_cards / get_article_draft / list_published_articles / search_literature | 分類搜尋、草稿查找 |
+| `uncle-glasses-obsidian` (Jarvis 建) | `mcp-servers/uncle-glasses-mcp/` | search_obsidian / create_obsidian_card | **可直接寫入 Obsidian 知識卡片** |
+
+重啟 Claude Code 即自動載入兩組工具。
+
+## Claude Plugin 升級計畫 (2026-04-03~04) ✅ 三層全部完成
+- 層1: Skills frontmatter — 早已完成
+- 層2: Plugin 打包 → `plugins/claude/uncle-glasses/`（commands/agents/skills）
+- 層3: 本地 MCP Server → 雙引擎（見上方）
+
 ## 運行環境 (Runtime)
 運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
 推理模式：預設關閉（除非開啟流式傳輸）。使用 /reasoning 切換；/status 可查看目前狀態。

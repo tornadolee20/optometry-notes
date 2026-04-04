@@ -1,0 +1,13 @@
+{
+  "name": "uncle-glasses-mcp",
+  "version": "1.0.0",
+  "description": "目鏡大叔知識庫 MCP Server — 讓 Claude 主動查詢知識卡片、草稿、文獻",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.0"
+  }
+}

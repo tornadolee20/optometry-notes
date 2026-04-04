@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "uncle-glasses": {
+      "command": "node",
+      "args": ["C:/Users/w7/Desktop/optometry-notes/mcp-server/uncle-glasses/index.js"]
+    },
+    "uncle-glasses-obsidian": {
+      "command": "node",
+      "args": ["C:/Users/w7/Desktop/optometry-notes/mcp-servers/uncle-glasses-mcp/dist/index.js"]
+    }
+  }
+}

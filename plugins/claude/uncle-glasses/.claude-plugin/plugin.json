@@ -1,0 +1,21 @@
+{
+  "name": "uncle-glasses",
+  "description": "目鏡大叔視光知識工作站 — 文獻拆解、衛教文章撰寫、Inbox 深度處理",
+  "version": "1.0.0",
+  "author": {
+    "name": "李錫彥 (Uncle Glasses)"
+  },
+  "homepage": "https://www.uncle-glasses.net/",
+  "license": "private",
+  "keywords": ["optometry", "blogging", "knowledge-management", "obsidian", "taiwan"],
+  "commands": [
+    "./commands/ai-eye.md",
+    "./commands/cast.md",
+    "./commands/inbox.md"
+  ],
+  "agents": [
+    "./agents/optometry-writer.md",
+    "./agents/literature-scout.md"
+  ],
+  "skills": "./skills/"
+}

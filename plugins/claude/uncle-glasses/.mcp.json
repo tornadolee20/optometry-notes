@@ -1,0 +1,7 @@
+{
+  "uncle-glasses": {
+    "type": "stdio",
+    "command": "node",
+    "args": ["C:/Users/w7/Desktop/optometry-notes/mcp-server/uncle-glasses/index.js"]
+  }
+}
