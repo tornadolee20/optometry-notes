@@ -143,6 +143,17 @@ Claude Code 深加工（知識整合、文章產出）
 完成
 ```
 
+## 🔍 核心工作流 (Core Workflows)
+
+### [/seo-mirror-test](file:///.agents/workflows/seo-mirror-test.md) (SEO 照妖鏡)
+- **執行者**：Antigravity (Gemini 3 Flash)
+- **功能**：模擬 Google NLP/NLU 引擎，對文章進行「語意實體、使用者意圖、LSI 豐富度、EEAT」四大維度的深度審核。
+- **時機**：文章定稿前、舊文翻新檢測、競爭者分析。
+
+### [/title-optimizer](file:///.agents/workflows/title-optimizer.md) (標題優化器)
+- **執行者**：Antigravity
+- **功能**：整合家長模擬器進行壓力測試，產出在地權威且具備 SEO 權重的終極標題。
+
 ### 給 Antigravity 的 Handoff 標記規範
 
 當某項任務超出 Antigravity 能力範圍，在檔案中標記：
