@@ -131,6 +131,14 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - **平行處理是超能力**：探索性質的研究任務應同步發散與多向進行 (Parallelism is your superpower)；只有寫入與實作任務才需序列化執行。
 - **驗證者合約完整版**：含 PASS/FAIL/PARTIAL 報告格式、兩大失敗模式、對抗性探針 SOP → `obsidian-vault/04-知識卡片/20260403-ClaudeCode系統提示詞與多Agent架構解析.md`
 
+## NotebookLM MCP 安裝完成 (2026-04-05) ✅
+- 執行檔：`C:\Users\w7\.local\bin\notebooklm-mcp.EXE`
+- 設定：`~/.claude.json`（user scope，所有專案可用）
+- 登入帳號：`tornadolee20@gmail.com`
+- 本地資料夾：`C:\Users\w7\Documents\NotebookLM\`（audio/slides/mindmaps 等）
+- **Antigravity 無法直接用**（雲端無法執行本地 .EXE）
+- **跨 Agent 協作方式**：Antigravity 寫任務到 `Inbox/待深處理.md`，Claude Code 讀取後呼叫 MCP 執行，結果寫回 repo
+
 ## MCP Server 雙引擎 (2026-04-04) ✅ 已完成部署
 兩台 MCP Server 並存，各有專長，`.claude/settings.json` 已雙雙註冊：
 
