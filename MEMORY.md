@@ -1,5 +1,46 @@
 # 記憶索引 (Memory)
 
+## 小店家行銷完全體 — Marketing OS 架構 (2026-04-05)
+
+### 核心概念
+MYOWNREVIEWS 是第一個輪子，未來要長成台灣小店家的完整行銷作業系統（Marketing OS）。
+各輪子鬆耦合，LINE 官方帳號是樞紐（只是連結，不影響各系統架構）。
+
+### 飛輪輪子清單
+| 輪子 | 狀態 | 路徑 |
+|------|------|------|
+| 評論輪 | ✅ 核心 | MYOWNREVIEWS |
+| 監控輪 | 規劃中 | google-places-search + telegram-send-alert 擴充 |
+| 會員輪 | 待建 | LINE LIFF + 點數資料表 |
+| 廣播輪 | 待建 | LINE Messaging API |
+| 預約輪 | 先串現成工具 | Google表單 → 未來自建 |
+| 裂變輪 | 待建 | 評論圖卡 + B2C推薦碼 |
+| 部落格輪 | ✅ 已有 | uncle-glasses.net |
+
+### 關鍵技術：LIFF + line_user_id
+- LIFF 自動傳遞 LINE User ID，是三個系統的隱形主軸
+- 各系統加 `line_user_id` 欄位即可串聯，無需改動原有架構
+- 詳細技術細節 → `memory/2026-04-05.md`
+
+### 在店流程
+店員邀請滿意客人 → 掃QR加LINE → 歡迎訊息直帶評論連結 → 寫評論貼Google
+（先加LINE再寫評論：一個動作同時餵四個輪子）
+
+### 監控輪費用
+每店每月 NT$16，建議定價 NT$199（含AI回覆草稿 + 週報 + 競品雷達）
+
+### 三階段路線
+1. LINE Rich Menu 放三個連結（本週可完成）
+2. LIFF + line_user_id 打通身份
+3. 自建預約系統 + 各輪子完整功能
+
+### MYOWNREVIEWS 專案路徑
+- 本地：`C:\Users\w7\Desktop\blank-page-launch-master`（sandbox copy）
+- 正式：`C:\Users\torna_3j3fz9h\Desktop\blank-page-launch`
+- 技術細節：`memory/project_myownreviews.md`
+
+---
+
 ## 幻覺自我修正 (2026-02-06)
 - **教訓總結**：當 YouTube 資料擷取失敗時，絕對不要根據上下文通靈。請使用 `curl` 抓取 OEmbed 數據，或針對影片 ID 進行專門搜尋以核對標題。
 - **已驗證影片資料庫**：
