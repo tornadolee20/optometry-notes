@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowLeft, ArrowRight, CheckCircle, Shield, Star, Sparkles } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/components/ui/use-toast";
+import { isValidReferralCode } from "@/utils/referral-code";
 const Register = () => {
   const navigate = useNavigate();
   const {
@@ -22,7 +23,8 @@ const Register = () => {
     password: "",
     confirmPassword: "",
     address: "",
-    phone: ""
+    phone: "",
+    referralCode: ""
   });
   const totalSteps = 3;
   const progress = currentStep / totalSteps * 100;
@@ -102,6 +104,13 @@ const Register = () => {
           delete errors.address;
         }
         break;
+      case 'referralCode':
+        if (value && !isValidReferralCode(value)) {
+          errors.referralCode = '推薦碼格式不正確，範例：STORE000014';
+        } else {
+          delete errors.referralCode;
+        }
+        break;
     }
     setValidationErrors(errors);
   };
@@ -112,7 +121,7 @@ const Register = () => {
       case 2:
         return formData.password && formData.confirmPassword && !validationErrors.password && !validationErrors.confirmPassword;
       case 3:
-        return formData.address && formData.phone && !validationErrors.address && !validationErrors.phone;
+        return formData.address && formData.phone && !validationErrors.address && !validationErrors.phone && !validationErrors.referralCode;
       default:
         return false;
     }
@@ -265,6 +274,7 @@ const Register = () => {
       }
 
       // 創建店家資料
+      const referralCode = formData.referralCode.trim().toUpperCase() || null;
       const {
         data: storeData,
         error: storeError
@@ -273,7 +283,8 @@ const Register = () => {
         store_name: formData.storeName,
         email: formData.email,
         address: formData.address,
-        phone: formData.phone
+        phone: formData.phone,
+        referred_by_code: referralCode
       }]).select().single();
       if (storeError) {
         // 如果創建店家資料失敗，也要退出用戶註冊
@@ -402,6 +413,17 @@ const Register = () => {
                     <CheckCircle className="w-4 h-4" />
                     <span>聯絡方式完善！</span>
                   </div>}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-foreground/80">推薦碼 <span className="text-muted-foreground font-normal">（選填）</span></label>
+                <Input name="referralCode" value={formData.referralCode} onChange={handleChange} placeholder="例如：STORE000014" className={`transition-all duration-200 uppercase ${validationErrors.referralCode ? 'border-red-500 focus:border-red-500' : formData.referralCode && !validationErrors.referralCode ? 'border-green-500' : ''}`} disabled={isLoading} />
+                {validationErrors.referralCode && <p className="text-sm text-red-500">{validationErrors.referralCode}</p>}
+                {formData.referralCode && !validationErrors.referralCode && <div className="flex items-center gap-1 text-sm text-green-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>推薦碼有效！</span>
+                  </div>}
+                <p className="text-xs text-muted-foreground">如果有朋友介紹您加入，請填入他們的推薦碼</p>
               </div>
             </div>
           </div>;

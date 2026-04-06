@@ -71,6 +71,13 @@ const StoreProfile = () => {
     totalGenerations: 0
   });
 
+  // 推薦統計
+  const [referralStats, setReferralStats] = useState<{
+    total: number;
+    active: number;
+    pending: number;
+  } | null>(null);
+
   const isValidUuid = (id?: string) => !!id && /^[0-9a-fA-F-]{36}$/.test(id);
 
   const fetchStoreData = async () => {
@@ -94,7 +101,21 @@ const StoreProfile = () => {
         
         const mappedStore = mapDbStoreToStore(storeData);
         setStore(mappedStore);
-      
+
+      // 載入推薦統計
+      const myCode = storeNumberToCode(storeData.store_number);
+      const { data: referredStores } = await supabase
+        .from('stores')
+        .select('status')
+        .eq('referred_by_code', myCode);
+      if (referredStores) {
+        setReferralStats({
+          total: referredStores.length,
+          active: referredStores.filter(s => s.status === 'active').length,
+          pending: referredStores.filter(s => s.status === 'pending').length,
+        });
+      }
+
       // Check ownership
       const userIsOwner = user?.id === storeData.user_id;
       setIsOwner(userIsOwner);
@@ -671,6 +692,22 @@ const StoreProfile = () => {
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">把推薦碼告訴朋友，讓他們在註冊時填入，成交後我們會主動聯繫確認回饋方式。</p>
+                {referralStats !== null && (
+                  <div className="mt-3 pt-3 border-t border-border grid grid-cols-3 gap-2 text-center">
+                    <div>
+                      <p className="text-lg font-bold text-brand-sage-dark">{referralStats.total}</p>
+                      <p className="text-xs text-muted-foreground">已推薦</p>
+                    </div>
+                    <div>
+                      <p className="text-lg font-bold text-green-600">{referralStats.active}</p>
+                      <p className="text-xs text-muted-foreground">已訂購</p>
+                    </div>
+                    <div>
+                      <p className="text-lg font-bold text-yellow-600">{referralStats.pending}</p>
+                      <p className="text-xs text-muted-foreground">試用中</p>
+                    </div>
+                  </div>
+                )}
               </CardContent>
             </Card>
 

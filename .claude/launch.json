@@ -7,6 +7,12 @@
       "runtimeArgs": ["-m", "http.server", "3456"],
       "port": 3456,
       "cwd": "temple-qr-poster"
+    },
+    {
+      "name": "MYOWNREVIEWS Dev Server",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "C:\Users\torna_3j3fz9h\Desktop\blank-page-launch"],
+      "port": 8080
     }
   ]
 }
