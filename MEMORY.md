@@ -172,6 +172,54 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
   - **技術長 CTO**：用防禦型觀光客測試心態，負責抓出 UI 防呆與麻瓜體驗邏輯漏洞。
 - **核心戰略升級**：所有會議結論可全自動儲存至 Obsidian 專屬分類 `09-SaaS產品與行銷`。這標誌著系統從「知識筆記工具」正式升格為「自動化虛擬新創團隊」。
 
-## 運行環境 (Runtime)
-運行環境：agent=main | host=service-698443349758a4530cd3c8dc-746798f977-smb56 | repo=/home/node/.openclaw/workspace | os=Linux 6.8.0-40-generic (x64) | node=v22.22.0 | model=google-antigravity/gemini-3-flash | default_model=google-antigravity/gemini-3-flash | channel=line
-推理模式：預設關閉（除非開啟流式傳輸）。使用 /reasoning 切換；/status 可查看目前狀態。
+## SaaS 一人公司 AI 董事會 (2026-04-06) ✅ 首次會訊達成
+- **董事會 01 號會議記錄**：於 `09-SaaS產品與行銷/20260406-SaaS董事會01號會議記錄.md` 完成存檔。
+- **核心轉型策略**：
+  - 從純「Google 評論收集 (MYOWNREVIEWS)」轉向「視覺健康數據中樞 (Vision Passport)」。
+  - **注音防禦機制**：針對台灣特有注音差評文化，建立 LINE LIFF 內部的「私領域回饋門」，在生成評論前進行負面情緒攔截。
+  - **眼軸估算引擎**：導入 `Lingham 2024` 與 `Morgan 2020` 演算法，解決 70% 門市無眼軸機的數據斷層問題。
+- **基礎設施修復**：修正 `.claude/settings.json` 中的 MCP Server 路徑偏差，確保 `query_saas_database` 與 `search_obsidian` 恢復運作。
+
+---
+
+## 🔑 Prompt-to-Source Pattern (2026-04-07) ✅
+- **問題**：Claude Code 透過 MCP 呼叫 NotebookLM 時，會壓縮複雜提示詞（指令熵減），導致精心設計的组合技只剩骨架。
+- **解法**：把複雜規則存為獨立 Markdown 文件，作為 NotebookLM **Source** 上傳，讓 RAG 引擎直接讀取；對話只傳一句簡短的「路由指令」。
+- **Skill 位置**：`.agents/skills/NotebookLM-Prompt-to-Source/SKILL.md`
+- **大叔風格指南**：`drafts/SYSTEM_PROMPT-簡報風格指南.md`（每次 nlm 生成簡報，此文件必須作為第三個 Source 上傳）
+- **核心原則**：**「穩定的規則放 Source，動態的指令留對話」**
+
+## 📚 Red Team 教案 × 賽局理論 (2026-04-07) ✅
+- **教學講義**：`drafts/講義-用AI當競爭對手-教案完整版.md`（2,200 字，5 個截圖待大叔補入）
+- **知識卡片**：`obsidian-vault/04-知識卡片/20260407-賽局理論×RedTeam商業壓力測試框架.md`
+  - 納許均衡：解釋為何市場上所有眼鏡行越來越像、破局點在哪
+  - 破壞性創新的賽局機制（Christensen）
+  - 重複賽局與在地服務業的競合 EV
+  - 四層 Red Team SOP（L1情報 → L2角色切換 → L3弱點 → L4反制）
+- **待補**：`[待 Claude 處理]` 整合為文章「附錄三：理論背景」
+
+## 💡 隱形成本可視化 — 文案洞察 (2026-04-07)
+- **來源**：ARTE 診所自動化推播的文案分析
+- **核心洞察**：不要說「我有功能」，要說「你現在每個月在燒多少錢」
+- **大叔版本**：「你驗光所的員工，每個月花多少時間打電話提醒隱形眼鏡到期？」
+- **戰略價值**：同一框架可測試 MYOWNREVIEWS 市場接受度 + 驗光所 SEO 文章題材
+
+## MCP Server 技術維護 (2026-04-07)
+- `uncle-glasses-mcp` tsconfig 修復：`moduleResolution: "node"` → `"bundler"`（ESM 兼容性）
+- 新增 `declaration: true`, `sourceMap: true`
+- dist/ 已有現成 .js，需重新編譯時執行 `npm run build`（路徑：`mcp-servers/uncle-glasses-mcp/`）
+
+---
+
+## 🔍 uncle-glasses.net SEO 關鍵字策略 (2026-04-08)
+- **卡片位置**：`obsidian-vault/04-知識卡片/20260408-uncle-glasses-SEO關鍵字群分析報告.md`
+- **A 級機會（立即攻佔）**：
+  - 「驗光所 vs 眼鏡行 差別」— 法規知識＋在地故事，競爭者無法複製
+  - 「配眼鏡流程」圖解指南 — 搜尋量最大的資訊型缺口
+  - 「第一次配眼鏡」「配眼鏡多少錢」「眼鏡行可以驗光嗎」
+- **Quick Wins（本週可做）**：首頁 H1 改寫為含關鍵字（如「三峽驗光師‧專業配鏡諮詢」）、meta description 加「配鏡/驗光所/三峽」、舊文補 FAQ Schema
+- **競爭優勢定位**：在地品牌（三峽/鶯歌）＋驗光師人設，打長尾與在地詞，不正面碰 JINS/大學眼鏡
+- **待推進**：選定文章主題後啟動 `/blog-post` 工作流
+
+---
+*更新於 2026-04-08 | 由 Antigravity 提交*
