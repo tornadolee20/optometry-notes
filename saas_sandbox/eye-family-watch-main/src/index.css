@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 195 25% 98%;
+    --foreground: 200 20% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 20% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 20% 15%;
+
+    --primary: 174 82% 24%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 50% 96%;
+    --secondary-foreground: 174 82% 24%;
+
+    --muted: 200 15% 93%;
+    --muted-foreground: 200 10% 50%;
+
+    --accent: 174 50% 92%;
+    --accent-foreground: 174 82% 20%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 200 20% 90%;
+    --input: 200 20% 90%;
+    --ring: 174 82% 24%;
+
+    --radius: 1rem;
+
+    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-elevated: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-tab: 0 -1px 8px rgba(0, 0, 0, 0.06);
+
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+
+    font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+    user-select: none;
+  }
+
+  html {
+    font-size: 17px;
+    scroll-behavior: smooth;
+  }
+
+  input, textarea, select {
+    user-select: text;
+    font-size: 17px !important; /* Prevent iOS zoom */
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: var(--safe-area-top);
+  }
+  .safe-bottom {
+    padding-bottom: var(--safe-area-bottom);
+  }
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  .shadow-tab {
+    box-shadow: var(--shadow-tab);
+  }
+  .touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}

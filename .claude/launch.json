@@ -14,5 +14,11 @@
       "runtimeArgs": ["run", "dev", "--prefix", "C:\\Users\\torna_3j3fz9h\\Desktop\\blank-page-launch"],
       "port": 8080
     }
+  ,{
+      "name": "eye-family-watch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--prefix", "C:\\Users\\torna_3j3fz9h\\Desktop\\optometry-notes\\saas_sandbox\\eye-family-watch-main"],
+      "port": 5173
+    }
   ]
 }
