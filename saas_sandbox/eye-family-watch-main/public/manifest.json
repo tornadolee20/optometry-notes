@@ -1,0 +1,18 @@
+{
+  "name": "視力家家簿",
+  "short_name": "視力家家簿",
+  "description": "Family Vision Passport - 家庭視力健康管理",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8FAFB",
+  "theme_color": "#0D6E6E",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
