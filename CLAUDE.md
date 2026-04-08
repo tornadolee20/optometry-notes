@@ -13,8 +13,9 @@
 2. 讀取 `USER.md` — 你正在協助的人
 3. 讀取 `memory/YYYY-MM-DD.md`（今日與昨日）— 最近的上下文
 4. 讀取 `MEMORY.md` — 長期記憶索引
-5. 讀取 `Inbox/待深處理.md` — 檢查 Antigravity 粗處理完畢、等待深度加工的文章
-6. 搜尋全專案的 `[待 Claude 處理]` 標記 — 檢查其他待辦任務
+5. 讀取 `memory/claude-auto-memory-*.md` — 跨機器記憶備份（換機器自動補回）
+6. 讀取 `Inbox/待深處理.md` — 檢查 Antigravity 粗處理完畢、等待深度加工的文章
+7. 搜尋全專案的 `[待 Claude 處理]` 標記 — 檢查其他待辦任務
 
 ---
 
