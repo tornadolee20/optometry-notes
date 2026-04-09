@@ -88,12 +88,39 @@ def extract_labels(tags_text: str) -> list[str]:
     return [t.lstrip("#").strip() for t in tags_text.split() if t.startswith("#")]
 
 
+def strip_md_frontmatter(text: str) -> str:
+    """
+    處理 .md 檔案：
+    1. 去除 YAML frontmatter（--- ... ---）
+    2. 取 '## 完整文章內容' 之後的所有 HTML
+    """
+    # 去除 YAML frontmatter
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        if end != -1:
+            text = text[end + 4:].strip()
+
+    # 取 '## 完整文章內容' 之後的內容
+    marker = "## 完整文章內容"
+    pos = text.find(marker)
+    if pos != -1:
+        text = text[pos + len(marker):].strip()
+
+    return text
+
+
 def extract_body(html: str) -> str:
     """
-    取出 <!-- 內文開始 --> 到 <!-- ==================== Hashtag --> 之間的內容
-    若找不到標記，則取 <body> 全部或整份 HTML
+    取出文章 HTML 內文：
+    - .md 格式：去除 frontmatter，取 '## 完整文章內容' 之後的 HTML
+    - HTML 格式：取 <!-- 內文開始 --> 標記之間的內容
+    - fallback：拿整份內容
     """
-    # 嘗試用自訂標記切割
+    # ── .md 格式偵測（有 YAML frontmatter 或 ## 完整文章內容）──
+    if html.startswith("---") or "## 完整文章內容" in html:
+        return strip_md_frontmatter(html)
+
+    # ── HTML 自訂標記切割 ──
     start_marker = "<!-- ==================== 內文開始 ==================== -->"
     end_markers  = [
         "<!-- ==================== Hashtag",
@@ -115,8 +142,6 @@ def extract_body(html: str) -> str:
 
     body = html[start:end].strip()
 
-    # 也把 post-tags、大叔承諾、參考資料、作者名片、FAQ、schema 一起帶入
-    # 直接取「<!-- ==================== Hashtag」之後到最後一個 </script> 結束
     tail_start = html.find("<!-- ==================== Hashtag")
     if tail_start != -1:
         body = body + "\n\n" + html[tail_start:].strip()
@@ -229,6 +254,58 @@ def find_existing_post(title: str, service, blog_id: str) -> dict | None:
     return None
 
 
+def update_blogger_post(post_id: str, body: str, service, blog_id: str):
+    """
+    安全更新現有文章的內文。
+    ⚠️ 只更新 content，不動 title / labels / URL / 發布狀態。
+    URL 維持不變，Google 排名不受影響。
+    """
+    # 1. 先抓現有文章，確認存在並讓使用者核對
+    try:
+        existing = service.posts().get(
+            blogId=blog_id, postId=post_id,
+            fields="id,title,url,status,labels"
+        ).execute()
+    except Exception as e:
+        print(f"\n❌ 找不到文章 ID {post_id}：{e}")
+        print("   請到 Blogger 後台 → 編輯文章，URL 中的數字就是 Post ID。")
+        return None
+
+    print(f"\n📋 找到文章：")
+    print(f"   標題：{existing.get('title')}")
+    print(f"   網址：{existing.get('url')}")
+    print(f"   狀態：{existing.get('status')}")
+    print(f"   標籤：{existing.get('labels', [])}")
+    print(f"\n⚠️  【安全聲明】只更新內文，URL / 標籤 / 狀態 完全不動。")
+    print(f"   新內文長度：{len(body)} 字元")
+
+    confirm = input("\n確認更新？（輸入 y 執行，其他鍵取消）：").strip().lower()
+    if confirm != "y":
+        print("🚫 已取消，文章未變更。")
+        return None
+
+    # 2. 只 PATCH content，其他欄位全部不送
+    patch_body = {
+        "content": body
+    }
+
+    try:
+        result = service.posts().patch(
+            blogId=blog_id,
+            postId=post_id,
+            body=patch_body,
+            revert=False          # 不改變發布狀態
+        ).execute()
+        print(f"\n✅ 文章內文更新成功！")
+        print(f"   標題：{result.get('title')}")
+        print(f"   網址：{result.get('url')}")
+        print(f"   URL 未變更，Google 排名安全。")
+        return result
+    except Exception as e:
+        print(f"\n❌ 更新失敗：{e}")
+        return None
+
+
 def post_to_blogger(title: str, body: str, labels: list[str],
                     meta_data: dict, draft: bool, service, blog_id: str):
     # ── 防重複：同標題已存在則中止 ──
@@ -294,31 +371,100 @@ def post_to_blogger(title: str, body: str, labels: list[str],
 # ────────────────────────────────────────────────────────
 
 
+def list_all_posts(service, blog_id: str):
+    """列出所有已發佈與草稿文章，顯示 ID + 標題 + 網址"""
+    print("\n" + "="*70)
+    print("  Blogger 文章清單（含 Post ID）")
+    print("="*70)
+
+    for status in ["LIVE", "DRAFT"]:
+        label = "已發佈" if status == "LIVE" else "草稿"
+        try:
+            page_token = None
+            while True:
+                resp = service.posts().list(
+                    blogId=blog_id,
+                    status=status,
+                    maxResults=50,
+                    pageToken=page_token,
+                    fields="items(id,title,url),nextPageToken"
+                ).execute()
+                items = resp.get("items", [])
+                if items:
+                    print(f"\n【{label}】共 {len(items)} 筆")
+                    print(f"  {'Post ID':<22} 標題")
+                    print(f"  {'-'*20}  {'-'*44}")
+                    for p in items:
+                        print(f"  {p['id']:<22} {p.get('title','（無標題）')}")
+                page_token = resp.get("nextPageToken")
+                if not page_token:
+                    break
+        except Exception as e:
+            print(f"  ({label} 無法讀取：{e})")
+
+    print("\n" + "="*70)
+    print("  複製 Post ID 後執行：")
+    print("  python publish_to_blogger.py <檔案路徑> --update --post-id <ID>")
+    print("="*70)
+
+
 def main():
-    parser = argparse.ArgumentParser(description="發文到 Blogger")
-    parser.add_argument("filepath", help="HTML 檔案路徑")
+    parser = argparse.ArgumentParser(
+        description="目鏡大叔 Blogger 發文 / 更新腳本",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+用法範例：
+  列出所有文章 ID：   python publish_to_blogger.py --list
+  新文章（存草稿）：  python publish_to_blogger.py article.md
+  新文章（直接發佈）：python publish_to_blogger.py article.md --publish
+  更新現有文章：      python publish_to_blogger.py article.md --update --post-id 1234567890
+        """
+    )
+    parser.add_argument("filepath", nargs="?", default=None,
+                        help="HTML 或 Markdown 檔案路徑（--list 模式不需要）")
+    parser.add_argument("--list", action="store_true",
+                        help="列出所有文章的 Post ID 與標題")
     parser.add_argument("--publish", action="store_true",
-                        help="直接發佈（不加此參數則存為草稿）")
+                        help="直接發佈（不加此參數則存為草稿，--update 模式無效）")
+    parser.add_argument("--update", action="store_true",
+                        help="更新模式：只更新內文，URL / 標籤 / 排名完全不動")
+    parser.add_argument("--post-id", type=str, default=None,
+                        help="--update 必填：Blogger 文章 ID")
     args = parser.parse_args()
 
-    print(f"📄 讀取檔案：{args.filepath}")
-    title, labels, body, meta_data = read_html(args.filepath)
+    # ── 參數驗證 ────────────────────────────────────────
+    if args.update and not args.post_id:
+        parser.error("使用 --update 時，必須同時提供 --post-id <文章ID>")
+    if not args.list and not args.filepath:
+        parser.error("請提供檔案路徑，或使用 --list 列出所有文章")
 
-    print(f"   標題：{title}")
-    print(f"   標籤：{labels}")
-    if meta_data.get("location"):
-        print(f"   地點：{meta_data['location']} ({meta_data['lat']}, {meta_data['lng']})")
-    print(f"   內文長度：{len(body)} 字元")
-
-    print("\n🔐 Google 認證中...")
+    print("Google ...")
     creds   = get_credentials()
     service = googleapiclient.discovery.build("blogger", "v3", credentials=creds)
-
     blog_id = get_blog_id(service)
-    draft   = not args.publish
 
-    print(f"\n{'📝 建立草稿' if draft else '🚀 直接發佈'}...")
-    post_to_blogger(title, body, labels, meta_data, draft, service, blog_id)
+    # ── --list 模式 ──────────────────────────────────────
+    if args.list:
+        list_all_posts(service, blog_id)
+        return
+
+    # ── 讀取檔案 ────────────────────────────────────────
+    print(f"\n Reading: {args.filepath}")
+    title, labels, body, meta_data = read_html(args.filepath)
+    print(f"   Title: {title}")
+    if not args.update:
+        print(f"   Labels: {labels}")
+    print(f"   Body length: {len(body)} chars")
+
+    if args.update:
+        # ── 更新模式：安全更新內文，不動 URL ──
+        print(f"\n [UPDATE] Post ID: {args.post_id}")
+        update_blogger_post(args.post_id, body, service, blog_id)
+    else:
+        # ── 新發文模式（原有邏輯不動）──
+        draft = not args.publish
+        print(f"\n [{'DRAFT' if draft else 'PUBLISH'}]")
+        post_to_blogger(title, body, labels, meta_data, draft, service, blog_id)
 
 
 if __name__ == "__main__":
