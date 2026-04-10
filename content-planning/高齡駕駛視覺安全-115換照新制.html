@@ -48,13 +48,17 @@
   .post-tags{margin-top:30px;color:#6b7280;font-size:0.9em}
   /* 作者名片 CTA */
   .store-card{border:1px solid #eaeaea;padding:24px;background:#fff;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.04);margin:24px 0;word-wrap:break-word}
+  /* 專業審核徽章 - 暗色模式適配 */
+  .review-badge{font-size:0.85em;color:#166534;background:#f0fdf4;border-left:4px solid #22c55e;padding:10px 14px;margin:12px 0}
+  @media (prefers-color-scheme: dark){
+    .review-badge{color:#bbf7d0 !important;background:#052e16 !important}
+    .store-card{background:#1e293b !important;border-color:#334155 !important}
+  }
 </style>
 
 <!-- ==================== 作者署名 ==================== -->
 <p class="author-sign">文／目鏡大叔（李錫彥）｜自己的眼鏡・自己的驗光所｜服務三峽／鶯歌／樹林／土城</p>
-<p
-  style="font-size:0.85em;color:#4b5563;background:#f0fdf4;border-left:4px solid #22c55e;padding:10px 14px;margin:12px 0;">
-  本文由執業 20 年驗光師李錫彥親自撰寫並審核，內容符合現行視光臨床實務，並參照交通部最新高齡換照法規。</p>
+<p class="review-badge">本文由執業 20 年驗光師李錫彥親自撰寫並審核，內容符合現行視光臨床實務，並參照交通部最新高齡換照法規。</p>
 
 <!-- ==================== 首圖（請替換圖片URL） ==================== -->
 <figure style="margin:28px 0;text-align:center;">
