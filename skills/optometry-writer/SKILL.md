@@ -16,6 +16,8 @@ description: 專門為「目鏡大叔」設計的視光專業文案撰寫與研�
   - 絕對禁止使用破折號「——」來做解釋或語氣停頓。請使用自然的逗號、冒號，或是拆成短句，多用真人語氣詞。
   - 嚴格遵守「8 大反 AI 寫作缺陷檢查（Anti-AI Checklist）」：禁用空洞結尾、限制列點、強制長短句節奏變化、減少廢話直切痛點、加入真實情境具體細節、禁止過度使用代名詞、必須以白話文解釋術語。
 - **HTML 格式**：產出包含 `▮` 與 `▸` 標題符號的 HTML 結構，並準備好 `Article` 與 `FAQ` 的 JSON-LD。
+- **Canonical tag【必填】**：Meta 區最後一行加上 `<link rel="canonical" href="https://www.uncle-glasses.net/[YYYY]/[MM]/[permalink].html">`，年月依文章發布時間填入。
+- **GEO 摘要區塊【必填】**：首圖之後、開場白之前，插入黃底「🎯 大叔先講結論」區塊（格式見 `references/部落格排版規範.md` 第五節），3-5 條核心結論，至少 1 條含數字。
 
 ### 2. 專業數據調閱
 - **來源**：優先查詢 `/home/node/.openclaw/workspace/research/papers/` 底下的論文全文。
