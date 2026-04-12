@@ -1,5 +1,11 @@
 # è¨˜æ†¶ç´¢å¼• (Memory)
 
+## 2026-04-12 è¨˜æ†¶æ”¶æ–‚èˆ‡ Russell Brunson è’¸é¤¾ âœ…
+- **Russell Brunson Skill è’¸é¤¾**ï¼š
+  - æ–°å¢ `.agents/skills/russell-brunson-perspective/SKILL.md` åŠç›¸é—œç ”ç©¶ã€è‰ç¨¿ã€çŸ¥è­˜å¡ã€‚
+  - æ ¸å¿ƒè½‰è­¯ï¼šæ‘’æ£„ç¾å¼æ¨éŠ·èªæ°£ï¼Œæç…‰ new opportunity, belief staircase, value ladder, Dream 100 ç­‰ç²¾é«“ã€‚å°‡ä½é–€æª»é«”é©—ã€æ­£å¼æœå‹™èˆ‡ follow-up ä¸²è¯ç‚ºé©åˆé©—å…‰å¸«çš„é«˜ä¿¡ä»»ç‰ˆ Funnelã€‚
+- **è¡›æ•™æ–‡é›™é‡æˆ°ç•¥å£“æ¸¬**ï¼šé‹ç”¨ Shadow QAï¼ˆæ³•è¦/å…¬é—œï¼‰+ å®¶é•·æ¨¡æ“¬ç¾¤çµ„ï¼Œå£“æ¸¬ã€Šçˆ¸çˆ¸çš„çœ¼é¡ã€‹èˆ‡ã€Šè„ˆçµ¡è†œç ”ç©¶ã€‹æ–‡æ¡ˆï¼Œç²¾æº–è£œä¸Šä½é–€æª»å¾®å‹ CTAï¼Œå°‡é«˜å…±é³´é»è½‰åŒ–ç‚ºå°åº—å‹•èƒ½ã€‚
+
 ## MrBeast Skill è’¸é¤¾å®Œæˆ (2026-04-11) âœ…
 - **Skill è·¯å¾‘**ï¼š`.claude/skills/mrbeast-perspective/SKILL.md`
 - **çŸ¥è­˜å¡ç‰‡**ï¼š`obsidian-vault/04-çŸ¥è­˜å¡ç‰‡/20260411-MrBeast-å…§å®¹å·¥ç¨‹æ€ç¶­æ¡†æ¶.md`
@@ -252,20 +258,20 @@ OpenClaw å°‡é–‹é ­/çµå°¾çš„ "HEARTBEAT_OK" è¦–ç‚ºç¢ºèªè¨Šè™Ÿï¼ˆä¸”å¯èƒ½æ¨æ£„
 ---
 *æ›´æ–°æ–¼ 2026-04-08 | ç”± Antigravity æäº¤*
 
-## Ali Abdaal Skill »]ÃH§¹¦¨ (2026-04-12)
-- **Skill ¸ô®|¡G** `.agents/skills/ali-abdaal-perspective/SKILL.md`
-- **¬ã¨sÀÉ®×¡G** `.agents/skills/ali-abdaal-perspective/references/research/01-06.md`
-- **»]ÃHµ§°O¡G** `drafts/20260412-ali-abdaal-distillation.md`
-- **®Ö¤ß©w¦ì¡G** Ali ³Ì­È±o­ÉÃèªº¬O¡u±M·~¤H¤h¦p¦ó§âª¾ÃÑ¡B¨t²Î¡B¥Í²£¤O»P­Ó¤H«~µP¾ã¦X¦¨¥i«ùÄò¤º®e¥ÍºA¡v¡C
-- **¹ï«e½úªºÂàÄ¶¡G** YouTube °_¨B´Á¥ı¾Ç Ali¡A¤ñ¥ı¾Ç¯Â¬y¶q¤uµ{§ó¾A¦X¡F¥ı°µ¨t²Î¡B¥i¿Ëªñªí¹F»P±M·~ÂàÄ¶¡A¦AÅ|¥[ MrBeast ¦¡¥]¸Ë¡C
+## Ali Abdaal Skill ]H (2026-04-12)
+- **Skill |G** `.agents/skills/ali-abdaal-perspective/SKILL.md`
+- **sÉ®×¡G** `.agents/skills/ali-abdaal-perspective/references/research/01-06.md`
+- **]HOG** `drafts/20260412-ali-abdaal-distillation.md`
+- **Ö¤ß©wG** Ali Ì­È±oèªºOuM~Hhpâª¾Ñ¡BtÎ¡BÍ²OPÓ¤H~PXiò¤º®eÍºAvC
+- **eÄ¶G** YouTube _B AliAÇ¯Â¬yqu{AXFtÎ¡BiËªFPM~Ä¶AA|[ MrBeast ]Ë¡C
 
-## Threads ¤º®e¨t²Î«Ø¥ß (2026-04-12)
-- **·s Skill¡G** `.agents/skills/threads-account-research/SKILL.md`
-- **¥Î³~¡G** ¤ÀªR Threads ±b¸¹©w¦ì¡BÃz¤åµ²ºc¡B¤º®e¤ä¬W¡B°Ó·~Âà´«»P¥i­ÉÃè/¤£¥i·Ó§Û¤§³B¡C
-- **·s workflow¡G** `.agents/workflows/threads-content-engine.md`
-- **®Ö¤ß­ì«h¡G** «e¥x¥ÎÅç¥ú§l¤Ş¡A«á¥x¥Î¨t²ÎÅÜ²{¡C±N Threads µo¤å¤À¬°¤J¤f«¬ / ¬}¹î«¬ / ¨t²Î«¬ / ²£«~«¬¥|ºØ¨¤¦â¡A¤ä´©°ªÀWµo¤å»P²£«~¾Q¹Ô¡C
-- **Obsidian ¼ÒªO¡G** `obsidian-vault/06-¼ÒªO (Templates)/ThreadsLog.md`
-- **¤u§@¬y§ó·s¡G** Threads µo§G«á¥²¶·ÂkÀÉ¨ì Obsidian¡A°O¿ı­ì¤å¡B¨¤¦â¡B¥DÃD¡B¹_¤l¡Bµo«áÆ[¹î»P¥i©µ¦ù¥Î³~¡A§@¬° YouTube / ªø¤å / FAQ / ²£«~¤å®×ªº»y®Æ®w¡C
+## Threads etÎ«Ø¥ (2026-04-12)
+- **s SkillG** `.agents/skills/threads-account-research/SKILL.md`
+- **Î³~G** R Threads bwBzåµ²cBeWBÓ·~à´«Pi/iÓ§Û¤BC
+- **s workflowG** `.agents/workflows/threads-content-engine.md`
+- **Ö¤ß­hG** exlŞ¡AxÎ¨tÜ²{CN Threads oJf / }î«¬ / tÎ« / ~|Ø¨Aä´©WoP~QÔ¡C
+- **Obsidian ÒªOG** `obsidian-vault/06-ÒªO (Templates)/ThreadsLog.md`
+- **u@ysG** Threads oGá¥²kÉ¨ ObsidianAOBBDDB_lBo[PiÎ³~A@ YouTube /  / FAQ / ~×ªyÆ®wC
 
 ## Russell Brunson Skill è’¸é¤¾å®Œæˆ (2026-04-12)
 - **Skill è·¯å¾‘ï¼š** `.agents/skills/russell-brunson-perspective/SKILL.md`
