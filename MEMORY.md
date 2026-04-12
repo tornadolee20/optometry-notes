@@ -251,3 +251,10 @@ OpenClaw å°‡é–‹é ­/çµå°¾çš„ "HEARTBEAT_OK" è¦–ç‚ºç¢ºèªè¨Šè™Ÿï¼ˆä¸”å¯èƒ½æ¨æ£„
 
 ---
 *æ›´æ–°æ–¼ 2026-04-08 | ç”± Antigravity æäº¤*
+
+## Ali Abdaal Skill »]ÃH§¹¦¨ (2026-04-12)
+- **Skill ¸ô®|¡G** `.agents/skills/ali-abdaal-perspective/SKILL.md`
+- **¬ã¨sÀÉ®×¡G** `.agents/skills/ali-abdaal-perspective/references/research/01-06.md`
+- **»]ÃHµ§°O¡G** `drafts/20260412-ali-abdaal-distillation.md`
+- **®Ö¤ß©w¦ì¡G** Ali ³Ì­È±o­ÉÃèªº¬O¡u±M·~¤H¤h¦p¦ó§âª¾ÃÑ¡B¨t²Î¡B¥Í²£¤O»P­Ó¤H«~µP¾ã¦X¦¨¥i«ùÄò¤º®e¥ÍºA¡v¡C
+- **¹ï«e½úªºÂàÄ¶¡G** YouTube °_¨B´Á¥ı¾Ç Ali¡A¤ñ¥ı¾Ç¯Â¬y¶q¤uµ{§ó¾A¦X¡F¥ı°µ¨t²Î¡B¥i¿Ëªñªí¹F»P±M·~ÂàÄ¶¡A¦AÅ|¥[ MrBeast ¦¡¥]¸Ë¡C
