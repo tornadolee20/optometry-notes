@@ -1,52 +1,92 @@
-# 文章跑分 Checklist
+# article-scoring-checklist.md
 
-用途：
-發文前快速檢查，避免只有共鳴，沒有落地。
+Updated: 2026-04-15
 
-## 四大核心
+## Purpose
 
-1. Hook：有沒有把人拉進來
-2. Insight：有沒有講到他沒說出口的東西
-3. Reframe：有沒有幫他重新理解
-4. Action：有沒有給出低摩擦下一步
+This reference provides a simple editorial scoring frame for checking whether an article is actually working.
 
----
+Use it for review, not as the main drafting engine.
 
-## 快速檢查題
+## Core Dimensions
 
-### Hook
-- 開頭三句內，有沒有畫面、衝突、情緒或一句會讓人停下來的話？
-- 題目有沒有讓目標讀者覺得「這好像在講我」？
+Score each dimension as:
 
-### Insight
-- 有沒有寫出讀者心裡的委屈、焦慮、羞愧、撐著？
-- 有沒有一句「這就是我」等級的辨識句？
+- strong
+- acceptable
+- weak
 
-### Reframe
-- 有沒有把事情從表面問題翻到更深一層？
-- 有沒有把專業翻譯成一般人聽得懂的話？
-- 有沒有避免過度恐嚇、過度宣稱？
+## 1. Hook
 
-### Action
-- 最後有沒有一個具體、做得到、低壓力的下一步？
-- 這個下一步像照顧，不像推銷嗎？
-- 讀者看完之後，知不知道自己現在可以做什麼？
+Check:
 
----
+- does the opening create curiosity naturally?
+- does it feel grounded rather than manufactured?
+- does it fit the article type?
 
-## 你最常見的失分點
+Weak signs:
 
-1. 很會安撫，但沒有收進下一步
-2. 很會講洞察，但沒有落到具體動作
-3. 很會留白，但讀者不知道怎麼靠近你
-4. 怕太業務，所以把合理承接一起拿掉了
+- generic inspiration
+- abstract opening with no human texture
+- over-dramatic promise
 
----
+## 2. Insight
 
-## 最後一問
+Check:
 
-在送出前問自己：
+- does the article actually reveal something worth reading?
+- is there a real observation, not just pleasant wording?
+- does the piece move beyond the obvious?
 
-「這篇除了讓人覺得我懂他，有沒有也讓他知道可以怎麼走近我？」
+Weak signs:
 
-如果沒有，補一句低摩擦結尾。
+- polished emptiness
+- nice language without real takeaway
+- repeated common sense dressed as insight
+
+## 3. Reframe
+
+Check:
+
+- does the piece help the reader see the issue differently?
+- does it sharpen understanding or shift perspective?
+- does the new frame feel earned?
+
+Weak signs:
+
+- no real shift in understanding
+- conclusion says the same thing as the opening
+- fake profundity without conceptual movement
+
+## 4. Action
+
+Check:
+
+- does the article leave the reader with a useful next orientation?
+- if there is a CTA, is it trust-first?
+- does the ending point somewhere real?
+
+Weak signs:
+
+- no landing
+- forced CTA
+- vague encouragement instead of a real next step
+
+## Optional Overall Read
+
+An article is usually healthy when:
+
+- the hook invites
+- the insight delivers
+- the reframe deepens
+- the ending leaves a clear aftertaste
+
+## Best Use
+
+Use this checklist when:
+
+- reviewing a draft
+- deciding whether a piece is ready for publish packaging
+- comparing two versions of the same article
+
+Prefer `uncle-glasses-writing-qa` as the leading evaluator when the task is full editorial diagnosis.

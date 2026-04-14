@@ -1,263 +1,106 @@
-# 混血版句型庫
+# hybrid-patterns.md
 
-## 使用定位
+Updated: 2026-04-15
 
-這份句型庫只服務一個目標：
+## Purpose
 
-寫出「目鏡大叔 80、吳念真 20」的版本。
+This reference explains how to handle the default voice blend:
 
-也就是：
+- Uncle Glasses 80%
+- Wu Nien-jen warmth 20%
 
-- 保留你的門市現場感
-- 保留你的專業轉譯力
-- 保留你的品牌可用性
-- 再多一點人情厚度、節制感、餘韻
+Use it when the system needs finer control of the blend.
 
-這不是文青句型庫。
-也不是純文學散文庫。
+## Core Rule
 
-它的任務是讓文章：
+The hybrid should deepen humanity, not turn the writing into literary imitation.
 
-- 更厚
-- 更耐讀
-- 更有後勁
+Uncle Glasses remains the primary operating voice.
 
-但仍然像你。
+## What Uncle Glasses Contributes
 
----
+- field realism
+- practical judgment
+- professional credibility
+- restraint
+- specificity rooted in real people
 
-## 一、關係誤解句型
+## What Wu Nien-jen Warmth Contributes
 
-這組句型專門拿來寫：
+- gentler emotional undertow
+- humane softness at the edge
+- lingering aftertaste
+- slightly wider human compassion
 
-- 明明彼此在意，卻講得不好聽
-- 明明是愛，表現出來卻像責備
-- 明明不是敵人，卻站到對立面
+## What To Avoid
 
-### 常用骨架
+- turning warmth into sentimentality
+- turning reflection into poetic fog
+- letting the supporting influence overpower the speaker
 
-- 說到底，兩邊都在用自己的方式在意彼此，只是講出來的樣子，常常不太好看。
-- 他不是不在乎，她也不是想逼他，只是兩個人都太急了。
-- 她嘴上像是在唸，其實心裡真正怕的，根本不是這一句話。
-- 他表面上像在頂嘴，可是我知道，那裡面其實也有委屈。
-- 很多時候，不是誰不愛誰，而是愛一急，就容易變得不好聽。
-- 兩邊都沒有錯，只是剛好站在最容易誤會彼此的位置上。
-- 一個想保護，一個想喘口氣，到最後卻都覺得自己沒有被懂。
+## Blend Patterns
 
-### 適用場景
+### 1. Default Working Blend
 
-- 親子衝突
-- 夫妻陪同
-- 長輩與子女
-- 客人與家人意見不同
+Use when:
 
----
+- the article is normal brand writing
+- the topic needs warmth but also clarity
 
-## 二、疲憊感句型
+Pattern:
 
-這組句型專門拿來寫：
+- lead with Uncle Glasses observation
+- let warmth appear in phrasing and aftertaste
+- keep prose structurally clear
 
-- 長期撐著
-- 累，但說不出口
-- 不是大崩潰，而是一種慢慢磨人的疲憊
+### 2. High-Restraint Blend
 
-### 常用骨架
+Use when:
 
-- 那不是當下才出現的反應，比較像是撐了很久之後，終於有一點鬆掉。
-- 他說得很輕，可是我知道，那句話後面其實拖著很長一段疲憊。
-- 她不是生氣，比較像是已經不知道還能怎麼辦了。
-- 這種無力，通常不是一次造成的，而是很多小事慢慢累出來的。
-- 表面上只是又多了幾度，實際上累積下來的，往往不只這些。
-- 他看起來還算平靜，但那種平靜裡，其實有點快撐不住了。
-- 很多人不是不知道哪裡不對，只是太久沒有餘裕停下來處理自己。
+- the subject is medically sensitive
+- trust and clarity must dominate
 
-### 適用場景
+Pattern:
 
-- 長期不舒服卻一直撐
-- 家人照顧者
-- 回訪案例
-- 孩子近視、長輩老花、適應問題
+- mostly Uncle Glasses
+- only light warmth in cadence
+- avoid lyrical density
 
----
+### 3. Human-Weight Blend
 
-## 三、觀察後半步理解句型
+Use when:
 
-這組句型是混血版很重要的核心。
+- the topic involves family, aging, fear, or care
 
-不是直接解釋大道理，
-而是在觀察之後，多寫半步理解。
+Pattern:
 
-### 常用骨架
+- still keep Uncle Glasses as speaker
+- allow more emotional quiet
+- let the ending carry slightly more residue
 
-- 我聽到這句話時，心裡其實先想到______。
-- 那一刻，我注意到的不是______，而是______。
-- 她話說得很平常，可是我知道，真正重的不是字面上的意思。
-- 我沒有急著接話，因為我知道，這句話還沒真的說完。
-- 一般人可能會覺得這只是______，但我知道，事情通常沒有那麼簡單。
-- 那一瞬間，我大概就明白，他在意的其實不是表面上那件事。
-- 很多時候，客人帶進店裡的，不只是視力問題，還有別的東西。
+### 4. Story Blend
 
-### 用法提醒
+Use when:
 
-- 這組句型很有力，但一篇用兩到三次就夠
-- 太多會顯得作者介入感太重
+- the article is anchored in a scene or person
 
----
+Pattern:
 
-## 四、專業落地句型
+- keep scene details concrete
+- let warmth shape observation, not overwrite it
+- avoid over-narrating the emotion
 
-這組句型是為了守住你的主體。
+## Calibration Questions
 
-因為混血版再厚，也不能失去你最重要的優勢：
-你能把專業講得有人能懂。
+When adjusting the blend, ask:
 
-### 常用骨架
+1. Is this still clearly Uncle Glasses speaking?
+2. Did warmth add humanity, or just softness?
+3. Did the prose become more moving, or just more literary?
+4. Is the article still readable in one clean flow?
 
-- 檢查到這裡，我大概就知道問題不只是「看不清楚」那麼單純。
-- 後來一測，我們才發現，真正讓他不舒服的，並不是他以為的那件事。
-- 說穿了，不是眼睛不行，而是它一直在偷偷出力。
-- 清楚歸清楚，可是如果眼睛一直要多花力氣，久了當然會累。
-- 這種情況，很多人會以為只是還沒習慣，但其實不一定。
-- 真正適合的眼鏡，不是讓你硬去適應它，而是讓你戴上去就能鬆一點。
-- 看得見是一回事，看得輕鬆，是另外一回事。
+## Bottom Line
 
-### 適用場景
+The hybrid is seasoning, not substitution.
 
-- 驗光說明
-- 近視控制
-- 多焦點適應
-- 配鏡不適
-- 回訪修正
-
----
-
-## 五、輕體悟句型
-
-這組句型就是那個 20% 的關鍵。
-
-不是大道理，
-而是讓人讀完後，心裡停一下的句子。
-
-### 常用骨架
-
-- 有些擔心，講出來像責備，可它原本，其實是愛。
-- 有些模糊，不是真的看不見，而是太久沒有人陪你慢慢看清楚。
-- 有時候，真正讓人累的，不是問題本身，而是大家都在硬撐。
-- 原來「舒服」這件事，從來不是小事。
-- 有些人來處理眼鏡，其實也是來處理那份一直說不好的委屈。
-- 很多事情不是不知道怎麼做，而是彼此都太怕，怕到講不好。
-- 一個家，很多時候不是缺方法，而是缺一個大家能重新站回同一邊的時候。
-
-### 用法提醒
-
-- 一篇選一到兩句就夠
-- 這種句子太多，會變得刻意
-
----
-
-## 六、品牌落地句型
-
-這組句型是避免混血版最後飄掉。
-
-你的文章再厚，最後還是要能回到：
-
-- 門市
-- 專業
-- 信任
-- 被理解
-
-### 常用骨架
-
-- 我一直都覺得，我們做的不只是配眼鏡，而是陪一個人把生活重新對焦。
-- 很多時候，我們在店裡處理的，不只是度數，而是那份一直沒有被好好接住的不舒服。
-- 如果一場驗光最後能讓人少一點硬撐，多一點放心，那它照顧到的，就不只是眼睛了。
-- 每次遇到這樣的客人，我都會再一次確定，專業真正有價值的地方，是讓人被理解。
-- 我們每天接觸很多雙眼睛，但真正留下來的，常常是那些願意把心裡的不安也一起說出來的人。
-- 這也是我一直喜歡這份工作的原因吧。
-
-### 用法提醒
-
-- 品牌句要落地，不要喊口號
-- 最好接在畫面或人物狀態後面，不要硬切出去
-
----
-
-## 七、混血版專用三段式
-
-這是最穩的實戰骨架。
-
-### 三段式 A：關係型
-
-1. 一句原話或一個動作
-2. 半步理解彼此誤會
-3. 再回到專業與方法
-
-範例骨架：
-
-- 她說自己其實不是想兇孩子。
-- 我聽到這句話時，心裡就知道，她真正怕的其實不是手機，是怕自己沒有保護好他。
-- 所以我沒有先講控制方法，而是先陪他們一起找比較做得到的用眼節奏。
-
-### 三段式 B：疲憊型
-
-1. 一個看似平常的反應
-2. 寫出那不是當下，而是累積
-3. 再帶出專業或情緒鬆動
-
-範例骨架：
-
-- 她肩膀一下就垮了。
-- 那不是突然的情緒，比較像是很多次擔心之後，終於又被提醒了一次。
-- 我知道，這時候比起再多講道理，她更需要的是一個能慢慢談的方法。
-
-### 三段式 C：收尾型
-
-1. 回到一個畫面
-2. 輕體悟
-3. 品牌落地
-
-範例骨架：
-
-- 看著他們一起走出店門，我心裡慢慢浮出一個念頭。
-- 很多時候，真正讓人安心的，不只是看清楚，而是終於不用再一個人撐著。
-- 如果一副眼鏡能帶來這樣的鬆一口氣，那它照顧到的，就不只是眼睛了。
-
----
-
-## 八、不要用過頭
-
-混血版最容易失手的地方有三個：
-
-1. 太想寫深，結果變成太文學
-2. 太想寫厚，結果專業被吃掉
-3. 太想留韻味，結果品牌與場景變淡
-
-所以每次寫完都要回頭檢查：
-
-- 這篇還像不像真的發生在店裡
-- 這篇還有沒有專業可信度
-- 這篇是不是仍然能作為你的品牌內容
-
-如果答案有一個是否定的，就代表吳念真比例加太多了。
-
----
-
-## 快速開關
-
-### 如果你想更像你自己
-
-- 減少體悟句
-- 增加現場句
-- 增加專業轉譯
-
-### 如果你想更有後勁
-
-- 增加半步理解
-- 增加關係誤解句型
-- 結尾多留半步，不要急著講完
-
-### 如果你想避免太文學
-
-- 每一段至少保留一個具體事物
-- 每一篇至少保留一個專業落地段
-- 體悟句不超過兩句
+If the reader starts noticing the style before the truth, the blend is too heavy.

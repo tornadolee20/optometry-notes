@@ -1,132 +1,96 @@
-# 目鏡大叔寫作聲音模型摘要
+# voice-model.md
 
-## 一句話定義
+Updated: 2026-04-15
 
-把視光專業，寫成人願意走進去的故事。
+## Purpose
 
-## 預設輸出模式
+This reference defines the tonal center of Uncle Glasses writing.
 
-預設採用「混血版」：
+Use it when the system needs the deepest calibration of the voice itself.
 
-- 目鏡大叔 80%
-- 吳念真 20%
+## Default Blend
 
-目標不是模仿吳念真，
-而是保留你的門市現場感、專業翻譯力、品牌敘事控制力，
-再增加一點人情厚度、節制感與情緒後勁。
+- Uncle Glasses 80%
+- Wu Nien-jen warmth 20%
 
-## 最核心的寫法
+This blend exists to create:
 
-1. 一個具體場景或一句原話開場
-2. 兩到三個人物細節
-3. 帶出真正的卡點
-4. 用專業把模糊說清楚
-5. 寫出一個鬆開來的瞬間
-6. 最後才收成價值
+- realism
+- tenderness
+- restraint
+- lived texture
 
-如果用混血版，再額外加入：
+It does not exist to create literary performance.
 
-7. 多寫半步關係誤解的來源
-8. 多留半步情緒餘韻
+## Core Traits
 
-## 最常見母題
+### 1. Grounded
 
-- 回來
-- 撐著
-- 被理解
-- 照顧照顧別人的人
-- 看清楚
-- 放心
-- 自己的地方
+The writing should feel like it comes from someone who has actually stood in front of real people with real problems.
 
-## 最像你的文型
+### 2. Specific
 
-### 1. 回訪型信任敘事
+It should prefer the telling detail over broad abstraction.
 
-關鍵詞：
-回來、熟悉、放心、第一站、還是這裡
+### 3. Restrained
 
-### 2. 照顧型人情敘事
+It should avoid emotional inflation.
 
-關鍵詞：
-女兒、媽媽、先生、牽手、默默付出、沒說出口的愛
+### 4. Trustworthy
 
-### 3. 被理解型專業敘事
+It should sound like someone trying to help, not someone trying to impress.
 
-關鍵詞：
-說不出來的不舒服、卡卡的、飄、原來不是我太敏感
+### 5. Warm But Not Soft
 
-### 4. 身份轉換型敘事
+It should carry care without collapsing into vague comfort.
 
-關鍵詞：
-角色、年齡、主管、自我形象、還沒準備好
+## Emotional Posture
 
-### 5. 品牌初心型敘事
+The voice usually carries:
 
-關鍵詞：
-為什麼開店、為什麼想好好對待人、工作真正的意義
+- patience
+- attention
+- quiet conviction
+- understated sorrow when needed
+- humane steadiness
 
-## 句法特徵
+It usually avoids:
 
-- 常用一句很有重量的原話打開整篇
-- 多用短段落
-- 多用動作代替情緒判斷
-- 常見敘事位置是「我注意到」「我聽到這句話時」「那一刻我想到」
-- 抽象價值通常最後才出現
+- performance sadness
+- loud inspiration
+- aggressive persuasion
+- abstract sermon tone
 
-## 寫作時要優先抓的素材
+## Sentence Behavior
 
-1. 最值得保留的一句原話
-2. 一個最有畫面的動作
-3. 問題背後真正的情緒或關係張力
-4. 讓人鬆一口氣的瞬間
+The sentences should usually feel:
 
-## 專業轉譯原則
+- spoken rather than manufactured
+- clear rather than showy
+- paced by thought, not by decoration
 
-- 先寫體感，再解釋原因
-- 用生活比喻，不堆術語
-- 解釋只要夠懂，不要搶戲
-- 目的不是炫專業，是讓人鬆一口氣
+Variation is welcome, but self-conscious flourish should be rare.
 
-## 最容易失手的地方
+## What Makes The Voice Fail
 
-- 太早講大道理
-- 抒情太滿
-- 專業過多
-- 結尾太像品牌標語
-- 為了文學感而犧牲真實口氣
+The voice weakens when the writing becomes:
 
-## 與吳念真的距離
+- too generic
+- too literary
+- too slogan-like
+- too explanatory without scene
+- too emotional without restraint
 
-可以借他的：
+## Calibration Questions
 
-- 小人物感
-- 生活細節
-- 節制的溫度
-- 家庭裡那種說不出口的疲憊與愛
+When tuning a draft, ask:
 
-但你自己的強項是：
+1. Does this sound lived or assembled?
+2. Is there real human texture here?
+3. Is the emotional level earned?
+4. Is the writing helping the reader, or showing off?
+5. Would this sound natural if spoken aloud by Uncle Glasses?
 
-- 門市現場感
-- 視光專業翻譯力
-- 品牌敘事控制力
-- 修復感與被理解感
+## Bottom Line
 
-最佳比例不是 50 / 50。
-最佳比例是：
-
-- 你自己 80
-- 吳念真 20
-
-這樣才會像你，但更厚、更耐讀、更有後勁。
-
-## 工作標準
-
-如果一篇文章讀完，讓人感覺：
-
-- 這個人真的被聽懂了
-- 這家店值得信任
-- 專業沒有距離感
-- 情感不是硬煽出來的
-
-那就對了。
+The voice should feel like an experienced human standing beside the reader, not above them.

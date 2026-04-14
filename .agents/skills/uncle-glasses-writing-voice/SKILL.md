@@ -1,275 +1,180 @@
 ---
 name: uncle-glasses-writing-voice
 description: |
-  目鏡大叔寫作聲音模型。用於以「目鏡大叔／自己的眼鏡」最自然、最成熟的繁體中文風格撰寫門市故事文、品牌敘事文、親情照顧文、專業轉譯文與社群貼文。
-  當用戶提到「用我的風格寫」「寫得像我一點」「目鏡大叔風格」「自己的眼鏡風格」「最像我的版本」「幫我寫一篇貼文」「把這個案例寫成文章」時使用。
-  也適用於：改寫既有草稿使其更像本人、把個案筆記轉成故事文、控制文學感避免過度、讓品牌價值從故事自然長出。
-  預設主力模式為「混血版」：目鏡大叔 80%、吳念真 20%，也就是保留門市現場感、專業翻譯力與品牌實戰性，再增加一點人情厚度、節制感與後勁。
+  Core voice-transfer skill for turning material into natural Uncle Glasses
+  writing. This skill owns tone, rhythm, narrative posture, and emotional
+  restraint. It should not absorb editorial QA, publishing packaging, or large
+  reference libraries into the core invocation body.
 ---
 
-# 目鏡大叔寫作聲音模型
+# Uncle Glasses Writing Voice
 
-先讀 `references/voice-model.md`，再開始寫。
+## Purpose
 
-如果需要更快進入寫作狀態，再視需求補讀：
+This skill exists to do one job well:
 
-- `references/opening-hooks.md`：開頭句型庫
-- `references/transition-lines.md`：中段轉折與過場句型庫
-- `references/closing-lines.md`：結尾收束句型庫
-- `references/hybrid-patterns.md`：混血版句型庫
-- `references/ending-modules.md`：低摩擦結尾模組庫
-- `references/article-scoring-checklist.md`：發文前快速跑分
-- `references/article-type-formulas.md`：五大題型承接公式
+make a piece of writing sound like Uncle Glasses.
 
-## 核心任務
+It is the voice core, not the editor, not the packager, and not the research digester.
 
-把視光專業，寫成人願意走進去的故事。
+## Use This Skill When
 
-## 預設模式：混血版
+- the user wants "write like me"
+- the draft exists but sounds too generic
+- notes or research need to be translated into the right narrative voice
+- a post, article, or story needs the right emotional texture and restraint
 
-除非用戶明確要求「更純粹像我」、「不要文學感」或「完全用吳念真模式」，否則預設使用混血版。
+## Do Not Use This Skill When
 
-### 混血版定義
+- the task is mainly research digestion
+- the draft mainly needs critique rather than rewriting
+- the main task is pure HTML rendering
+- the task is publish packaging
+- the user only needs a simple factual summary
 
-- 目鏡大叔 80%
-- 吳念真 20%
+## Core Responsibility
 
-意思不是模仿吳念真，
-而是以你的聲音為主體，再借一點他的：
+This skill should focus on:
 
-- 小人物感
-- 人情厚度
-- 對家庭關係裡誤會與愛的理解
-- 節制的句子
-- 比較長的情緒後勁
+- tone
+- rhythm
+- narrative distance
+- emotional restraint
+- specificity
+- trust-building phrasing
+- sounding human without sounding over-written
 
-### 混血版要保住的 4 件事
+## Default Voice Model
 
-1. 門市現場感不能掉
-2. 專業翻譯力不能掉
-3. 品牌內容實戰性不能掉
-4. 結尾不能飄成純散文
+Default blend:
 
-### 混血版加上的 4 件事
+- Uncle Glasses 80%
+- Wu Nien-jen style warmth 20%
 
-1. 對人物疲憊感的理解更深一點
-2. 對關係拉扯的描寫更厚一點
-3. 句子更節制，不急著講滿
-4. 讓情緒在結尾多留半步
+The point of the blend is not literary performance.
 
-優先做到這 5 件事：
+The point is to preserve:
 
-1. 先寫人，再寫道理
-2. 先寫現場，再寫價值
-3. 用微動作承載情緒，不直接把情緒講滿
-4. 專業只在必要時出手，而且要翻成人話
-5. 讓「安心、舒服、被理解、看清楚」自然長出來
+- grounded humanity
+- field realism
+- professional restraint
+- lived detail
+- emotional aftertaste without melodrama
 
-## 寫作流程
+## Working Rule
 
-### Step 1：判斷文型
+The writing should feel like:
 
-先判斷這篇比較接近哪一型：
+- someone who has actually met people in the real world
+- someone who can explain professional issues without showing off
+- someone who carries warmth and judgment together
 
-- 回訪型信任敘事
-- 照顧型人情敘事
-- 被理解型專業敘事
-- 身份轉換型敘事
-- 品牌初心型敘事
-- 親子教育型
-- 舊物情感型短貼文
-- 歷史擦身型敘事
-- 信任延時型敘事
-- 微文學版
+The writing should not feel like:
 
-如果不確定，預設用「最像你主力版」：
+- generic inspirational AI prose
+- empty lyrical fog
+- over-polished self-performance
+- abstract wisdom without scene or texture
 
-1. 進門或一句對話開場
-2. 兩到三個人物細節
-3. 真正卡住的地方
-4. 專業介入，說清模糊
-5. 一個鬆開來的瞬間
-6. 收在信任、放心、被理解
+## Reference Usage
 
-如果是混血版，則在這個骨架上額外補兩件事：
+Use supporting references only when needed:
 
-7. 把「為什麼彼此會誤會」寫得更深一點
-8. 結尾多留一點餘韻，但不要失去落地感
-
-### Step 2：先抽 4 個素材點
-
-動筆前，先抓出這 4 個點：
-
-1. 這篇最該保留的原話是什麼
-2. 這個人最有畫面的動作是什麼
-3. 真正的困難是視力問題，還是關係、角色、情緒問題
-4. 最後那個讓人鬆一口氣的瞬間是什麼
-
-如果這 4 點不清楚，先補齊再寫。
-
-### Step 3：決定濃度
-
-預設濃度如下：
-
-- 故事 60
-- 人物關係 20
-- 專業轉譯 15
-- 品牌收束 5
-
-只有在衛教型文章時，才提高專業比例。
-
-### Step 4：收尾檢查
-
-寫完後，逐項檢查：
-
-- 開頭是不是夠快把人帶進現場
-- 有沒有一句真的像當事人會說的話
-- 有沒有至少一個微動作細節
-- 專業有沒有講得夠人話
-- 結尾有沒有過度說教
-- 讀完後像不像「自己的眼鏡」會發的文
-
-如果文章雖然有共鳴，但不知道怎麼落地：
-
-1. 先讀 `references/ending-modules.md`
-2. 再用 `references/article-type-formulas.md` 對題型選承接法
-3. 最後用 `references/article-scoring-checklist.md` 檢查這篇是不是只有餘韻、沒有下一步
-
-## 必守原則
-
-### 要做
-
-- 用繁體中文
-- 多用短段落
-- 保留口語感與呼吸感
-- 讓品牌價值從故事裡長出來
-- 能具體就不要抽象
-- 能寫動作就少寫形容詞
-
-### 不要做
-
-- 不要一開始就講大道理
-- 不要把文章寫成衛教講義
-- 不要過度文青、過度雕琢
-- 不要強塞 CTA
-- 不要硬講「我們很專業、很溫暖」
-- 不要把客人寫成扁平範例
-
-## 專業轉譯規則
-
-當文章需要視光專業內容時：
-
-1. 先說當事人的體感
-2. 再用生活比喻解釋
-3. 不堆術語
-4. 不做超出情境的醫療承諾
-5. 專業段落要短，夠懂就好
-
-好例子：
-
-- 不是「雙眼調節失衡造成視覺負擔」
-- 而是「看得清楚歸看得清楚，但眼睛一直得偷偷出力，所以久了就卡、就飄、就不想戴」
-
-## 輸出模式
-
-### 模式 A：完整貼文
-
-適用於 Facebook、部落格、長貼文。
-
-輸出：
-
-- 標題
-- 正文
-
-### 模式 B：短貼文
-
-適用於較短的社群內容。
-
-輸出：
-
-- 1 段 hook
-- 3 到 6 段正文
-- 1 段收束
-
-### 模式 C：改寫
-
-先保留原事件與核心情緒，再把文字往「更像目鏡大叔」推近。
-
-改寫時優先修：
-
-1. 太早說理
-2. 太多空泛抒情
-3. 專業太硬
-4. 結尾太直白
-
-## 與吳念真風格的關係
-
-可以借：
-
-- 小人物感
-- 生活細節
-- 節制的溫度
-
-但不要直接模仿成文學散文。
-
-目標不是「像吳念真」，
-而是「保留你的門市現場感、專業轉譯力、品牌敘事力，再借一點他的節制與人味」。
-
-## 快速指令模板
-
-當用戶只丟案例素材時，直接輸出成文，不要先講理論。
-
-當用戶說「像我一點」，優先往這 4 個方向修：
-
-1. 更具體的開場
-2. 更多人物微動作
-3. 更自然的專業翻譯
-4. 更晚一點才說出價值
-
-當用戶說「不要那麼文學」，就：
-
-- 降低意象密度
-- 降低修辭密度
-- 提高現場口語感
-
-當用戶說「再深一點」，就：
-
-- 不加大道理
-- 改加關係張力、動作細節、內在猶豫
-
-當用戶說「用混血版寫」「像我，但更厚一點」「目鏡大叔 80 吳念真 20」「目前最好那版」，就明確啟用混血版，增加：
-
-- 家人之間彼此誤解的理解
-- 生活語感裡的小小心酸
-- 更節制的體悟句
-- 更耐讀的中後段層次
-
-如果要把混血版寫得更穩，再讀 `references/hybrid-patterns.md`，優先套用其中的：
-
-- 關係誤解句型
-- 疲憊感句型
-- 輕體悟句型
-- 品牌落地句型
-
-當用戶卡在開頭，就讀 `references/opening-hooks.md`，優先選「一句原話開場」或「進門畫面開場」。
-
-當用戶卡在中段，就讀 `references/transition-lines.md`，優先補「觀察轉折」「專業介入」「情緒推進」三種句型。
-
-當用戶卡在結尾，就讀 `references/closing-lines.md`，優先選「輕一點、穩一點、不要講滿」的收法。
-
-如果用戶說「最近幾篇都有同樣問題」「結尾容易飄」「很感人但不接客」「高共鳴但低落地」，就額外啟用：
-
+- `references/voice-model.md`
+- `references/opening-hooks.md`
+- `references/transition-lines.md`
+- `references/closing-lines.md`
 - `references/ending-modules.md`
-- `references/article-scoring-checklist.md`
+- `references/hybrid-patterns.md`
 - `references/article-type-formulas.md`
 
-此時要優先修的不是文感，而是：
+Do not load every reference by default.
 
-1. 把讀者從理解帶到行動
-2. 補一個低摩擦、像照顧不是像推銷的下一步
-3. 讓結尾除了有餘韻，也有承接
+## Reference Map
 
-## 最後提醒
+See:
 
-你寫的不是眼鏡行故事。
-你寫的是人們在看不清、撐著、將就、猶豫的時候，如何因為一點理解與一點專業，慢慢把自己重新對焦回生活。
+- `references/REFERENCE-MAP.md`
+
+Use that file to decide which support reference is actually needed for the current task.
+
+## Workflow
+
+### Step 1
+
+Identify what the material is trying to do:
+
+- tell a story
+- explain a concept
+- shift belief
+- comfort, warn, or guide
+
+### Step 2
+
+Identify where the draft currently fails:
+
+- too generic
+- too literary
+- too flat
+- too much explanation, not enough scene
+- too much preaching, not enough observation
+
+### Step 3
+
+Rewrite for voice, not for decoration.
+
+The goal is not prettier writing.
+The goal is truer writing.
+
+### Step 4
+
+Preserve concrete details whenever possible.
+
+If the draft loses lived texture, the voice weakens.
+
+### Step 5
+
+Stop before the writing becomes self-conscious.
+
+Understatement usually beats performance.
+
+## Boundary With QA
+
+If the task is:
+
+- "check whether this sounds like me"
+- "tell me where the AI tone leaks"
+- "review this version"
+
+then `uncle-glasses-writing-qa` should lead instead.
+
+## Boundary With Packaging
+
+If the task is:
+
+- convert to HTML
+- prepare Blogger-ready output
+- add canonical or schema
+
+then route downstream to:
+
+- `optometry-html-renderer`
+- `uncle-glasses-blog-packager`
+
+## Output Shape
+
+Minimum expected output:
+
+```md
+## Voice Rewrite Output
+- Main voice goal:
+- Rewritten draft:
+- Notes on tone:
+- Remaining risks:
+```
+
+## Bottom Line
+
+This skill should make the writing feel lived-in, specific, and trustworthy.
+
+It should stay narrow so the system can invoke it as the voice layer inside the larger article pipeline.

@@ -1,79 +1,140 @@
-# 五大題型結尾公式
+# article-type-formulas.md
 
-不同題型，不該用同一種 CTA。
-這份是題型對應的最佳承接法。
+Updated: 2026-04-15
 
----
+## Purpose
 
-## 1. 故事文
+This reference helps the writing layer choose the right article shape before drafting or rewriting.
 
-收法：
-1. 收人物情緒
-2. 翻成普遍洞察
-3. 給家屬一個低門檻下一步
+Use it when the issue is not only voice, but article architecture.
 
-公式：
+## Core Rule
 
-不是每個人都會把自己的辛苦說出口。  
-很多時候，他不是不需要，只是一直把自己放到最後。  
-如果你家裡也有這樣的人，不用急著一次解決，先陪他來看看也可以。
+The article type should match the article's real engine.
 
----
+Do not force every piece into the same formula.
 
-## 2. 研究分享文
+## Article Types
 
-收法：
-1. 防止過度推論
-2. 說清真正該帶走的是什麼
-3. 落到追蹤或判斷方式
+### 1. Story Article
 
-公式：
+Use when:
 
-這篇研究真正重要的，不是多一個讓人焦慮的新名詞，  
-而是提醒我們，判斷不能只看單一指標。  
-與其急著追一個答案，不如把原本該做的追蹤做好。
+- the material begins from a real person, case, or scene
 
----
+Basic shape:
 
-## 3. 心理機制文
+1. opening scene
+2. human tension
+3. what the moment reveals
+4. broader reflection
+5. restrained ending
 
-收法：
-1. 點出表面行為背後的原因
-2. 把自責變成理解
-3. 給一個溫柔、不刺激防衛的動作
+Best for:
 
-公式：
+- store encounters
+- family decisions
+- lived professional moments
 
-很多時候，他抗拒的不是眼鏡本身，  
-而是花錢、變老、麻煩別人，或承認自己真的需要幫忙。  
-如果你也正在陪家人面對這些事，我們可以一起慢慢處理，不用急。
+### 2. Explainer Article
 
----
+Use when:
 
-## 4. 專業問題解釋文
+- the main goal is to make a topic understandable
 
-收法：
-1. 專業翻成人話
-2. 拆掉讀者對自己的懷疑
-3. 給一個可執行的檢查動作
+Basic shape:
 
-公式：
+1. recognizable confusion or common question
+2. what people usually misunderstand
+3. clearer explanation
+4. practical implication
+5. clarifying ending
 
-很多配戴上的不舒服，不代表你太挑，也不代表你適應力差。  
-很多時候，只是這副眼鏡真的沒有跟你的生活配合好。  
-如果你最近也常常有這種說不上來的卡，不妨把眼鏡帶來，我們先幫你找原因。
+Best for:
 
----
+- optometry education
+- lens explanations
+- condition explanations
 
-## 5. 品牌價值文
+### 3. Belief-Shift Article
 
-收法：
-1. 保留餘韻
-2. 補一個微行動
-3. 讓品牌價值被接住
+Use when:
 
-公式：
+- the article tries to gently move the reader from one frame to another
 
-我們做的，當然不只是把一副眼鏡配出去。  
-但如果這份專業和陪伴，剛好能讓你少一點將就、多一點安心，那就值得。  
-下次經過的時候，不一定非得馬上換，先進來讓我們幫你看看也可以。
+Basic shape:
+
+1. familiar belief
+2. crack in that belief
+3. what reality looks like instead
+4. why the new frame matters
+5. belief-shift ending
+
+Best for:
+
+- myth-busting
+- reframe articles
+- decision psychology posts
+
+### 4. Guidance Article
+
+Use when:
+
+- the reader needs help making a decision
+
+Basic shape:
+
+1. present the real dilemma
+2. name what makes it difficult
+3. sort signal from noise
+4. offer a calm next-step framework
+5. gentle action ending
+
+Best for:
+
+- consultation-oriented posts
+- care decisions
+- product / service choices
+
+### 5. Reflection Article
+
+Use when:
+
+- the article needs emotional depth more than instruction
+
+Basic shape:
+
+1. a quiet opening
+2. a human or relational observation
+3. deepening reflection
+4. return to lived reality
+5. human-weight ending
+
+Best for:
+
+- caregiving themes
+- aging themes
+- identity or values pieces
+
+## Selection Rule
+
+Choose the article type by asking:
+
+- is this primarily a scene?
+- is this primarily an explanation?
+- is this primarily a reframe?
+- is this primarily a decision guide?
+- is this primarily a reflection?
+
+## Editing Test
+
+The formula is probably right if:
+
+- the article feels structurally inevitable
+- the voice is supported by the structure
+- the piece does not meander
+- the ending matches the article's path
+
+## Bottom Line
+
+Voice matters, but structure determines whether the voice has somewhere to go.

@@ -1,179 +1,156 @@
-# 開頭句型庫
+# opening-hooks.md
 
-## 使用原則
+Updated: 2026-04-15
 
-開頭的任務只有一個：
+## Purpose
 
-把讀者帶進現場。
+This reference helps the writing layer choose an opening that feels natural, specific, and human.
 
-不要急著講大道理，也不要一開頭就總結價值。
+The job of an opening is not to sound clever.
 
-優先順序如下：
+The job is to make the reader lean in.
 
-1. 一句原話開場
-2. 一個進門畫面開場
-3. 一個異常細節開場
-4. 一個安靜但有重量的場景開場
+## Core Rule
 
-如果手上素材夠真實，優先用人物原話，不要自己硬發明金句。
+A strong Uncle Glasses opening usually begins from one of these:
 
----
+- a real scene
+- a recognizable hesitation
+- a small but telling observation
+- a sentence that carries lived weight without shouting
 
-## A 類：一句原話開場
+## What Good Openings Do
 
-最像你的主力開場。
+- create immediate human texture
+- signal what kind of piece this is
+- earn trust quickly
+- make the reader feel "this person has seen something real"
 
-適用：
+## What To Avoid
 
-- 有一句很準的話
-- 那句話本身就藏著不安、期待、愛、委屈或人生位置
+- abstract moral lessons in the first line
+- generic inspirational tone
+- fake drama
+- oversized claims before the scene arrives
+- too much explanation before curiosity forms
 
-模板：
+## Opening Families
 
-- 她一坐下來就說：「______。」
-- 還沒開始驗光，他先笑著說：「______。」
-- 她說得很輕，像只是順口一提：「______。」
-- 他皺了一下眉，想了想才說：「______。」
-- 她一進門，第一句不是問價格，而是問：「______。」
+### 1. Scene Opening
 
-你的常用力道：
+Use when:
 
-- 這句話看起來平常，實際上很重
-- 這句話不是資訊，而是整篇文章的命題
+- there is a real customer, family, clinic, or store moment
+- the piece is story-driven
 
-示例骨架：
+Pattern:
 
-- 她說：「我不想看起來像媽媽。」
-- 她說：「我想看清楚我女兒的臉。」
-- 他說：「就是怪怪的，但我又說不出來。」
+- place us inside a moment
+- show one concrete detail
+- let the meaning arrive after the scene
 
----
+Prompt shape:
 
-## B 類：進門畫面開場
+- "That day, the first thing I noticed was..."
+- "He sat down and said..."
+- "When she took off her glasses, what she asked first was not..."
 
-適用：
+### 2. Hesitation Opening
 
-- 沒有特別強的原話
-- 但人物動作、穿著、同行者關係很有畫面
+Use when:
 
-模板：
+- the article is about a decision the reader resists
+- the emotional entry point is doubt, fear, or reluctance
 
-- 那天下午，自動門一打開，我就先注意到______。
-- 他們牽著手走進來的時候，我大概就知道，今天這副眼鏡，不只是眼鏡。
-- 她來得有點晚，手上拎著______，腳步快得像還沒從工作裡退下來。
-- 外面下著雨，她們撐著傘走進來，鞋邊還沾著水。
-- 門一開，我先看到的不是人，是他手上那副已經戴了很多年的眼鏡。
+Pattern:
 
-重點：
+- begin with the hesitation
+- name it simply
+- do not solve it too quickly
 
-- 開場先給鏡頭
-- 不要一次塞太多解釋
-- 只抓一到兩個最有辨識度的細節
+Prompt shape:
 
----
+- "Many people are not really afraid of X. They are afraid of..."
+- "What people hesitate about is often not the price itself, but..."
+- "Sometimes the hardest part is not choosing. It is admitting..."
 
-## C 類：異常細節開場
+### 3. Observation Opening
 
-適用：
+Use when:
 
-- 故事裡有一個不尋常的小地方
-- 那個細節本身就能勾起讀者好奇
+- the article is explanatory
+- the piece begins from something repeatedly seen in the field
 
-模板：
+Pattern:
 
-- 她沒有立刻坐下來。
-- 他明明說看得清楚，卻一直把眼鏡摘下來又戴回去。
-- 那副眼鏡其實才戴一年多，但他說什麼都不想再戴了。
-- 她戴上試鏡架後，第一反應不是笑，而是沉默。
-- 那天最先鬆一口氣的人，不是客人，是陪她來的家人。
+- start from a repeated observation
+- keep it grounded
+- let the authority come from experience, not volume
 
-這類開頭很適合：
+Prompt shape:
 
-- 不舒服但說不清
-- 適應問題
-- 家人陪同
-- 回訪與比較型故事
+- "After seeing enough cases, you begin to notice..."
+- "There is a sentence I hear again and again..."
+- "In the store, this kind of question appears more often than people think..."
 
----
+### 4. Belief-Shift Opening
 
-## D 類：安靜場景開場
+Use when:
 
-適用：
+- the article needs to gently overturn a common misunderstanding
 
-- 情緒濃度比較高
-- 你想寫得深一點，但不要太文學
+Pattern:
 
-模板：
+- begin with the familiar belief
+- introduce the crack in it
+- do not sound combative
 
-- 那天下午，店裡其實很安靜。
-- 驗光室的燈照下來時，她一直沒有說話。
-- 我一邊記錄數據，一邊注意到她的手，始終沒有放開包包帶子。
-- 外面的雨聲很大，但她說那句話的時候，店裡突然安靜了下來。
-- 他坐在我面前挑鏡框的時候，我其實先想到的，不是眼鏡，而是時間。
+Prompt shape:
 
-提醒：
+- "Many people think X means Y. In reality, what we often see is..."
+- "What sounds reasonable at first is not always what helps most."
+- "The problem is usually not where people first think it is."
 
-- 這類開場要節制
-- 一篇裡面只要一點點氛圍，不要整篇都飄著
+### 5. Quiet Weight Opening
 
----
+Use when:
 
-## E 類：親子與家庭型開場
+- the topic is emotional
+- the piece needs calm gravity rather than hooky energy
 
-適用：
+Pattern:
 
-- 母女、夫妻、孩子、家人陪同
-- 情緒重點在關係
+- one restrained sentence
+- no flourish
+- enough emotional undertow to pull the reader inward
 
-模板：
+Prompt shape:
 
-- 昨天，一對母女走進我們店裡。
-- 他們牽著手走進來。
-- 那天陪她來的，不只有先生，還有一種藏不住的擔心。
-- 小朋友一進門先躲到媽媽旁邊，手抓得緊緊的。
-- 女兒站在一旁沒多說什麼，但我聽得出來，她其實已經勸媽媽很久了。
+- "Some questions are asked very softly, but they stay with you for a long time."
+- "There are moments in the store that do not look dramatic, but you do not forget them."
+- "What people say out loud is sometimes only half of what they are carrying."
 
-這類開頭的關鍵，不是寫關係名稱，而是立刻讓人感覺到關係溫度。
+## Selection Rule
 
----
+Choose the opening family based on the article's real engine:
 
-## F 類：回來型開場
+- story -> scene opening
+- reluctance -> hesitation opening
+- explanation -> observation opening
+- myth-busting -> belief-shift opening
+- emotional reflection -> quiet weight opening
 
-適用：
+## Editing Test
 
-- 久違回訪
-- 出國返台
-- 別處配過又回來
+The opening is probably working if:
 
-模板：
+- it sounds spoken, not manufactured
+- it creates curiosity without noise
+- it contains at least one grounded human signal
+- the next paragraph feels naturally invited
 
-- 幾年沒見，她一進門就笑著說：「你還記得我嗎？」
-- 她剛下飛機，還沒回家，第一站就先來了我們店裡。
-- 走了一圈之後，他們最後還是回來了。
-- 他說自己上次來，是好幾年前的事了。
-- 有些人回來，不需要多解釋，一句「我回來了」就夠了。
+## Bottom Line
 
-這類開頭很適合你的品牌主線，因為它天然帶信任感。
+The best opening does not scream for attention.
 
----
-
-## 不要這樣開
-
-- 不要一開頭就說「有時候我覺得人生就是這樣」
-- 不要一開頭就講品牌理念
-- 不要先講專業知識
-- 不要先幫讀者總結感動點
-- 不要硬寫成散文式金句
-
----
-
-## 快速選擇法
-
-如果你不知道要選哪一種開頭，照這個順序選：
-
-1. 有強原話：用 A
-2. 沒強原話但有畫面：用 B
-3. 有異常感：用 C
-4. 情緒濃度高：用 D
-5. 家庭關係是主軸：用 E
-6. 回訪信任是主軸：用 F
+It quietly makes the reader trust the voice enough to continue.

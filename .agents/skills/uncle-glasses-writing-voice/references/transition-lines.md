@@ -1,177 +1,120 @@
-# 過場與轉折句型庫
+# transition-lines.md
 
-## 使用原則
+Updated: 2026-04-15
 
-你的中段，不是拿來塞資訊的。
+## Purpose
 
-它的任務是把文章慢慢推深：
+This reference helps the writing layer move between paragraphs and sections without sounding stitched together.
 
-1. 從表面事件，推到真正卡點
-2. 從對話，推到關係
-3. 從症狀，推到體感與理解
-4. 從一個小細節，推到稍微更大的感受
+Transitions should create flow, not announce structure mechanically.
 
-好的轉場，不會讓人覺得你在「換段落」。
-而是讓讀者覺得，故事自然就走到這裡了。
+## Core Rule
 
-## A 類：觀察型轉折
+A good transition feels like the next thought arriving naturally from the previous one.
 
-適用：
+It should sound human, not like presentation software.
 
-- 你想從表面情境，慢慢走到更深的理解
-- 不想突然硬講道理
+## What Good Transitions Do
 
-模板：
+- maintain emotional continuity
+- connect scene to meaning
+- connect meaning to action
+- shift pace without breaking trust
 
-- 我聽到這句話時，心裡其實先想到______。
-- 那一刻，我注意到的不是______，而是______。
-- 她話說得很輕，但我知道，真正重的不是這句話本身。
-- 他嘴上說還好，可是我看得出來，那個「還好」其實撐了很久。
-- 一般人可能會覺得這只是______，但我知道，事情通常沒有那麼簡單。
+## What To Avoid
 
-## B 類：對話後推進
+- "Next, let us discuss..."
+- obvious outline language
+- repeated formulaic bridges
+- transitions that restate the same sentence in new words
 
-適用：
+## Transition Families
 
-- 有人物對話
-- 想讓對話不是停在表面資訊，而是帶出關係與情緒
+### 1. Observation -> Meaning
 
-模板：
+Use when:
 
-- 她這樣一說，旁邊的______也跟著笑了，但那個笑裡其實有點______。
-- 他講完這句話後，沒有再接下去，只是低頭摸了一下鏡框。
-- 她話還沒說完，身邊的人就先幫她補了一句。
-- 那句話聽起來像玩笑，可是我知道，那不是隨便說說。
-- 我沒有急著接話，讓那句話先在空氣裡停了一下。
+- a scene or detail has just been shown
+- the next paragraph should explain why it matters
 
-## C 類：專業介入型
+Examples:
 
-適用：
+- "What stayed with me was not only that moment itself, but what it revealed."
+- "That small detail is exactly where the real issue begins."
+- "What this tells us is not just what happened, but what people are actually struggling with."
 
-- 你需要進入驗光、度數、配鏡、適應邏輯
-- 但不想讓文章突然變成說明書
+### 2. Meaning -> Practical Guidance
 
-模板：
+Use when:
 
-- 檢查到這裡，我大概就知道問題在哪裡了。
-- 驗光的時候，我慢慢發現，真正讓他不舒服的，不只是度數。
-- 後來一測，我們才發現，原來她之前那副眼鏡______。
-- 這種情況，很多人都會以為只是還沒習慣，但其實不一定。
-- 說穿了，不是看不清楚而已，而是眼睛一直在偷偷出力。
+- the article has made a point
+- the next step is what to do with it
 
-專業轉譯接法：
+Examples:
 
-- 就像相機對焦點被推得太前面或太後面
-- 清楚歸清楚，可是眼睛會一直緊緊的
-- 表面上能看，身體卻知道不對勁
+- "So if we return to the real question, the focus changes."
+- "That is why the next step is usually not to rush, but to look more carefully."
+- "Once we see it this way, the decision becomes a little clearer."
 
-## D 類：情緒加深型
+### 3. Scene -> Reflection
 
-適用：
+Use when:
 
-- 想把文章再往裡推一層
-- 但又不想直接下「她很難過」「他很感動」這種判斷
+- a story moment needs to deepen emotionally
 
-模板：
+Examples:
 
-- 那時候我忽然明白，她在意的，其實從來不只是______。
-- 原來她真正怕的，不是______，而是______。
-- 我後來才發現，他一直反覆確認的，不是細節本身，而是安心。
-- 這件事表面上是在處理眼鏡，其實更像是在處理一種長久以來的將就。
-- 那不是單純的不舒服，而是一種說不出口、但會慢慢磨人的疲憊。
+- "Moments like this always remind me that..."
+- "What looks ordinary on the surface often carries more than people notice."
+- "It is in these quiet exchanges that the real weight of the issue appears."
 
-## E 類：關係顯影型
+### 4. Reflection -> Re-entry
 
-適用：
+Use when:
 
-- 母女、夫妻、孩子、家人陪同
-- 文章要把「愛的形式」寫出來
+- the article has reflected long enough
+- it needs to come back to the concrete subject
 
-模板：
+Examples:
 
-- 站在旁邊的______其實沒多說什麼，但我看得出來，他比誰都在意。
-- 她一邊說沒事，旁邊的人卻明顯沒有那麼放心。
-- 那天我最先感受到的，不是焦急，而是一種很安靜的關心。
-- 有時候，家人帶來的不只是陪伴，而是替你把一直拖著的事，輕輕推過來。
-- 他問得那麼細，不是因為龜毛，而是因為怕她不舒服。
+- "But if we come back to the practical side of it..."
+- "And when that understanding returns to everyday life, it changes how we choose."
+- "Seen from that angle, the original question looks different."
 
-## F 類：回訪與信任推進型
+### 5. Tension -> Clarification
 
-適用：
+Use when:
 
-- 久違回來
-- 在別處配過又回來
-- 跨地區也願意來
+- the previous paragraph creates uncertainty or contradiction
+- the next paragraph needs to clarify rather than intensify
 
-模板：
+Examples:
 
-- 聽到這裡，我心裡其實有點感動。
-- 走了一圈之後，還願意回來，這件事本身就很有份量。
-- 有些話不用講得太滿，一句「還是這裡比較放心」就夠重了。
-- 對我來說，真正珍貴的從來不是稱讚，而是對方願意把不舒服說給你聽。
-- 那種回來，不只是消費選擇，更像是一種把信任重新放回來的動作。
+- "This does not mean X. It means we need to look at Y more honestly."
+- "The point is not to frighten people, but to help them see what matters."
+- "So the issue is not whether it is serious in the dramatic sense, but whether it is being understood correctly."
 
-## G 類：安靜留白型
+## Selection Rule
 
-適用：
+Pick the transition based on the relationship between paragraphs:
 
-- 情緒已經夠了
-- 你不想再多講，只想留一點空間
+- detail to interpretation
+- interpretation to action
+- story to reflection
+- reflection back to concrete reality
+- tension to clarification
 
-模板：
+## Editing Test
 
-- 我當下沒有多說什麼。
-- 那一刻，店裡忽然安靜了一下。
-- 我只是點點頭，讓她慢慢適應。
-- 我沒有急著解釋，先陪他把那個感覺走完。
-- 有些時候，先安靜一下，比立刻回答更重要。
+The transition is probably working if:
 
-## H 類：從場景推向體悟
+- it sounds like one mind continuing to think
+- it reduces friction between paragraphs
+- it does not call attention to itself
+- the reader is guided without feeling managed
 
-適用：
+## Bottom Line
 
-- 準備從故事走向結尾
-- 想讓收尾不會突然跳出來
+A good transition is nearly invisible.
 
-模板：
-
-- 看著那個畫面，我心裡慢慢浮出一個念頭。
-- 那一瞬間，我又想起自己為什麼一直喜歡這份工作。
-- 也是在那個時候，我突然覺得，很多事情其實都一樣。
-- 那畫面很小，但留在心裡很久。
-- 我想，也許這就是這份工作最動人的地方。
-
-## 常用三段式中段
-
-如果你要最穩的中段，可以直接用這個順序：
-
-1. 對話或現象
-2. 我的觀察
-3. 專業翻譯或情緒顯影
-
-範例骨架：
-
-- 他說戴起來就是怪怪的。
-- 我聽到這句話，大概就知道他不是在挑剔，而是真的哪裡卡住了。
-- 後來一測才發現，問題不是看不清，而是之前那副眼鏡讓眼睛一直偷偷出力。
-
-## 不要這樣轉
-
-- 不要突然插入一大段衛教
-- 不要用「這讓我想到人生就是」硬跳升華
-- 不要每一段都用同樣句型開頭
-- 不要一直寫「我覺得」「我認為」但沒有新觀察
-- 不要把每個情緒都解釋完
-
-## 快速選擇法
-
-如果你卡在中段，不知道怎麼接：
-
-1. 要從表面推深：用 A
-2. 有對話要接：用 B
-3. 要進專業：用 C
-4. 要加情緒厚度：用 D
-5. 要把關係寫出來：用 E
-6. 要把回來與信任寫出來：用 F
-7. 情緒太滿想留白：用 G
-8. 準備往結尾走：用 H
+Its success is that the reader keeps moving without stumbling.

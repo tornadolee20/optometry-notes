@@ -1,3 +1,11 @@
+---
+name: paper-digest
+description: |
+  視光文獻高精度解構引擎。輸入論文原文或摘要，輸出三層分析（事實→推論→建議）與 Obsidian 知識卡片。
+  觸發詞：「拆解這篇」「解構文獻」「幫我讀這篇論文」「轉成知識卡片」「深度處理」「[待 Claude 深處理]」。
+  上游：paper-researcher 自動抓取後放入 Inbox；下游：輸出至 obsidian-vault/04-知識卡片/。
+---
+
 # Paper Digest — 高精度文獻解構引擎
 
 > 整合「Universal Evidence & Insight Engine」三層架構與 Obsidian 輸出規範。
@@ -163,3 +171,14 @@ card_type: PaperNote / ConceptNote / MarketingNote
 - **下游**：`obsidian-vault/04-知識卡片/` + 更新對應 MOC
 - **記憶**：完成後寫入 `memory/YYYY-MM-DD.md`
 - **蒸餾觸發**：若同主題卡片已達 3 張，主動詢問是否蒸餾 → `MEMORY.md`
+
+## 前輩可直接這樣調用
+
+### 調用 1：單篇深度拆解
+「用 paper-digest 幫我拆解這篇論文：[貼上摘要或全文]。用教學模式輸出，最後存成 Obsidian 知識卡片。」
+
+### 調用 2：處理 Inbox 佇列
+「幫我處理 Inbox/待深處理.md 裡面標記 [待 Claude 深處理] 的文獻，每篇跑三層分析，輸出知識卡片到 04-知識卡片/。」
+
+### 調用 3：學術模式深查
+「這篇研究要引用進文章，請用 paper-digest 學術模式拆解，重點看方法學限制和外推風險，最後給我可以直接貼進文章的引用段落。」

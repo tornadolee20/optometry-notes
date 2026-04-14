@@ -1,93 +1,135 @@
-# 結尾模組庫
+# ending-modules.md
 
-這份的任務只有一個：
-把讀者從「被理解」帶到「知道下一步怎麼做」。
+Updated: 2026-04-15
 
-## 使用原則
+## Purpose
 
-1. 不硬賣。
-2. 不硬推預約。
-3. 先承接情緒，再給一步低摩擦動作。
-4. 每篇只選一種主結尾。
+This reference helps the writing layer choose the overall shape of an ending, not just the last sentence.
 
----
+Use it when the article needs a complete ending movement.
 
-## 1. 追蹤型
+## Core Rule
 
-適用：
-- 近視控制
-- 研究分享
-- 兒童視力管理
+A good ending module should complete the article's intention.
 
-句型：
-- 與其急著追一個單一數字，不如把原本就該做的定期追蹤做好。
-- 下次回來時，我們不要只看有沒有加深，也一起看整體趨勢。
-- 比起多一個焦慮，不如多一次扎實的追蹤。
+It should not merely "stop nicely."
 
----
+## Ending Modules
 
-## 2. 檢查型
+### 1. Reflection Module
 
-適用：
-- 戴不舒服
-- 老花
-- 看得清但戴不久
+Use when:
 
-句型：
-- 先別急著忍，很多時候問題不在你，而在眼鏡本身。
-- 與其一直將就，不如把現在這副拿來，我們先幫你看看問題出在哪裡。
-- 不一定要立刻重配，先把原因弄清楚，很多壓力就會少一半。
+- the article is story-led
+- the reader should leave with a human aftertaste
 
----
+Shape:
 
-## 3. 陪伴型
+1. return briefly to the human moment
+2. widen into meaning
+3. end with restraint
 
-適用：
-- 長輩
-- 照顧者
-- 親情故事
+Best for:
 
-句型：
-- 如果你也正在陪家人走這段路，不用急著一次解決，先帶他來坐坐聊聊也可以。
-- 有時候家人需要的，不只是新眼鏡，而是一個願意慢慢說、慢慢聽的地方。
-- 你不用把所有答案都想好，願意陪他來，很多事就已經開始變好了。
+- store stories
+- family stories
+- emotional case reflections
 
----
+### 2. Clarification Module
 
-## 4. 微行動型
+Use when:
 
-適用：
-- 情感文
-- 品牌文
-- 不宜太銷售的文章
+- the article explains a misunderstood topic
+- the ending should sharpen understanding
 
-句型：
-- 下次經過，不一定要急著做決定，先把現在這副眼鏡帶來調一調也好。
-- 就算暫時還沒打算換，也可以先來把鏡架、鼻墊、鬆緊整理一下。
-- 先把狀況弄清楚，比急著下決定更重要。
+Shape:
 
----
+1. name the confusion
+2. restate the real issue more clearly
+3. leave the reader with a cleaner frame
 
-## 5. 研究轉譯型
+Best for:
 
-適用：
-- 論文分享
-- 專業科普
+- myth-busting
+- health explanations
+- decision guidance
 
-句型：
-- 研究的價值，不是讓人多一個害怕的理由，而是幫我們把判斷做得更細。
-- 真正該帶走的不是恐慌，而是更成熟的追蹤觀念。
-- 下次檢查時，我們可以一起把這些變化放回整體脈絡裡看。
+### 3. Gentle Action Module
 
----
+Use when:
 
-## 6. 照顧者型
+- the article should guide a next step
+- the CTA must remain trust-first
 
-適用：
-- 爸爸總把自己放最後
-- 媽媽先顧小孩後顧自己
+Shape:
 
-句型：
-- 陪家人來的那個人，往往也是最容易被忘記的那個人。
-- 下次陪孩子或長輩來的時候，別只坐在旁邊等，也順便讓我看看你的眼鏡。
-- 先照顧好自己，不是自私，而是讓你還有力氣繼續照顧別人。
+1. acknowledge hesitation or complexity
+2. lower pressure
+3. invite the next right step
+
+Best for:
+
+- consultation-oriented posts
+- service guidance
+- decision support articles
+
+### 4. Human Weight Module
+
+Use when:
+
+- the article carries aging, care, fear, or family themes
+
+Shape:
+
+1. return to what is truly being protected
+2. make the emotional stake visible
+3. end with patience, not pressure
+
+Best for:
+
+- caregiving themes
+- aging vision topics
+- parent / child concern topics
+
+### 5. Belief-Shift Module
+
+Use when:
+
+- the article tries to gently replace a wrong assumption with a better frame
+
+Shape:
+
+1. contrast the old frame with the truer one
+2. simplify the takeaway
+3. let the new frame settle without shouting
+
+Best for:
+
+- educational explainers
+- persuasion through clarity
+- reframing articles
+
+## Selection Rule
+
+Choose the ending module based on the article's real final job:
+
+- emotional landing -> reflection module
+- conceptual clarity -> clarification module
+- next step -> gentle action module
+- tenderness / gravity -> human weight module
+- reframe -> belief-shift module
+
+## Editing Test
+
+The ending module is probably working if:
+
+- it feels like the article reached its real destination
+- the emotional level matches what came before
+- the ending does not become louder than the piece
+- the reader leaves with something that lingers
+
+## Bottom Line
+
+The ending is not a decorative ribbon.
+
+It is the article's final act of judgment.
