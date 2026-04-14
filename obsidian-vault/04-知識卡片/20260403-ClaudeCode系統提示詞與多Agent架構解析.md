@@ -155,4 +155,4 @@ Claude Code 把複雜任務執行分成：
 | **記憶 2-Turn SOP** | 每次更新記憶時並行讀取、並行寫入 | Token 效率提升 2x |
 | **UltraPlan 精神** | 「先規劃大綱等確認，再執行產內容」 | 減少大規模返工 |
 
-> [待 Claude 處理] 原因：需要將「驗證者 Prompt 模板」轉化為 `.agents/workflows/` 裡的正式 Workflow 檔案
+> ✅ 已完成（2026-04-15）：`verify-document.md` 已是完整的驗證者 Workflow，含 Adversarial Probe SOP 與 VERDICT 格式。
