@@ -43,8 +43,16 @@ These are currently treated as primary reusable modules in the system.
 
 These are active, useful skills that the system should use, but they are not yet treated as architecture-defining core modules.
 
-| Skill | Score | Review | Status |
-| --- | --- | --- | --- |
+| Skill | Notes | Status |
+| --- | --- | --- |
+| `russell-brunson-perspective` | Funnel framing for optometry context | `supporting` |
+| `ali-abdaal-perspective` | Content productivity lens | `supporting` |
+| `rory-sutherland-perspective` | Behavioural reframing | `supporting` |
+| `mrbeast-perspective` | Content engineering framework | `supporting` |
+| `consumer-behavior-psychology-framework` support refs | Friction / framing move references | `supporting` |
+| `skills/blogwatcher/` | External blog monitoring utility | `supporting` |
+| `skills/notebooklm/` | NotebookLM MCP integration | `supporting` |
+| `skills/prompts-library/` | Prompt templates reference | `supporting` |
 
 ## Legacy / Source-Material
 
@@ -58,12 +66,13 @@ These assets still contain useful material, but they should no longer be treated
 
 ## Not Yet Formally Reviewed
 
-These assets are active in the system but do not yet have a formal tier review record.
+These assets are active but have no formal tier decision.
 
-Examples:
-
-- `consumer-behavior-psychology-framework` support references
-- workflow documents that may later need governance review as workflows rather than skills
+| Asset | Recommended Tier | Blocker |
+| --- | --- | --- |
+| `threads-account-research` | supporting | 未有實際使用紀錄 |
+| `Optometry-Project-Writer` | supporting | 功能與 writing-voice 重疊，需確認邊界 |
+| `.agents/workflows/*.md` | — | Workflows 不歸 skill tier，另行管理 |
 
 ## Current System View
 

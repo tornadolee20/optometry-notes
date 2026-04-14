@@ -97,6 +97,12 @@ First understand the evidence, then express it well
 - stop after `uncle-glasses-writing-qa` if the user only needs editorial diagnosis
 - stop after `optometry-html-renderer` if metadata packaging is not needed
 
+### Validated constraint (2026-04-15 smoke test)
+
+`uncle-glasses-writing-qa` must run **before** `optometry-html-renderer`.
+Do not skip QA and go directly from voice to HTML.
+Skipping QA at this stage means AI-tone issues survive into the final output.
+
 ### Expected artifact
 
 - publishable article
