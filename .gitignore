@@ -42,6 +42,7 @@ backup/
 temp_*.txt
 temp_*.py
 recent_files.txt
+tmp/
 
 # 大型二進位檔（不推上 GitHub）
 ffmpeg-7.0.2-amd64-static/
