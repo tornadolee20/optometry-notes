@@ -287,3 +287,46 @@ OpenClaw 將開頭/結尾的 "HEARTBEAT_OK" 視為確認訊號（且可能捨棄
 - **入口頁初稿：** 兒童近視控制初評 / 成人視覺問題檢查 / 熟齡多焦視覺評估
 - **網站 CTA 調整：** `01_floating-cta.html`、`03_nav-cta-button.html` 已從「立即預約」改成「先做專業判斷」語言
 - **戰略意義：** Russell skill 不再只是蒸餾知識，而是已經接到目鏡大叔網站的第一層入口與服務承接，形成可持續迭代的高信任 funnel 雛形。
+## 12 秒影片宇宙與爆款拆解工作流 (2026-04-13)
+- 已建立母檔：`drafts/20260413-12秒影片宇宙-v1.md`
+- 核心判斷：先做「12 秒影片宇宙」，不要太早封成 SKILL；宇宙是世界觀與品牌聖經，SKILL 是之後的執行引擎
+- 影片系統正式收斂為「固定人格，變化角色」；五個母角色固定保留：
+  - 台灣視光師
+  - 消費者心理觀察者
+  - 品牌與成交顧問
+  - AI 時代講師
+  - 城市旁白者
+- Prompt 規則完成重要修正：
+  - 預設可以沒有字幕
+  - 預設不能沒有配音
+  - 配音必須直接寫進同一段完整 prompt
+  - 字數有限時，先保留角色、場景、動作、結構限制、配音，先刪字幕與修飾詞
+- 已建立一致性生成邏輯：
+  - 先鎖身份、空間、交通 / 物理邏輯，再補鏡頭、情緒、電影感
+  - 車內與道路場景必須使用補丁模組，避免主角跳位、對向車亂入、左右關係錯亂
+- 已驗證「爆款影片拆解 → 你的版本」工作流可行：
+  1. 讀影片 metadata
+  2. 抽每秒關鍵影格
+  3. 拆開場 / 中段 / 結尾
+  4. 判斷鉤子、節奏、小事件、角色能量、配音語氣、配樂功能
+  5. 轉譯成台灣背景、你的角色、你的旁白與完整 prompt
+- 本地可用影片工具：
+  - `C:\Program Files (x86)\HitPaw\HitPaw Video Converter\ffprobe.exe`
+  - `C:\Program Files (x86)\HitPaw\HitPaw Video Converter\ffmpeg.exe`
+- 關鍵創作教訓：
+  - 影片不能只有狀態，必須至少有 1 個小事件 + 1 個停頓
+  - 反差片如果沒有觀點，只會停留在娛樂層
+  - 台灣背景辨識度本身就是鉤子，但最好搭配生活錨點物件與一句準確口白
+## Shared Brain Architecture baseline (2026-04-15)
+- **Goal**: make Jarvis, Antigravity, Claude/Codex, and Obsidian operate under one shared memory architecture instead of one noisy shared folder.
+- **Canonical docs**:
+  - `BRAIN-ARCHITECTURE.md`
+  - `SYSTEM-MEMORY-SCHEMA.md`
+  - `HANDOFF-PROTOCOL.md`
+  - `TASK-STATE.template.md`
+- **Core model**:
+  - Inbox Memory = raw capture
+  - Working Memory = active tasks and handoffs
+  - Long-Term Memory = Obsidian + `MEMORY.md` + finalized skills and protocols
+- **Authority rule**: only Claude/Codex should finalize long-term memory, protocol files, and core skill definitions.
+- **Claude Code insight**: use sourcemap-style repositories as architecture-footprint datasets; distill stable patterns first, create small skills second.
