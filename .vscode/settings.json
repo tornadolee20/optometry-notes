@@ -1,0 +1,28 @@
+{
+    "files.exclude": {
+        "saas_sandbox/": true,
+        "AI之眼/": true,
+        "projects/": true,
+        "bin/": true,
+        "ffmpeg-7.0.2-amd64-static/": true,
+        "ffmpeg.tar.xz": true,
+        "tmp/": true,
+        "avatars/": true,
+        "media/": true,
+        "apps/": true
+    },
+    "files.watcherExclude": {
+        "**/saas_sandbox/**": true,
+        "**/AI之眼/**": true,
+        "**/projects/**": true,
+        "**/bin/**": true,
+        "**/tmp/**": true
+    },
+    "search.exclude": {
+        "**/saas_sandbox/**": true,
+        "**/AI之眼/**": true,
+        "**/projects/**": true,
+        "**/bin/**": true,
+        "**/tmp/**": true
+    }
+}
