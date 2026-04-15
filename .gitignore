@@ -46,10 +46,16 @@ tmp/
 
 # 大型二進位檔（不推上 GitHub）
 ffmpeg-7.0.2-amd64-static/
+ffmpeg.tar.xz
 media/
 apps/
 bin/
 avatars/
+
+# 大型非視光專案目錄（不應被 AI 索引）
+saas_sandbox/
+AI之眼/
+projects/
 
 # Dropbox 防污染：巢狀同名資料夾
 */*/.dropbox
