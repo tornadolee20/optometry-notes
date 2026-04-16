@@ -95,6 +95,13 @@ SEO 策略卡：`obsidian-vault/04-知識卡片/20260408-uncle-glasses-SEO關鍵
 正式路徑：`C:\Users\torna_3j3fz9h\Desktop\blank-page-launch`
 技術細節：`memory/project_myownreviews.md`
 
+### MYOWNVISION 專案（2026-04-16 首次完整掌握）
+雙眼機能分析 SaaS，由大叔主導開發（Lovable 平台）
+本地路徑：`saas_sandbox/eye-analyzer-main/eye-analyzer-main/`
+技術棧：React + TypeScript + Vite（無獨立 Supabase，前端主導）
+核心功能：斜位 + 融像儲備 + 調節 + CISS → OEP + ZCSBV 圖表 + 患者報告
+⚠️ 待修正：OEP 天花板應改用實測 AA（非 Hofstetter 公式），詳見 `.lovable/plan.md`
+
 ### Russell 高信任版 Funnel
 Value Ladder 與 CTA 骨架已落地至 `obsidian-vault/09-SaaS產品與行銷/`
 網站 CTA 已改為「先做專業判斷」語言（`01_floating-cta.html`、`03_nav-cta-button.html`）
@@ -107,6 +114,8 @@ Value Ladder 與 CTA 骨架已落地至 `obsidian-vault/09-SaaS產品與行銷/`
 |------|------|------|
 | 賽局理論「附錄三：理論背景」文章 | 待撰 | 知識卡已有素材 |
 | P0 次攻「配眼鏡流程圖解」 | 待排 | — |
+| MYOWNVISION AA 實測值修正 | 待執行 | `saas_sandbox/eye-analyzer-main/.lovable/plan.md` |
+| 繼續教育課程微調 | 待確認日期 | `content-planning/20260416-雙眼機能分析繼續教育.pptx` |
 | Antigravity handoff 協定驗收 | 待執行 | `HANDOFF-PROTOCOL.md` |
 | Smoke Test 寫作管線 | 待執行 | `SMOKE-TEST-SCENARIOS.md` |
 
