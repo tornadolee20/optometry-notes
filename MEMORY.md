@@ -109,3 +109,18 @@ Value Ladder 與 CTA 骨架已落地至 `obsidian-vault/09-SaaS產品與行銷/`
 | P0 次攻「配眼鏡流程圖解」 | 待排 | — |
 | Antigravity handoff 協定驗收 | 待執行 | `HANDOFF-PROTOCOL.md` |
 | Smoke Test 寫作管線 | 待執行 | `SMOKE-TEST-SCENARIOS.md` |
+
+### Telegram Bot 全自動系統（2026-04-16）
+Bot 檔案：`ag-workspace/telegram-bot.js`（v2.2）
+啟動：雙擊 `ag-workspace/start-bot.bat` 或執行 `install-startup.ps1`
+Bot 帳號：@Uncleglassesbot｜模型：Gemini 2.5 Flash（thinkingBudget:0）
+Token 儲存：`ag-workspace/.env`（TELEGRAM_BOT_TOKEN + GEMINI_API_KEY）
+支援指令：`/任務` `/收集` `/草稿` `/記憶` `/狀態`（中英文皆可）
+記憶整合：對話 → memory/YYYY-MM-DD.md（Junction 同步）｜/任務 → `[待 Claude 處理]`
+**待升級**：Obsidian 搜尋整合、SaaS 資料庫查詢（uncle-glasses-mcp）
+**只跑一台機器**（診所/家用），公司電腦不需要
+
+### Knowledge compiler layer (2026-04-16)
+Added a persistent-wiki layer on top of the shared-brain architecture:
+`KNOWLEDGE-COMPILER-PROTOCOL.md` + `.agents/workflows/knowledge-compiler.md` + Obsidian SOP/template.
+Core shift: do not merely store or retrieve sources; each meaningful read should update cards, MOCs, SOPs, or skills.

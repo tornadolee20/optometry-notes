@@ -62,7 +62,7 @@
 完整規範在 `blog-post.md` 第六步，以及 `memory/claude-auto-memory-feedback_facebook_format.md`。
 
 ### Antigravity 確認區
-- [ ] 已讀，規則已內化，下次 /blog-post 自動執行
+- [x] 已讀，規則已內化，下次 /blog-post 自動執行
 
 ---
 
