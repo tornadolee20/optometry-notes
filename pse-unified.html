@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSE Unified — Periodic Table + Recipe Mode</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;700;900&family=Bebas+Neue&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#090909;
+  --panel:#111;
+  --panel-2:#0d0d0d;
+  --line:#202020;
+  --muted:#686868;
+  --text:#efefef;
+  --accent:#7daa7d;
+}
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at top left,rgba(125,170,125,.08),transparent 28%),
+    radial-gradient(circle at bottom right,rgba(96,165,250,.08),transparent 30%),
+    var(--bg);
+  color:var(--text);
+  font-family:'Noto Sans TC',sans-serif;
+}
+.shell{
+  width:min(1440px,calc(100vw - 24px));
+  margin:12px auto;
+  border:1px solid var(--line);
+  background:rgba(8,8,8,.92);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+  padding:18px 22px 16px;
+  border-bottom:1px solid var(--line);
+}
+.brand-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;
+  letter-spacing:.12em;
+  line-height:1;
+}
+.brand-sub{
+  margin-top:4px;
+  font-family:'Space Mono',monospace;
+  font-size:.68rem;
+  color:var(--muted);
+  letter-spacing:.08em;
+}
+.mode-switch{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.mode-btn{
+  border:1px solid #313131;
+  background:transparent;
+  color:#9a9a9a;
+  padding:9px 14px;
+  font-family:'Space Mono',monospace;
+  font-size:.7rem;
+  letter-spacing:.05em;
+  cursor:pointer;
+  transition:all .18s ease;
+}
+.mode-btn:hover,
+.mode-btn.active{
+  color:#fff;
+  border-color:#fff;
+  background:rgba(255,255,255,.07);
+}
+.notice{
+  padding:10px 22px;
+  border-bottom:1px solid var(--line);
+  color:#b5b5b5;
+  font-size:.75rem;
+  background:rgba(255,255,255,.02);
+}
+.status-strong{
+  color:#fff;
+  font-family:'Space Mono',monospace;
+}
+.launchpad{
+  display:grid;
+  grid-template-columns:1.25fr repeat(3,1fr);
+  gap:12px;
+  padding:18px 22px;
+  border-bottom:1px solid var(--line);
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,0)),
+    rgba(255,255,255,.01);
+}
+.launch-hero{
+  padding:18px;
+  border:1px solid #232323;
+  background:
+    radial-gradient(circle at top left,rgba(125,170,125,.12),transparent 45%),
+    #0d0d0d;
+}
+.launch-kicker{
+  font-family:'Space Mono',monospace;
+  font-size:.55rem;
+  letter-spacing:.14em;
+  color:#7daa7d;
+  text-transform:uppercase;
+}
+.launch-title{
+  margin-top:8px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.2rem;
+  letter-spacing:.08em;
+  line-height:.95;
+}
+.launch-copy{
+  margin-top:10px;
+  color:#b7b7b7;
+  font-size:.82rem;
+  line-height:1.7;
+  max-width:46ch;
+}
+.launch-stats{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.stat-pill{
+  padding:6px 10px;
+  border:1px solid #2a2a2a;
+  background:#121212;
+  color:#cfcfcf;
+  font-family:'Space Mono',monospace;
+  font-size:.58rem;
+  letter-spacing:.05em;
+}
+.launch-card{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:14px;
+  padding:16px;
+  border:1px solid #232323;
+  background:#101010;
+}
+.launch-card.active{
+  border-color:#5d755d;
+  background:
+    linear-gradient(180deg,rgba(125,170,125,.09),transparent 80%),
+    #101010;
+}
+.launch-card:nth-child(3).active{
+  border-color:#53739a;
+  background:
+    linear-gradient(180deg,rgba(96,165,250,.10),transparent 80%),
+    #101010;
+}
+.launch-card:nth-child(4).active{
+  border-color:#835f94;
+  background:
+    linear-gradient(180deg,rgba(192,132,252,.10),transparent 80%),
+    #101010;
+}
+.launch-mode{
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#7d7d7d;
+}
+.launch-head{
+  font-size:1rem;
+  font-weight:700;
+}
+.launch-desc{
+  color:#a5a5a5;
+  font-size:.77rem;
+  line-height:1.65;
+}
+.launch-card .ghost-btn,
+.launch-card .primary-btn{
+  width:100%;
+}
+.view{display:none}
+.view.active{display:block}
+
+.periodic-wrap{
+  padding:22px;
+}
+.workspace{
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) 420px;
+  gap:16px;
+  align-items:start;
+}
+.workspace-main{
+  min-width:0;
+}
+.section-intro{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:16px;
+  margin-bottom:14px;
+}
+.section-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  letter-spacing:.08em;
+}
+.section-copy{
+  margin-top:6px;
+  color:#9e9e9e;
+  font-size:.8rem;
+  line-height:1.7;
+  max-width:60ch;
+}
+.section-meta{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+.meta-chip{
+  padding:6px 10px;
+  border:1px solid #252525;
+  background:#0d0d0d;
+  color:#bababa;
+  font-family:'Space Mono',monospace;
+  font-size:.56rem;
+}
+.control-bar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.search-shell{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  min-width:min(520px,100%);
+  flex:1;
+}
+.search-input{
+  width:100%;
+  border:1px solid #2b2b2b;
+  background:#0f0f0f;
+  color:#f2f2f2;
+  padding:10px 12px;
+  font-size:.78rem;
+  outline:none;
+  transition:border-color .16s ease, box-shadow .16s ease;
+}
+.search-input::placeholder{color:#717171}
+.search-input:focus{
+  border-color:#7daa7d;
+  box-shadow:0 0 0 3px rgba(125,170,125,.08);
+}
+.search-meta{
+  color:#8f8f8f;
+  font-family:'Space Mono',monospace;
+  font-size:.58rem;
+  white-space:nowrap;
+}
+.empty-panel{
+  padding:28px 22px;
+  border:1px dashed #2b2b2b;
+  background:#0e0e0e;
+  color:#a8a8a8;
+  font-size:.82rem;
+  line-height:1.8;
+}
+.scene-search{
+  position:sticky;
+  top:0;
+  z-index:2;
+  padding:12px;
+  border-bottom:1px solid #1e1e1e;
+  background:linear-gradient(180deg,#101010,#0f0f0f);
+}
+.scene-count{
+  margin-top:8px;
+  color:#7f7f7f;
+  font-family:'Space Mono',monospace;
+  font-size:.56rem;
+}
+.summary-v.ready{
+  color:#7daa7d;
+}
+.discipline-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;
+}
+.periodic-toolbar{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.toolbar-note{
+  color:#9b9b9b;
+  font-size:.76rem;
+}
+.workbench{
+  position:sticky;
+  top:12px;
+  display:grid;
+  gap:12px;
+}
+.workbench-panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:16px;
+}
+.builder-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+.summary-card{
+  border:1px solid #212121;
+  background:#0b0b0b;
+  padding:10px;
+}
+.summary-k{
+  color:#666;
+  font-family:'Space Mono',monospace;
+  font-size:.5rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.summary-v{
+  margin-top:4px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.6rem;
+  letter-spacing:.06em;
+}
+.summary-sub{
+  margin-top:2px;
+  color:#919191;
+  font-size:.62rem;
+}
+.builder-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.builder-box{
+  background:#0b0b0b;
+  border:1px solid #1c1c1c;
+  padding:10px;
+}
+.builder-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.slot-list{
+  min-height:86px;
+}
+.slot-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  padding:7px 8px;
+  margin-bottom:6px;
+  border:1px solid #252525;
+  background:#141414;
+}
+.slot-meta{
+  min-width:0;
+}
+.slot-sym{
+  font-family:'Space Mono',monospace;
+  font-size:.76rem;
+  font-weight:700;
+}
+.slot-name{
+  font-size:.68rem;
+  color:#d9d9d9;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.slot-empty{
+  color:#575757;
+  font-size:.68rem;
+  padding-top:4px;
+}
+.slot-remove{
+  border:none;
+  background:transparent;
+  color:#777;
+  cursor:pointer;
+  font-family:'Space Mono',monospace;
+  font-size:.72rem;
+}
+.slot-remove:hover{color:#fff}
+.discipline-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:14px;
+}
+.discipline-kicker{
+  font-family:'Space Mono',monospace;
+  font-size:.55rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+.discipline-title{
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.element-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(88px,1fr));
+  gap:6px;
+}
+.element-chip{
+  min-height:84px;
+  border:1px solid #222;
+  border-top:2px solid var(--ec,#7daa7d);
+  background:#0b0b0b;
+  padding:6px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.element-chip:hover{
+  transform:translateY(-2px);
+  border-color:var(--ec,#7daa7d);
+  background:#141414;
+}
+.element-chip.selected{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.06),transparent),
+    #161616;
+  border-color:var(--ec,#7daa7d);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);
+}
+.eid{
+  font-family:'Space Mono',monospace;
+  font-size:.46rem;
+  color:#4c4c4c;
+}
+.esym{
+  text-align:center;
+  margin-top:4px;
+  font-family:'Space Mono',monospace;
+  font-size:1rem;
+  font-weight:700;
+  color:var(--ec,#7daa7d);
+}
+.ename{
+  margin-top:6px;
+  text-align:center;
+  font-size:.6rem;
+  color:#d0d0d0;
+  line-height:1.3;
+}
+.ekw{
+  margin-top:4px;
+  text-align:center;
+  font-size:.5rem;
+  color:#686868;
+}
+
+.recipe-shell{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  min-height:calc(100vh - 152px);
+}
+.scene-list{
+  border-right:1px solid var(--line);
+  background:var(--panel-2);
+  padding:12px 0;
+  overflow:auto;
+}
+.group-label{
+  padding:10px 16px 6px;
+  font-family:'Space Mono',monospace;
+  font-size:.52rem;
+  color:#5b5b5b;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.scene-btn{
+  display:block;
+  width:100%;
+  border:none;
+  border-left:3px solid transparent;
+  background:transparent;
+  color:#bcbcbc;
+  text-align:left;
+  padding:10px 16px 10px 13px;
+  font-size:.76rem;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.scene-btn:hover,
+.scene-btn.active{
+  color:#fff;
+  background:rgba(255,255,255,.05);
+  border-left-color:#fff;
+}
+.recipe-main{
+  padding:26px;
+  overflow:auto;
+}
+.recipe-panel{
+  display:grid;
+  gap:14px;
+}
+.empty{
+  min-height:55vh;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  color:#8d8d8d;
+  font-family:'Space Mono',monospace;
+  letter-spacing:.08em;
+}
+.scene-header{
+  margin-bottom:18px;
+}
+.scene-kicker{
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  color:#5e5e5e;
+  letter-spacing:.1em;
+}
+.scene-title{
+  margin-top:6px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;
+  letter-spacing:.08em;
+  line-height:1;
+}
+.scene-desc{
+  margin-top:6px;
+  color:#8f8f8f;
+  font-size:.82rem;
+}
+.card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:18px;
+  margin-bottom:14px;
+}
+.card-label{
+  margin-bottom:12px;
+  font-family:'Space Mono',monospace;
+  font-size:.55rem;
+  color:#8c8c8c;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.route-summary-panel{
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+  border:1px solid var(--line);
+  padding:18px;
+  margin-bottom:14px;
+}
+.route-summary-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:14px;
+  margin-bottom:14px;
+}
+.route-summary-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.route-card{
+  min-width:0;
+  border:1px solid #242424;
+  background:#0c0c0c;
+  padding:12px;
+}
+.route-card-topic{border-top:2px solid #fb923c}
+.route-card-posture{border-top:2px solid #c084fc}
+.route-card-engine{border-top:2px solid #7daa7d}
+.route-card-stage{border-top:2px solid #f472b6}
+.route-card-knowledge{border-top:2px solid #a3e635}
+.route-card-voiceprint{border-top:2px solid #60a5fa}
+.route-k{
+  color:#696969;
+  font-family:'Space Mono',monospace;
+  font-size:.5rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.route-v{
+  margin-top:6px;
+  color:#f4f4f4;
+  font-size:.86rem;
+  font-weight:700;
+  line-height:1.45;
+}
+.route-sub{
+  margin-top:6px;
+  color:#909090;
+  font-size:.68rem;
+  line-height:1.55;
+}
+.route-summary-footer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:14px;
+}
+.route-extra{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.route-chip{
+  padding:6px 10px;
+  border:1px solid #282828;
+  background:#101010;
+  color:#b9b9b9;
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  letter-spacing:.06em;
+}
+.route-actions{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.stage-selector{
+  display:grid;
+  gap:12px;
+}
+.stage-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+}
+.stage-chip{
+  text-align:left;
+  border:1px solid #262626;
+  background:#111;
+  color:#bfbfbf;
+  padding:10px 12px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.stage-chip:hover{
+  border-color:#525252;
+  color:#f4f4f4;
+}
+.stage-chip.active{
+  border-color:#f472b6;
+  background:rgba(244,114,182,.1);
+  color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(244,114,182,.22);
+}
+.stage-chip-k{
+  font-family:'Space Mono',monospace;
+  font-size:.5rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#7f7f7f;
+}
+.stage-chip-v{
+  margin-top:6px;
+  font-size:.82rem;
+  font-weight:700;
+  line-height:1.4;
+}
+.stage-detail{
+  border:1px solid #242424;
+  background:#0c0c0c;
+  padding:12px;
+}
+.stage-detail-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.stage-detail-name{
+  font-size:.88rem;
+  font-weight:700;
+  color:#f3f3f3;
+}
+.stage-detail-tag{
+  padding:5px 8px;
+  border:1px solid #2e2e2e;
+  background:#111;
+  color:#f472b6;
+  font-family:'Space Mono',monospace;
+  font-size:.52rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.stage-detail-copy{
+  margin-top:8px;
+  color:#b0b0b0;
+  font-size:.72rem;
+  line-height:1.65;
+}
+.stage-detail-cta{
+  margin-top:10px;
+  color:#dedede;
+  font-family:'Space Mono',monospace;
+  font-size:.6rem;
+  line-height:1.6;
+}
+.role-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.role-box{
+  background:#0b0b0b;
+  border:1px solid #1c1c1c;
+  padding:10px;
+}
+.role-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:8px;
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.role-head .pct{color:#5a5a5a}
+.mini-chip{
+  width:100%;
+  border:1px solid #242424;
+  background:#141414;
+  padding:8px 9px;
+  margin-bottom:6px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.mini-chip:hover{
+  background:#1b1b1b;
+  border-color:#4a4a4a;
+}
+.mini-sym{
+  font-family:'Space Mono',monospace;
+  font-size:.85rem;
+  font-weight:700;
+}
+.mini-name{
+  margin-top:3px;
+  font-size:.72rem;
+  color:#d5d5d5;
+}
+.mini-kw{
+  margin-top:3px;
+  font-family:'Space Mono',monospace;
+  font-size:.56rem;
+  color:#818181;
+}
+.action-row{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+.primary-btn,.ghost-btn{
+  border:none;
+  cursor:pointer;
+  font-family:'Space Mono',monospace;
+  font-size:.72rem;
+  letter-spacing:.04em;
+  transition:all .15s ease;
+}
+.primary-btn{
+  flex:1;
+  background:var(--accent);
+  color:#fff;
+  padding:10px 12px;
+}
+.primary-btn:hover{opacity:.86}
+.ghost-btn{
+  padding:10px 14px;
+  background:transparent;
+  border:1px solid #2e2e2e;
+  color:#8d8d8d;
+}
+.ghost-btn:hover{
+  color:#fff;
+  border-color:#fff;
+}
+.prompt-box{
+  background:#0b0b0b;
+  border-left:3px solid #2a2a2a;
+  padding:14px;
+  white-space:pre-wrap;
+  line-height:1.8;
+  color:#dfdfdf;
+  font-size:.78rem;
+}
+
+.overlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  background:rgba(0,0,0,.78);
+  backdrop-filter:blur(6px);
+  z-index:50;
+}
+.overlay.on{display:flex}
+.modal{
+  width:min(560px,100%);
+  background:#111;
+  border:1px solid rgba(255,255,255,.12);
+}
+.modal-head{
+  display:flex;
+  gap:14px;
+  padding:16px 18px 14px;
+  border-bottom:1px solid #202020;
+}
+.modal-box{
+  width:56px;
+  height:56px;
+  border:2px solid var(--mc,#fff);
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+}
+.modal-sym{
+  font-family:'Space Mono',monospace;
+  font-size:1.15rem;
+  font-weight:700;
+  color:var(--mc,#fff);
+}
+.modal-name{
+  font-size:1rem;
+  font-weight:700;
+  margin-bottom:4px;
+}
+.modal-def{
+  font-size:.72rem;
+  color:#8b8b8b;
+  line-height:1.55;
+}
+.modal-body{
+  padding:14px 18px;
+}
+.modal-label{
+  margin-bottom:8px;
+  font-family:'Space Mono',monospace;
+  font-size:.54rem;
+  color:#8c8c8c;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.modal-prompt{
+  background:#090909;
+  border-left:3px solid var(--mc,#fff);
+  padding:12px 13px;
+  font-size:.78rem;
+  line-height:1.7;
+  white-space:pre-wrap;
+}
+.modal-actions{
+  display:flex;
+  gap:8px;
+  padding:0 18px 18px;
+}
+.history-list{
+  display:grid;
+  gap:8px;
+}
+.history-item{
+  width:100%;
+  text-align:left;
+  border:1px solid #232323;
+  background:#0c0c0c;
+  padding:10px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+.history-item:hover{
+  border-color:#4a4a4a;
+  background:#141414;
+}
+.history-type{
+  font-family:'Space Mono',monospace;
+  font-size:.5rem;
+  color:#7daa7d;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.history-name{
+  margin-top:4px;
+  color:#f0f0f0;
+  font-size:.74rem;
+  font-weight:700;
+}
+.history-meta{
+  margin-top:3px;
+  color:#828282;
+  font-size:.64rem;
+}
+.ghost-note{
+  color:#777;
+  font-size:.72rem;
+  line-height:1.7;
+}
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:80;
+  min-width:220px;
+  max-width:360px;
+  padding:12px 14px;
+  border:1px solid #2e412e;
+  background:rgba(11,17,11,.96);
+  color:#e8f5e8;
+  font-size:.74rem;
+  line-height:1.6;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:all .18s ease;
+}
+.toast.on{
+  opacity:1;
+  transform:translateY(0);
+}
+
+@media (max-width:900px){
+  .launchpad{grid-template-columns:1fr}
+  .workspace{grid-template-columns:1fr}
+  .workbench{position:static}
+  .section-intro{display:block}
+  .section-meta{justify-content:flex-start;margin-top:10px}
+  .recipe-shell{grid-template-columns:1fr}
+  .scene-list{
+    border-right:none;
+    border-bottom:1px solid var(--line);
+    max-height:240px;
+  }
+  .builder-grid{grid-template-columns:1fr}
+  .builder-summary{grid-template-columns:1fr}
+  .stage-grid{grid-template-columns:1fr}
+  .role-grid{grid-template-columns:1fr}
+  .route-summary-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div>
+      <div class="brand-title">PSE Unified</div>
+      <div class="brand-sub">Prompt Periodic Table + Recipe Mode · Shared Data Architecture</div>
+    </div>
+    <div class="mode-switch">
+      <button class="mode-btn active" data-mode="periodic">週期表模式</button>
+      <button class="mode-btn" data-mode="recipe">配方模式</button>
+    </div>
+  </div>
+  <div class="notice" id="notice">
+    整合版第一階段：已合併共用資料結構、共用 modal、雙模式切換與代表性場景。下一步可把完整 700 元素與 50 場景全量灌入。
+  </div>
+  <section class="launchpad" id="launchpad">
+    <div class="launch-hero">
+      <div class="launch-kicker">Prompt Semantic Engine</div>
+      <div class="launch-title">ONE ENGINE.<br>TWO ENTRIES.<br>THREE START PATHS.</div>
+      <div class="launch-copy">這不是兩頁拼在一起，而是一套文案構思工作台。你可以從場景直接出 prompt、從元素反推語意骨架，或自己手工混搭主導 / 催化 / 約束。</div>
+      <div class="launch-stats">
+        <div class="stat-pill" id="launch-elements">Elements --</div>
+        <div class="stat-pill" id="launch-scenes">Scenes --</div>
+        <div class="stat-pill">Shared Modal + Builder</div>
+      </div>
+    </div>
+    <div class="launch-card active" id="launch-card-periodic">
+      <div>
+        <div class="launch-mode">Path 01</div>
+        <div class="launch-head">先找靈感</div>
+        <div class="launch-desc">從週期表看元素邏輯，快速抓到你想打的情緒、節奏與論證方式。</div>
+      </div>
+      <button class="ghost-btn" data-launch="periodic">進週期表模式</button>
+    </div>
+    <div class="launch-card" id="launch-card-recipe">
+      <div>
+        <div class="launch-mode">Path 02</div>
+        <div class="launch-head">直接生配方</div>
+        <div class="launch-desc">從場景起手，直接抽一組主導 / 催化 / 約束，最快速拿到一版 prompt。</div>
+      </div>
+      <button class="ghost-btn" data-launch="recipe">進配方模式</button>
+    </div>
+    <div class="launch-card" id="launch-card-builder">
+      <div>
+        <div class="launch-mode">Path 03</div>
+        <div class="launch-head">自己混搭</div>
+        <div class="launch-desc">把你看上的元素塞進固定 Builder，自己拼出專屬語意引擎。</div>
+      </div>
+      <button class="primary-btn" id="launch-builder-btn">開始組裝 Builder</button>
+    </div>
+  </section>
+
+  <section class="view active" id="periodic-view">
+    <div class="periodic-wrap">
+      <div class="workspace">
+        <div class="workspace-main">
+          <div class="section-intro">
+            <div>
+              <div class="section-title">Element Explorer</div>
+              <div class="section-copy">左邊是探索區，右邊是固定工作台。你可以自由點元素、看 prompt 邏輯，再把它們丟進 Builder，讓整份 prompt 逐步長出來。</div>
+            </div>
+            <div class="section-meta">
+              <div class="meta-chip">從元素起手</div>
+              <div class="meta-chip">即時配方槽位</div>
+              <div class="meta-chip">可回看歷史</div>
+            </div>
+          </div>
+          <div class="discipline-grid" id="discipline-grid"></div>
+        </div>
+        <aside class="workbench" id="workbench"></aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="recipe-view">
+    <div class="recipe-shell">
+      <aside class="scene-list" id="scene-list"></aside>
+      <main class="recipe-main" id="recipe-main">
+        <div class="empty">選一個場景，開始生成整合版配方。</div>
+      </main>
+    </div>
+  </section>
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-box" id="modal-box"><div class="modal-sym" id="modal-sym"></div></div>
+      <div>
+        <div class="modal-name" id="modal-name"></div>
+        <div class="modal-def" id="modal-def"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-label">Prompt Logic</div>
+      <div class="modal-prompt" id="modal-prompt"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="primary-btn" id="copy-element-btn">複製元素指令</button>
+      <button class="ghost-btn" id="close-modal-btn">關閉</button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="./pse-data-full.js"></script>
+<script>
+window.PSE_DATA = window.PSE_DATA || null;
+const DISC_GROUPS = [
+  {id:'ast', label:'天文學族', color:'#60a5fa', range:[1,50]},
+  {id:'phy', label:'物理學族', color:'#818cf8', range:[51,100]},
+  {id:'che', label:'化學反應族', color:'#a3e635', range:[201,250]},
+  {id:'law', label:'法學規範族', color:'#94a3b8', range:[301,350]},
+  {id:'sys', label:'系統工程族', color:'#64748b', range:[351,400]},
+  {id:'gam', label:'行為經濟族', color:'#f9a8d4', range:[401,450]},
+  {id:'mat', label:'純粹數學族', color:'#c084fc', range:[501,550]},
+  {id:'neu', label:'神經行銷族', color:'#a78bfa', range:[551,600]},
+  {id:'epi', label:'流行病學深化族', color:'#ef4444', range:[601,625]},
+  {id:'net', label:'網路科學族', color:'#06b6d4', range:[676,700]}
+];
+
+DISC_GROUPS.length = 0;
+DISC_GROUPS.push(
+  {id:'ast', label:'天文學族', color:'#60a5fa', range:[1,50]},
+  {id:'phy', label:'物理學族', color:'#818cf8', range:[51,100]},
+  {id:'geo', label:'地質學族', color:'#fb923c', range:[101,150]},
+  {id:'bio', label:'生物演化族', color:'#4ade80', range:[151,200]},
+  {id:'che', label:'化學反應族', color:'#a3e635', range:[201,250]},
+  {id:'mus', label:'律動序列族', color:'#2dd4bf', range:[251,300]},
+  {id:'law', label:'法學規範族', color:'#94a3b8', range:[301,350]},
+  {id:'sys', label:'系統工程族', color:'#64748b', range:[351,400]},
+  {id:'gam', label:'行為經濟族', color:'#f9a8d4', range:[401,450]},
+  {id:'cs', label:'計算機科學族', color:'#818cf8', range:[451,500]},
+  {id:'mat', label:'純粹數學族', color:'#c084fc', range:[501,550]},
+  {id:'neu', label:'神經行銷族', color:'#a78bfa', range:[551,600]},
+  {id:'epi1', label:'流行病學深化族', color:'#ef4444', range:[601,625]},
+  {id:'epi2', label:'數位傳播學族', color:'#f97316', range:[626,650]},
+  {id:'epi3', label:'模因學族', color:'#a855f7', range:[651,675]},
+  {id:'epi4', label:'網路科學族', color:'#06b6d4', range:[676,700]}
+);
+
+const FALLBACK_EL = {
+  1:{sym:'Ev',name:'逃逸速度',def:'脫離天體引力所需的最低速度',kw:'Hook',prompt:'【Hook】：設計一個極強的開頭，其動能必須足以讓讀者擺脫「滑過」的慣性。'},
+  2:{sym:'Eh',name:'事件視界',def:'黑洞周圍資訊無法逃脫的邊界',kw:'沉浸感',prompt:'【沉浸感】：設計一個資訊黑洞，確保讀者在閱讀前三句後，因資訊密度過高而無法離開。'},
+  3:{sym:'Si',name:'奇點',def:'引力無限大、維度崩塌的點',kw:'破點',prompt:'【破點】：提出一個顛覆產業現狀的核心觀點，使所有既有規則在此觀點面前失效。'},
+  4:{sym:'Cr',name:'宇宙輻射',def:'充滿宇宙背景的微弱能量',kw:'潛意識',prompt:'【潛意識】：在全文背景中埋下品牌暗示，像背景輻射一樣無處不在但不明顯。'},
+  5:{sym:'Rl',name:'洛希極限',def:'天體因引力瓦解的最短距離',kw:'降維打擊',prompt:'【降維打擊】：描述競爭對手因為過於接近你的核心優勢區，導致其邏輯徹底瓦解。'},
+  6:{sym:'Dm',name:'暗物質',def:'無法看見但佔據宇宙多數的物質',kw:'隱藏價值',prompt:'【隱藏價值】：揭露產業中不為人知、卻暗中操控一切的隱性痛點或價值。'},
+  7:{sym:'Gs',name:'引力透鏡',def:'巨大質量彎曲光線的現象',kw:'權威借力',prompt:'【權威借力】：利用大環境趨勢或權威數據來折射讀者的注意力，使其聚焦於你的產品。'},
+  8:{sym:'Sn',name:'超新星',def:'恆星劇烈爆炸釋放極大能量',kw:'聲量爆發',prompt:'【聲量爆發】：創造短時間內極高亮度的發布文，在社群牆上瞬間奪取最高視覺。'},
+  9:{sym:'Bh',name:'藍移',def:'物體靠近觀察者時波長變短',kw:'迫切性',prompt:'【迫切性】：創造未來已至的即時感，縮短讀者與目標之間的心理距離。'},
+  20:{sym:'Is',name:'星際空間',def:'恆星之間廣闊的真空',kw:'內容留白',prompt:'【內容留白】：在兩段高能量資訊之間插入真空區，防止讀者大腦過載。'},
+  31:{sym:'Sm',name:'超大質量黑洞',def:'位於星系中心，控制萬物旋轉',kw:'權威感',prompt:'【權威感】：將品牌塑造成產業中心，讓所有討論與流量都繞著你轉。'},
+  35:{sym:'Gd',name:'引力坍縮',def:'物質在引力下向中心匯聚的過程',kw:'收網',prompt:'【收網】：將所有分散的論點最後導向唯一的結論。'},
+  41:{sym:'Cc',name:'基礎假設',def:'真空本身的能量密度',kw:'基礎假設',prompt:'【基礎假設】：定義一個讀者無法反駁的公理作為討論起點。'},
+  42:{sym:'Qs',name:'類星體',def:'宇宙中最亮、最遙遠的天體',kw:'遠大願景',prompt:'【遠大願景】：描繪一個極其遙遠但亮度驚人的未來目標。'},
+  47:{sym:'Wd',name:'白矮星',def:'恆星冷卻後的緻密殘骸',kw:'精煉遺產',prompt:'【精煉遺產】：總結過去失敗的經驗，提取最純粹的教訓。'},
+  48:{sym:'Tr',name:'傳輸窗口',def:'兩個天體間能量傳輸的最佳時機',kw:'時機點',prompt:'【時機點】：掌握特定節慶或時事，發出能量最強的一擊。'},
+  50:{sym:'Bc',name:'宇宙大擠壓',def:'宇宙最終坍縮回原點的假說',kw:'歸納法',prompt:'【歸納法】：將所有萬象歸一，給出終極簡單真理。'},
+  53:{sym:'Ze',name:'阻尼比',def:'系統振盪後的衰減特性',kw:'煽情控制',prompt:'【煽情控制】：設定情緒收斂速度，防止過度狗血。'},
+  54:{sym:'En',name:'熵增定律',def:'孤立系統總是趨向混亂',kw:'痛點放大',prompt:'【痛點放大】：描述若不介入，讀者生活或事業將如何自動崩潰。'},
+  55:{sym:'In',name:'慣性定律',def:'物體保持運動狀態不變的特性',kw:'習慣打破',prompt:'【習慣打破】：承認讀者既有思考慣性，再施加足夠的力來改變它。'},
+  56:{sym:'Fr',name:'靜摩擦力',def:'物體開始運動前所受的阻力',kw:'行動門檻',prompt:'【行動門檻】：分析讀者不敢下單的首要原因，並優先解決此阻力。'},
+  61:{sym:'Ke',name:'動能',def:'物體運動所擁有的能量',kw:'推動力',prompt:'【推動力】：在結尾處增加高強度 CTA，讓讀者帶著衝勁去點擊。'},
+  64:{sym:'Vv',name:'終端速度',def:'重力與阻力平衡後的恆定速度',kw:'穩定節奏',prompt:'【穩定節奏】：進入長文中段，保持資訊輸出的穩定感。'},
+  201:{sym:'Ac',name:'活化能',def:'反應發生所需的最低能量',kw:'行動門檻',prompt:'【行動門檻】：極力降低讀者執行目標所需的第一步成本。'},
+  204:{sym:'Ct',name:'催化劑',def:'降低活化能但不改變平衡的物質',kw:'限時限量',prompt:'【限時限量】：加入行銷催化劑，不改變產品本質，但極速縮短猶豫時間。'},
+  216:{sym:'Eq',name:'化學平衡',def:'正逆反應速率相等',kw:'心理平衡',prompt:'【心理平衡】：在推銷與給予價值之間達成舒服平衡。'},
+  238:{sym:'Bu',name:'緩衝溶液',def:'加入少量酸鹼而 pH 保持不變的系統',kw:'公關防禦',prompt:'【公關防禦】：預埋緩衝論點，防止突發負評摧毀品牌形象。'},
+  305:{sym:'Gf',name:'誠實信用',def:'行使權利與履行義務應秉持誠實',kw:'真實感建立',prompt:'【真實感建立】：主動揭露產品的微小缺點，換取更大的信任。'},
+  310:{sym:'Co',name:'比例原則',def:'手段與目的間必須具備對等性',kw:'性價比論證',prompt:'【性價比論證】：論證你的解決方案對讀者痛苦而言，是最均衡的投資。'},
+  353:{sym:'Mar',name:'安全邊際',def:'設計強度與預期負荷的差值',kw:'論點容錯',prompt:'【論點容錯】：不要把話說死，保留討論空間。'},
+  356:{sym:'Lat',name:'延遲',def:'指令與結果之間的時間差',kw:'即時價值',prompt:'【即時價值】：強調你的產品能消除學習延遲，讓人即學即用。'},
+  389:{sym:'Roll',name:'回滾',def:'將系統恢復到先前穩定狀態',kw:'低風險保證',prompt:'【低風險保證】：強調如果不喜歡，可以隨時退回原點。'},
+  390:{sym:'Hea',name:'心跳偵測',def:'定期發送訊號確認系統存活',kw:'存在感提醒',prompt:'【存在感提醒】：每天固定時間發出短訊息，在讀者腦中保持品牌心跳。'},
+  401:{sym:'La',name:'損失規避',def:'失去的痛苦遠大於得到的快樂',kw:'恐懼行銷',prompt:'【恐懼行銷】：強調如果不做，讀者每天正在損失多少。'},
+  403:{sym:'Sun',name:'沉沒成本',def:'已經付出且無法收回的成本',kw:'存量留客',prompt:'【存量留客】：提醒讀者已投入的時間與努力。'},
+  404:{sym:'Anc',name:'錨定效應',def:'決策時過度依賴第一眼看到的資訊',kw:'價格談判',prompt:'【價格談判】：先給出高原價，再給現在優惠價。'},
+  405:{sym:'Sca',name:'稀缺性效應',def:'越難得到的東西，價值感越高',kw:'限時限量',prompt:'【限時限量】：製造供應不足，激發搶購本能。'},
+  407:{sym:'End',name:'稟賦效應',def:'擁有後會高估價值',kw:'試用策略',prompt:'【試用策略】：給予短暫體驗權，一旦覺得這是我的，就更難放手。'},
+  410:{sym:'Rec',name:'互惠偏誤',def:'收到好處後會產生回饋義務感',kw:'免費贈禮',prompt:'【免費贈禮】：先給高價值免費內容，讓讀者產生回報心理。'},
+  415:{sym:'Hpe',name:'誇張貼現',def:'傾向於眼前微小利益而非長遠回報',kw:'即時滿足',prompt:'【即時滿足】：強調產品能帶來的立刻、當下的好處。'},
+  434:{sym:'Ndg',name:'助推',def:'透過微小環境改變引導決策',kw:'默認選項',prompt:'【默認選項】：預設幫讀者選好最熱門套餐。'},
+  438:{sym:'Lnk',name:'連結成本',def:'加入一個網絡或系統所需的成本',kw:'新手大禮包',prompt:'【新手大禮包】：設計極低門檻的入門方案，消除加入新系統的恐懼。'},
+  443:{sym:'Bnd',name:'有限理性',def:'受限於環境與認知，無法達成絕對理性',kw:'簡化決策',prompt:'【簡化決策】：不要給太多選擇，幫讀者做決定。'},
+  450:{sym:'Psh',name:'心理推力',def:'微小心理暗示推動決策',kw:'最後一推',prompt:'【最後一推】：在結尾寫一句讓人很難不行動的推力句。'},
+  529:{sym:'E',name:'期望值',def:'隨機變數的加權平均',kw:'決策期望',prompt:'【決策期望】：論證購買行為的 Reward 大於 Cost。'},
+  553:{sym:'Amy',name:'杏仁核劫持',def:'觸發恐懼與戰或逃反應',kw:'緊急危機',prompt:'【緊急危機】：用高衝擊詞描述錯過的慘狀，奪取大腦控制權。'},
+  554:{sym:'Mi',name:'鏡像神經元',def:'觀察他人行為時產生代入感',kw:'第一人稱故事',prompt:'【第一人稱故事】：細膩描繪使用產品時的動作與感受。'},
+  559:{sym:'Ze',name:'蔡加尼克效應',def:'對未完成任務記憶更深刻',kw:'懸念中斷',prompt:'【懸念中斷】：在最精彩處中斷，驅動下一步行為。'},
+  570:{sym:'En',name:'稟賦效應',def:'擁有後就不想失去',kw:'免費試用期',prompt:'【免費試用期】：讓讀者先試養你的工具，再進入付費。'},
+  601:{sym:'R₀',name:'基本再生數',def:'一個病例能傳染給多少人的平均數',kw:'裂變設計',prompt:'【裂變設計】：文案必須包含轉發誘因，讓每個讀者至少帶入一個新讀者。'},
+  604:{sym:'Inc',name:'潛伏期',def:'從感染到出現症狀的時間',kw:'心理埋線',prompt:'【心理埋線】：埋下一個遲發性共鳴點，讓讀者幾天後突然想起這篇文。'},
+  615:{sym:'Att',name:'減毒活疫苗',def:'降低毒力但保有抗原性',kw:'預熱與教育',prompt:'【預熱與教育】：先發布溫和版觀點，為後續強烈輸出做心理準備。'},
+  620:{sym:'Ind',name:'零號病人',def:'疫情爆發的第一個病例',kw:'種子用戶',prompt:'【種子用戶】：選定最具影響力的第一批讀者，作為傳染源點。'},
+  622:{sym:'Cfr',name:'致命率',def:'感染者中被徹底轉化的比例',kw:'轉化率',prompt:'【轉化率】：讓讀者被徹底轉化，失去對競爭對手的興趣。'},
+  628:{sym:'Sp',name:'沉默螺旋',def:'個人因怕孤立而不願表達少數意見',kw:'製造共識假象',prompt:'【製造共識假象】：利用大量初始好評，讓反對者不敢發聲。'},
+  653:{sym:'Fer',name:'多產性',def:'模因產生副本的速度',kw:'降低門檻',prompt:'【降低門檻】：讓轉發動作極其簡單，提升副本生成速度。'},
+  680:{sym:'Cas',name:'資訊級聯',def:'個人忽略私有資訊而追隨他人決策',kw:'從眾點火',prompt:'【從眾點火】：製造開局爆紅假象，引發後續大規模級聯。'},
+  685:{sym:'Thr',name:'臨界閾值',def:'觸發大規模爆發所需的最低感染數',kw:'首小時動員',prompt:'【首小時動員】：在貼文發出一小時內衝高數據，突破閾值。'}
+};
+
+const FALLBACK_SCENES = [
+  {
+    id:1,
+    group:'轉化與銷售',
+    name:'提高購買轉化率',
+    desc:'讓猶豫的讀者跨越那道門，最終點擊購買',
+    main:[401,403,404,529,554],
+    cat:[405,559,204,434,450],
+    cons:[238,305,216,353]
+  },
+  {
+    id:2,
+    group:'轉化與銷售',
+    name:'降低猶豫期、加速決策',
+    desc:'縮短讀者從有興趣到下單的時間',
+    main:[201,204,415,356,685],
+    cat:[405,434,450,559,653],
+    cons:[238,443,216,628]
+  },
+  {
+    id:3,
+    group:'轉化與銷售',
+    name:'定價與價值感塑造',
+    desc:'讓讀者覺得這個價格不只值，根本划算',
+    main:[404,410,529,403,310],
+    cat:[410,450,401,405],
+    cons:[216,305,353,438]
+  },
+  {
+    id:4,
+    group:'轉化與銷售',
+    name:'限時限量促銷文案',
+    desc:'製造稀缺感，在截止前讓讀者覺得不行動就虧大了',
+    main:[405,401,415,553,685],
+    cat:[559,204,450,680],
+    cons:[238,305,353,628]
+  },
+  {
+    id:5,
+    group:'轉化與銷售',
+    name:'免費試用 / 低門檻切入設計',
+    desc:'讓讀者幾乎不需要鼓起勇氣就能踏出第一步',
+    main:[201,407,570,615,620],
+    cat:[410,438,434,653],
+    cons:[443,216,389,628]
+  }
+];
+
+const EXTERNAL_EL_COUNT = window.PSE_DATA && window.PSE_DATA.EL ? Object.keys(window.PSE_DATA.EL).length : 0;
+const EXTERNAL_SCENE_COUNT = window.PSE_DATA && window.PSE_DATA.SCENES ? window.PSE_DATA.SCENES.length : 0;
+const HAS_EXTERNAL_DATA = !!(
+  window.PSE_DATA &&
+  window.PSE_DATA.EL &&
+  window.PSE_DATA.SCENES &&
+  EXTERNAL_EL_COUNT >= 700 &&
+  EXTERNAL_SCENE_COUNT >= 50
+);
+const EL = HAS_EXTERNAL_DATA ? window.PSE_DATA.EL : FALLBACK_EL;
+const SCENES = HAS_EXTERNAL_DATA ? window.PSE_DATA.SCENES : FALLBACK_SCENES;
+const state = {
+  mode:'periodic',
+  currentScene:null,
+  recipe:null,
+  modalPrompt:'',
+  periodicQuery:'',
+  sceneQuery:'',
+  relationshipStage:'problem_awareness',
+  customPromptOverride:'',
+  recipeHistory:[],
+  customRecipe:{
+    main:[],
+    cat:[],
+    cons:[]
+  }
+};
+
+const RELATIONSHIP_STAGES = [
+  {
+    id:'stranger',
+    label:'完全陌生',
+    summary:'先讓讀者停下來，意識到這篇內容正在講自己，而不是又一篇路過資訊。',
+    cta:'先對照看看，你最近是不是也出現這些情境。'
+  },
+  {
+    id:'problem_awareness',
+    label:'問題自覺',
+    summary:'把模糊的不舒服翻成能理解的問題結構，讓讀者知道自己卡在哪裡。',
+    cta:'先把最常發生的不舒服情境記下來。'
+  },
+  {
+    id:'trust_building',
+    label:'信任建立',
+    summary:'讓人看見專業判斷的差異，不只是知道有問題，更知道為什麼值得交給你。',
+    cta:'先把你現在的眼鏡和使用情境帶來一起看。'
+  },
+  {
+    id:'action_hesitation',
+    label:'行動猶豫',
+    summary:'降低第一步門檻，處理讀者對花錢、麻煩、怕被推銷的顧慮。',
+    cta:'先預約一次檢查，不急著決定要不要重配。'
+  },
+  {
+    id:'post_conversion',
+    label:'初次成交後',
+    summary:'接住適應期與後續疑問，避免第一次成交後的焦慮反彈與不必要退縮。',
+    cta:'先觀察這幾個適應訊號，再決定要不要回店調整。'
+  },
+  {
+    id:'loyal_customer',
+    label:'熟客 / 老主顧',
+    summary:'把單次交易轉成長期關係，深化認同、陪伴感與自然轉介紹。',
+    cta:'如果身邊也有人遇到一樣的狀況，可以把這篇傳給他。'
+  }
+];
+
+function elColor(id){
+  const group = DISC_GROUPS.find(d => id >= d.range[0] && id <= d.range[1]);
+  return group ? group.color : '#7daa7d';
+}
+
+function weightedPick(ids, count){
+  const copy = ids.slice();
+  const out = [];
+  while(copy.length && out.length < count){
+    const idx = Math.floor(Math.random() * copy.length);
+    out.push(copy.splice(idx,1)[0]);
+  }
+  return out;
+}
+
+function normalizeText(value){
+  return String(value || '').toLowerCase().trim();
+}
+
+function matchesElementQuery(id, query){
+  if(!query) return true;
+  const e = EL[id];
+  if(!e) return false;
+  const haystack = [e.sym, e.name, e.kw, e.def, e.prompt].map(normalizeText).join(' ');
+  return haystack.includes(query);
+}
+
+function matchesSceneQuery(scene, query){
+  if(!query) return true;
+  const haystack = [scene.group, scene.name, scene.desc].map(normalizeText).join(' ');
+  return haystack.includes(query);
+}
+
+function groupElementsByDiscipline(){
+  return DISC_GROUPS.map(group => {
+    const ids = Object.keys(EL).map(Number).filter(id => id >= group.range[0] && id <= group.range[1]).sort((a,b)=>a-b);
+    return {...group, ids};
+  }).filter(group => group.ids.length);
+}
+
+function getSelectedIds(){
+  return new Set([
+    ...state.customRecipe.main,
+    ...state.customRecipe.cat,
+    ...state.customRecipe.cons
+  ]);
+}
+
+function getRelationshipStage(){
+  return RELATIONSHIP_STAGES.find(stage => stage.id === state.relationshipStage) || RELATIONSHIP_STAGES[1];
+}
+
+function renderRelationshipStageSlot(){
+  const activeStage = getRelationshipStage();
+  return `
+    <section class="workbench-panel" id="relationship-stage-slot">
+      <div class="card-label">Relationship Stage</div>
+      <div class="toolbar-note">這一步決定文章在陌生人到老主顧流程中的位置。主題相同，但階段不同，開頭、證據與 CTA 都應該不同。</div>
+      <div class="stage-selector">
+        <div class="stage-grid">
+          ${RELATIONSHIP_STAGES.map(stage => `
+            <button class="stage-chip ${stage.id === activeStage.id ? 'active' : ''}" data-stage="${stage.id}">
+              <div class="stage-chip-k">Stage</div>
+              <div class="stage-chip-v">${stage.label}</div>
+            </button>
+          `).join('')}
+        </div>
+        <div class="stage-detail">
+          <div class="stage-detail-head">
+            <div class="stage-detail-name">${activeStage.label}</div>
+            <div class="stage-detail-tag">active route</div>
+          </div>
+          <div class="stage-detail-copy">${activeStage.summary}</div>
+          <div class="stage-detail-cta">CTA Bias: ${activeStage.cta}</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function addHistory(entry){
+  state.recipeHistory = [
+    entry,
+    ...state.recipeHistory.filter(item => item.label !== entry.label || item.prompt !== entry.prompt)
+  ].slice(0,6);
+}
+
+function showToast(message){
+  const toast = document.getElementById('toast');
+  if(!toast) return;
+  toast.textContent = message;
+  toast.classList.add('on');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => {
+    toast.classList.remove('on');
+  }, 1800);
+}
+
+function renderPeriodic(){
+  const root = document.getElementById('discipline-grid');
+  const selected = getSelectedIds();
+  const query = normalizeText(state.periodicQuery);
+  const groups = groupElementsByDiscipline().map(group => ({
+    ...group,
+    ids:group.ids.filter(id => matchesElementQuery(id, query))
+  })).filter(group => group.ids.length);
+  const totalMatches = groups.reduce((sum, group) => sum + group.ids.length, 0);
+  const blocks = groups.length ? groups.map(group => {
+    const items = group.ids.map(id => {
+      const e = EL[id];
+      return `
+        <button class="element-chip ${selected.has(id) ? 'selected' : ''}" style="--ec:${group.color}" data-el="${id}">
+          <div class="eid">${String(id).padStart(3,'0')}</div>
+          <div class="esym">${e.sym}</div>
+          <div class="ename">${e.name}</div>
+          <div class="ekw">${e.kw}</div>
+        </button>
+      `;
+    }).join('');
+    return `
+      <section class="discipline-card">
+        <div class="discipline-kicker" style="color:${group.color}">Shared Data Group</div>
+        <div class="discipline-title">${group.label}</div>
+        <div class="element-grid">${items}</div>
+      </section>
+    `;
+  }).join('') : `
+    <div class="empty-panel">
+      <div class="empty-title">沒有找到對應元素</div>
+      <div class="empty-copy">換個關鍵字試試看。可搜尋元素代號、名稱、關鍵詞、定義或 prompt 內容。</div>
+    </div>
+  `;
+  root.innerHTML = `
+    <div class="control-bar">
+      <label class="search-shell">
+        <input
+          class="search-input"
+          id="periodic-search"
+          type="search"
+          placeholder="搜尋元素：名稱 / 代號 / 關鍵詞 / 定義"
+          value="${state.periodicQuery.replace(/"/g, '&quot;')}"
+        >
+      </label>
+      <div class="search-meta">${totalMatches} / ${Object.keys(EL).length} 個元素符合</div>
+    </div>
+    ${blocks}
+  `;
+  renderWorkbench();
+  const search = document.getElementById('periodic-search');
+  if(search){
+    search.addEventListener('input', event => {
+      state.periodicQuery = event.target.value;
+      renderPeriodic();
+    });
+  }
+  root.querySelectorAll('[data-el]').forEach(btn => {
+    btn.addEventListener('click', () => openElementModal(Number(btn.dataset.el)));
+  });
+  setMode(state.mode);
+}
+
+function renderWorkbench(){
+  const root = document.getElementById('workbench');
+  if(!root) return;
+  const selectedCount = state.customRecipe.main.length + state.customRecipe.cat.length + state.customRecipe.cons.length;
+  root.innerHTML = `
+    <section class="workbench-panel">
+      <div class="card-label">Builder Workspace</div>
+      <div class="toolbar-note">這裡是你的固定工作台。從週期表或配方模式送進來的元素，都會集中在這裡累積成結果。</div>
+      <div class="builder-summary">
+        <div class="summary-card">
+          <div class="summary-k">Selected</div>
+          <div class="summary-v">${selectedCount}</div>
+          <div class="summary-sub">已放入工作台</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Scenes</div>
+          <div class="summary-v">${SCENES.length}</div>
+          <div class="summary-sub">可直接抽配方</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Elements</div>
+          <div class="summary-v">${Object.keys(EL).length}</div>
+          <div class="summary-sub">共享資料底座</div>
+        </div>
+      </div>
+      <div class="periodic-toolbar" style="margin-top:14px">
+        <div class="toolbar-note">點元素看細節，或直接在 modal 裡塞進主導 / 催化 / 約束。</div>
+        <div class="action-row" style="margin-top:0">
+          <button class="primary-btn" id="copy-custom-btn">複製自訂 Prompt</button>
+          <button class="ghost-btn" id="clear-custom-btn">清空自訂配方</button>
+        </div>
+      </div>
+      <div class="builder-grid" id="builder-grid"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">自訂 Prompt</div>
+      <div class="prompt-box" id="custom-prompt-output"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">最近配方</div>
+      <div class="history-list" id="history-list"></div>
+    </section>
+  `;
+  renderCustomBuilder();
+  renderHistory();
+  document.getElementById('copy-custom-btn').addEventListener('click', () => {
+    copyText(buildCustomPrompt(), document.getElementById('copy-custom-btn'));
+    addHistory({
+      type:'Builder',
+      label:'自訂配方工作台',
+      meta:`${selectedCount} elements`,
+      prompt:buildCustomPrompt()
+    });
+    renderHistory();
+  });
+  document.getElementById('clear-custom-btn').addEventListener('click', () => {
+    state.customRecipe = {main:[],cat:[],cons:[]};
+    state.customPromptOverride = '';
+    renderPeriodic();
+    showToast('自訂配方已清空');
+  });
+}
+
+function customSlotConfig(){
+  return [
+    {key:'main', label:'主導', pct:'55%', color:'#60a5fa', limit:3},
+    {key:'cat', label:'催化', pct:'30%', color:'#34d399', limit:2},
+    {key:'cons', label:'約束', pct:'15%', color:'#f87171', limit:2}
+  ];
+}
+
+function renderCustomBuilder(){
+  const root = document.getElementById('builder-grid');
+  if(!root) return;
+  root.innerHTML = customSlotConfig().map(cfg => {
+    const ids = state.customRecipe[cfg.key];
+    const items = ids.length ? ids.map(id => {
+      const e = EL[id];
+      return `
+        <div class="slot-item">
+          <div class="slot-meta">
+            <div class="slot-sym" style="color:${cfg.color}">${e.sym}</div>
+            <div class="slot-name">${e.name}</div>
+          </div>
+          <button class="slot-remove" data-remove-role="${cfg.key}" data-remove-id="${id}">×</button>
+        </div>
+      `;
+    }).join('') : `<div class="slot-empty">尚未加入元素</div>`;
+    return `
+      <div class="builder-box">
+        <div class="builder-head" style="color:${cfg.color}">${cfg.label}<span style="color:#5a5a5a">${ids.length}/${cfg.limit}</span></div>
+        <div class="slot-list">${items}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('custom-prompt-output').textContent = buildCustomPrompt();
+  root.querySelectorAll('[data-remove-role]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.dataset.removeRole;
+      const id = Number(btn.dataset.removeId);
+      state.customRecipe[role] = state.customRecipe[role].filter(v => v !== id);
+      renderPeriodic();
+    });
+  });
+}
+
+function addToCustom(role, id){
+  const cfg = customSlotConfig().find(c => c.key === role);
+  if(!cfg) return;
+  const list = state.customRecipe[role];
+  if(list.includes(id)) return;
+  if(list.length >= cfg.limit) list.shift();
+  list.push(id);
+  state.customPromptOverride = '';
+  renderPeriodic();
+  const e = EL[id];
+  if(e) showToast(`${e.name} 已加入${cfg.label}`);
+}
+
+function buildCustomPrompt(){
+  if(state.customPromptOverride) return state.customPromptOverride;
+  const {main,cat,cons} = state.customRecipe;
+  const all = [...main,...cat,...cons];
+  if(!all.length){
+    return '從下方週期表挑元素加入主導 / 催化 / 約束後，這裡會自動生成自訂 Prompt。';
+  }
+  const lines = (ids,label) => ids.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}（${label}）：${e.kw}` : '';
+  }).filter(Boolean).join('\n');
+  const refs = all.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}` : '';
+  }).filter(Boolean).join(' x ');
+  return `【自訂模式】以你手動挑選的元素生成 Prompt
+
+【元素配方】
+${lines(main,'主導')}
+${lines(cat,'催化')}
+${lines(cons,'約束')}
+
+【指令】
+請以 ${refs} 作為核心語義框架完成文案或改寫任務：
+- 主導元素決定整體方向與攻擊面
+- 催化元素負責加速效果與提高轉化
+- 約束元素負責收斂語氣、防止跑偏
+
+【輸入內容】
+（貼上你的草稿 / 產品資訊 / 受眾描述）`;
+}
+
+function getDataStatus(){
+  return {
+    elements:Object.keys(EL).length,
+    scenes:SCENES.length
+  };
+}
+
+function refreshNotice(){
+  const status = getDataStatus();
+  document.getElementById('notice').innerHTML = `
+    已整合成單一入口：<span class="status-strong">${status.elements} 個已載入元素</span> +
+    <span class="status-strong">${status.scenes} 個已載入場景</span>。
+    ${HAS_EXTERNAL_DATA ? '目前正在使用外部完整資料檔。' : `目前仍在使用內建示範資料。外部資料檔偵測到 ${EXTERNAL_EL_COUNT} 個元素、${EXTERNAL_SCENE_COUNT} 個場景；需達 700 / 50 才會自動切換成完整版。`}
+  `;
+  const elNode = document.getElementById('launch-elements');
+  const sceneNode = document.getElementById('launch-scenes');
+  if(elNode) elNode.textContent = `Elements ${status.elements}`;
+  if(sceneNode) sceneNode.textContent = `Scenes ${status.scenes}`;
+}
+
+function importRecipeToCustom(){
+  if(!state.recipe) return;
+  state.customRecipe = {
+    main:[...state.recipe.main],
+    cat:[...state.recipe.cat],
+    cons:[...state.recipe.cons]
+  };
+  state.customPromptOverride = buildPrompt(state.currentScene, state.recipe);
+  addHistory({
+    type:'Scene',
+    label:state.currentScene.name,
+    meta:state.currentScene.group,
+    prompt:state.customPromptOverride
+  });
+  setMode('periodic');
+  renderPeriodic();
+  showToast(`已把「${state.currentScene.name}」送進 Builder`);
+}
+
+function renderHistory(){
+  const root = document.getElementById('history-list');
+  if(!root) return;
+  if(!state.recipeHistory.length){
+    root.innerHTML = `<div class="ghost-note">這裡會保留你最近產生或送進 Builder 的配方，方便來回比較，不用怕上一組消失。</div>`;
+    return;
+  }
+  root.innerHTML = state.recipeHistory.map((item, index) => `
+    <button class="history-item" data-history="${index}">
+      <div class="history-type">${item.type}</div>
+      <div class="history-name">${item.label}</div>
+      <div class="history-meta">${item.meta}</div>
+    </button>
+  `).join('');
+  root.querySelectorAll('[data-history]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = state.recipeHistory[Number(btn.dataset.history)];
+      if(!item) return;
+      state.customPromptOverride = item.prompt;
+      document.getElementById('custom-prompt-output').textContent = state.customPromptOverride;
+      showToast(`已回看「${item.label}」`);
+    });
+  });
+}
+
+function renderSceneList(){
+  const root = document.getElementById('scene-list');
+  const groups = [...new Set(SCENES.map(s => s.group))];
+  root.innerHTML = groups.map(group => {
+    const buttons = SCENES.filter(s => s.group === group).map(scene => `
+      <button class="scene-btn ${state.currentScene && state.currentScene.id === scene.id ? 'active' : ''}" data-scene="${scene.id}">
+        ${scene.name}
+      </button>
+    `).join('');
+    return `<div class="group-label">${group}</div>${buttons}`;
+  }).join('');
+  root.querySelectorAll('[data-scene]').forEach(btn => {
+    btn.addEventListener('click', () => selectScene(Number(btn.dataset.scene)));
+  });
+}
+
+function selectScene(id){
+  state.currentScene = SCENES.find(s => s.id === id) || null;
+  if(!state.currentScene) return;
+  state.recipe = {
+    main: weightedPick(state.currentScene.main, 3),
+    cat: weightedPick(state.currentScene.cat, 2),
+    cons: weightedPick(state.currentScene.cons, 2)
+  };
+  addHistory({
+    type:'Scene',
+    label:state.currentScene.name,
+    meta:'Auto mix',
+    prompt:buildPrompt(state.currentScene, state.recipe)
+  });
+  renderSceneList();
+  renderRecipe();
+  renderHistory();
+}
+
+function renderRole(title, pct, ids, color){
+  const items = ids.map(id => {
+    const e = EL[id];
+    if(!e) return '';
+    return `
+      <button class="mini-chip" data-el="${id}">
+        <div class="mini-sym" style="color:${color}">${e.sym}</div>
+        <div class="mini-name">${e.name}</div>
+        <div class="mini-kw">${e.kw}</div>
+      </button>
+    `;
+  }).join('');
+  return `
+    <div class="role-box">
+      <div class="role-head" style="color:${color}">${title}<span class="pct">${pct}</span></div>
+      ${items}
+    </div>
+  `;
+}
+
+function buildPrompt(scene, recipe){
+  const ordered = [...recipe.main, ...recipe.cat, ...recipe.cons];
+  const refs = ordered.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}` : '';
+  }).filter(Boolean).join(' x ');
+  const roleLines = (ids, label) => ids.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}（${label}）：${e.kw}` : '';
+  }).join('\n');
+
+  return `【場景】${scene.name}
+【目標】${scene.desc}
+
+【元素配方】
+${roleLines(recipe.main, '主導')}
+${roleLines(recipe.cat, '催化')}
+${roleLines(recipe.cons, '約束')}
+
+【指令】
+請針對以下內容，執行「${scene.name}」任務。
+以 ${refs} 作為核心語義框架：
+- 主導元素決定整體方向與力道
+- 催化元素強化轉化效果
+- 約束元素確保語氣與品牌不跑偏
+
+【輸入內容】
+（貼上你的草稿 / 產品資訊 / 受眾描述）`;
+}
+
+function getRouteSummaryData(){
+  const recipe = state.recipe || {main:[], cat:[], cons:[]};
+  const ordered = [...recipe.main, ...recipe.cat, ...recipe.cons].filter(id => EL[id]);
+  const activeStage = getRelationshipStage();
+  const topicName = state.currentScene ? state.currentScene.name : '未選擇主題';
+  const topicSummary = state.currentScene
+    ? state.currentScene.desc
+    : '請先從左側選一個情境，系統才會建立本次內容路由。';
+  const postureName = state.mode === 'recipe' ? 'Decision Guide' : 'Builder Workspace';
+  const postureSummary = state.mode === 'recipe'
+    ? '先分清楚問題，再決定下一步，適合把元素組合整理成可執行內容。'
+    : '以工作台模式組裝元素與 prompt，偏向探索與規劃。';
+  const engineName = ordered.length ? ordered.slice(0, 3).map(id => EL[id].sym).join(' - ') : '未組裝';
+  const engineSummary = ordered.length
+    ? `目前已選 ${ordered.length} 個元素，主導 ${recipe.main.length} / 催化 ${recipe.cat.length} / 約束 ${recipe.cons.length}。`
+    : '尚未選擇元素，無法建立策略引擎摘要。';
+  const stageName = activeStage.label;
+  const stageSummary = activeStage.summary;
+  const knowledgeName = recipe.cons.length ? 'Mixed' : '待指定';
+  const knowledgeSummary = recipe.cons.length
+    ? '目前配方已有約束元素，可作為知識錨點與可信度支撐的雛形。'
+    : '尚未套用 Knowledge Layer，後續可補進 observation / mechanism / guideline。';
+  const voiceprintName = 'Core / 未鎖定';
+  const voiceprintSummary = '目前是中性系統輸出，後續可套用品牌聲紋鎖形成真正的品牌語氣。';
+  const ctaBias = `CTA Bias: ${activeStage.cta}`;
+  const outputIntent = state.mode === 'recipe'
+    ? `Output: 針對${activeStage.label}階段生成文章 / LINE / 頁面文案`
+    : `Output: 先組裝路由，再針對${activeStage.label}輸出內容`;
+  return {
+    topic:{name:topicName, summary:topicSummary},
+    posture:{name:postureName, summary:postureSummary},
+    engine:{name:engineName, summary:engineSummary},
+    stage:{name:stageName, summary:stageSummary},
+    knowledge:{name:knowledgeName, summary:knowledgeSummary},
+    voiceprint:{name:voiceprintName, summary:voiceprintSummary},
+    ctaBias,
+    outputIntent
+  };
+}
+
+function renderRouteSummary(){
+  const route = getRouteSummaryData();
+  return `
+    <section class="route-summary-panel" id="route-summary-slot">
+      <div class="route-summary-head">
+        <div>
+          <div class="card-label">Route Summary</div>
+          <div class="toolbar-note">Current content route assembled from the active topic, posture, PSE engine, relationship stage, knowledge layer, and voiceprint.</div>
+        </div>
+      </div>
+      <div class="route-summary-grid">
+        <article class="route-card route-card-topic">
+          <div class="route-k">Topic</div>
+          <div class="route-v">${route.topic.name}</div>
+          <div class="route-sub">${route.topic.summary}</div>
+        </article>
+        <article class="route-card route-card-posture">
+          <div class="route-k">Posture</div>
+          <div class="route-v">${route.posture.name}</div>
+          <div class="route-sub">${route.posture.summary}</div>
+        </article>
+        <article class="route-card route-card-engine">
+          <div class="route-k">PSE Engine</div>
+          <div class="route-v">${route.engine.name}</div>
+          <div class="route-sub">${route.engine.summary}</div>
+        </article>
+        <article class="route-card route-card-stage">
+          <div class="route-k">Stage</div>
+          <div class="route-v">${route.stage.name}</div>
+          <div class="route-sub">${route.stage.summary}</div>
+        </article>
+        <article class="route-card route-card-knowledge">
+          <div class="route-k">Knowledge</div>
+          <div class="route-v">${route.knowledge.name}</div>
+          <div class="route-sub">${route.knowledge.summary}</div>
+        </article>
+        <article class="route-card route-card-voiceprint">
+          <div class="route-k">Voiceprint</div>
+          <div class="route-v">${route.voiceprint.name}</div>
+          <div class="route-sub">${route.voiceprint.summary}</div>
+        </article>
+      </div>
+      <div class="route-summary-footer">
+        <div class="route-extra">
+          <span class="route-chip" id="route-cta-bias">${route.ctaBias}</span>
+          <span class="route-chip" id="route-output-intent">${route.outputIntent}</span>
+        </div>
+        <div class="route-actions">
+          <button class="ghost-btn" id="copy-route-btn">Copy Route</button>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderRecipe(){
+  const root = document.getElementById('recipe-main');
+  if(!state.currentScene || !state.recipe){
+    root.innerHTML = `<div class="empty">選一個場景，開始生成整合版配方。</div>`;
+    return;
+  }
+
+  const prompt = buildPrompt(state.currentScene, state.recipe);
+  root.innerHTML = `
+    ${renderRouteSummary()}
+    <div class="scene-header">
+      <div class="scene-kicker">${state.currentScene.group}</div>
+      <div class="scene-title">${state.currentScene.name}</div>
+      <div class="scene-desc">${state.currentScene.desc}</div>
+    </div>
+    <div class="card">
+      <div class="card-label">本次配方組合</div>
+      <div class="role-grid">
+        ${renderRole('主導','55%',state.recipe.main,'#60a5fa')}
+        ${renderRole('催化','30%',state.recipe.cat,'#34d399')}
+        ${renderRole('約束','15%',state.recipe.cons,'#f87171')}
+      </div>
+      <div class="action-row">
+        <button class="primary-btn" id="copy-prompt-btn">複製完整 Prompt</button>
+        <button class="ghost-btn" id="reroll-btn">換一組</button>
+        <button class="ghost-btn" id="import-builder-btn">送到自訂 Builder</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">完整 Prompt 模板</div>
+      <div class="prompt-box" id="prompt-output"></div>
+    </div>
+  `;
+  document.getElementById('prompt-output').textContent = prompt;
+  document.getElementById('copy-prompt-btn').addEventListener('click', () => copyText(prompt, document.getElementById('copy-prompt-btn')));
+  document.getElementById('reroll-btn').addEventListener('click', () => selectScene(state.currentScene.id));
+  document.getElementById('import-builder-btn').addEventListener('click', importRecipeToCustom);
+  document.getElementById('copy-route-btn').addEventListener('click', () => {
+    const route = getRouteSummaryData();
+    const routeText = [
+      `Topic: ${route.topic.name}`,
+      `Posture: ${route.posture.name}`,
+      `PSE Engine: ${route.engine.name}`,
+      `Stage: ${route.stage.name}`,
+      `Knowledge: ${route.knowledge.name}`,
+      `Voiceprint: ${route.voiceprint.name}`,
+      route.ctaBias,
+      route.outputIntent
+    ].join('\n');
+    copyText(routeText, document.getElementById('copy-route-btn'));
+  });
+  root.querySelectorAll('[data-el]').forEach(btn => {
+    btn.addEventListener('click', () => openElementModal(Number(btn.dataset.el)));
+  });
+}
+
+function openElementModal(id){
+  const e = EL[id];
+  if(!e) return;
+  const color = elColor(id);
+  document.documentElement.style.setProperty('--mc', color);
+  document.getElementById('modal-box').style.borderColor = color;
+  document.getElementById('modal-sym').textContent = e.sym;
+  document.getElementById('modal-name').textContent = e.name;
+  document.getElementById('modal-def').textContent = e.def;
+  document.getElementById('modal-prompt').textContent = e.prompt;
+  document.getElementById('overlay').classList.add('on');
+  state.modalPrompt = e.prompt;
+  const actionWrap = document.querySelector('.modal-actions');
+  const oldAdds = actionWrap.querySelectorAll('[data-add-role]');
+  oldAdds.forEach(node => node.remove());
+  const roles = [
+    {key:'main', label:'加到主導'},
+    {key:'cat', label:'加到催化'},
+    {key:'cons', label:'加到約束'}
+  ];
+  roles.forEach(role => {
+    const btn = document.createElement('button');
+    btn.className = 'ghost-btn';
+    btn.textContent = role.label;
+    btn.dataset.addRole = role.key;
+    btn.addEventListener('click', () => {
+      addToCustom(role.key, id);
+      setMode('periodic');
+      closeModal();
+    });
+    actionWrap.insertBefore(btn, document.getElementById('close-modal-btn'));
+  });
+}
+
+function closeModal(){
+  document.getElementById('overlay').classList.remove('on');
+}
+
+function copyText(text, btn){
+  const restore = btn.dataset.restore || btn.textContent;
+  btn.dataset.restore = restore;
+  const done = () => {
+    btn.textContent = '已複製';
+    showToast('Prompt 已複製到剪貼簿');
+    setTimeout(() => { btn.textContent = restore; }, 1600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function fallbackCopy(text, done){
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  ta.remove();
+  done();
+}
+
+function setMode(mode){
+  state.mode = mode;
+  document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+  document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === `${mode}-view`));
+  const periodic = document.getElementById('launch-card-periodic');
+  const recipe = document.getElementById('launch-card-recipe');
+  const builder = document.getElementById('launch-card-builder');
+  if(periodic) periodic.classList.toggle('active', mode === 'periodic');
+  if(recipe) recipe.classList.toggle('active', mode === 'recipe');
+  if(builder) builder.classList.toggle('active', mode === 'periodic' && getSelectedIds().size > 0);
+}
+
+function initializeStaticCopy(){
+  document.title = 'PSE Unified - Periodic Table + Recipe Mode';
+  const brandSub = document.querySelector('.brand-sub');
+  if(brandSub) brandSub.textContent = 'Prompt Periodic Table + Recipe Mode · Shared Data Architecture';
+  const modeButtons = document.querySelectorAll('.mode-btn');
+  if(modeButtons[0]) modeButtons[0].textContent = '週期表模式';
+  if(modeButtons[1]) modeButtons[1].textContent = '配方模式';
+  const elementCopyBtn = document.getElementById('copy-element-btn');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  if(elementCopyBtn) elementCopyBtn.textContent = '複製元素指令';
+  if(closeModalBtn) closeModalBtn.textContent = '關閉';
+
+  const launchCopy = document.querySelector('.launch-copy');
+  if(launchCopy) launchCopy.textContent = '從同一套語義資料庫出發，你可以先逛元素找靈感，也可以直接抽一組場景配方；最後再把結果送進 Builder，混成你自己的主導、催化、約束 prompt。';
+
+  const sectionCopy = document.querySelector('.section-copy');
+  if(sectionCopy) sectionCopy.textContent = '先用搜尋快速縮小範圍，再點元素查看完整 Prompt Logic。喜歡的元素可以直接送進 Builder，最後整合成一份你真的會拿去用的 prompt。';
+
+  const metaChips = document.querySelectorAll('.section-meta .meta-chip');
+  if(metaChips[0]) metaChips[0].textContent = '搜尋 700 元素';
+  if(metaChips[1]) metaChips[1].textContent = '固定 Builder 工作台';
+  if(metaChips[2]) metaChips[2].textContent = '即看即複製 Prompt';
+
+  const launchCards = [
+    {id:'launch-card-periodic', mode:'Path 01', head:'先找靈感', desc:'從 700 個元素裡挑你要的語氣、角度與推力，先看單體邏輯，再決定怎麼組裝。', button:'打開週期表'},
+    {id:'launch-card-recipe', mode:'Path 02', head:'直接生配方', desc:'選一個場景，立刻抽出主導 / 催化 / 約束組合，快速得到一份可直接貼進 AI 的 prompt。', button:'打開配方模式'},
+    {id:'launch-card-builder', mode:'Path 03', head:'自己混搭', desc:'把你喜歡的元素直接送進 Builder，做成專屬版本，隨時重組、複製、回頭再改。', button:'直接進 Builder'}
+  ];
+  launchCards.forEach(card => {
+    const root = document.getElementById(card.id);
+    if(!root) return;
+    const mode = root.querySelector('.launch-mode');
+    const head = root.querySelector('.launch-head');
+    const desc = root.querySelector('.launch-desc');
+    const button = root.querySelector('button');
+    if(mode) mode.textContent = card.mode;
+    if(head) head.textContent = card.head;
+    if(desc) desc.textContent = card.desc;
+    if(button) button.textContent = card.button;
+  });
+}
+
+function customSlotConfig(){
+  return [
+    {key:'main', label:'主導', pct:'55%', color:'#60a5fa', limit:3},
+    {key:'cat', label:'催化', pct:'30%', color:'#34d399', limit:2},
+    {key:'cons', label:'約束', pct:'15%', color:'#f87171', limit:2}
+  ];
+}
+
+function renderWorkbench(){
+  const root = document.getElementById('workbench');
+  if(!root) return;
+  const selectedCount = state.customRecipe.main.length + state.customRecipe.cat.length + state.customRecipe.cons.length;
+  const readyClass = selectedCount ? 'ready' : '';
+  root.innerHTML = `
+    <section class="workbench-panel">
+      <div class="card-label">Builder Workspace</div>
+      <div class="toolbar-note">把週期表元素或場景配方送進這裡，就能混成你自己的最終版本。主導決定方向，催化放大效果，約束負責收斂語氣與邏輯。</div>
+      <div class="builder-summary">
+        <div class="summary-card">
+          <div class="summary-k">Selected</div>
+          <div class="summary-v ${readyClass}">${selectedCount}</div>
+          <div class="summary-sub">目前已選元素</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Scenes</div>
+          <div class="summary-v">${SCENES.length}</div>
+          <div class="summary-sub">可直接抽配方</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Elements</div>
+          <div class="summary-v">${Object.keys(EL).length}</div>
+          <div class="summary-sub">共用資料底座</div>
+        </div>
+      </div>
+      <div class="periodic-toolbar" style="margin-top:14px">
+        <div class="toolbar-note">你可以從場景一鍵導入，也可以自己慢慢挑。整理好之後直接複製完整 Prompt，拿去貼進任何 AI 工具。</div>
+        <div class="action-row" style="margin-top:0">
+          <button class="primary-btn" id="copy-custom-btn">複製 Builder Prompt</button>
+          <button class="ghost-btn" id="clear-custom-btn">清空自訂配方</button>
+        </div>
+      </div>
+      <div class="builder-grid" id="builder-grid"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">Builder Prompt</div>
+      <div class="prompt-box" id="custom-prompt-output"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">最近使用</div>
+      <div class="history-list" id="history-list"></div>
+    </section>
+  `;
+  renderCustomBuilder();
+  renderHistory();
+  document.getElementById('copy-custom-btn').addEventListener('click', () => {
+    copyText(buildCustomPrompt(), document.getElementById('copy-custom-btn'));
+  });
+  document.getElementById('clear-custom-btn').addEventListener('click', () => {
+    state.customRecipe = {main:[],cat:[],cons:[]};
+    state.customPromptOverride = '';
+    renderPeriodic();
+    showToast('自訂配方已清空');
+  });
+}
+
+function renderCustomBuilder(){
+  const root = document.getElementById('builder-grid');
+  if(!root) return;
+  root.innerHTML = customSlotConfig().map(cfg => {
+    const ids = state.customRecipe[cfg.key];
+    const items = ids.length ? ids.map(id => {
+      const e = EL[id];
+      return `
+        <div class="slot-item">
+          <div class="slot-meta">
+            <div class="slot-sym" style="color:${cfg.color}">${e.sym}</div>
+            <div class="slot-name">${e.name}</div>
+          </div>
+          <button class="slot-remove" data-remove-role="${cfg.key}" data-remove-id="${id}">×</button>
+        </div>
+      `;
+    }).join('') : `<div class="slot-empty">還沒有加入元素</div>`;
+    return `
+      <div class="builder-box">
+        <div class="builder-head" style="color:${cfg.color}">${cfg.label}<span style="color:#5a5a5a">${ids.length}/${cfg.limit}</span></div>
+        <div class="slot-list">${items}</div>
+      </div>
+    `;
+  }).join('');
+  document.getElementById('custom-prompt-output').textContent = buildCustomPrompt();
+  root.querySelectorAll('[data-remove-role]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const role = btn.dataset.removeRole;
+      const id = Number(btn.dataset.removeId);
+      state.customRecipe[role] = state.customRecipe[role].filter(v => v !== id);
+      renderPeriodic();
+    });
+  });
+}
+
+function addToCustom(role, id){
+  const cfg = customSlotConfig().find(c => c.key === role);
+  if(!cfg) return;
+  const list = state.customRecipe[role];
+  if(list.includes(id)) return;
+  if(list.length >= cfg.limit) list.shift();
+  list.push(id);
+  state.customPromptOverride = '';
+  renderPeriodic();
+  const e = EL[id];
+  if(e) showToast(`${e.name} 已加入${cfg.label}`);
+}
+
+function buildPrompt(scene, recipe){
+  const ordered = [...recipe.main, ...recipe.cat, ...recipe.cons];
+  const refs = ordered.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}` : '';
+  }).filter(Boolean).join(' x ');
+  const roleLines = (ids, label) => ids.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}（${label}）：${e.kw}` : '';
+  }).filter(Boolean).join('\n');
+
+  return `【場景】${scene.name}
+【目標】${scene.desc}
+
+【元素配方】
+${roleLines(recipe.main, '主導')}
+${roleLines(recipe.cat, '催化')}
+${roleLines(recipe.cons, '約束')}
+
+【指令】
+請針對以下內容，執行「${scene.name}」任務。
+以 ${refs} 作為核心語義框架：
+- 主導元素決定整體方向與力道
+- 催化元素強化轉化效果
+- 約束元素確保語氣與品牌不跑偏
+
+【輸入內容】
+（貼上你的草稿 / 產品資訊 / 受眾描述）`;
+}
+
+function buildCustomPrompt(){
+  if(state.customPromptOverride) return state.customPromptOverride;
+  const {main,cat,cons} = state.customRecipe;
+  const all = [...main,...cat,...cons];
+  if(!all.length){
+    return '從週期表或配方模式挑一些元素進 Builder，這裡就會自動組成一份可直接複製的 Prompt。';
+  }
+  const lines = (ids,label) => ids.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}（${label}）：${e.kw}` : '';
+  }).filter(Boolean).join('\n');
+  const refs = all.map(id => {
+    const e = EL[id];
+    return e ? `[${e.sym}] ${e.name}` : '';
+  }).filter(Boolean).join(' x ');
+  return `【自訂 Builder Prompt】
+
+【元素配置】
+${lines(main,'主導')}
+${lines(cat,'催化')}
+${lines(cons,'約束')}
+
+【指令】
+請根據 ${refs} 的語義組合，寫出一份兼具方向感、推進力與收斂控制的高品質 prompt。
+- 主導元素決定整體走向與框架
+- 催化元素負責放大效果與刺激點
+- 約束元素負責避免失焦、失真或語氣跑偏
+
+【輸入內容】
+（貼上你的主題 / 草稿 / 產品資訊 / 目標受眾）`;
+}
+
+function renderHistory(){
+  const root = document.getElementById('history-list');
+  if(!root) return;
+  if(!state.recipeHistory.length){
+    root.innerHTML = `<div class="ghost-note">你最近複製、導入或抽出的配方會留在這裡，方便快速回放到 Builder。</div>`;
+    return;
+  }
+  root.innerHTML = state.recipeHistory.map((item, index) => `
+    <button class="history-item" data-history="${index}">
+      <div class="history-type">${item.type}</div>
+      <div class="history-name">${item.label}</div>
+      <div class="history-meta">${item.meta}</div>
+    </button>
+  `).join('');
+  root.querySelectorAll('[data-history]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = state.recipeHistory[Number(btn.dataset.history)];
+      if(!item) return;
+      state.customPromptOverride = item.prompt;
+      document.getElementById('custom-prompt-output').textContent = state.customPromptOverride;
+      showToast(`已載入「${item.label}」`);
+    });
+  });
+}
+
+function renderSceneList(){
+  const root = document.getElementById('scene-list');
+  const query = normalizeText(state.sceneQuery);
+  const filtered = SCENES.filter(scene => matchesSceneQuery(scene, query));
+  const groups = [...new Set(filtered.map(s => s.group))];
+  const groupsHtml = groups.length ? groups.map(group => {
+    const buttons = filtered.filter(s => s.group === group).map(scene => `
+      <button class="scene-btn ${state.currentScene && state.currentScene.id === scene.id ? 'active' : ''}" data-scene="${scene.id}">
+        ${scene.name}
+      </button>
+    `).join('');
+    return `<div class="group-label">${group}</div>${buttons}`;
+  }).join('') : `<div class="empty-panel"><div class="empty-title">沒有符合的場景</div><div class="empty-copy">試試搜尋場景名稱、描述，或群組標籤。</div></div>`;
+  root.innerHTML = `
+    <div class="scene-search">
+      <label class="search-shell">
+        <input
+          class="search-input"
+          id="scene-search-input"
+          type="search"
+          placeholder="搜尋場景：名稱 / 分類 / 描述"
+          value="${state.sceneQuery.replace(/"/g, '&quot;')}"
+        >
+      </label>
+      <div class="scene-count">${filtered.length} / ${SCENES.length} 個場景符合</div>
+    </div>
+    ${groupsHtml}
+  `;
+  const search = document.getElementById('scene-search-input');
+  if(search){
+    search.addEventListener('input', event => {
+      state.sceneQuery = event.target.value;
+      renderSceneList();
+    });
+  }
+  root.querySelectorAll('[data-scene]').forEach(btn => {
+    btn.addEventListener('click', () => selectScene(Number(btn.dataset.scene)));
+  });
+}
+
+function renderRecipe(){
+  const root = document.getElementById('recipe-main');
+  if(!state.currentScene || !state.recipe){
+    root.innerHTML = `<div class="empty">選一個場景，立刻抽出一組可用的配方。</div>`;
+    return;
+  }
+
+  const prompt = buildPrompt(state.currentScene, state.recipe);
+  root.innerHTML = `
+    ${renderRouteSummary()}
+    <div class="scene-header">
+      <div class="scene-kicker">${state.currentScene.group}</div>
+      <div class="scene-title">${state.currentScene.name}</div>
+      <div class="scene-desc">${state.currentScene.desc}</div>
+    </div>
+    <div class="card">
+      <div class="card-label">本次配方組合</div>
+      <div class="role-grid">
+        ${renderRole('主導','55%',state.recipe.main,'#60a5fa')}
+        ${renderRole('催化','30%',state.recipe.cat,'#34d399')}
+        ${renderRole('約束','15%',state.recipe.cons,'#f87171')}
+      </div>
+      <div class="action-row">
+        <button class="primary-btn" id="copy-prompt-btn">複製完整 Prompt</button>
+        <button class="ghost-btn" id="reroll-btn">換一組</button>
+        <button class="ghost-btn" id="import-builder-btn">匯入 Builder</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">完整 Prompt 模板</div>
+      <div class="prompt-box" id="prompt-output"></div>
+    </div>
+  `;
+  document.getElementById('prompt-output').textContent = prompt;
+  document.getElementById('copy-prompt-btn').addEventListener('click', () => copyText(prompt, document.getElementById('copy-prompt-btn')));
+  document.getElementById('reroll-btn').addEventListener('click', () => selectScene(state.currentScene.id));
+  document.getElementById('import-builder-btn').addEventListener('click', importRecipeToCustom);
+  document.getElementById('copy-route-btn').addEventListener('click', () => {
+    const route = getRouteSummaryData();
+    const routeText = [
+      `Topic: ${route.topic.name}`,
+      `Posture: ${route.posture.name}`,
+      `PSE Engine: ${route.engine.name}`,
+      `Stage: ${route.stage.name}`,
+      `Knowledge: ${route.knowledge.name}`,
+      `Voiceprint: ${route.voiceprint.name}`,
+      route.ctaBias,
+      route.outputIntent
+    ].join('\n');
+    copyText(routeText, document.getElementById('copy-route-btn'));
+  });
+  root.querySelectorAll('[data-el]').forEach(btn => {
+    btn.addEventListener('click', () => openElementModal(Number(btn.dataset.el)));
+  });
+}
+
+function openElementModal(id){
+  const e = EL[id];
+  if(!e) return;
+  const color = elColor(id);
+  document.documentElement.style.setProperty('--mc', color);
+  document.getElementById('modal-box').style.borderColor = color;
+  document.getElementById('modal-sym').textContent = e.sym;
+  document.getElementById('modal-name').textContent = e.name;
+  document.getElementById('modal-def').textContent = e.def;
+  document.getElementById('modal-prompt').textContent = e.prompt;
+  document.getElementById('overlay').classList.add('on');
+  state.modalPrompt = e.prompt;
+  const actionWrap = document.querySelector('.modal-actions');
+  const oldAdds = actionWrap.querySelectorAll('[data-add-role]');
+  oldAdds.forEach(node => node.remove());
+  const roles = [
+    {key:'main', label:'加入主導'},
+    {key:'cat', label:'加入催化'},
+    {key:'cons', label:'加入約束'}
+  ];
+  roles.forEach(role => {
+    const btn = document.createElement('button');
+    btn.className = 'ghost-btn';
+    btn.textContent = role.label;
+    btn.dataset.addRole = role.key;
+    btn.addEventListener('click', () => {
+      addToCustom(role.key, id);
+      setMode('periodic');
+      closeModal();
+    });
+    actionWrap.insertBefore(btn, document.getElementById('close-modal-btn'));
+  });
+}
+
+function copyText(text, btn){
+  const restore = btn.dataset.restore || btn.textContent;
+  btn.dataset.restore = restore;
+  const done = () => {
+    btn.textContent = '已複製';
+    showToast('Prompt 已複製到剪貼簿');
+    setTimeout(() => { btn.textContent = restore; }, 1600);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(() => fallbackCopy(text, done));
+  } else {
+    fallbackCopy(text, done);
+  }
+}
+
+function refreshNotice(){
+  const status = getDataStatus();
+  document.getElementById('notice').innerHTML = `
+    已整合成單一入口：<span class="status-strong">${status.elements} 個已載入元素</span> +
+    <span class="status-strong">${status.scenes} 個已載入場景</span>。
+    ${HAS_EXTERNAL_DATA
+      ? '目前使用完整資料集，可在兩種模式之間無縫切換。'
+      : `目前載入的是內建備援版本；外部資料偵測到 ${EXTERNAL_EL_COUNT} 個元素與 ${EXTERNAL_SCENE_COUNT} 個場景，尚未達到完整門檻 700 / 50。`}
+  `;
+  const elNode = document.getElementById('launch-elements');
+  const sceneNode = document.getElementById('launch-scenes');
+  if(elNode) elNode.textContent = `Elements ${status.elements}`;
+  if(sceneNode) sceneNode.textContent = `Scenes ${status.scenes}`;
+}
+
+function importRecipeToCustom(){
+  if(!state.recipe) return;
+  state.customRecipe = {
+    main:[...state.recipe.main],
+    cat:[...state.recipe.cat],
+    cons:[...state.recipe.cons]
+  };
+  state.customPromptOverride = buildPrompt(state.currentScene, state.recipe);
+  addHistory({
+    type:'Scene',
+    label:state.currentScene.name,
+    meta:state.currentScene.group,
+    prompt:state.customPromptOverride
+  });
+  setMode('periodic');
+  renderPeriodic();
+  showToast(`已把「${state.currentScene.name}」送進 Builder`);
+}
+
+customSlotConfig = function(){
+  return [
+    {key:'main', label:'主導', pct:'55%', color:'#60a5fa', limit:3},
+    {key:'cat', label:'催化', pct:'30%', color:'#34d399', limit:2},
+    {key:'cons', label:'約束', pct:'15%', color:'#f87171', limit:2}
+  ];
+};
+
+function synthesizeRandomCustomRecipe(){
+  const pool = Object.keys(EL).map(Number);
+  const main = weightedPick(pool, 3);
+  const afterMain = pool.filter(id => !main.includes(id));
+  const cat = weightedPick(afterMain, 2);
+  const afterCat = afterMain.filter(id => !cat.includes(id));
+  const cons = weightedPick(afterCat, 2);
+
+  state.customRecipe = {main, cat, cons};
+  state.customPromptOverride = '';
+  addHistory({
+    type:'Builder',
+    label:'隨機合成',
+    meta:'3 主導 / 2 催化 / 2 約束',
+    prompt:buildCustomPrompt()
+  });
+  renderPeriodic();
+  renderHistory();
+  showToast('已隨機合成一組 Builder 配方');
+}
+
+renderWorkbench = function(){
+  const root = document.getElementById('workbench');
+  if(!root) return;
+  const selectedCount = state.customRecipe.main.length + state.customRecipe.cat.length + state.customRecipe.cons.length;
+  const readyClass = selectedCount ? 'ready' : '';
+  root.innerHTML = `
+    ${renderRelationshipStageSlot()}
+    <section class="workbench-panel">
+      <div class="card-label">Builder Workspace</div>
+      <div class="toolbar-note">把週期表元素或場景配方送進這裡，就能混成你自己的最終版本。主導決定方向，催化放大效果，約束負責收斂語氣與邏輯。</div>
+      <div class="builder-summary">
+        <div class="summary-card">
+          <div class="summary-k">Selected</div>
+          <div class="summary-v ${readyClass}">${selectedCount}</div>
+          <div class="summary-sub">目前已選元素</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Scenes</div>
+          <div class="summary-v">${SCENES.length}</div>
+          <div class="summary-sub">可直接抽配方</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-k">Elements</div>
+          <div class="summary-v">${Object.keys(EL).length}</div>
+          <div class="summary-sub">共用資料底座</div>
+        </div>
+      </div>
+      <div class="periodic-toolbar" style="margin-top:14px">
+        <div class="toolbar-note">你可以從場景一鍵導入，也可以自己慢慢挑。想快速開局時，直接按「隨機合成」就能一鍵生成完整組合。</div>
+        <div class="action-row" style="margin-top:0">
+          <button class="primary-btn" id="copy-custom-btn">複製 Builder Prompt</button>
+          <button class="ghost-btn" id="random-custom-btn">隨機合成</button>
+          <button class="ghost-btn" id="clear-custom-btn">清空自訂配方</button>
+        </div>
+      </div>
+      <div class="builder-grid" id="builder-grid"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">Builder Prompt</div>
+      <div class="prompt-box" id="custom-prompt-output"></div>
+    </section>
+    <section class="workbench-panel">
+      <div class="card-label">最近使用</div>
+      <div class="history-list" id="history-list"></div>
+    </section>
+  `;
+  renderCustomBuilder();
+  renderHistory();
+  root.querySelectorAll('[data-stage]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.relationshipStage = btn.dataset.stage;
+      renderWorkbench();
+      if(state.currentScene && state.recipe){
+        renderRecipe();
+      }
+    });
+  });
+  document.getElementById('copy-custom-btn').addEventListener('click', () => {
+    copyText(buildCustomPrompt(), document.getElementById('copy-custom-btn'));
+    addHistory({
+      type:'Builder',
+      label:'自訂配方工作台',
+      meta:`${selectedCount} elements`,
+      prompt:buildCustomPrompt()
+    });
+    renderHistory();
+  });
+  document.getElementById('random-custom-btn').addEventListener('click', synthesizeRandomCustomRecipe);
+  document.getElementById('clear-custom-btn').addEventListener('click', () => {
+    state.customRecipe = {main:[],cat:[],cons:[]};
+    state.customPromptOverride = '';
+    renderPeriodic();
+    showToast('自訂配方已清空');
+  });
+};
+
+document.querySelectorAll('.mode-btn').forEach(btn => {
+  btn.addEventListener('click', () => setMode(btn.dataset.mode));
+});
+document.querySelectorAll('[data-launch]').forEach(btn => {
+  btn.addEventListener('click', () => setMode(btn.dataset.launch));
+});
+document.getElementById('launch-builder-btn').addEventListener('click', () => {
+  setMode('periodic');
+  document.getElementById('workbench')?.scrollIntoView({behavior:'smooth', block:'start'});
+});
+document.getElementById('close-modal-btn').addEventListener('click', closeModal);
+document.getElementById('overlay').addEventListener('click', e => { if(e.target.id === 'overlay') closeModal(); });
+document.getElementById('copy-element-btn').addEventListener('click', () => copyText(state.modalPrompt, document.getElementById('copy-element-btn')));
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeModal(); });
+
+initializeStaticCopy();
+renderPeriodic();
+renderSceneList();
+refreshNotice();
+</script>
+</body>
+</html>
