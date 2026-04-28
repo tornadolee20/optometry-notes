@@ -1,0 +1,220 @@
+# desirchange.com 盤點報告
+
+- 盤點時間: 2026-04-20T20:24:18.155Z
+- 網站: https://desirchange.com
+- 全部內容網址數: 183
+- 可能為文章的網址數: 183
+- 偵測為 post 的數量: 148
+- 偵測為 article 的數量: 35
+- 偵測為 page 的數量: 0
+
+## 類別統計
+- ‖ 教學文章 ‖: 114
+- 文案技巧: 76
+- 電商行銷: 37
+- 官網文案範例: 34
+- ‖ 文案範例 ‖: 25
+- 產品文案 | 提供好處: 17
+- 概念文案 | 營造氛圍: 10
+- 官網 | 形象設定: 8
+- 品牌思維: 7
+- 網站策略: 6
+- 故事 | 情景創造: 5
+- 故事文案 | 簡單好記: 5
+- 臉書 | 銷售導向: 5
+- 知識文案 | 幫助引流: 4
+- 公司理念 | 建立信任: 3
+- 品牌故事 | 塑造形象: 3
+- 藝術 | 概念表達: 3
+- 互動文案 | 引起興趣: 2
+- 知識文案 | 文案範例: 2
+- 產品文案 | 文案範例: 2
+- 公司理念 | 文案範例: 1
+
+## 可能為文章的網址
+- 高雄專業官網文案工作室｜點時誠今 | 未偵測 | 未偵測 | https://desirchange.com
+- 公共藝術文案 | 伊甸園的生命密碼火樹銀花【高雄文案 | 點時誠今電商行銷文案服務】 | 2016-09-08T06:30:35+00:00 | ‖ 文案範例 ‖, 藝術 | 概念表達, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2016/09/08/campuses-public-art-copywriting-example
+- 公共空間文案 | 在自然間啜飲靜謐 : 我們的咖啡座【高雄文案 | 點時誠今電商行銷文案服務】 | 2016-10-30T07:51:04+00:00 | ‖ 文案範例 ‖, 藝術 | 概念表達, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2016/10/30/public-art-copywriting-example
+- 藝術文案 | 魅惑畫展【高雄文案 | 點時誠今電商行銷文案服務】 | 2016-12-30T06:15:48+00:00 | ‖ 文案範例 ‖, 藝術 | 概念表達, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2016/12/30/painting-exhibition-copywriting-example
+- 房地產文案 | 你有多久，沒為自己做一頓飯 | 廚房【高雄文案 | 點時誠今電商行銷文案服務】 | 2017-12-21T13:58:01+00:00 | ‖ 文案範例 ‖, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2017/12/21/kitchen-copywriting-example
+- 房地產文案 | 專屬於女主人秘密基地 | 更衣室【點時誠今電商行銷文案服務 | 高雄台灣】 | 2018-01-07T13:54:41+00:00 | ‖ 文案範例 ‖, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2018/01/07/change-room-copywriting-example
+- 房地產文案 | 書中自有黃金屋 | 書房 【點時誠今電商行銷文案服務 | 高雄台灣 】 | 2018-01-31T13:52:30+00:00 | ‖ 文案範例 ‖, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2018/01/31/study-room-interior-design-copywriting-example
+- 房地產文案 | 湖光山色的心靈居所 | 景致【點時誠今電商行銷文案服務 | 高雄台灣】 | 2018-02-07T12:37:59+00:00 | ‖ 文案範例 ‖, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2018/02/07/builder-copywriting-example
+- 房地產文案 | 周末來我家聚聚【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-02-16T12:13:11+00:00 | ‖ 文案範例 ‖, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2018/02/16/living-room-interior-design-copywriting-example
+- 房地產文案 | 家的凝聚之處：客廳的永恆意義【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-03-15T13:05:59+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網 | 形象設定, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2018/03/15/real-estate-living-room-copywriting
+- 98. 新手創業必讀｜開店平台 vs 自建官網，該怎麼選？【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-16T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/13/new-beginner-how-to-start-e-commerce
+- 98. 新手創業必讀｜開店平台 vs 自建官網，該怎麼選？【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-16T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/16/new-beginner-how-to-start-e-commerce
+- 97. 想讓新品牌快速被看見？3種商品設計策略教你衝客單【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-18T08:16:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/17/how-new-brands-attract-purchases
+- 97. 想讓新品牌快速被看見？3種商品設計策略教你衝客單【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-18T08:16:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/18/3-strategy-to-sale-product-in-technology-shopping
+- 4. 創業初期想省錢？這 3 種自建官網方式最適合剛起步的你【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-18T08:48:10+00:00 | ‖ 教學文章 ‖, 網站策略 | https://desirchange.com/2018/09/18/several-ways-to-build-a-low-price-official-website
+- 3. 新手懶人包｜個人賣家必學的網路開店指南【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-21T09:03:26+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/21/multiple-choice-platform-to-sale-your-products
+- 6.品牌轉型必看！從實體到電商：康是美與星巴克如何做好會員與價格整合？【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-09-28T07:54:44+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/09/28/omni-channel-e-commerce
+- 7. 電商必學｜平台熱銷商家都在偷偷做的3件事【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-01T07:33:04+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/10/01/rise-up-performance-on-sale-platform
+- 96. 打造低成本品牌曝光力：用對文案比打廣告更划算！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-08T07:09:51+00:00 | ‖ 教學文章 ‖, 品牌思維 | https://desirchange.com/2018/10/08/%ef%bb%bfe-commerce-website-zmot-fmot-smot
+- 96. 打造低成本品牌曝光力：用對文案比打廣告更划算！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-08T07:09:51+00:00 | ‖ 教學文章 ‖, 品牌思維 | https://desirchange.com/2018/10/08/e-commerce-website-zmot-fmot-smot
+- 9. 一個商品寫三種文案！手把手教你挖出產品多重價值【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-13T06:46:51+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/10/13/find-right-client-for-your-product-in-e-commerce-sale
+- 10.產品文案怎麼寫？用太和工坊水壺案例一步步拆解【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-17T05:51:13+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/10/17/product-advertisement-e-commerce
+- 11. 電商新手常見迷思Q&amp;A大全｜錯誤觀念、真相與實用解法一次搞懂！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-19T05:27:13+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/10/19/beginner-lessons-before-start-e-shop
+- 12. 文案新手必看：用電視廣告練習寫文案，一次學會核心架構【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-24T05:09:25+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/10/24/tv-advertisement-copy-writing
+- 13. 從客戶的問題，看見你的新商機！給正在轉型網路的店家一份實用經營指南【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-27T09:36:01+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/10/27/listen-your-clients-problems-and-turn-to-gold
+- 14. 新手電商必修3招：做圖、寫文、打廣告，一次搞懂不再亂槍打鳥！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-30T09:18:25+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/10/30/skills-for-beginner-in-e-business
+- 15. 不是你沒內容，是你說太多！官網的 3 個致命錯誤【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-10-31T10:00:08+00:00 | ‖ 教學文章 ‖, 網站策略 | https://desirchange.com/2018/10/31/plan-a-good-official-website
+- 16. 品牌官網必備的5個吸客要素【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-04T08:38:25+00:00 | ‖ 教學文章 ‖, 網站策略 | https://desirchange.com/2018/11/04/how-to-introduce-yourself-or-products-in-internet
+- 17. 為什麼你的文案寫了，客戶還是不理你？【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-08T08:17:08+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/08/why-clients-not-bother-me
+- 18. 如何寫一頁式廣告文案？用5種受眾案例拆解【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-11T10:00:04+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/11/5-minutes-master-write-sale-copy-writing
+- 18. 如何寫一頁式廣告文案？用5種受眾案例拆解【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-11T10:00:04+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/11/product-copywriting
+- 19. 一句話打造品牌力：寫出Slogan的五大步驟【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-15T10:00:11+00:00 | ‖ 教學文章 ‖, 品牌思維, 文案技巧 | https://desirchange.com/2018/11/15/new-brand-marketing-strategy-plan
+- 20. 以運動耳機為例，教你寫出市場區隔文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-19T10:00:25+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/19/catch-your-clients-eyes-copy-writing-in-social-media
+- 21. 小眾品牌，如何寫出讓人溫暖的故事？ 【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-23T10:00:12+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/23/how-to-write-good-story-to-attract-buyer-attention
+- 產品文案 | 凍頂鮮橙：夏日健康美白飲品，喝出防曬透亮肌！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-27T13:14:51+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例 | https://desirchange.com/2018/11/27/beverage-advertising-copywriting-example
+- 22. 銷售文案範例 : 檸檬綠茶的故事，從一杯日常飲料打開顧客的心【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-11-28T10:30:36+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/11/28/point-view-seller-and-buyer-in-e-shopping
+- 23. 新手電商創業不踩雷建議：這幾件事一開始就該搞懂！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-03T08:39:29+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/12/03/advice-for-new-internet-entrepreneurs
+- 23. 新手電商創業不踩雷建議：這幾件事一開始就該搞懂！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-03T08:39:29+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2018/12/03/new-hand-e-business-team-and-employee
+- 24. 靈感枯竭？從這三招找回寫文案的方向感【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-06T10:00:02+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/12/06/4-marketing-strategies-copy-writing-e-commerce
+- 25. 文案心理戰，行動促銷金句怎麼寫 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-13T05:03:21+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/12/13/end-year-sale-copy-writing-strategy-e-business
+- 25. 文案心理戰，行動促銷金句怎麼寫 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-13T05:03:21+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/12/13/promotional-phrases
+- 26. 別急著寫文案，先做完這4件功課再說！【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-20T10:52:54+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/12/20/first-phase-preparations-of-sale-copy-writing
+- 27.女性品牌必學的共感行銷：她不是在買產品，她在找一種被理解的感覺【高雄文案 | 點時誠今電商行銷文案服務】 | 2018-12-27T05:06:44+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2018/12/27/female-costumer-copywriting
+- 28. 廣告有效的第一步：精準卡位消費者的生活節奏【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-01-03T12:54:06+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/01/03/find-target-client-before-advertisement
+- 29. 從0開始學經營：網店創業必懂的3個入門觀念【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-01-10T01:52:57+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/01/10/3-things-before-start-online-store
+- 29. 從0開始學經營：網店創業必懂的3個入門觀念【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-01-10T01:52:57+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/01/10/online-store-need
+- 31. 蛋糕怎麼賣？帶你拆解社群文案銷售寫法【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-01-24T05:57:42+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/01/24/fb-ig-sales-copywriting
+- 32. 實體店老闆必看！FB/IG 粉專這樣經營才會被關注【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-01-31T02:32:17+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2019/01/31/fb-activity-copy-writing
+- 33. 為什麼你寫的文案沒人買單？可能你忽略了這三件事【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-02-14T01:30:36+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/02/14/3-things-prepare-before-start-copy-writing
+- 34. 不花錢也吸客！開店必備 : 4個免費網路行銷工具【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-02-21T03:01:43+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/02/21/online-tools-used-for-advertising
+- 產品文案 | 妳是否依然願意，嫁給我？好樂冰杯七月浪漫回憶活動【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-03-01T07:12:16+00:00 | ‖ 文案範例 ‖, 臉書 | 銷售導向, 官網文案範例, 概念文案 | 營造氛圍 | https://desirchange.com/2019/03/01/activity-copywriting-example
+- 35. 創業者必學：三招打造讓顧客記住的品牌故事【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-03-01T13:35:04+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/03/01/how-to-write-good-brand-story
+- 36. 實體店家案例 | 用差異化打敗競爭對手的方法【高雄文案 | 點時誠今電商行銷文案服務】】 | 2019-03-07T04:00:31+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/03/07/how-to-bet-down-competer
+- 38. 星巴克品牌經營術：實體店家也能用的 3 個顧客黏著策略【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-03-21T05:16:19+00:00 | ‖ 教學文章 ‖, 品牌思維 | https://desirchange.com/2019/03/21/how-to-find-attractive-topic
+- 39. 專治靈感匱乏：寫文案不知道怎麼下筆時的3個急救法【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-03-28T02:19:47+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/03/28/how-to-find-copy-writing-idea
+- 產品文案 | 墾丁不老傳說 : 好樂冰杯，喝到在地農友的心意【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-04-03T08:36:46+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 臉書 | 銷售導向, 官網文案範例 | https://desirchange.com/2019/04/03/drinks-product-copywriting-example
+- 40. 從實體店變網紅店的行銷手法【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-04-04T06:02:27+00:00 | ‖ 教學文章 ‖, 網站策略, 電商行銷 | https://desirchange.com/2019/04/04/3-common-questions-internet-business
+- 42. 網路新手創業前，請先盤點這3件事【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-04-28T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/04/28/how-to-start-internet-marketing
+- 44. 行銷文案與銷售文案的差異【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-05-02T12:41:28+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/05/02/internet-marketing-strategy-copywriting
+- 45. 母親節專案銷售文案教學 : 以「客製化長輩旅遊」為範例【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-05-09T06:21:10+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/05/09/mothers-day-festival-copywriting
+- 66. 如何寫出讓顧客覺得「你懂我」的文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-06-06T04:11:34+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/06/06/good-copywriting-need-to-know
+- 66. 如何寫出讓顧客覺得「你懂我」的文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-06-06T04:11:34+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/06/06/times-copywriting
+- 46. 乾貨 | 提高銷售的必備文案技巧【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-06-20T11:08:29+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/06/20/how-to-write-closed-the-deal-copywriting
+- 46. 乾貨 | 提高銷售的必備文案技巧【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-06-20T11:08:29+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/06/20/marketing-copy-skill
+- 服務文案 | 預訂妳的專業新娘秘書：讓妳成為婚禮最耀眼的女主角！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-07-08T08:41:59+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 臉書 | 銷售導向, 官網文案範例 | https://desirchange.com/2019/07/08/bridal-secretary-copywriting
+- 48. 三個讓文案失效的關鍵問題與改進策略【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-07-11T10:42:27+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2019/07/11/new-hand-copywriting-check-list
+- 服務文案 | 脈輪淨化美體課程：釋放壓力，重啟身心靈的平衡能量！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-07-23T10:21:55+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 臉書 | 銷售導向, 官網文案範例 | https://desirchange.com/2019/07/23/massage-copywriting-example
+- 49. 溝通好簡單：讓人想聽你說的3個小技巧（線上線下都適用）【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-07-25T11:35:37+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/07/25/communication-skills
+- 50. 寫文案不靠靈感：打造高效文案的3大必備觀念！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-08-08T12:00:25+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/08/08/essential-concepts-for-copywriting
+- 50. 寫文案不靠靈感：打造高效文案的3大必備觀念！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-08-08T12:00:25+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/08/08/good-copy-writing-need-have
+- 51. 文案技巧教學｜從舊象徵轉新標籤：全聯鬼月廣告案例拆解【高雄文案 | 點時誠今電商行銷文案服務】】 | 2019-08-15T07:19:54+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/08/15/advertisement-symbol
+- 52. 從電影學AIDA網路行銷：打造讓客戶心動的文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-08-29T07:46:17+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/08/29/aida-explain-by-movie
+- 52. 從電影學AIDA網路行銷：打造讓客戶心動的文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-08-29T07:46:17+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/08/29/aida-internet-marketing-copywriting-application
+- 53. 為什麼好商品賣不動？網路行銷的三大關鍵問題【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-09-12T08:45:32+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/09/12/internet-marketing-sales-issues
+- 53. 為什麼好商品賣不動？網路行銷的三大關鍵問題【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-09-12T08:45:32+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/09/12/why-good-products-unsalable
+- 54.像追求愛情般寫文案：精準攻略客戶心！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-09-19T09:19:46+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/09/19/love-behavior-learn-copywriting
+- 55. 想讓客戶買單？先修好你的網站文案！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-09-26T05:21:39+00:00 | ‖ 教學文章 ‖, 網站策略 | https://desirchange.com/2019/09/26/official-website-copywriting
+- 56. 文案技巧：想成交，就用故事打動人心！【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-10-10T07:05:22+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/10/10/3-ways-made-a-story-copywriting
+- 57. 行銷必學：拆解客戶話中真意寫文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-10-17T06:04:12+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/10/17/understand-what-your-customers-expecting
+- 58. 精準文案：觸動目標受眾的關鍵【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-10-24T08:45:13+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/10/24/watch-cf-learn-copywriting
+- 59. 品牌定位是什麼？用3步驟打造讓客戶秒懂的品牌印象【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-10-31T07:34:56+00:00 | ‖ 教學文章 ‖, 品牌思維 | https://desirchange.com/2019/10/31/how-to-find-your-target-customers
+- 60.產品文案怎麼寫？從需求到渴望全解析【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-07T04:32:31+00:00 | ‖ 教學文章 ‖, 品牌思維, 文案技巧 | https://desirchange.com/2019/11/07/lack-copywriting-ideas
+- 66. 有溫度的文案怎麼寫？掌握人性10大慾望，打動客戶心更容易【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-14T06:58:07+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/11/14/heartfelt-copywriting
+- 66. 有溫度的文案怎麼寫？掌握人性10大慾望，打動客戶心更容易【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-14T06:58:07+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/11/14/human-desire-copywriting
+- 62.健身房吸客文案：教你用關鍵字打動目標客群【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-28T04:55:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/11/28/effective-copywriting
+- 62.健身房吸客文案：教你用關鍵字打動目標客群【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-28T04:55:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/11/28/gym-copywriting
+- 63. 消費者在想什麼？用羽絨衣完整範例告訴你【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-11-30T05:54:02+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/11/30/customers-search-pattern-before-buy
+- 64. 文案不夠打動人？具體用詞 vs 抽象用詞對照教學【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-12-09T10:20:59+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/12/09/how-to-use-accurate-words-in-copywriting
+- 64. 文案不夠打動人？具體用詞 vs 抽象用詞對照教學【高雄文案 | 點時誠今電商行銷文案服務】 | 2019-12-09T10:20:59+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2019/12/09/precise-wording-copy-skill
+- 65. 你賣的不是產品，是解決方案！外送平台成功的真正原因是什麼？【高雄文案 | 點時誠今電商行銷文案服務】​​​​​​​​ | 2019-12-19T08:23:17+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2019/12/19/use-old-habit-make-new-internet-marketing-strategy
+- 產品文案 | 告別不順暢日子：讓你輕鬆找回小蠻腰！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-01-31T12:37:29+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 臉書 | 銷售導向, 官網文案範例 | https://desirchange.com/2020/01/31/enzyme-laxative-official-website-copywriting
+- 68. 文案與廣告的致勝關鍵：跟著顧客的腳步走！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-06T10:16:09+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2020/02/06/2020-internet-copywriting
+- 68. 文案與廣告的致勝關鍵：跟著顧客的腳步走！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-06T10:16:09+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2020/02/06/customer-journey
+- 故事文案 | 省錢料理外宿篇：吃得健康又省錢的料理神器！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-17T12:26:50+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例, 故事 | 情景創造, 故事文案 | 簡單好記 | https://desirchange.com/2020/02/17/best-kitchenware-need-by-live-self
+- 故事文案 | 露營好幫手：琺瑯餐具，輕鬆滿足全家需求！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-17T12:31:09+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例, 故事 | 情景創造, 故事文案 | 簡單好記 | https://desirchange.com/2020/02/17/camping-kitchenware-copywriting
+- 故事文案 | 用無毒琺瑯鍋，輕鬆做出寶寶的健康副食品！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-17T12:30:13+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例, 故事 | 情景創造, 故事文案 | 簡單好記 | https://desirchange.com/2020/02/17/create-non-poisonous-environment-raising-children
+- 故事文案 | 職業婦女的備餐神器：善用琺瑯鍋，5分鐘端出健康晚餐！【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-17T12:29:03+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例, 故事 | 情景創造, 故事文案 | 簡單好記 | https://desirchange.com/2020/02/17/how-to-cook-fast-and-effective
+- 故事文案 | 大學外宿神器：琺瑯鍋讓料理超簡單【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-17T12:28:04+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 官網文案範例, 故事 | 情景創造, 故事文案 | 簡單好記 | https://desirchange.com/2020/02/17/kitchenware-copywriting
+- 主治項目 | 診所說明 【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-18T08:20:00+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 公司理念 | 文案範例, 官網文案範例 | https://desirchange.com/2020/02/18/clinic-official-website-copywriting
+- 診所理念 | 院長的期許 【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-18T10:49:01+00:00 | ‖ 文案範例 ‖, 公司理念 | 建立信任, 品牌故事 | 塑造形象, 官網 | 形象設定, 官網文案範例 | https://desirchange.com/2020/02/18/doctor-concept-copywriting
+- 診所介紹 | 細胞間質技術【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-18T10:52:00+00:00 | ‖ 文案範例 ‖, 產品文案 | 提供好處, 知識文案 | 幫助引流, 官網 | 形象設定, 官網文案範例 | https://desirchange.com/2020/02/18/medical-intercellular-substance-copywriting
+- 69. 品牌故事：創辦人的真心旅程【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-02-24T08:07:31+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/02/24/brand-story-ii
+- 70. 文案怎麼寫才讓人想買？用這3招抓住顧客的心【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-03-04T06:22:09+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/03/04/how-observe-target-audience
+- 71.文案範例 : 專為一人寫的，情人節產品文案 【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-03-13T06:33:46+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/03/13/white-valentine-copywriting
+- 72. 文案速成：4招寫出課程文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-03-27T07:59:44+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/03/27/marketing-copy
+- 72. 文案速成：4招寫出課程文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-03-27T07:59:44+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/03/27/use-5-minute-write-a-copywriting
+- 74. 文案標題怎麼寫，才能秒點擊 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-04-23T08:37:57+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/04/23/how-to-come-up-with-a-good-title-part-1
+- 如何寫出有吸引力的標題 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-05-07T07:08:22+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/05/07/how-to-come-up-with-a-good-title-part-2
+- 77. 情境式文案範例 : 專推消費者入坑不費力【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-06-05T09:25:16+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2020/06/05/how-to-write-a-customer-experience-copywriting
+- 77. 情境式文案範例 : 專推消費者入坑不費力【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-06-05T09:25:16+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2020/06/05/story-copy
+- 78. 客戶畫像是什麼？教你寫出高共鳴文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-06-18T07:31:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/06/18/what-is-client-needs-copywriting
+- 79. 網路行銷文案常見問題：如何寫出吸睛文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-07-09T09:02:47+00:00 | ‖ 教學文章 ‖, 電商行銷, 文案技巧 | https://desirchange.com/2020/07/09/comes-with-gold-copywriting-rules
+- 81. 初創老闆必學：3步打造吸睛品牌故事【高雄文案 | 點時誠今電商行銷文案服務】 | 2020-10-29T03:35:56+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2020/10/29/brand-story-iii
+- 83. 打造吸睛官網文案：關鍵字策略提升品牌能見度【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-02-24T10:50:00+00:00 | ‖ 教學文章 ‖, 網站策略, 文案技巧 | https://desirchange.com/2021/02/24/4-advise-for-website-copywriting
+- 84. 為什麼你的文案，總打不中顧客的心 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-03-04T11:40:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2021/03/04/how-to-target-clients-heart
+- 85. 如何用SEO關鍵字，寫故事文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-03-19T07:39:07+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2021/03/19/easy-learn-write-story-i
+- 86. 品牌故事怎麼打動人？5分鐘學創辦人文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-04-01T11:22:03+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2021/04/01/brand-story-iv
+- 88. 如何挖掘顧客真正的購買動機？行銷人必學3步驟 【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-05-29T08:46:35+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2021/05/29/customer-needs-analysis
+- 88. 如何挖掘顧客真正的購買動機？行銷人必學3步驟 【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-05-29T08:46:35+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2021/05/29/find-out-product-advantages
+- 87.文案教學：同產品，寫出不同客戶的專屬故事【高雄文案 | 點時誠今電商行銷文案服務】 | 2021-05-29T07:48:46+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2021/05/29/products-copywriting-user-observation
+- 測驗文案 | 疫情後的溫柔療癒：用脈輪芳療找回你的身心平衡【高雄文案 | 點時誠今電商行銷文案服務】 | 2022-05-06T09:35:05+00:00 | ‖ 文案範例 ‖, 產品文案 | 文案範例, 知識文案 | 文案範例, 官網文案範例, 互動文案 | 引起興趣 | https://desirchange.com/2022/05/06/chakra-test-copywriting
+- 互動文案 | 測驗 : 找出你睡不著的原因? 【高雄文案 | 點時誠今電商行銷文案服務】 | 2022-05-06T09:41:05+00:00 | ‖ 文案範例 ‖, 產品文案 | 文案範例, 知識文案 | 文案範例, 官網文案範例, 互動文案 | 引起興趣 | https://desirchange.com/2022/05/06/insomnia-test-copywriting
+- 89. 創作者必學：如何用自由書寫找靈感？【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-11-11T03:11:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/11/11/copywriting-inspiration
+- 90. 用故事賣產品｜行銷高手都在用的3種心理暗示技巧【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-11-23T10:25:26+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/11/23/communication-psychology
+- 90. 用故事賣產品｜行銷高手都在用的3種心理暗示技巧【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-11-23T10:25:26+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/11/23/communication-psychology-copywriting
+- 90. 用故事賣產品｜行銷高手都在用的3種心理暗示技巧【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-11-23T10:25:26+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/11/23/sales-psychology
+- 92. 免費長期獲客的秘密：用「知識型文案」打造你的品牌流量池！【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-08T10:41:39+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/12/08/knowledge-based-copywriting
+- 92. 免費長期獲客的秘密：用「知識型文案」打造你的品牌流量池！【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-08T10:41:39+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/12/08/long-term-drainage-copywriting
+- 93. 文案怎麼寫才有效？掌握這3步驟就夠了【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-21T10:58:13+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2023/12/21/three-elements-of-good-copy
+- 公司理念 | 專為女性打造：安心、健康、有感的營養補充品【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-26T09:25:18+00:00 | 公司理念 | 建立信任, 官網文案範例 | https://desirchange.com/2023/12/26/nutritional-supplements-copywriting
+- 產品文案 | 春夏換季肌膚的救星【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-26T07:08:37+00:00 | 產品文案 | 提供好處, 知識文案 | 幫助引流, 官網文案範例 | https://desirchange.com/2023/12/26/product-copy-spring-and-summer-season-maintenance
+- 測驗文案 | 1分鐘檢測，你看起來年輕嗎?【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-26T07:31:30+00:00 | 產品文案 | 提供好處, 官網文案範例 | https://desirchange.com/2023/12/26/psychological-test-copywriting
+- 服務文案 | 為什麼你的痠痛，總是好不了?  【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-26T08:55:54+00:00 | 產品文案 | 提供好處, 知識文案 | 幫助引流, 官網文案範例 | https://desirchange.com/2023/12/26/swedish-massage-copywriting
+- 護膚文案 | 下午茶2小時，享受輕鬆變美的體驗！【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-26T08:09:58+00:00 | 產品文案 | 提供好處, 官網文案範例 | https://desirchange.com/2023/12/26/ultrasound-lifting-copywriting
+- 品牌故事 | 守護愛美女人的初心【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-30T09:21:00+00:00 | 品牌故事 | 塑造形象, 官網文案範例 | https://desirchange.com/2023/12/30/health-supplements-copywriting
+- 品牌理念 | 打造孩子快樂成長的家【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-31T09:01:51+00:00 | 公司理念 | 建立信任, 官網文案範例 | https://desirchange.com/2023/12/31/brand-concept-copywriting
+- 品牌故事 | 時光正好，有你真好【高雄文案 | 點時誠今電商行銷文案服務】 | 2023-12-31T08:26:22+00:00 | 品牌故事 | 塑造形象, 官網文案範例 | https://desirchange.com/2023/12/31/brand-story
+- 教育文案 | 如何善用蒙特梭教具，幫助學習敏感期的孩子學的又快又好?【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-02T08:49:59+00:00 | 知識文案 | 幫助引流, 官網文案範例 | https://desirchange.com/2024/01/02/montessori-teaching-aids
+- 91. 文案寫不出來？用這4招破解「無靈感」的困局！【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-05T10:26:33+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/05/inspiration-when-short-of-words
+- 91. 文案寫不出來？用這4招破解「無靈感」的困局！【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-05T10:26:33+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/05/rescue-no-copy-inspiration
+- 91. 文案寫不出來？用這4招破解「無靈感」的困局！【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-05T10:26:33+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/05/rescue-no-inspiration-copywriting
+- 95.電視購物都在用的 3 大銷售心理學文案技巧，電商也能學【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-07T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2024/01/07/action-words-in-copywriting
+- 95.電視購物都在用的 3 大銷售心理學文案技巧，電商也能學【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-07T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2024/01/07/shopping-channel-psychological-tips
+- 94.文案沒靈感？用「個性分類」寫法，一次解決對話卡關問題【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-09T10:18:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/09/lack-of-copywriting-ideas
+- 41. 銷售文案寫法攻略：如何精準打中痛點、超車競品、擴大客群？【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-17T10:18:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/17/how-to-write-into-customers-feeling
+- 80. 讓人愛聽的說服技巧：寫出勾人好奇的文案【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-18T15:56:36+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/18/how-to-make-your-client-listen-to-you
+- 43. 一碗麵的傳承：打造有靈魂的古早味品牌故事【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-01-27T10:18:00+00:00 | ‖ 教學文章 ‖, 文案技巧 | https://desirchange.com/2024/01/27/simple-sop-of-product-copywriting
+- 73. 如何用競爭對手的點子，找出自家的文案方向 ?【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-02-03T10:18:00+00:00 | ‖ 教學文章 ‖, 品牌思維, 文案技巧 | https://desirchange.com/2024/02/03/observe-competing-products-to-find-copywriting-idea
+- 47. 行銷沒效果？試試這3種挖掘市場需求的方法【高雄文案 | 點時誠今電商行銷文案服務】 | 2024-03-09T10:18:00+00:00 | ‖ 教學文章 ‖, 電商行銷 | https://desirchange.com/2024/03/09/lack-of-sales-inspiration
+- 關於我們｜點時誠今 | 2024-06-08T14:15:48+00:00 | 未偵測 | https://desirchange.com/about-desirchange
+- 點時誠今｜命名靈感 | 2025-08-07T10:18:00+00:00 | 未偵測 | https://desirchange.com/about-desirchange/desirchange-naming-inspiration
+- ‖ 教學文章 ‖ &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-03-09T18:18:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96
+- 品牌思維 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-02-03T18:18:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e5%93%81%e7%89%8c%e6%80%9d%e7%b6%ad
+- 文案技巧 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-02-03T18:18:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e6%96%87%e6%a1%88%e6%8a%80%e5%b7%a7
+- 文案技巧 &#8211; 2 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2021-05-29T15:48:46+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e6%96%87%e6%a1%88%e6%8a%80%e5%b7%a7/page/2
+- 文案技巧 &#8211; 3 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-04-23T16:37:57+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e6%96%87%e6%a1%88%e6%8a%80%e5%b7%a7/page/3
+- 網站策略 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2021-02-24T18:50:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e7%b6%b2%e7%ab%99%e7%ad%96%e7%95%a5
+- 電商行銷 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-03-09T18:18:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e9%9b%bb%e5%95%86%e8%a1%8c%e9%8a%b7
+- 電商行銷 &#8211; 2 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2019-07-11T18:42:27+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e9%9b%bb%e5%95%86%e8%a1%8c%e9%8a%b7/page/2
+- 電商行銷 &#8211; 3 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2018-10-27T17:36:01+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/%e9%9b%bb%e5%95%86%e8%a1%8c%e9%8a%b7/page/3
+- ‖ 教學文章 ‖ &#8211; 2 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2023-11-23T18:25:26+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/page/2
+- ‖ 教學文章 ‖ &#8211; 3 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-06-18T15:31:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%95%99%e5%ad%b8%e6%96%87%e7%ab%a0-%e2%80%96/page/3
+- ‖ 文案範例 ‖ &#8211; 高雄專業官網文案工作室｜點時誠今 | 2022-05-06T17:41:05+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b-%e2%80%96
+- 官網 | 形象設定 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-02-18T18:52:00+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b-%e2%80%96/%e5%ae%98%e7%b6%b2-%e5%bd%a2%e8%b1%a1%e8%a8%ad%e5%ae%9a
+- 產品文案 | 文案範例 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2022-05-06T17:41:05+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b-%e2%80%96/%e7%94%a2%e5%93%81%e6%96%87%e6%a1%88-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b
+- 知識文案 | 文案範例 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2022-05-06T17:41:05+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b-%e2%80%96/%e7%9f%a5%e8%ad%98%e6%96%87%e6%a1%88-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b
+- 臉書 | 銷售導向 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-01-31T20:37:29+08:00 | 未偵測 | https://desirchange.com/category/%e2%80%96-%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b-%e2%80%96/%e8%87%89%e6%9b%b8-%e9%8a%b7%e5%94%ae%e5%b0%8e%e5%90%91
+- 官網文案範例 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-01-02T16:49:59+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b
+- 互動文案 | 引起興趣 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2022-05-06T17:41:05+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e4%ba%92%e5%8b%95%e6%96%87%e6%a1%88-%e5%bc%95%e8%b5%b7%e8%88%88%e8%b6%a3
+- 公司理念 | 建立信任 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2023-12-31T17:01:51+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e5%85%ac%e5%8f%b8%e7%90%86%e5%bf%b5-%e5%bb%ba%e7%ab%8b%e4%bf%a1%e4%bb%bb
+- 品牌故事 | 塑造形象 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2023-12-31T16:26:22+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e5%93%81%e7%89%8c%e6%95%85%e4%ba%8b-%e5%a1%91%e9%80%a0%e5%bd%a2%e8%b1%a1
+- 故事文案 | 簡單好記 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-02-17T20:31:09+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e6%95%85%e4%ba%8b%e6%96%87%e6%a1%88-%e7%b0%a1%e5%96%ae%e5%a5%bd%e8%a8%98
+- 概念文案 | 營造氛圍 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2019-03-01T15:12:16+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e6%a6%82%e5%bf%b5%e6%96%87%e6%a1%88-%e7%87%9f%e9%80%a0%e6%b0%9b%e5%9c%8d
+- 產品文案 | 提供好處 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2023-12-26T16:55:54+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e7%94%a2%e5%93%81%e6%96%87%e6%a1%88-%e6%8f%90%e4%be%9b%e5%a5%bd%e8%99%95
+- 產品文案 | 提供好處 &#8211; 2 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2020-02-17T20:26:50+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e7%94%a2%e5%93%81%e6%96%87%e6%a1%88-%e6%8f%90%e4%be%9b%e5%a5%bd%e8%99%95/page/2
+- 知識文案 | 幫助引流 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2024-01-02T16:49:59+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/%e7%9f%a5%e8%ad%98%e6%96%87%e6%a1%88-%e5%b9%ab%e5%8a%a9%e5%bc%95%e6%b5%81
+- 官網文案範例 &#8211; 2 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2022-05-06T17:35:05+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/page/2
+- 官網文案範例 &#8211; 3 頁 &#8211; 高雄專業官網文案工作室｜點時誠今 | 2019-07-23T18:21:55+08:00 | 未偵測 | https://desirchange.com/category/%e5%ae%98%e7%b6%b2%e6%96%87%e6%a1%88%e7%af%84%e4%be%8b/page/3
+- 聯絡我們 | 2023-12-23T10:24:27+00:00 | 未偵測 | https://desirchange.com/contact-us
+- ★ 客戶推薦 | 2019-07-06T06:22:06+00:00 | 未偵測 | https://desirchange.com/customer-recommendation
+- 點時誠今｜品牌信念 | 2025-08-07T10:18:00+00:00 | 未偵測 | https://desirchange.com/desirchange-brand-belief
+- 點時誠今｜品牌故事 | 2025-08-07T10:18:00+00:00 | 未偵測 | https://desirchange.com/desirchange-brand-story
+- ★ 常見問題 Q&amp;A | 2023-12-08T09:10:10+00:00 | 未偵測 | https://desirchange.com/frequently-asked-question
+
+## 其他內容頁
+- 無

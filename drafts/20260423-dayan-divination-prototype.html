@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大衍互動原型</title>
+  <style>
+    :root {
+      --bg: #f6f0e6;
+      --card: rgba(255, 251, 245, 0.92);
+      --ink: #1f1a16;
+      --muted: #6f665d;
+      --line: rgba(50, 41, 33, 0.1);
+      --accent: #4d6250;
+      --accent-soft: rgba(77, 98, 80, 0.12);
+      --gold: #a9864d;
+      --shadow: 0 20px 50px rgba(50, 36, 20, 0.12);
+      --serif: "Iowan Old Style", "Noto Serif TC", "Source Han Serif TC", serif;
+      --sans: "Aptos", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(169,134,77,0.14), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(77,98,80,0.14), transparent 24%),
+        linear-gradient(180deg, #f8f4ed 0%, #eee3d1 100%);
+    }
+
+    .app {
+      width: min(920px, calc(100vw - 24px));
+      margin: 20px auto 36px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 6vw, 54px);
+      line-height: 1.08;
+      font-weight: 600;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+      max-width: 42rem;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 104px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 18px;
+      font: 500 17px/1.8 var(--serif);
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      resize: vertical;
+    }
+
+    textarea:focus {
+      outline: none;
+      border-color: rgba(77,98,80,0.35);
+      box-shadow: 0 0 0 4px rgba(77,98,80,0.12);
+    }
+
+    .top-actions,
+    .choice-row,
+    .bottom-actions,
+    .view-switch {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .helper {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 140ms ease, background 140ms ease, box-shadow 140ms ease;
+      font: 700 14px/1 var(--sans);
+      letter-spacing: 0.03em;
+    }
+
+    button:hover { transform: translateY(-1px); }
+
+    .primary {
+      padding: 15px 22px;
+      background: linear-gradient(135deg, var(--accent), #708873);
+      color: #fffdf8;
+      box-shadow: 0 14px 30px rgba(77,98,80,0.2);
+    }
+
+    .secondary,
+    .chip,
+    .choice,
+    .view-switch button {
+      padding: 13px 18px;
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .choice.active,
+    .chip.active,
+    .view-switch button.active {
+      background: var(--accent-soft);
+      border-color: rgba(77,98,80,0.24);
+      color: var(--accent);
+    }
+
+    .stepper {
+      padding: 18px 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .step-labels {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .step-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .step-bar span {
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(56, 44, 34, 0.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .step-bar span::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--gold), var(--accent));
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 240ms ease;
+    }
+
+    .step-bar span.done::after { transform: scaleX(1); }
+
+    .main {
+      padding: 22px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .explain-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .status-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px 18px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.62));
+    }
+
+    .status-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .status-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .explain-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,0.72);
+      display: grid;
+      gap: 8px;
+    }
+
+    .explain-card strong {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .explain-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .single-path {
+      display: grid;
+      gap: 16px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top center, rgba(169,134,77,0.1), transparent 38%),
+        rgba(255,255,255,0.6);
+    }
+
+    .single-path h2,
+    .result h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    .big-state {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .pill {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .pill label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .pill strong {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .pile-visual {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 14px;
+      align-items: end;
+    }
+
+    .pile-box {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .pile-head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .bundle {
+      height: 128px;
+      display: flex;
+      align-items: end;
+      gap: 4px;
+    }
+
+    .bundle span {
+      flex: 1;
+      border-radius: 999px 999px 16px 16px;
+      background: linear-gradient(180deg, #76907a, #4d6250);
+      min-height: 16px;
+      transition: height 280ms ease;
+    }
+
+    .reserved {
+      min-width: 120px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 16px 10px;
+      background: rgba(255,255,255,0.72);
+      text-align: center;
+    }
+
+    .reserved-stick {
+      width: 14px;
+      height: 92px;
+      margin: 12px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #dec080, #ac8448);
+      opacity: 0.25;
+      transform: translateY(12px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .reserved.active .reserved-stick {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .number-box {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .number-box label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .number-box strong {
+      font-size: 30px;
+      font-family: var(--serif);
+      font-weight: 600;
+    }
+
+    .line-build {
+      display: grid;
+      gap: 14px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,0.68);
+    }
+
+    .line-build header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .line-build .helper {
+      margin: 0;
+    }
+
+    .hex {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 12px;
+      min-height: 210px;
+      padding: 4px 0;
+    }
+
+    .yao {
+      position: relative;
+      height: 14px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .yao.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .yao-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .yao.yang .yao-inner::before,
+    .yao.yin .yao-inner::before,
+    .yao.yin .yao-inner::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2c261f, #4a4033);
+    }
+
+    .yao.yang .yao-inner::before { left: 0; width: 100%; }
+    .yao.yin .yao-inner::before { left: 0; width: calc(50% - 12px); }
+    .yao.yin .yao-inner::after { right: 0; width: calc(50% - 12px); }
+
+    .yao.changing::after {
+      content: attr(data-tag);
+      position: absolute;
+      right: 0;
+      top: -16px;
+      font-size: 10px;
+      color: #7b6032;
+      background: rgba(169,134,77,0.14);
+      border: 1px solid rgba(169,134,77,0.18);
+      border-radius: 999px;
+      padding: 3px 8px;
+      letter-spacing: 0.08em;
+    }
+
+    .result {
+      padding: 22px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .result-box {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .result-box h3 {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .result-box p, .result-box li {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .result-hero {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .result-pill {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(255,255,255,0.72);
+    }
+
+    .result-pill label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .result-pill strong {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .result-box ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    .result-box li + li { margin-top: 4px; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 760px) {
+      .big-state, .numbers, .pile-visual, .explain-grid, .result-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .step-labels, .step-bar {
+        grid-template-columns: repeat(5, minmax(52px, 1fr));
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="card hero">
+      <div class="eyebrow">Dayan / simpler prototype</div>
+      <h1>把流程收成一條線，現在才看得出「下一步要做什麼」。</h1>
+      <p>這版刻意拿掉側欄與過多資訊，只保留單一路徑。使用者只需要知道現在在哪一步、接下來按哪裡、這一變發生了什麼，以及六爻怎麼一條條長出來。</p>
+      <textarea id="question">這次工作轉向，現在適合主動推進嗎？</textarea>
+      <div class="top-actions">
+        <button class="secondary" id="randomQuestion">換一個問題</button>
+        <button class="primary" id="start">開始</button>
+        <span class="helper">一問一卦，不混問。先有問題，再讓數收束。</span>
+      </div>
+      <div class="choice-row">
+        <button class="chip active" data-mode="teaching">教學模式</button>
+        <button class="chip" data-mode="ritual">儀式模式</button>
+      </div>
+    </section>
+
+    <section class="card stepper">
+      <div class="step-labels">
+        <span>問題</span>
+        <span>模式</span>
+        <span>三變</span>
+        <span>成爻</span>
+        <span>結果</span>
+      </div>
+      <div class="step-bar" id="stepBar">
+        <span class="done"></span>
+        <span class="done"></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <section class="card main">
+      <div class="explain-grid">
+        <div class="status-card">
+          <strong id="statusTitle">現在要做的事</strong>
+          <p id="statusText">先選這一變的分堆傾向，然後按「完成這一變」。不要想太多，這裡的目標不是手算，而是讓你參與收束。</p>
+        </div>
+        <div class="explain-card">
+          <strong id="explainTitle">這一步在幹嘛</strong>
+          <p id="explainText">你現在在做的是一爻中的其中一變。大衍筮法不是一次就定出一爻，而是要經過三次收束，最後才會落在 6、7、8、9 其中之一。</p>
+        </div>
+      </div>
+
+      <div class="single-path">
+        <h2>這一爻怎麼生成</h2>
+        <div class="big-state">
+          <div class="pill">
+            <label>問題</label>
+            <strong id="questionMirror">這次工作轉向，現在適合主動推進嗎？</strong>
+          </div>
+          <div class="pill">
+            <label>目前爻位</label>
+            <strong id="lineLabel">初爻</strong>
+          </div>
+          <div class="pill">
+            <label>目前進度</label>
+            <strong id="changeLabel">第一變</strong>
+          </div>
+        </div>
+
+        <div class="choice-row">
+          <button class="choice active" data-bias="left">偏左分堆</button>
+          <button class="choice" data-bias="balanced">平均分堆</button>
+          <button class="choice" data-bias="right">偏右分堆</button>
+        </div>
+
+        <div class="pile-visual">
+          <div class="pile-box">
+            <div class="pile-head"><span>左堆</span><strong id="leftCount">29</strong></div>
+            <div class="bundle" id="leftBundle"></div>
+          </div>
+          <div class="reserved" id="reservedBox">
+            <div class="helper">掛一</div>
+            <div class="reserved-stick"></div>
+          </div>
+          <div class="pile-box">
+            <div class="pile-head"><span>右堆</span><strong id="rightCount">20</strong></div>
+            <div class="bundle" id="rightBundle"></div>
+          </div>
+        </div>
+
+        <div class="numbers">
+          <div class="number-box">
+            <label>左餘</label>
+            <strong id="leftRemain">—</strong>
+          </div>
+          <div class="number-box">
+            <label>右餘</label>
+            <strong id="rightRemain">—</strong>
+          </div>
+          <div class="number-box">
+            <label>本變取數</label>
+            <strong id="changeValue">—</strong>
+          </div>
+        </div>
+
+        <div class="bottom-actions">
+          <button class="primary" id="runChange">完成這一變</button>
+          <button class="secondary" id="runLine">自動完成這一爻</button>
+          <button class="secondary" id="reset">重來</button>
+        </div>
+      </div>
+
+      <div class="line-build">
+        <header>
+          <h2>六爻生成中</h2>
+          <p class="helper" id="hexSummary">目前還沒有成爻。</p>
+        </header>
+        <div class="hex" id="hexBase"></div>
+      </div>
+    </section>
+
+    <section class="card result">
+      <div class="view-switch">
+        <button class="active" data-view="base">看本卦</button>
+        <button data-view="changed">看之卦</button>
+      </div>
+      <div class="result-hero">
+        <div class="result-pill">
+          <label>本卦</label>
+          <strong id="baseName">尚未完成</strong>
+        </div>
+        <div class="result-pill">
+          <label>變爻</label>
+          <strong id="movingLines">尚未完成</strong>
+        </div>
+        <div class="result-pill">
+          <label>之卦</label>
+          <strong id="changedName">尚未完成</strong>
+        </div>
+      </div>
+      <div class="line-build">
+        <header>
+          <h2 id="resultTitle">本卦預覽</h2>
+          <p class="helper">真正直觀的點，不是資訊很多，而是切換之後只翻動變爻。</p>
+        </header>
+        <div class="hex" id="hexResult"></div>
+      </div>
+      <div class="result-grid">
+        <div class="result-box">
+          <h3>得卦結果</h3>
+          <p id="resultSummary">六爻完成後，這裡會整理本卦、變爻與之卦，讓使用者知道自己剛剛不是亂按，而是真的走完一條生成路徑。</p>
+        </div>
+        <div class="result-box">
+          <h3>經文依據</h3>
+          <p id="textBasis">正式版這裡先放卦辭與爻辭，再放白話。不要一打開就是一大段解釋。</p>
+        </div>
+        <div class="result-box">
+          <h3>白話解讀</h3>
+          <p id="plainReading">這個區塊要把卦的局面翻成可以理解的人話：現在是適合推進、需要等待，還是問題其實出在位置與節奏。</p>
+        </div>
+        <div class="result-box">
+          <h3>行動建議</h3>
+          <ul>
+            <li id="advice1">先說這是什麼樣的時。</li>
+            <li id="advice2">再說問題在進退、位置、過剛或過急。</li>
+            <li id="advice3">最後才說宜進、宜守、宜改、宜等。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const sampleQuestions = [
+      "這次工作轉向，現在適合主動推進嗎？",
+      "這段合作，現在是再往前推一步的時機嗎？",
+      "我手上的新計畫，此刻應該先守還是先進？",
+      "這個月調整內容策略，時機是否成熟？"
+    ];
+
+    const lineNames = ["初爻", "二爻", "三爻", "四爻", "五爻", "上爻"];
+    const changeNames = ["第一變", "第二變", "第三變"];
+    const trigramMap = {
+      "111": "乾",
+      "110": "兌",
+      "101": "離",
+      "100": "震",
+      "011": "巽",
+      "010": "坎",
+      "001": "艮",
+      "000": "坤"
+    };
+    const hexagramNames = {
+      "乾乾": "乾為天",
+      "坤坤": "坤為地",
+      "坎乾": "需",
+      "乾坎": "訟",
+      "坤坎": "師",
+      "坎坤": "比",
+      "風天": "小畜",
+      "天澤": "履"
+    };
+
+    const state = {
+      mode: "teaching",
+      bias: "left",
+      question: sampleQuestions[0],
+      currentLine: 0,
+      currentChange: 0,
+      lineResults: [],
+      pendingLine: null,
+      pendingChanges: [],
+      view: "base",
+      locked: false
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const stepBar = $("stepBar").children;
+
+    function randomLineValue() {
+      const r = Math.random();
+      if (r < 1 / 16) return 6;
+      if (r < 6 / 16) return 7;
+      if (r < 13 / 16) return 8;
+      return 9;
+    }
+
+    function lineMeta(value) {
+      if (value === 6) return { kind: "yin", changing: true, tag: "老陰 6" };
+      if (value === 7) return { kind: "yang", changing: false, tag: "少陽 7" };
+      if (value === 8) return { kind: "yin", changing: false, tag: "少陰 8" };
+      return { kind: "yang", changing: true, tag: "老陽 9" };
+    }
+
+    function changedValue(value) {
+      if (value === 6) return 7;
+      if (value === 9) return 8;
+      return value;
+    }
+
+    function yinYangBit(value) {
+      const meta = lineMeta(value);
+      return meta.kind === "yang" ? "1" : "0";
+    }
+
+    function nameHexagram(values) {
+      if (!values || values.length < 6) return "尚未完成";
+      const lowerBits = values.slice(0, 3).map(yinYangBit).join("");
+      const upperBits = values.slice(3, 6).map(yinYangBit).join("");
+      const lower = trigramMap[lowerBits] || "下卦";
+      const upper = trigramMap[upperBits] || "上卦";
+      const comboKey = `${upper}${lower}`;
+      return hexagramNames[comboKey] || `${upper}上${lower}下`;
+    }
+
+    function movingLineText(values) {
+      const moving = values
+        .map((v, i) => (v === 6 || v === 9 ? lineNames[i] : null))
+        .filter(Boolean);
+      return moving.length ? moving.join("、") : "無變爻";
+    }
+
+    function setBundles() {
+      const map = {
+        left: { left: [94, 86, 78, 70, 62], right: [62, 54, 46, 38, 30], lc: 29, rc: 20 },
+        balanced: { left: [82, 74, 66, 58, 50], right: [82, 74, 66, 58, 50], lc: 24, rc: 25 },
+        right: { left: [60, 52, 44, 36, 28], right: [96, 88, 80, 72, 64], lc: 20, rc: 29 }
+      };
+      const current = map[state.bias];
+      $("leftCount").textContent = current.lc;
+      $("rightCount").textContent = current.rc;
+      renderBundle($("leftBundle"), current.left);
+      renderBundle($("rightBundle"), current.right);
+    }
+
+    function renderBundle(target, heights) {
+      target.innerHTML = "";
+      heights.forEach(h => {
+        const span = document.createElement("span");
+        span.style.height = `${h}%`;
+        target.appendChild(span);
+      });
+    }
+
+    function buildPendingLine() {
+      const value = randomLineValue();
+      const scenarios = {
+        6: [{ l: 1, r: 3, v: 9 }, { l: 4, r: 4, v: 8 }, { l: 1, r: 3, v: 4 }],
+        7: [{ l: 2, r: 3, v: 5 }, { l: 4, r: 4, v: 8 }, { l: 3, r: 4, v: 7 }],
+        8: [{ l: 1, r: 4, v: 5 }, { l: 2, r: 2, v: 4 }, { l: 4, r: 4, v: 8 }],
+        9: [{ l: 2, r: 2, v: 4 }, { l: 3, r: 4, v: 7 }, { l: 4, r: 4, v: 8 }]
+      };
+      state.pendingLine = value;
+      state.pendingChanges = scenarios[value];
+      state.currentChange = 0;
+      $("leftRemain").textContent = "—";
+      $("rightRemain").textContent = "—";
+      $("changeValue").textContent = "—";
+      $("reservedBox").classList.remove("active");
+    }
+
+    function updateTopState() {
+      $("questionMirror").textContent = state.question;
+      $("lineLabel").textContent = state.currentLine < 6 ? lineNames[state.currentLine] : "六爻已成";
+      $("changeLabel").textContent = state.currentLine < 6 ? changeNames[state.currentChange] : "完成";
+      stepBar[0].classList.add("done");
+      stepBar[1].classList.add("done");
+      stepBar[2].classList.toggle("done", state.currentLine > 0 || state.currentChange > 0);
+      stepBar[3].classList.toggle("done", state.lineResults.length > 0);
+      stepBar[4].classList.toggle("done", state.lineResults.length === 6);
+    }
+
+    function updateStatus(kind = "idle") {
+      const ritual = state.mode === "ritual";
+      const title = $("statusTitle");
+      const text = $("statusText");
+      const explainTitle = $("explainTitle");
+      const explainText = $("explainText");
+
+      if (state.currentLine >= 6) {
+        title.textContent = "六爻已完成";
+        text.textContent = "現在可以切換本卦與之卦。正式版接下來應該接上卦名、經文與白話判斷。";
+        explainTitle.textContent = "結果要怎麼看";
+        explainText.textContent = "先看本卦描述的是什麼局面，再看變爻指出哪裡在動，最後再看之卦代表事情往哪個方向轉。";
+        return;
+      }
+
+      if (kind === "idle") {
+        title.textContent = "現在要做的事";
+        text.textContent = ritual
+          ? "選一個分堆傾向，然後完成這一變。保持問題在心裡，不必急著理解所有術語。"
+          : "先選這一變的分堆傾向，然後按「完成這一變」。不要想太多，這裡的目標不是手算，而是讓你參與收束。";
+        explainTitle.textContent = "這一步在幹嘛";
+        explainText.textContent = "你現在在做的是一爻中的其中一變。大衍筮法不是一次就定出一爻，而是要經過三次收束，最後才會落在 6、7、8、9 其中之一。";
+      } else if (kind === "change") {
+        const payload = state.pendingChanges[state.currentChange - 1];
+        title.textContent = changeNames[state.currentChange - 1];
+        text.textContent = ritual
+          ? `左餘 ${payload.l}，右餘 ${payload.r}，本變取數 ${payload.v}。先不要追求答案，感受這一次收束。`
+          : `這一變已完成：左餘 ${payload.l}，右餘 ${payload.r}，本變取數 ${payload.v}。大衍法重點不是大數，而是最後留下來的餘數。`;
+        explainTitle.textContent = "這一步代表什麼";
+        explainText.textContent = "每一變都在把原本雜亂的數往更穩定的形式逼近。你看到的左餘、右餘，不只是計算結果，而是這次收束留下來的形。";
+      } else if (kind === "line") {
+        const meta = lineMeta(state.lineResults[state.lineResults.length - 1]);
+        title.textContent = "三變成一爻";
+        text.textContent = ritual
+          ? `此爻已定為 ${meta.tag}。到這裡，才算真正完成一筆。`
+          : `這一爻已定為 ${meta.tag}。一爻不是一次點擊，而是三次收束後才成立。`;
+        explainTitle.textContent = "這個結果怎麼讀";
+        explainText.textContent = `${meta.tag} 是這一爻的性質。6 和 9 是變爻，代表這一筆之後還會轉；7 和 8 則代表暫時穩定。`;
+      }
+    }
+
+    function renderHex(target, values, withChangingTag) {
+      target.innerHTML = "";
+      values.forEach((value, index) => {
+        const meta = lineMeta(value);
+        const original = lineMeta(state.lineResults[index] ?? value);
+        const row = document.createElement("div");
+        row.className = `yao ${meta.kind} ${(withChangingTag && original.changing) ? "changing" : ""} show`;
+        row.dataset.tag = original.tag;
+        row.innerHTML = '<div class="yao-inner"></div>';
+        target.appendChild(row);
+      });
+    }
+
+    function refreshHexes() {
+      renderHex($("hexBase"), state.lineResults, true);
+      const resultValues = state.view === "base" ? state.lineResults : state.lineResults.map(changedValue);
+      renderHex($("hexResult"), resultValues, state.view === "base");
+      const moving = state.lineResults.filter(v => v === 6 || v === 9).length;
+      $("hexSummary").textContent = state.lineResults.length
+        ? `已成 ${state.lineResults.length} 爻，變爻 ${moving}。`
+        : "目前還沒有成爻。";
+    }
+
+    function refreshResultText() {
+      if (state.lineResults.length < 6) {
+        $("resultSummary").textContent = "六爻完成後，這裡會整理本卦、變爻與之卦，讓使用者知道自己剛剛不是亂按，而是真的走完一條生成路徑。";
+        $("baseName").textContent = "尚未完成";
+        $("movingLines").textContent = "尚未完成";
+        $("changedName").textContent = "尚未完成";
+        $("textBasis").textContent = "正式版這裡先放卦辭與爻辭，再放白話。不要一打開就是一大段解釋。";
+        $("plainReading").textContent = "這個區塊要把卦的局面翻成可以理解的人話：現在是適合推進、需要等待，還是問題其實出在位置與節奏。";
+        $("advice1").textContent = "先說這是什麼樣的時。";
+        $("advice2").textContent = "再說問題在進退、位置、過剛或過急。";
+        $("advice3").textContent = "最後才說宜進、宜守、宜改、宜等。";
+        return;
+      }
+      const moving = state.lineResults
+        .map((v, i) => (v === 6 || v === 9 ? lineNames[i] : null))
+        .filter(Boolean);
+      const baseName = nameHexagram(state.lineResults);
+      const changedName = nameHexagram(state.lineResults.map(changedValue));
+      $("baseName").textContent = baseName;
+      $("movingLines").textContent = moving.length ? moving.join("、") : "無變爻";
+      $("changedName").textContent = changedName;
+      $("resultSummary").textContent =
+        `本卦是「${baseName}」，爻值為 ${state.lineResults.join("、")}。` +
+        (moving.length ? `變爻在 ${moving.join("、")}。` : "本卦沒有變爻。") +
+        ` 之卦可讀作「${changedName}」。`;
+      $("textBasis").textContent =
+        moving.length
+          ? `正式版這裡應先讀本卦的卦辭，再讀 ${moving.join("、")} 的爻辭，最後才把之卦當成方向參考。`
+          : "正式版這裡應先讀本卦卦辭；因為沒有變爻，就不需要再用變爻去改寫重心。";
+      $("plainReading").textContent =
+        moving.length
+          ? `這個結果表示事情不是完全靜止的，重點在正在轉動的那幾筆。你要看的不是單純吉凶，而是事情是往穩定、修正，還是換軌前進。`
+          : `這個結果表示局面相對穩定。這時候重點通常不是劇烈轉向，而是看你是否真的處在對的位置、用對的節奏。`;
+      $("advice1").textContent =
+        moving.length
+          ? "先把變爻當成當下最需要注意的位置。"
+          : "先把本卦當成整體局面的主軸。";
+      $("advice2").textContent =
+        moving.length
+          ? "如果變爻多，代表局面未定，不宜過早把結果想死。"
+          : "如果沒有變爻，代表重點通常在穩穩把事情做對。";
+      $("advice3").textContent =
+        `最後再看之卦「${changedName}」是在提醒你往哪個方向調整。`;
+    }
+
+    function finalizeLine() {
+      state.lineResults.push(state.pendingLine);
+      state.currentLine += 1;
+      state.currentChange = 0;
+      state.pendingLine = null;
+      state.pendingChanges = [];
+      state.locked = false;
+      $("leftRemain").textContent = "—";
+      $("rightRemain").textContent = "—";
+      $("changeValue").textContent = lineMeta(state.lineResults[state.lineResults.length - 1]).tag;
+      updateTopState();
+      updateStatus("line");
+      refreshHexes();
+      refreshResultText();
+      if (state.currentLine < 6) {
+        buildPendingLine();
+      } else {
+        updateStatus("done");
+      }
+    }
+
+    function performChange() {
+      if (state.currentLine >= 6 || state.locked) return;
+      if (!state.pendingChanges.length) buildPendingLine();
+      state.locked = true;
+      $("reservedBox").classList.add("active");
+      const payload = state.pendingChanges[state.currentChange];
+      $("leftRemain").textContent = payload.l;
+      $("rightRemain").textContent = payload.r;
+      $("changeValue").textContent = payload.v;
+      state.currentChange += 1;
+      updateTopState();
+      updateStatus("change");
+      if (state.currentChange >= 3) {
+        setTimeout(finalizeLine, 260);
+      } else {
+        setTimeout(() => { state.locked = false; }, 160);
+      }
+    }
+
+    function autoLine() {
+      if (state.currentLine >= 6 || state.locked) return;
+      const remaining = 3 - state.currentChange;
+      for (let i = 0; i < remaining; i += 1) {
+        setTimeout(() => performChange(), i * 320);
+      }
+    }
+
+    function reset() {
+      state.currentLine = 0;
+      state.currentChange = 0;
+      state.lineResults = [];
+      state.pendingLine = null;
+      state.pendingChanges = [];
+      state.view = "base";
+      state.locked = false;
+      document.querySelectorAll("[data-view]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.view === "base");
+      });
+      $("resultTitle").textContent = "本卦預覽";
+      buildPendingLine();
+      updateTopState();
+      updateStatus("idle");
+      refreshHexes();
+      refreshResultText();
+      setBundles();
+    }
+
+    $("randomQuestion").addEventListener("click", () => {
+      const next = sampleQuestions[Math.floor(Math.random() * sampleQuestions.length)];
+      $("question").value = next;
+      state.question = next;
+      $("questionMirror").textContent = next;
+    });
+
+    $("start").addEventListener("click", () => {
+      state.question = $("question").value.trim() || sampleQuestions[0];
+      $("questionMirror").textContent = state.question;
+      document.querySelector(".main").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    document.querySelectorAll("[data-mode]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.mode = btn.dataset.mode;
+        document.querySelectorAll("[data-mode]").forEach(b => b.classList.toggle("active", b === btn));
+        updateStatus("idle");
+      });
+    });
+
+    document.querySelectorAll("[data-bias]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.bias = btn.dataset.bias;
+        document.querySelectorAll("[data-bias]").forEach(b => b.classList.toggle("active", b === btn));
+        setBundles();
+      });
+    });
+
+    document.querySelectorAll("[data-view]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.view = btn.dataset.view;
+        document.querySelectorAll("[data-view]").forEach(b => b.classList.toggle("active", b === btn));
+        $("resultTitle").textContent = state.view === "base" ? "本卦預覽" : "之卦預覽";
+        refreshHexes();
+      });
+    });
+
+    $("runChange").addEventListener("click", performChange);
+    $("runLine").addEventListener("click", autoLine);
+    $("reset").addEventListener("click", reset);
+    $("question").addEventListener("input", (e) => {
+      state.question = e.target.value.trim() || sampleQuestions[0];
+      $("questionMirror").textContent = state.question;
+    });
+
+    reset();
+  </script>
+</body>
+</html>

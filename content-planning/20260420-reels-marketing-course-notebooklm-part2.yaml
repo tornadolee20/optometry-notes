@@ -1,0 +1,179 @@
+---
+deck:
+  title: "Reels 製作實務教學"
+  subtitle: "NotebookLM 投影片版 Part 2"
+  part: "2 of 2"
+  date: "2026-04-20"
+  language: "zh-TW"
+  ratio: "16:9"
+  total_slides: 14
+  continuity_note: "本份延續 Part 1 的同一套視覺系統、版型語言與語氣。"
+
+global_style:
+  concept: "Clean Studio Warmth"
+  tone: "專業、舒服、乾淨、易讀"
+  palette:
+    ink: "#1F2937"
+    paper: "#FFFDFC"
+    ivory: "#F7F3EC"
+    coral: "#E77B62"
+    moss: "#6F8A73"
+    gold: "#C89B58"
+    sand: "#D9C7AE"
+  typography:
+    title: "Noto Serif TC SemiBold"
+    body: "Noto Sans TC Regular"
+  layout_rules:
+    - "每頁一個主訊息"
+    - "每頁盡量 3 點內"
+    - "留白充足，不要把畫面塞滿"
+    - "關鍵數字與關鍵詞用 coral 或 gold 強調"
+    - "圖片優先半版或滿版，不要零碎拼貼"
+
+slides:
+  - id: 1
+    title: "Reels 製作實務教學"
+    subtitle: "Part 2｜拍攝、剪輯、自動化、轉換"
+    body:
+      - "這一份承接 Part 1，把策略真正落到畫面、流程與商業結果。"
+      - "本段重點：拍攝構圖、手機設定、剪輯流程、ManyChat 轉換。"
+    visual_direction: "與 Part 1 同款封面，僅副標改成 Part 2。"
+
+  - id: 2
+    title: "這一份會帶走什麼"
+    subtitle: "Part 2 的地圖"
+    body:
+      - "9:16 構圖與安全區"
+      - "運鏡、燈光、手機設定"
+      - "CapCut / 剪映標準工作流"
+      - "如何把流量接成私訊與成交"
+    visual_direction: "雙欄議程頁，與 Part 1 完全同版型。"
+
+  - id: 3
+    title: "拍攝與畫面，不是設備堆砌，是視覺秩序"
+    subtitle: "影片看起來舒不舒服，先決定於畫面安排"
+    body:
+      - "好畫面不一定貴，但一定有秩序。"
+      - "你要先讓觀眾看得清楚，才有機會讓他願意看完。"
+    visual_direction: "章節頁，大字、留白、靜物感。"
+
+  - id: 4
+    title: "9:16 構圖的三個原則"
+    subtitle: "手機畫面比你想像中更擠"
+    body:
+      - "主體置中：人與商品盡量沿中軸安排"
+      - "保留安全區：避開上方資訊與右下互動 UI"
+      - "預留字幕空間：頭頂或側邊留乾淨背景"
+    visual_direction: "直式手機框示意，標出安全區。"
+
+  - id: 5
+    title: "運鏡只要會兩種就夠了"
+    subtitle: "穩定推近，和能藏剪接的甩鏡"
+    body_left:
+      heading: "穩定推近"
+      points:
+        - "適合口播"
+        - "強化重點"
+        - "增加進展感"
+    body_right:
+      heading: "甩鏡轉場"
+      points:
+        - "適合切段落"
+        - "可藏剪接點"
+        - "節奏感更強"
+    visual_direction: "左右兩示意框，加動態箭頭與模糊軌跡。"
+
+  - id: 6
+    title: "環形燈 vs 柔光箱：怎麼選"
+    subtitle: "先看你要的是方便，還是質感"
+    body:
+      - "環形燈：平、亮、快，適合直播與近距離口播。"
+      - "柔光箱：柔、厚、立體，適合課程、訪談、品牌感內容。"
+      - "如果想做高級感，柔光箱通常更穩。"
+    takeaway: "快速開拍選環形燈，想做高質感選柔光箱。"
+    visual_direction: "決策矩陣頁，保持簡潔。"
+
+  - id: 7
+    title: "iPhone 拍 Reels 的實用設定"
+    subtitle: "先把素材拍對，後製才不會救火"
+    body:
+      - "解析度：4K"
+      - "幀率：24fps 或 30fps 為主"
+      - "關閉 HDR"
+      - "鎖白平衡 / 鎖鏡頭"
+    note: "需要慢動作時再切高幀率，不要所有素材都拍 60fps。"
+    visual_direction: "像設定頁，但更乾淨、舒服。"
+
+  - id: 8
+    title: "剪輯不是加特效，而是刪掉多餘"
+    subtitle: "會剪的人，不是做最多效果的人"
+    body:
+      - "剪掉停頓、口頭禪、無效鋪陳。"
+      - "讓每一個切點都更接近重點。"
+      - "先求清楚，再求風格。"
+    visual_direction: "章節頁轉場，搭配時間軸抽象圖。"
+
+  - id: 9
+    title: "CapCut / 剪映的標準工作流"
+    subtitle: "先粗剪，再字幕，再節奏，再風格"
+    body:
+      - "粗剪：刪停頓與贅字"
+      - "字幕：自動字幕後手修"
+      - "節奏：切點貼合語氣與節拍"
+      - "視覺：少量轉場與字卡"
+      - "輸出：1080p 高碼率"
+    visual_direction: "五張步驟卡，由左至右。"
+
+  - id: 10
+    title: "字幕與文字排版的審美原則"
+    subtitle: "字幕是第二條注意力軌道"
+    body:
+      - "要做：每行短、關鍵字上色、節奏跟語氣走。"
+      - "不要做：整段塞滿、特效太多、每個字都跳。"
+      - "字幕的功能是輔助理解，不是製造噪音。"
+    visual_direction: "左對右錯，下方放字幕示意條。"
+
+  - id: 11
+    title: "讓影片看起來貴的 5 個細節"
+    subtitle: "高級感通常不是多，而是準"
+    body:
+      - "色調一致"
+      - "曝光穩定"
+      - "聲音乾淨"
+      - "切點果斷"
+      - "封面有主題字"
+    visual_direction: "五個大數字搭配短句。"
+
+  - id: 12
+    title: "不要只追觀看，要接到轉換"
+    subtitle: "最有價值的 Reels，會把流量帶到 DM"
+    body:
+      - "Reels 觀看"
+      - "留言關鍵字"
+      - "ManyChat 自動回覆"
+      - "DM 資源交換"
+      - "名單 / 預約 / 成交"
+    takeaway: "真正值錢的不是觀看本身，而是後續關係。"
+    visual_direction: "由寬到窄的漏斗圖。"
+
+  - id: 13
+    title: "案例拆解：一支有效 Reels 長什麼樣"
+    subtitle: "把方法落到實際節奏"
+    body:
+      - "0-2 秒：痛點 Hook"
+      - "3-8 秒：立刻給 1 個答案"
+      - "9-14 秒：補一個常見錯誤"
+      - "15-20 秒：CTA 導向留言或 DM"
+    takeaway: "一支片不需要很多點，只要節奏完整。"
+    visual_direction: "像分鏡腳本條，帶秒數。"
+
+  - id: 14
+    title: "總結：有效的 Reels，不靠運氣"
+    subtitle: "四件事一起做，內容才會成為生意"
+    body:
+      - "先抓住人"
+      - "再講清楚"
+      - "接著拍好看"
+      - "最後導向下一步"
+    closing: "如果沒有轉換設計，再高的觀看也只是漂亮數字。"
+    visual_direction: "與 Part 1 結尾同版型，置中大結語，下方 Q&A。"

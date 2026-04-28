@@ -35,6 +35,11 @@ description: >
 - 結構化資料：附上 `Article` 與 `FAQ` 的 JSON-LD schema
 - 同時提供純文字預覽版（方便校閱）
 
+### Step 5：FB 版輸出
+- 文章完成後，自動套用 `skills/fb-post-formatter.md`
+- 預設用模式一（段落標題型），除非使用者指定其他模式
+- 儲存至 `content-planning/{文章名稱}-FB版.txt`
+
 ## 注意事項
 - 文章長度：一般衛教文章 1,200–2,000 字；深度專欄可到 3,000 字
 - 引用數據時務必標註來源（如 PMID 或研究名稱）
