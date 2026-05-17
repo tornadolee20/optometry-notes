@@ -60,3 +60,11 @@ projects/
 # Dropbox 防污染：巢狀同名資料夾
 */*/.dropbox
 */*/.dropbox.cache
+
+# Local moved archives
+AI����__moved_backup_20260517/
+*__moved_backup_*/
+
+# Generated local inventory
+optometry-notes-structure.csv
+
