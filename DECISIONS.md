@@ -93,3 +93,25 @@
 - [ ] æ ¸å¿ƒæŠ€èƒ½éˆé †åºï¼ˆpaper-digest-core â†’ ... â†’ blog-packagerï¼‰ï¼ˆDR-008ï¼‰
 - [ ] Russell Brunson Funnel æ¡ã€Œå…ˆåšå°ˆæ¥­åˆ¤æ–·ã€èªè¨€è€Œéç›´æ¥éŠ·å”®ï¼ˆDR-009ï¼‰
 - [ ] NotebookLM MCP è·¯å¾‘é…ç½®ï¼ˆDR-010ï¼‰
+
+## DR-008¡Glocal-seo-rank-tracker ²¾¥Xª¾ÃÑ¥À®w
+
+¤é´Á¡G2026-05-18
+
+¨Mµ¦¡G
+±N `local-seo-rank-tracker/` ±q `optometry-notes/` ²¾¥X¡A§ï©ñ¦Ü¡G
+
+`C:\Users\torna_3j3fz9h\Desktop\active-projects\local-seo-rank-tracker\`
+
+­ì¦]¡G
+¦¹¸ê®Æ§¨¬O¥»¦a SEO ±Æ¦W°lÂÜ CLI ¤u¨ã¡A¤£Äİ©óª¾ÃÑ¥À®w¥»Åé¡C  
+`optometry-notes` À³ºû«ù¬°µø¥úª¾ÃÑ¡B¤å³¹¯À§÷¡BAI ¨ó§@³W«h»P¤º®e¥Í²£¥À®w¡C  
+¥i°õ¦æ¤u¨ã±M®×À³¿W¥ßºŞ²z¡AÁ×§K¦Ã¬Vª¾ÃÑ®wªº git ª¬ºA»P¤u§@½d³ò¡C
+
+¼vÅT¡G
+- `optometry-notes` ¦^¨ì°®²bª¬ºA¡C
+- `local-seo-rank-tracker` ¤wªì©l¤Æ¬°¿W¥ß Git repo¡C
+- ¥¼¨Ó¦¹¤u¨ãªº¶g³ø¿é¥X¡A¥i¦A³z¹L AI Command Center ©Î Obsidian ¶×¤J¬yµ{¡A¼g¦^ª¾ÃÑ®w¡C
+
+«áÄò¡G
+¥¼¨Ó«Ø¥ß `uncle-ai-command-center` ®É¡A±N¦¹¤u¨ãµn°O¬° active project¡C
