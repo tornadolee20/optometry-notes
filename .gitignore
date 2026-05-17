@@ -68,3 +68,7 @@ AI¤§²´__moved_backup_20260517/
 # Generated local inventory
 optometry-notes-structure.csv
 
+
+# Local text conversion backups
+*.bak
+
