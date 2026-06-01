@@ -1,0 +1,223 @@
+{
+  "version": "site-index.v1",
+  "generatedAt": "",
+  "source": {
+    "type": "obsidian-history-vault",
+    "path": "obsidian-vault/10-歷史文章智庫",
+    "sampleOnly": true,
+    "sampleFiles": [
+      "2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md",
+      "2025-05-05-【三峽驗光故事】一次「沒配成功的眼鏡」，如何換來兩年後的跨世代信任？.md",
+      "2025-03-25-行銷的關鍵是降低決策成本！驗光師分享4個建立品牌信任的門市策略.md"
+    ]
+  },
+  "posts": [
+    {
+      "title": "老花眼總整理｜看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略",
+      "url": "https://www.uncle-glasses.net/2025/05/presbyopia-guide-glasses-options.html",
+      "canonicalUrl": "https://www.uncle-glasses.net/2025/05/presbyopia-guide-glasses-options.html",
+      "slug": "presbyopia-guide-glasses-options",
+      "permalink": "presbyopia-guide-glasses-options",
+      "status": "published",
+      "articleSection": "專業視光科普",
+      "tags": [
+        "Presbyopia",
+        "三峽驗光師",
+        "多焦點鏡片",
+        "專業視光科普",
+        "目鏡大叔",
+        "眼睛老化",
+        "老花眼",
+        "老花矯正",
+        "歷史文章"
+      ],
+      "seoKeywords": [
+        "老花眼",
+        "看近模糊",
+        "多焦點鏡片",
+        "老花矯正",
+        "三峽驗光師"
+      ],
+      "summary": "整理老花眼的成因、症狀、心理影響與常見矯正方式，協助讀者理解看近模糊不只是度數問題。適合作為老花、多焦點鏡片與中年視覺調整主題的核心延伸閱讀。",
+      "publishedDate": "2025-05-29",
+      "updatedDate": "",
+      "primaryTopic": "老花眼",
+      "secondaryTopics": [
+        "看近模糊",
+        "多焦點鏡片",
+        "老花矯正",
+        "中年視覺照護"
+      ],
+      "targetAudience": [
+        "老花族",
+        "45歲以上讀者",
+        "上班族"
+      ],
+      "locationSignals": [
+        "三峽"
+      ],
+      "suggestedAnchorTexts": [
+        "老花眼完整攻略",
+        "看近模糊怎麼辦",
+        "老花眼鏡選擇",
+        "多焦點鏡片與老花"
+      ],
+      "avoidAnchorTexts": [
+        "保證治好老花",
+        "永久解決老花",
+        "不用檢查就能配"
+      ],
+      "outdatedRisk": "medium",
+      "representative": true,
+      "sourcePlatform": "blogger",
+      "sourceType": "historical-blog-post",
+      "reviewRequired": true,
+      "autoRecommendable": true
+    },
+    {
+      "title": "【三峽驗光故事】一次「沒配成功的眼鏡」，如何換來兩年後的跨世代信任？",
+      "url": "https://www.uncle-glasses.net/2025/05/trust-return-optometry-sansia.html",
+      "canonicalUrl": "https://www.uncle-glasses.net/2025/05/trust-return-optometry-sansia.html",
+      "slug": "trust-return-optometry-sansia",
+      "permalink": "trust-return-optometry-sansia",
+      "status": "published",
+      "articleSection": "驗光故事",
+      "tags": [
+        "三峽驗光師",
+        "兒童視力檢查",
+        "專業倫理",
+        "目鏡大叔",
+        "視力保健",
+        "顧客信任",
+        "驗光故事",
+        "歷史文章"
+      ],
+      "seoKeywords": [
+        "三峽驗光故事",
+        "顧客信任",
+        "專業倫理",
+        "兒童視力檢查",
+        "三峽驗光師"
+      ],
+      "summary": "以一次沒有當場配成眼鏡的經驗，呈現專業判斷、誠實建議與兩年後跨世代信任回訪的門市故事。適合作為信任建立、專業倫理與三峽在地服務文章的延伸閱讀。",
+      "publishedDate": "2025-05-05",
+      "updatedDate": "",
+      "primaryTopic": "顧客信任",
+      "secondaryTopics": [
+        "驗光故事",
+        "專業倫理",
+        "兒童視力檢查",
+        "門市服務"
+      ],
+      "targetAudience": [
+        "家長",
+        "三峽在地顧客",
+        "重視專業建議的配鏡者"
+      ],
+      "locationSignals": [
+        "三峽"
+      ],
+      "suggestedAnchorTexts": [
+        "一次沒配成功的眼鏡故事",
+        "專業倫理與顧客信任",
+        "三峽驗光故事",
+        "跨世代信任回訪"
+      ],
+      "avoidAnchorTexts": [
+        "一定配成功",
+        "保證成交",
+        "不用看眼科"
+      ],
+      "outdatedRisk": "low",
+      "representative": true,
+      "sourcePlatform": "blogger",
+      "sourceType": "historical-blog-post",
+      "reviewRequired": true,
+      "autoRecommendable": true
+    },
+    {
+      "title": "行銷的關鍵是降低決策成本！驗光師分享4個建立品牌信任的門市策略",
+      "url": "https://www.uncle-glasses.net/2025/03/lower-decision-cost-marketing-eyewear.html",
+      "canonicalUrl": "https://www.uncle-glasses.net/2025/03/lower-decision-cost-marketing-eyewear.html",
+      "slug": "lower-decision-cost-marketing-eyewear",
+      "permalink": "lower-decision-cost-marketing-eyewear",
+      "status": "published",
+      "articleSection": "經營思考",
+      "tags": [
+        "三峽驗光所",
+        "品牌信任",
+        "大叔隨筆",
+        "目鏡大叔",
+        "經營思考",
+        "行銷策略",
+        "門市經營",
+        "顧客心理",
+        "歷史文章"
+      ],
+      "seoKeywords": [
+        "降低決策成本",
+        "品牌信任",
+        "門市經營",
+        "行銷策略",
+        "顧客心理"
+      ],
+      "summary": "從眼鏡門市經營角度說明如何降低顧客決策成本，透過信任佈局、簡化選擇、口碑轉移與心佔率提升成交安全感。適合作為品牌信任、門市行銷與經營思考類文章的延伸閱讀。",
+      "publishedDate": "2025-03-25",
+      "updatedDate": "",
+      "primaryTopic": "降低決策成本",
+      "secondaryTopics": [
+        "品牌信任",
+        "門市經營",
+        "行銷策略",
+        "顧客心理"
+      ],
+      "targetAudience": [
+        "小店經營者",
+        "眼鏡行經營者",
+        "服務業店主"
+      ],
+      "locationSignals": [
+        "三峽"
+      ],
+      "suggestedAnchorTexts": [
+        "降低顧客決策成本",
+        "建立品牌信任的門市策略",
+        "門市經營與顧客心理",
+        "不是話術的行銷心法"
+      ],
+      "avoidAnchorTexts": [
+        "保證成交",
+        "操控顧客",
+        "快速洗五星評價"
+      ],
+      "outdatedRisk": "low",
+      "representative": true,
+      "sourcePlatform": "blogger",
+      "sourceType": "historical-blog-post",
+      "reviewRequired": true,
+      "autoRecommendable": true
+    }
+  ],
+  "warnings": [
+    {
+      "file": "2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md",
+      "code": "medium_outdated_risk",
+      "message": "Medium outdatedRisk requires review before final use."
+    },
+    {
+      "file": "2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md",
+      "code": "review_required",
+      "message": "needsReview is true; mark reviewRequired in site-index."
+    },
+    {
+      "file": "2025-05-05-【三峽驗光故事】一次「沒配成功的眼鏡」，如何換來兩年後的跨世代信任？.md",
+      "code": "review_required",
+      "message": "needsReview is true; mark reviewRequired in site-index."
+    },
+    {
+      "file": "2025-03-25-行銷的關鍵是降低決策成本！驗光師分享4個建立品牌信任的門市策略.md",
+      "code": "review_required",
+      "message": "needsReview is true; mark reviewRequired in site-index."
+    }
+  ]
+}
