@@ -8,6 +8,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 HISTORY_DIR = ROOT / "obsidian-vault" / "10-歷史文章智庫"
 OUTPUT_PATH = HISTORY_DIR / "indexes" / "site-index.sample.v1.json"
+MCP_BLOGGER_OUTPUT_PATH = HISTORY_DIR / "indexes" / "site-index.mcp-blogger.sample.json"
 
 SAMPLE_FILES = [
     "2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md",
@@ -116,6 +117,60 @@ def normalize_array(value: Any) -> list[Any]:
     return [value]
 
 
+def unique_strings(values: list[Any]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        if not isinstance(value, str):
+            continue
+        normalized = value.strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        result.append(normalized)
+    return result
+
+
+def build_mcp_blogger_entry(
+    file_name: str,
+    post: dict[str, Any],
+    warnings: list[dict[str, str]],
+) -> dict[str, Any]:
+    labels = unique_strings(normalize_array(post.get("tags", [])))
+    keywords = unique_strings(
+        normalize_array(post.get("seoKeywords", []))
+        + labels
+        + normalize_array(post.get("secondaryTopics", []))
+    )
+    internal_link_use_cases = unique_strings(normalize_array(post.get("suggestedAnchorTexts", [])))
+    if not internal_link_use_cases:
+        internal_link_use_cases = unique_strings([post.get("title", "")])
+        warn(
+            warnings,
+            file_name,
+            "missing_suggested_anchor_texts",
+            "suggestedAnchorTexts missing; using title as internal_link_use_cases fallback.",
+        )
+
+    topic = post.get("primaryTopic") or post.get("articleSection") or ""
+    notes_parts = [
+        f"summary: {post.get('summary', '')}",
+        f"outdatedRisk: {post.get('outdatedRisk', '')}",
+        f"reviewRequired: {bool(post.get('reviewRequired', False))}",
+    ]
+
+    return {
+        "title": post.get("title", ""),
+        "url": post.get("url", ""),
+        "labels": labels,
+        "topic": topic,
+        "keywords": keywords,
+        "internal_link_use_cases": internal_link_use_cases,
+        "representative": bool(post.get("representative", False)),
+        "notes": "\n".join(notes_parts),
+    }
+
+
 def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[str, str]]) -> dict[str, Any] | None:
     title = frontmatter.get("title", "")
     url = frontmatter.get("url", "")
@@ -177,6 +232,7 @@ def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[
 def main() -> int:
     warnings: list[dict[str, str]] = []
     posts: list[dict[str, Any]] = []
+    mcp_blogger_posts: list[dict[str, Any]] = []
 
     for file_name in SAMPLE_FILES:
         path = HISTORY_DIR / file_name
@@ -192,6 +248,7 @@ def main() -> int:
         post = build_post(file_name, frontmatter, warnings)
         if post is not None:
             posts.append(post)
+            mcp_blogger_posts.append(build_mcp_blogger_entry(file_name, post, warnings))
 
     site_index = {
         "version": "site-index.v1",
@@ -208,9 +265,15 @@ def main() -> int:
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(site_index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    MCP_BLOGGER_OUTPUT_PATH.write_text(
+        json.dumps(mcp_blogger_posts, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
     print(f"Wrote {OUTPUT_PATH}")
+    print(f"Wrote {MCP_BLOGGER_OUTPUT_PATH}")
     print(f"posts={len(posts)} warnings={len(warnings)}")
+    print(f"mcp_blogger_posts={len(mcp_blogger_posts)}")
     return 0
 
 
