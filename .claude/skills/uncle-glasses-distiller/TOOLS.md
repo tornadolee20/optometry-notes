@@ -140,3 +140,60 @@ $enc = New-Object System.Text.UTF8Encoding($false); [System.IO.File]::WriteAllTe
 ```powershell
 $enc = New-Object System.Text.UTF8Encoding($false); $old = if (Test-Path $path) { [System.IO.File]::ReadAllText($path) } else { '' }; [System.IO.File]::WriteAllText($path, ($old.TrimEnd("`r","`n") + "`r`n`r`n" + $append + "`r`n"), $enc)
 ```
+
+## Codex Plugin 盤點成功範式
+
+### 核心原則
+
+不要叫 Codex「直接幫我裝一堆 plugin」。
+要叫 Codex「先盤點、評估、排序，再提出安裝建議」。
+
+Plugin 是工具治理問題，不是工具收集癖。好的流程應該先判斷目前 repo、部署、資料庫、測試、內容管線與權限邊界，再決定是否安裝。
+
+### 標準提示詞
+
+```text
+你現在是我的 Codex 工作流架構師。
+
+請檢查目前 repo、package.json、README、docs、AGENTS.md、.env.example、部署設定、測試設定、資料庫設定與目前工作流程。
+
+再參考 openai/plugins 中可用的 Codex plugins。
+
+請你不要直接安裝。
+
+請先輸出一份 Plugin Fit Report，內容包含：
+
+1. 目前專案類型判斷
+2. 目前最常見工作流
+3. 推薦 plugin 清單
+4. 每個 plugin 對應的實際用途
+5. 安裝後可以改善哪一段工作
+6. 可能造成的權限、資安、複雜度風險
+7. 建議安裝順序
+8. 不建議安裝的 plugin 與原因
+9. 安裝前要備份或確認的事項
+
+請最後用一句話告訴我：
+如果只能先裝 3 個，你會選哪 3 個，為什麼？
+```
+
+### Plugin Fit Report 分級
+
+- A. 立即建議安裝：能直接改善現有高頻工作流，權限合理，風險可控。
+- B. 之後再裝：有價值，但目前專案尚未進入需要它的階段。
+- C. 不建議安裝：增加權限、複雜度或維護負擔，卻沒有明確回報。
+
+每個 plugin 至少要說明：用途、適合原因、需要權限、可能風險、安裝前檢查事項。
+
+### 大叔專案初步判斷
+
+- SaaS 類，例如 Review Quickly / MYOWNREVIEWS：優先評估 `build-web-apps`、`github`、`vercel`、`sentry`、`stripe`、`figma`。
+- Blogger / mcp-blogger / 內容分發引擎：優先評估 `google-drive`、`google-slides`、`notion`、`github`、`build-web-apps`。
+- Figma 圖卡、課程簡報、圖片工作流：優先評估 `figma`、`canva`、`google-slides`、`remotion`。
+
+### 安全閘門
+
+- 只從官方 Codex plugin directory、OpenAI 官方 GitHub repo，或明確信任的來源安裝。
+- 不因為名稱含 Codex / OpenAI 就信任套件；惡意 npm 或 Android 套件可能冒用名稱竊取登入憑證或 token。
+- 寫 workflow code 前若 plugin 文件提醒 API 更新快，必須查最新官方文件，不靠模型記憶猜 API。
+- 安裝前先確認：是否需要外部帳號授權、是否能讀私人檔案、是否會發佈內容、是否會改動部署或付款設定。
