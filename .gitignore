@@ -72,3 +72,19 @@ optometry-notes-structure.csv
 # Local text conversion backups
 *.bak
 
+
+# Hermes Configuration Sync Ignores
+hermes-config/auth.json
+hermes-config/auth.lock
+hermes-config/*.db
+hermes-config/*.db-shm
+hermes-config/*.db-wal
+hermes-config/.update_check
+hermes-config/.skills_prompt_snapshot.json
+hermes-config/logs/
+hermes-config/cache/
+hermes-config/audio_cache/
+hermes-config/image_cache/
+hermes-config/bootstrap-cache/
+hermes-config/sessions/
+hermes-config/pairing/

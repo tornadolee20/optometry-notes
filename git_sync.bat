@@ -12,8 +12,24 @@ cd /d "%REPO_DIR%"
 
 echo =========================================================
 echo [SYNERGY] Time Machine Protocol Active
-echo 檢查工作區變更: %REPO_DIR%
+echo 正在備份本機 Hermes 設定與自訂技能...
 echo =========================================================
+
+set "HERMES_SRC=%LOCALAPPDATA%\hermes"
+set "HERMES_DEST=%REPO_DIR%hermes-config"
+
+if exist "%HERMES_SRC%\config.yaml" (
+    copy /Y "%HERMES_SRC%\config.yaml" "%HERMES_DEST%\config.yaml" > nul
+)
+if exist "%HERMES_SRC%\.env" (
+    copy /Y "%HERMES_SRC%\.env" "%HERMES_DEST%\.env" > nul
+)
+if exist "%HERMES_SRC%\skills" (
+    xcopy /S /E /Y /I "%HERMES_SRC%\skills" "%HERMES_DEST%\skills" > nul
+)
+
+echo 檢查工作區變更: %REPO_DIR%
+
 
 :: 檢查是否有變更
 git status --porcelain > "%TEMP%\git_status.tmp"
