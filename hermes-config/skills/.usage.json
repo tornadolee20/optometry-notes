@@ -1,4 +1,17 @@
 {
+  "ai-skill-factory": {
+    "archived_at": null,
+    "created_at": "2026-07-05T05:40:26.538116+00:00",
+    "created_by": "agent",
+    "last_patched_at": "2026-07-05T05:41:21.073382+00:00",
+    "last_used_at": "2026-07-05T17:24:38.175661+00:00",
+    "last_viewed_at": "2026-07-05T17:24:38.171138+00:00",
+    "patch_count": 1,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
   "codex": {
     "archived_at": null,
     "created_at": "2026-07-01T07:55:19.013628+00:00",
@@ -17,13 +30,52 @@
     "created_at": "2026-06-30T15:39:45.819068+00:00",
     "created_by": null,
     "last_patched_at": "2026-07-01T07:45:57.157585+00:00",
-    "last_used_at": "2026-07-01T16:55:55.566588+00:00",
-    "last_viewed_at": "2026-07-01T16:55:55.554526+00:00",
+    "last_used_at": "2026-07-05T17:38:25.628899+00:00",
+    "last_viewed_at": "2026-07-05T17:38:25.617896+00:00",
     "patch_count": 1,
     "pinned": false,
     "state": "active",
-    "use_count": 2,
-    "view_count": 2
+    "use_count": 3,
+    "view_count": 3
+  },
+  "hermes-agent-skill-authoring": {
+    "archived_at": null,
+    "created_at": "2026-07-05T05:14:44.030796+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-07-05T05:14:44.043757+00:00",
+    "last_viewed_at": "2026-07-05T05:14:44.030796+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
+  "plan": {
+    "archived_at": null,
+    "created_at": "2026-07-05T01:28:49.635976+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-07-05T01:28:49.651984+00:00",
+    "last_viewed_at": "2026-07-05T01:28:49.635976+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
+  },
+  "test-driven-development": {
+    "archived_at": null,
+    "created_at": "2026-07-05T05:30:39.774365+00:00",
+    "created_by": null,
+    "last_patched_at": null,
+    "last_used_at": "2026-07-05T05:30:39.782564+00:00",
+    "last_viewed_at": "2026-07-05T05:30:39.774365+00:00",
+    "patch_count": 0,
+    "pinned": false,
+    "state": "active",
+    "use_count": 1,
+    "view_count": 1
   },
   "windows-cli-tool-setup": {
     "archived_at": null,
