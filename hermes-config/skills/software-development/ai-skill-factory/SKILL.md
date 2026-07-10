@@ -286,6 +286,8 @@ pytest tests -q
 python tools/run_all_checks.py
 ```
 
+For early-stage Skill Factory governance, use `scripts/skill_factory_audit.py` as a lightweight stdlib-only audit probe. It scores SKILL.md files for frontmatter, metadata, workflow structure, pitfalls, verification, and support files. See `references/skill-factory-audit-bootstrap.md` for the session pattern: registry note → dependency/split plan → reusable audit script → OS-temp `hermes-verify-*.py` ad-hoc verification.
+
 Use strict TDD when implementing the tooling: write the failing test or validation case first, verify it fails, then add minimal code to pass.
 
 ## Commercialization Pattern
@@ -340,3 +342,11 @@ Before presenting a Skill Factory plan as complete:
 ## Reference
 
 See `references/mujing-ai-skill-factory-blueprint.md` for a condensed blueprint from a full nine-phase architecture session covering a Traditional Chinese optometry/eyewear/AI-workflow use case.
+
+See `references/autonomous-research-lesson-prep-template.md` for the user's reusable lesson-prep research workflow: autonomous research → literature/source search → evidence grading → teaching translation → slide/handout/social reuse → Skill Factory packaging.
+
+See `references/autonomous-research-lesson-prep-workflow-run.md` for a completed validation run of that workflow on a children's myopia-control teaching topic, including DOI/PMID source handling, PICO/PECO/PICo decomposition, overclaiming firewall examples, Obsidian storage outputs, Skill Factory candidate extraction, and ad-hoc verification anchors.
+
+See `references/autonomous-research-lesson-prep-professional-article.md` for the durable add-on requirement learned from the user: after research, generate a rigorous ~2000-character Traditional Chinese professional article with source notes and overclaiming guardrails, and archive research into second-brain Obsidian assets when requested.
+
+See `references/professional-article-review-panel.md` for the professional article quality gate: seven-reviewer scoring, red-flag hard gates, validated/publish-ready/flagship thresholds, Obsidian review metadata write-back, and the rule that brand voice / 目鏡大叔文字聲紋 adaptation happens after professional review and must be followed by a safety review so style does not weaken evidence or risk caveats.

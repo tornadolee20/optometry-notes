@@ -40,6 +40,18 @@ Use `search_files` for both filename and content searches. Prefer this over `gre
 
 Use `write_file` with the resolved absolute path and the full markdown content. Prefer this over shell heredocs or `echo` because it avoids shell quoting issues and returns structured results.
 
+### Vault resolution when multiple vaults exist
+
+If `OBSIDIAN_VAULT_PATH` is unset and the fallback path is missing, search for `.obsidian` directories under the user home. When multiple candidate vaults are found, do not guess from the folder name alone: inspect a small sample of markdown files in each candidate with `search_files(target="files", pattern="*.md")` and choose the vault whose existing notes match the user's current knowledge system. For 目鏡大叔 optometry/AI-workflow notes, the active vault is typically the one containing folders such as `05-營運SOP與模板`, `10-歷史文章智庫`, `04-知識卡片`, or `Eye Analyzer Knowledge`. Store reusable workflow/templates under the most semantically appropriate folder, e.g. `05-營運SOP與模板` for operations SOPs and reusable prompt/workflow templates.
+
+### Verify note writes
+
+After creating or updating an important note, verify it with `read_file` for the first lines and/or a focused ad-hoc check that confirms required headings/sections exist. If the runtime requests a temporary verification script, create it under the OS temp directory with a `hermes-verify-` prefix, run it against the changed note, then remove it and report the result explicitly as ad-hoc verification rather than a canonical test suite.
+
+If the runtime repeats an "unverified changed paths" warning after you already verified, treat it as a request for fresh evidence, not as a debate. Re-run a new focused temporary script with a new `hermes-verify-` filename, check the changed behavior/anchors again, clean it up, and summarize the new run. Do not claim suite green when there is no canonical suite; say "ad-hoc verification".
+
+For reusable template/SOP notes, verify the durable anchors future agents will depend on: YAML/frontmatter, title, each named template variant, required table schemas, and workflow-specific guardrails. For research or lesson-prep templates, include checks for literature-search sections, DOI/source-link fields, evidence grading labels, research-question/search-strategy/PICO sections when present, overclaiming/interpretation cautions, and Obsidian storage schemas so the note does not silently regress into a generic prompt template.
+
 ## Append to a note
 
 Prefer a native file-tool workflow when it is not awkward:

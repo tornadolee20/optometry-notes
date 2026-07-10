@@ -1,0 +1,61 @@
+# Metadata schema for lesson-prep-research-to-brand-article outputs.
+# Copy the relevant block into each Obsidian note frontmatter and fill unknowns with null, not guesses.
+
+common:
+  workflow: lesson-prep-research-to-brand-article
+  workflow_version: 0.1.0
+  asset_id: "YYYY-MM-DD-topic-asset-type"
+  title: ""
+  topic: ""
+  slug: ""
+  asset_type: "research-run | moc | evidence-map | literature-card | overclaiming-firewall | teaching-card | professional-article | review-report | brand-voice-article | post-voiceprint-safety-review"
+  status: "draft | reviewed | validated | publish-ready | flagship | archived"
+  created: "YYYY-MM-DD"
+  updated: "YYYY-MM-DD"
+  owner: "目鏡大叔"
+  language: "zh-TW"
+  target_audience: []
+  use_cases: []
+  domain: []
+  risk_level: "low | medium | high"
+  source_workflow: "[[YYYY-MM-DD-topic-研究工作流]]"
+  related_assets: []
+  tags: []
+
+research:
+  research_questions_count: null
+  search_strategy_present: false
+  framing_method: "none | PICO | PECO | PICo"
+  source_count: null
+  doi_count: null
+  pmid_count: null
+  official_link_count: null
+  evidence_labels_used: []
+  fact_inference_recommendation_split: false
+  overclaiming_firewall: "[[topic-過度宣稱防火牆]]"
+
+article_review:
+  review_status: "not-reviewed | reviewed | validated | publish-ready | flagship"
+  review_score: null
+  evidence_score: null
+  clinical_score: null
+  overclaiming_score: null
+  teaching_score: null
+  clarity_score: null
+  brand_score: null
+  seo_geo_score: null
+  review_report: "[[文章評審報告-topic]]"
+  publish_ready_red_flags: []
+
+brand_voice:
+  voiceprint_status: "not-adapted | adapted"
+  voiceprint_source: "[[目鏡大叔文字聲紋卡]]"
+  voiceprint_review_status: "not-reviewed | passed | failed"
+  post_voiceprint_review: "[[聲紋後安全複審-topic]]"
+
+skill_factory:
+  reusable_asset_type: "skill | workflow | template | prompt | example | test-case | reference | case-library | none"
+  dependencies: []
+  reuse_score: null
+  commercial_value: "low | medium | high"
+  maintenance_cost: "low | medium | high"

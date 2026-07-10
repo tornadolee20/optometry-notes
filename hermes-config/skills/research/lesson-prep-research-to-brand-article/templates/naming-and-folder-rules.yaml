@@ -1,0 +1,110 @@
+# Naming and folder rules for lesson-prep-research-to-brand-article outputs.
+# Use these rules before creating Obsidian assets.
+
+vault_root: "C:/Users/torna_3j3fz9h/optometry-notes/obsidian-vault"
+
+slug_rules:
+  language: "zh-TW readable slug is allowed for Obsidian note names"
+  max_length_hint: 32
+  strip:
+    - "?"
+    - "？"
+    - "!"
+    - "！"
+    - ":"
+    - "："
+    - "/"
+    - "\\"
+    - "|"
+    - "*"
+    - "<"
+    - ">"
+    - '"'
+  replace_whitespace_with: "-"
+  avoid:
+    - "final"
+    - "new"
+    - "v2"
+    - "最新版"
+    - "未整理"
+
+date_format: "YYYY-MM-DD"
+
+folders:
+  workflow_runs: "05-營運SOP與模板"
+  reusable_sops: "05-營運SOP與模板"
+  moc: "01-專家與MOC"
+  knowledge_cards: "04-知識卡片"
+  article_archive: "10-歷史文章智庫"
+
+assets:
+  research_run:
+    folder: "05-營運SOP與模板"
+    filename: "{date}-{slug}-研究工作流.md"
+    asset_type: "research-run"
+  moc:
+    folder: "01-專家與MOC"
+    filename: "MOC-{slug}.md"
+    asset_type: "moc"
+  evidence_map:
+    folder: "04-知識卡片"
+    filename: "{date}-{slug}-證據地圖.md"
+    asset_type: "evidence-map"
+  overclaiming_firewall:
+    folder: "04-知識卡片"
+    filename: "{date}-{slug}-過度宣稱防火牆.md"
+    asset_type: "overclaiming-firewall"
+  teaching_card:
+    folder: "04-知識卡片"
+    filename: "{date}-{slug}-教學設計卡.md"
+    asset_type: "teaching-card"
+  literature_card:
+    folder: "04-知識卡片"
+    filename: "文獻卡-{source_slug}.md"
+    asset_type: "literature-card"
+  professional_article:
+    folder: "10-歷史文章智庫"
+    filename: "{date}-{slug}-專業文章草稿.md"
+    asset_type: "professional-article"
+  review_report:
+    folder: "10-歷史文章智庫"
+    filename: "文章評審報告-{slug}.md"
+    asset_type: "review-report"
+  brand_voice_article:
+    folder: "10-歷史文章智庫"
+    filename: "{date}-{slug}-目鏡大叔品牌版.md"
+    asset_type: "brand-voice-article"
+  post_voiceprint_safety_review:
+    folder: "05-營運SOP與模板"
+    filename: "聲紋後安全複審-{slug}.md"
+    asset_type: "post-voiceprint-safety-review"
+
+linking_rules:
+  research_run_links_to:
+    - moc
+    - evidence_map
+    - overclaiming_firewall
+    - teaching_card
+    - professional_article
+    - review_report
+    - brand_voice_article
+    - post_voiceprint_safety_review
+  every_asset_links_back_to:
+    - research_run
+    - moc
+  professional_article_links_to:
+    - research_run
+    - evidence_map
+    - overclaiming_firewall
+  brand_voice_article_links_to:
+    - professional_article
+    - review_report
+    - post_voiceprint_safety_review
+  post_voiceprint_safety_review_links_to:
+    - brand_voice_article
+    - review_report
+
+collision_policy:
+  if_file_exists: "do not overwrite silently"
+  preferred_action: "read existing file, preserve canonical asset, append dated section or ask if semantic collision is unclear"
+  duplicate_suffix_allowed_only_for_tests: "-draft-{timestamp}"

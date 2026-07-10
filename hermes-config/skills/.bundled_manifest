@@ -9,7 +9,7 @@ audiocraft-audio-generation:0d3cc6f7443bd3a462225f3b7b1363c1
 baoyu-infographic:cb0095e82b0418158cec0f224e0e8f17
 blogwatcher:6dae4e76a27992dc624eb25747c54af5
 claude-code:f438d67c46a38dbd05b9626929dc8c7f
-claude-design:2fbc7b1e11eeeab645b91e1af08f6f9b
+claude-design:a839ed75e38167058cb363f63b64c6a3
 codebase-inspection:efbcc1317dff77882314739b1b9bc065
 codex:9b001b9caea0a591d760f05e347688c1
 comfyui:64f3c807b9cd1d6f93fb7bd8f376e8da
@@ -54,7 +54,7 @@ powerpoint:f19c4f1b0d3e06fd38b28f02aafaac54
 pretext:a173114edf667924f1b8ff707fc7776d
 python-debugpy:cdd5230fc44fe99a97b5387bd381252b
 requesting-code-review:9f2128b92c46f95634c05ecfd5239733
-research-paper-writing:10480ccf49d36a4833dd4f967d25dcd7
+research-paper-writing:7189bb2510b40c7157b2588baf89ff18
 segment-anything-model:1be251bf1d42d9c961037028817f0504
 serving-llms-vllm:eec9792ce47a184f763e38d8c53f1a0a
 simplify-code:dc05077994bd36b0cb6085b27c322de2
@@ -68,5 +68,5 @@ test-driven-development:96799ec4670d671a00dfd4cd1f5bb166
 touchdesigner-mcp:d5fb7660368a7eaad16feda31ced25c1
 weights-and-biases:1db3db2aa7a8d72a0694a673441ac24a
 xurl:9ece82cfcdc4dff252ca27bfbee9d792
-youtube-content:f11bd5252427a6f45579d614c3c4b93e
+youtube-content:30c338f04525e07db6f2a3da0c8fe6fa
 yuanbao:535314e16ec7956519fe59f86d3c61b7
