@@ -38,6 +38,9 @@ backup/
 .claude/todos/
 .claude/worktrees/
 
+# Git worktrees (isolated dev workspaces, per-machine only)
+.worktrees/
+
 # æ ¹ç›®éŒ„æš«å­˜æª”
 temp_*.txt
 temp_*.py
@@ -62,7 +65,7 @@ projects/
 */*/.dropbox.cache
 
 # Local moved archives
-AI¤§²´__moved_backup_20260517/
+AIï¿½ï¿½ï¿½ï¿½__moved_backup_20260517/
 *__moved_backup_*/
 
 # Generated local inventory
