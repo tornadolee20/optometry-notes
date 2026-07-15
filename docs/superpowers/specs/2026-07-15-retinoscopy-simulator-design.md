@@ -37,8 +37,11 @@ repo 目前沒有「互動教學工具」的既有目錄，獨立教學小工具
 meridianPower(sphere, cylinder, axisDeg, atAngleDeg) -> number   // 負柱面公式
 workingDistanceD(cmDistance) -> number                            // 100 / cm
 neutralPowerAt(patientSphere, patientCyl, patientAxis, wdD, atAngleDeg) -> number
-compareReflex(lensPowerAtAngle, neutralPowerAtAngle, tolerance=0.25)
+  // = meridianPower(patientSphere + wdD, patientCyl, patientAxis, atAngleDeg)
+compareReflex(dialedLensPowerAtAngle, neutralPowerAtAngle, tolerance=0.25)
   -> { state: 'neutral' | 'with' | 'against', magnitude: number }
+  // diff = neutralPowerAtAngle - dialedLensPowerAtAngle
+  // diff > tolerance -> 'with'; diff < -tolerance -> 'against'; else 'neutral'
 plusCylToMinusCyl(sphere, cyl, axis) -> {sphere, cyl, axis}       // 記法互換
 ```
 
@@ -54,9 +57,10 @@ plusCylToMinusCyl(sphere, cyl, axis) -> {sphere, cyl, axis}       // 記法互�
 
 - 子午線度數公式（負柱面慣例）：
   `power(θ) = Sphere + Cylinder × sin²(θ − axis)`
-- Working distance 度數：`100 / 工作距離(cm)`，從病人真實度數扣除，得到「中和所需鏡片度數」
+- Working distance 度數：`100 / 工作距離(cm)`
+- **中和所需鏡片度數 = 病人真實度數 + 工作距離度數**（工作距離度數加在 sphere 分量上，柱面/軸不受影響）。依據原版教學範例反推：working distance 2.00D，中和讀數 +3.50+0.75×90 → 最終病人度數 = (+3.50−2.00)+0.75×90 = +1.50+0.75×90，故「中和讀數 = 病人度數 + 工作距離度數」，中和度數永遠比病人真實度數多加了工作距離這筆（因為檢影鏡在有限距離造成的人工遠視位移）
 - 中和判斷：`|目前鏡片在掃描角度的度數 − 中和所需度數| ≤ 0.25D` 視為中和
-- 順動／逆動：差值正負決定方向；差值絕對值決定光帶移動速度與亮度（差越大速度越快、光帶越亮寬；接近中和時變慢變窄，模擬剪動感）
+- 順動／逆動：`diff = 中和所需度數 − 目前鏡片在掃描角度的度數`；`diff > 0`（鏡片度數不夠正，需要再加正）→ **順動**；`diff < 0`（鏡片度數加過頭）→ **逆動**；`|diff| ≤ 0.25D` → 中和。`|diff|` 大小決定光帶移動速度與亮度（差越大速度越快、光帶越亮寬；接近中和時變慢變窄，模擬剪動感）
 - 掃描角度與病人真實散光軸沒對準時，反光帶會有「歪斜」視覺效果（簡化模擬，非嚴格幾何光學，會在 UI 說明文字註明）
 
 ## 5. 互動設計
