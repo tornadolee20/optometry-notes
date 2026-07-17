@@ -57,6 +57,41 @@ Use this skill when the user asks to install, repair, or verify a developer CLI 
 - Do not record a transient `command not found` as a durable limitation. Capture the repair path: locate the installed launcher, add PATH, or create a shim, then verify.
 - Avoid hardcoding the current user's path in reusable instructions; use `$HOME`, `~`, or derive the path from tool output when possible.
 
+## Desktop app CLIs installed by winget
+
+Some Windows developer apps (for example Cursor) install successfully via `winget`, but their POSIX launcher is not automatically exposed to Hermes' Git Bash PATH.
+
+Cursor install/verification pattern:
+
+```bash
+# Discover package
+winget search --id Anysphere.Cursor --exact
+
+# Install user-scoped Cursor
+winget install --id Anysphere.Cursor --exact --source winget \
+  --accept-package-agreements --accept-source-agreements --silent
+
+# Verify Windows install
+winget list --id Anysphere.Cursor --exact
+ls "$LOCALAPPDATA/Programs/cursor" 2>/dev/null | sed -n '1,40p'
+
+# If `cursor` is not on PATH, expose its bundled POSIX launcher
+mkdir -p ~/.local/bin
+cat > ~/.local/bin/cursor <<'EOF'
+#!/usr/bin/env bash
+exec "$LOCALAPPDATA/Programs/cursor/resources/app/bin/cursor" "$@"
+EOF
+chmod +x ~/.local/bin/cursor
+
+# Verify from Hermes/Git Bash
+command -v cursor
+cursor --version
+```
+
+Notes:
+- Prefer the bundled `resources/app/bin/cursor` launcher over calling `Cursor.exe` directly; it supports CLI arguments like `cursor .` and `--version`.
+- If `$LOCALAPPDATA` is unavailable, derive the path from the user's home: `$HOME/AppData/Local/Programs/cursor/resources/app/bin/cursor`.
+
 ## Verification checklist
 
 - `which <tool>` resolves to the expected shim or executable.
