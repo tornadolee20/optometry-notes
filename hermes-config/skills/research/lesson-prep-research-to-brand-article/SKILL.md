@@ -114,6 +114,8 @@ Evidence labels:
 - Low: case report, expert opinion, small study, or early unreplicated finding.
 - Trend judgment: insufficient direct evidence but multiple signals point in the same direction.
 
+When Antigravity CLI / `ccagy` is available, it can be used as a supplementary broad-search lane for anti-bot-resistant web discovery and research-angle generation. Treat its output as **source leads**, not final citations: every health claim still needs DOI/PMID/official-link verification before article drafting or publish-readiness. A useful second-pass prompt asks explicitly for 2024–2026 PubMed, IMI, Cochrane, AAO/AOA, clinical guidelines, RCTs, systematic reviews/meta-analyses, evidence grading, fact/inference/recommendation separation, and overclaiming firewall.
+
 Completion criterion: health/technical claims have a source row; missing DOI/PMID is labelled rather than hidden.
 
 ### 6. Build evidence interpretation
@@ -334,6 +336,7 @@ If using a temporary script, create it under the OS temp directory with filename
 8. **Blocked tool execution presented as progress.** If a research script/tool is blocked for lack of explicit consent, immediately tell the user no scan/write actually ran, ask for the exact consent needed, and stop. Do not respond with a plan that sounds like work is underway; this creates frustration because the user expects action.
 9. **Retrying blocked batch writes without explicit consent.** For large Obsidian asset batches, if the runtime blocks a write because the user has not clearly consented, stop and ask for an explicit authorization sentence (for example: `我同意你把完整內容寫入 Obsidian 檔案`). Do not retry, rephrase, or route around the block until the user gives that consent. After consent, write the assets and run a fresh `hermes-verify-*.py` ad-hoc verifier.
 10. **Trusting broad biomedical search results without refinement.** Broad PubMed queries often return adjacent but off-target articles. For agenda-map tasks, run a second refined query pass for noisy buckets and explicitly exclude irrelevant hits before synthesizing conclusions.
+11. **Treating `ccagy`/search-agent output as verified citations.** `ccagy` is useful for broad discovery and finding research angles, but it may return source names, conference leads, or journal mentions without complete DOI/PMID. Before writing a formal article or claiming evidence strength, re-check each citation against PubMed/Cochrane/guidelines/official pages and label any missing DOI/PMID openly.
 
 ## Quick Command Prompt for Future Use
 

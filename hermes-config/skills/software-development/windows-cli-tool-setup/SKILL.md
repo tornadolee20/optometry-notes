@@ -59,7 +59,32 @@ Use this skill when the user asks to install, repair, or verify a developer CLI 
 
 ## Desktop app CLIs installed by winget
 
-Some Windows developer apps (for example Cursor) install successfully via `winget`, but their POSIX launcher is not automatically exposed to Hermes' Git Bash PATH.
+Some Windows developer apps (for example Cursor) install successfully via `winget`, but their POSIX launcher is not automatically exposed to Hermes' Git Bash PATH. For tool-specific transcripts and command variants, see `references/winget-cli-installs.md`.
+
+### Antigravity CLI (`agy`)
+
+Google Antigravity CLI is available on Windows via winget and creates the `agy` command alias automatically:
+
+```bash
+winget search antigravity --accept-source-agreements
+winget install --id Google.AntigravityCLI --exact --source winget \
+  --accept-package-agreements --accept-source-agreements --silent
+
+# Verify from Hermes/Git Bash
+command -v agy
+agy --version
+agy --help | sed -n '1,60p'
+agy models
+```
+
+Notes:
+- Prefer `winget install --id Google.AntigravityCLI --exact` on Windows over the Unix `curl https://antigravity.google/cli/install.sh | bash` path; the script only detects Darwin/Linux, even though the CLI itself supports Windows.
+- If using subscription quota, confirm `GEMINI_API_KEY` is not set before running `agy`; if present, Antigravity may use API billing instead of Google subscription login.
+- Thin bridge repos such as `cc-to-antigravity-cli-bridge` may only need cloning plus a small shim in `~/.local/bin` that execs their wrapper script; verify with both `agy -p '...'` and the wrapper command.
+- Do not confuse Hermes' active model/provider with Antigravity's login route: using `ccagy` is an external CLI call to `agy`, not switching Hermes to a Gemini/GitHub-Copilot provider.
+- For subscription/login verification, `agy models` is not enough. Run a small `agy -p`/`ccagy` prompt, check `GEMINI_API_KEY` is unset, and if needed inspect `~/.gemini/antigravity-cli/log/` for `OAuth: authenticated successfully`, `authMethod=consumer`, and `keyringAuth ... expired=false`. That combination indicates Google account login via keyring and is consistent with the subscription route.
+
+### Cursor
 
 Cursor install/verification pattern:
 
