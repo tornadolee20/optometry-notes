@@ -1,0 +1,82 @@
+{
+  "max_per_topic": 3,
+  "domains": [
+    {
+      "id": "myopia_control",
+      "label": "🔴 近視控制",
+      "priority": "high",
+      "queries": [
+        "(myopia control) AND (Taiwan OR Chinese OR Asian)",
+        "orthokeratology randomized controlled trial",
+        "low-dose atropine myopia rebound",
+        "myopia progression children intervention 2024"
+      ]
+    },
+    {
+      "id": "child_vision",
+      "label": "🔴 兒童視力發展",
+      "priority": "high",
+      "queries": [
+        "amblyopia dichoptic therapy children",
+        "convergence insufficiency reading children",
+        "pediatric vision screening preschool",
+        "accommodative esotropia children treatment"
+      ]
+    },
+    {
+      "id": "digital_eyestrain",
+      "label": "🟡 數位眼疲勞",
+      "priority": "medium",
+      "queries": [
+        "accommodative fatigue near work digital screen",
+        "NIBUT dry eye office workers screen time",
+        "computer vision syndrome prevalence",
+        "blue light filter screen fatigue"
+      ]
+    },
+    {
+      "id": "binocular_vision",
+      "label": "🟡 雙眼視覺",
+      "priority": "medium",
+      "queries": [
+        "convergence insufficiency CITT treatment",
+        "vertical phoria prism adaptation",
+        "binocular vision dysfunction headache",
+        "fusional vergence range clinical"
+      ]
+    },
+    {
+      "id": "presbyopia_multifocal",
+      "label": "🟢 老花多焦點",
+      "priority": "normal",
+      "queries": [
+        "progressive addition lens freeform design",
+        "trifocal IOL presbyopia outcomes",
+        "multifocal contact lens presbyopia",
+        "reading glasses occupational presbyopia"
+      ]
+    },
+    {
+      "id": "eye_systemic_health",
+      "label": "🟢 眼睛與全身健康",
+      "priority": "normal",
+      "queries": [
+        "diabetic retinopathy AI screening Taiwan",
+        "retinal biomarker Alzheimer dementia",
+        "hypertension retinal vascular changes",
+        "retinal imaging cardiovascular biomarker"
+      ]
+    },
+    {
+      "id": "visual_nutrition",
+      "label": "🟢 視覺營養飲食",
+      "priority": "normal",
+      "queries": [
+        "lutein zeaxanthin myopia children",
+        "omega-3 fatty acid dry eye treatment",
+        "gut microbiome eye health",
+        "vitamin D myopia outdoor activity"
+      ]
+    }
+  ]
+}

@@ -34,11 +34,13 @@ last_run: ~
 
 ## 技術規格
 
-- **API**：NCBI E-utilities（免費，無需 API key）
-- **搜尋邏輯**：過去 4 天新發表（多取 1 天避免時區漏抓）
-- **每主題上限**：3 篇（避免 Inbox 爆炸，優先取最新）
-- **重複過濾**：PMID 去重
-- **速率限制**：0.4 秒/請求（保守模式，不觸發 NCBI 封鎖）
+- **API**：NCBI E-utilities（支援從 `.env` 讀取 `NCBI_API_KEY`）
+- **搜尋邏輯**：使用 `EDAT` (Entrez Date) 搜尋過去 4 天新收錄文獻
+- **每主題上限**：預設 3 篇（於 `pubmed_config.json` 中配置，優先取最新）
+- **重複過濾**：使用 `.fetched_pmids.json` 持久化 PMID 歷史紀錄進行去重
+- **速率限制**：免 Key 模式下為 0.4 秒/請求；設定 API Key 後自動加速至 0.1 秒/請求
+- **錯誤重試**：API 連線內建指數退避重試機制（最多重試 3 次）
+- **文獻摘要**：自動抓取並寫入 Abstract 內容至 Inbox，利於後續 AI 解讀
 
 ---
 
@@ -100,6 +102,6 @@ skills/paper-researcher/fetch_log.txt
 
 ## 維護
 
-- 調整關鍵字：編輯 `scripts/pubmed_fetch.py` → `RESEARCH_DOMAINS` 字典
+- 調整關鍵字與設定：編輯 `scripts/pubmed_config.json`
 - 調整頻率：透過 `/schedule` 或 Claude Code CronCreate 修改
-- 調整每主題上限：修改 `MAX_PER_TOPIC`（預設 3）
+- 調整每主題上限：編輯 `scripts/pubmed_config.json` 中的 `max_per_topic`（預設 3）
