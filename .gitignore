@@ -89,6 +89,7 @@ hermes-config/*.db-shm
 hermes-config/*.db-wal
 hermes-config/.update_check
 hermes-config/.skills_prompt_snapshot.json
+hermes-config/SOUL.md
 hermes-config/logs/
 hermes-config/cache/
 hermes-config/audio_cache/
