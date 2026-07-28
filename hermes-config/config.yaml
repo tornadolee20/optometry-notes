@@ -419,8 +419,8 @@ human_delay:
 context:
   engine: compressor
 memory:
-  memory_enabled: true
-  user_profile_enabled: true
+  memory_enabled: false
+  user_profile_enabled: false
   write_approval: false
   memory_char_limit: 2200
   user_char_limit: 1375
@@ -446,13 +446,27 @@ prefill_messages_file: ''
 goals:
   max_turns: 20
 skills:
-  external_dirs: []
+  external_dirs:
+    - ./.agents/skills
   template_vars: true
   inline_shell: false
   inline_shell_timeout: 10
   guard_agent_created: false
   write_approval: false
   creation_nudge_interval: 15
+mcp_servers:
+  uncle-glasses:
+    command: node
+    args:
+      - ${OPTOMETRY_NOTES_ROOT}/mcp-server/uncle-glasses/index.js
+    timeout: 120
+    connect_timeout: 60
+  uncle-glasses-obsidian:
+    command: node
+    args:
+      - ${OPTOMETRY_NOTES_ROOT}/mcp-servers/uncle-glasses-mcp/dist/index.js
+    timeout: 120
+    connect_timeout: 60
 curator:
   enabled: true
   interval_hours: 168

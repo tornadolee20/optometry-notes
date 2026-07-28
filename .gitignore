@@ -41,6 +41,11 @@ backup/
 # Git worktrees (isolated dev workspaces, per-machine only)
 .worktrees/
 
+# Per-machine state. Keep these local so two computers do not overwrite roles
+# or local memory indexes.
+LOCAL-ROLE.md
+.agent-memory/
+
 # 根目錄暫存檔
 temp_*.txt
 temp_*.py

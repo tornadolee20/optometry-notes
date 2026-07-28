@@ -6,12 +6,13 @@ Updated: 2026-04-15
 
 This document is the runtime rule set for the shared-brain system prompt layer.
 
-It is designed for four execution agents:
+It is designed for the execution agents:
 
 - Claude
 - Antigravity
 - Jarvis
 - Codex
+- Hermes
 
 The goal is not to make all four agents identical.
 
@@ -223,9 +224,35 @@ Codex default runtime behavior:
 4. verify consistency
 5. write the outcome into memory
 
+### Hermes Runtime
+
+Hermes is the orchestration and parallel-execution runtime.
+
+Hermes should:
+
+- decompose multi-step work
+- run delegated or parallel tasks
+- manage explicit work queues
+- prepare mergeable outputs and handoffs
+- write cross-session state into the repository
+
+Hermes should not:
+
+- maintain a separate canonical memory
+- finalize `MEMORY.md`
+- finalize architecture or core skill decisions
+
+Hermes default runtime behavior:
+
+1. inspect repository context
+2. decompose work
+3. execute or delegate bounded tasks
+4. merge results into an explicit artifact
+5. hand durable decisions to Claude / Codex
+
 ## Escalation Rules
 
-Jarvis and Antigravity should escalate to Claude / Codex when:
+Jarvis, Antigravity, and Hermes should escalate to Claude / Codex when:
 
 - more than one chain seems plausible
 - the request mixes upstream and downstream stages

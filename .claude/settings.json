@@ -1,12 +1,1 @@
-{
-  "mcpServers": {
-    "uncle-glasses": {
-      "command": "C:/Program Files/nodejs/node.exe",
-      "args": ["c:/Users/torna_3j3fz9h/optometry-notes/mcp-server/uncle-glasses/index.js"]
-    },
-    "uncle-glasses-obsidian": {
-      "command": "C:/Program Files/nodejs/node.exe",
-      "args": ["c:/Users/torna_3j3fz9h/optometry-notes/mcp-servers/uncle-glasses-mcp/dist/index.js"]
-    }
-  }
-}
+{}

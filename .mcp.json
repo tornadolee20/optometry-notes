@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "uncle-glasses": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${OPTOMETRY_NOTES_ROOT}/mcp-server/uncle-glasses/index.js"
+      ],
+      "env": {}
+    },
+    "uncle-glasses-obsidian": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${OPTOMETRY_NOTES_ROOT}/mcp-servers/uncle-glasses-mcp/dist/index.js"
+      ],
+      "env": {}
+    }
+  }
+}

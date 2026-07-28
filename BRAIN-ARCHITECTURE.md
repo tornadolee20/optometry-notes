@@ -19,6 +19,7 @@ Who touches the outside world first.
 
 - Jarvis: mobile capture, reminders, quick replies, heartbeat checks
 - Antigravity: web browsing, bulk intake, notebook/web automation, long-running batch work
+- Hermes: orchestration, parallel execution, delegated tasks, and work queues
 - Claude/Codex: deep analysis after signal has already been captured
 
 ### 2. Working Memory Layer
@@ -110,6 +111,25 @@ Should not own:
 - every small capture event
 - every notification or reminder loop
 
+### Hermes
+
+Role: orchestration cortex + parallel executor
+
+Good at:
+
+- decomposing multi-step work
+- parallel research and processing
+- delegated subtasks
+- repeatable operations
+- explicit handoff preparation
+
+Should not own:
+
+- a separate cross-computer memory system
+- final edits to `MEMORY.md`
+- final architecture decisions
+- unreviewed long-term knowledge promotion
+
 ### Obsidian
 
 Role: canonical long-term memory
@@ -136,15 +156,15 @@ Only Claude/Codex should finalize long-term memory and core architecture docs.
 
 ## Ownership Rules
 
-| Area | Jarvis | Antigravity | Claude/Codex |
-| --- | --- | --- | --- |
-| `Inbox/` | write | write | write |
-| `memory/YYYY-MM-DD.md` | light write | write | write |
-| Handoff docs | no | write | write |
-| `MEMORY.md` | no | no | yes |
-| Obsidian knowledge cards | no | draft only | yes |
-| Skill definitions | no | draft only | yes |
-| Protocol files | no | suggest only | yes |
+| Area | Jarvis | Antigravity | Hermes | Claude/Codex |
+| --- | --- | --- | --- | --- |
+| `Inbox/` | write | write | write | write |
+| `memory/YYYY-MM-DD.md` | light write | write | write | write |
+| Handoff docs | no | write | write | write |
+| `MEMORY.md` | no | no | no | yes |
+| Obsidian knowledge cards | no | draft only | draft only | yes |
+| Skill definitions | no | draft only | draft only | yes |
+| Protocol files | no | suggest only | suggest only | yes |
 
 ## Mobile Linkage
 
