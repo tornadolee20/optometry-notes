@@ -36,9 +36,9 @@ Git 倉庫嚴禁放在 Dropbox/雲端同步資料夾。`.gitignore` 必須含 `.
 ### 幻覺自我修正（2026-02-06）
 YouTube 資料擷取失敗時，絕對不要根據上下文通靈。用 curl 抓 OEmbed 或專門搜尋影片 ID 核對。
 
-### Shell CWD 重置問題（2026-04-15）
-Claude Code worktree session 期間，bash 的 CWD 會自動重置到 worktree 路徑。
-對策：每個 bash 指令強制加 `git -C "主倉庫路徑"` 或 `cd "主倉庫路徑" &&`。
+### 聲音克隆流程失敗與廢棄（2026-07-25）
+聲音克隆 (Voice Cloning / Fish Audio / Voicebox) 在自動化腳本、網頁 DOM 狀態與授權登入上極為繁瑣且不可控，嚴重破壞工作流效率與影音品質。
+**鐵律**：未來影片配音一律禁止使用聲音克隆，統一使用高質感、穩定流暢的雲端神經網絡語音（如 Edge-TTS 台灣在地自然男聲 `zh-TW-YunJheNeural` 雲哲）。
 
 ---
 
@@ -82,7 +82,7 @@ Claude Code worktree session 期間，bash 的 CWD 會自動重置到 worktree �
 | `uncle-glasses`（本地建） | search_knowledge_cards / get_article_draft / list_published_articles |
 | `uncle-glasses-obsidian`（Jarvis 建） | search_obsidian / **create_obsidian_card** |
 
-NotebookLM MCP：`C:\Users\w7\.local\bin\notebooklm-mcp.EXE`（帳號：tornadolee20@gmail.com）
+NotebookLM MCP：`%USERPROFILE%\.local\bin\notebooklm-mcp.EXE`（帳號：[NotebookLM 登入帳號已省略]）
 Antigravity 無法直接用，需透過 `Inbox/待深處理.md` 交接。
 
 ### SEO 內容進度（2026-04-15）
@@ -92,7 +92,7 @@ P0 次攻「配眼鏡流程圖解」：待排
 SEO 策略卡：`obsidian-vault/04-知識卡片/20260408-uncle-glasses-SEO關鍵字群分析報告.md`
 
 ### MYOWNREVIEWS 專案
-正式路徑：`C:\Users\torna_3j3fz9h\Desktop\blank-page-launch`
+正式路徑：`%USERPROFILE%\Desktop\blank-page-launch`
 技術細節：`memory/project_myownreviews.md`
 
 ### MYOWNVISION 專案（2026-04-16 首次完整掌握）
