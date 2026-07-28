@@ -4,7 +4,7 @@ Updated: 2026-04-15
 
 ## Purpose
 
-This document explains how to deploy the four runtime prompts in the shared-brain system.
+This document explains how to deploy the runtime prompts in the shared-brain system.
 
 It covers:
 
@@ -27,6 +27,7 @@ The current deployable prompt set is:
 - `prompt-antigravity.md`
 - `prompt-claude.md`
 - `prompt-codex.md`
+- `prompt-hermes.md`
 
 The supporting runtime constitution is:
 
@@ -136,6 +137,30 @@ Reason:
 
 Codex is the local implementation arm and should see the full routing constitution plus architecture files.
 
+### Hermes
+
+Project context:
+
+- `.hermes.md`
+
+Runtime identity:
+
+- `prompt-hermes.md`
+
+Startup context or linked references:
+
+- `HANDOFF-PROTOCOL.md`
+- `TASK-STATE.template.md`
+- `memory/YYYY-MM-DD.md`
+
+Runtime config:
+
+- `hermes-config/config.yaml`
+
+Reason:
+
+Hermes should orchestrate parallel and multi-step work while writing every cross-session result back into the shared repository.
+
 ## System Prompt Vs Startup Context
 
 ### Put into system prompt
@@ -170,6 +195,7 @@ If you need to deploy quickly:
 - Antigravity -> `prompt-antigravity.md` + `ROUTER-SHORT-RULES.md`
 - Claude -> `prompt-claude.md` + `CORE-SKILL-ORCHESTRATION.md`
 - Codex -> `prompt-codex.md` + `SKILLS-MAP.md` + `CORE-SKILL-ORCHESTRATION.md`
+- Hermes -> `.hermes.md` + `prompt-hermes.md` + `HANDOFF-PROTOCOL.md`
 
 This is the fastest usable configuration.
 
@@ -209,6 +235,14 @@ If you want the full shared-brain behavior:
 - `BRAIN-ARCHITECTURE.md`
 - `HANDOFF-PROTOCOL.md`
 
+### Hermes full
+
+- `.hermes.md`
+- `prompt-hermes.md`
+- `HANDOFF-PROTOCOL.md`
+- `TASK-STATE.template.md`
+- `hermes-config/config.yaml`
+
 ## Maintenance Rule
 
 When routing logic changes:
@@ -226,6 +260,7 @@ After deployment, verify:
 - Antigravity preprocesses instead of over-deciding
 - Claude chooses the lead skill correctly
 - Codex makes durable file changes and writes memory
+- Hermes orchestrates work without creating a separate memory source
 - no agent loads more context than it needs
 
 ## Bottom Line

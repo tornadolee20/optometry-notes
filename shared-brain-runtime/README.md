@@ -12,6 +12,7 @@ It groups the key files needed to understand, deploy, and maintain the four-agen
 - Antigravity
 - Claude
 - Codex
+- Hermes
 
 ## Recommended Reading Order
 
@@ -21,6 +22,7 @@ It groups the key files needed to understand, deploy, and maintain the four-agen
 4. `../prompt-antigravity.md`
 5. `../prompt-claude.md`
 6. `../prompt-codex.md`
+7. `../prompt-hermes.md`
 
 ## Routing Constitution
 
@@ -37,6 +39,7 @@ Core routing and orchestration files live at the repo root:
 
 - `../BRAIN-ARCHITECTURE.md`
 - `../HANDOFF-PROTOCOL.md`
+- `../docs/MULTI-PC-SHARED-BRAIN.md`
 
 ## Deployable Prompt Pack
 
@@ -44,6 +47,7 @@ Core routing and orchestration files live at the repo root:
 - `../prompt-antigravity.md`
 - `../prompt-claude.md`
 - `../prompt-codex.md`
+- `../prompt-hermes.md`
 
 ## Deployment Notes
 
