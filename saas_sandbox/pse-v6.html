@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PSE v6.0 — 個人聲紋展示原型</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --bg3: #161616;
+    --border: #2a2a2a;
+    --border-green: #1e3a1e;
+    --green: #7daa7d;
+    --green-dim: #4a7a4a;
+    --text: #ccc;
+    --text-dim: #888;
+    --text-muted: #555;
+    --mono: 'Space Mono', monospace;
+    --sans: 'Noto Sans TC', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    color: var(--green);
+    letter-spacing: .08em;
+  }
+  .header .badge {
+    font-family: var(--mono);
+    font-size: .55rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 2px 7px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-family: var(--mono);
+    font-size: .55rem;
+    color: var(--text-muted);
+    letter-spacing: .1em;
+    margin-bottom: 36px;
+  }
+
+  /* ── Panels ── */
+  .panel {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+
+  .adv-section-title {
+    font-family: var(--mono);
+    font-size: .6rem;
+    color: var(--green);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-green);
+    margin-bottom: 18px;
+  }
+
+  .sub-label {
+    font-family: var(--mono);
+    font-size: .5rem;
+    color: var(--text-dim);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin: 14px 0 6px;
+  }
+
+  /* ── Toggle ── */
+  .neg-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .toggle input { display: none; }
+  .toggle-track {
+    width: 34px;
+    height: 18px;
+    background: #222;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    transition: background .2s, border-color .2s;
+  }
+  .toggle input:checked ~ .toggle-track {
+    background: var(--green-dim);
+    border-color: var(--green);
+  }
+  .toggle-thumb {
+    position: absolute;
+    left: 3px;
+    width: 12px;
+    height: 12px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    transition: left .2s, background .2s;
+  }
+  .toggle input:checked ~ .toggle-track ~ .toggle-thumb {
+    left: 19px;
+    background: var(--green);
+  }
+  .neg-label {
+    font-family: var(--mono);
+    font-size: .62rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+  .neg-label strong { color: #ddd; }
+
+  /* ── Tag chips ── */
+  .disc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+  .disc-chip {
+    font-family: var(--mono);
+    font-size: .55rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s, background .15s;
+    user-select: none;
+    letter-spacing: .06em;
+  }
+  .disc-chip:hover { color: var(--text-dim); border-color: #3a3a3a; }
+  .disc-chip.selected {
+    color: var(--green);
+    border-color: var(--green);
+    background: rgba(125,170,125,.08);
+  }
+
+  /* ── Inputs ── */
+  input[type="text"],
+  textarea {
+    width: 100%;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: .62rem;
+    padding: 9px 12px;
+    outline: none;
+    transition: border-color .15s;
+    line-height: 1.6;
+  }
+  textarea {
+    font-family: var(--sans);
+    font-size: .72rem;
+    resize: vertical;
+  }
+  input[type="text"]:focus,
+  textarea:focus { border-color: var(--green); }
+  input::placeholder,
+  textarea::placeholder { color: var(--text-muted); }
+
+  /* ── Sample collapsible ── */
+  .sample-toggle {
+    font-family: var(--mono);
+    font-size: .5rem;
+    color: var(--text-muted);
+    letter-spacing: .08em;
+    margin-top: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+    transition: color .15s;
+  }
+  .sample-toggle:hover { color: var(--text-dim); }
+  .sample-box { display: none; margin-top: 6px; }
+  .sample-box textarea {
+    background: #080808;
+    border-color: var(--border-green);
+    border-left: 2px solid var(--green);
+    font-size: .7rem;
+    color: #aaa;
+  }
+
+  /* ── Preview box ── */
+  .neg-preview {
+    background: #0d0d0d;
+    border: 1px solid var(--border-green);
+    border-left: 2px solid var(--green-dim);
+    padding: 10px 14px;
+    font-family: var(--mono);
+    font-size: .58rem;
+    color: var(--text-dim);
+    white-space: pre-line;
+    line-height: 1.7;
+    margin-top: 10px;
+    min-height: 42px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 28px 0;
+  }
+
+  /* ── Prompt Output ── */
+  .prompt-panel {
+    background: var(--bg3);
+    border: 1px solid var(--border-green);
+  }
+  .prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .prompt-header span {
+    font-family: var(--mono);
+    font-size: .55rem;
+    color: var(--green);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+  .btn-copy {
+    font-family: var(--mono);
+    font-size: .52rem;
+    color: var(--text-muted);
+    background: none;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    cursor: pointer;
+    transition: color .15s, border-color .15s;
+    letter-spacing: .08em;
+  }
+  .btn-copy:hover { color: var(--green); border-color: var(--green); }
+  .prompt-body {
+    padding: 18px 20px;
+    font-family: var(--mono);
+    font-size: .62rem;
+    color: var(--text-dim);
+    white-space: pre-wrap;
+    line-height: 1.9;
+    min-height: 120px;
+  }
+  .prompt-voice-block {
+    color: #9dca9d;
+  }
+
+  /* ── Generate button ── */
+  .btn-gen {
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--bg);
+    background: var(--green);
+    border: none;
+    padding: 12px 28px;
+    cursor: pointer;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    transition: background .15s, opacity .15s;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+  }
+  .btn-gen:hover { background: #8dc88d; }
+
+  /* ── Scenario selector (demo) ── */
+  .scenario-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .sc-chip {
+    font-family: var(--mono);
+    font-size: .55rem;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all .15s;
+    user-select: none;
+  }
+  .sc-chip:hover { color: var(--text-dim); }
+  .sc-chip.active { color: var(--green); border-color: var(--green); background: rgba(125,170,125,.06); }
+
+  /* ── Footer ── */
+  .footer {
+    font-family: var(--mono);
+    font-size: .48rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 48px;
+    letter-spacing: .08em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>PSE v6.0</h1>
+    <div class="badge">Voice Signature Demo</div>
+  </div>
+  <div class="subtitle">PERSONAL SOUND ENGINE · 個人聲紋功能展示原型</div>
+
+  <!-- Scenario selector (demo purposes) -->
+  <div class="panel">
+    <div class="adv-section-title">▸ 情境選擇（測試用）</div>
+    <div class="sub-label" style="margin-top:0">選擇一個示範場景</div>
+    <div class="scenario-row" id="sc-row"></div>
+    <div id="sc-desc" style="font-family:var(--mono);font-size:.55rem;color:var(--text-muted);margin-top:8px;letter-spacing:.06em;min-height:18px"></div>
+  </div>
+
+  <!-- Voice Fingerprint Panel -->
+  <div class="panel">
+    <div class="adv-section-title">▸ 個人聲紋 — 讓 Prompt 帶你的語氣 DNA</div>
+
+    <!-- Enable toggle -->
+    <div class="neg-row">
+      <label class="toggle">
+        <input type="checkbox" id="voice-toggle" checked>
+        <div class="toggle-track"></div>
+        <div class="toggle-thumb"></div>
+      </label>
+      <div>
+        <div class="neg-label"><strong>啟用個人聲紋</strong>&nbsp;&nbsp;將寫作風格 DNA 注入每個 Prompt</div>
+      </div>
+    </div>
+
+    <!-- Style tags -->
+    <div class="sub-label">風格標籤（可複選）</div>
+    <div class="disc-grid" id="tag-grid"></div>
+
+    <!-- Forbidden words -->
+    <div class="sub-label">禁用詞彙（逗號分隔）</div>
+    <input type="text" id="forb-input" placeholder="例：總之, 因此, 不得不說, 值得一提, 不可否認...">
+
+    <!-- Custom description -->
+    <div class="sub-label">聲紋描述（自由格式）</div>
+    <textarea id="desc-input" rows="3" placeholder="例：短句為主、帶點幽默但不失專業，偶爾夾帶在地感，讀者是 30-45 歲上班族..."></textarea>
+
+    <!-- Sample text (collapsible) -->
+    <div class="sample-toggle" id="sample-toggle">
+      <span id="vf-arrow">▶</span>&nbsp;貼入參考範文（選填）— AI 自動萃取聲紋
+    </div>
+    <div class="sample-box" id="vf-sample-box">
+      <textarea id="sample-input" rows="5" placeholder="貼入你自己寫過的文章片段… AI 將提取語氣特徵，萃取你的句型節奏、慣用轉折、語氣溫度…"></textarea>
+    </div>
+
+    <!-- Voice preview -->
+    <div class="neg-preview" id="voice-preview">（尚未設定聲紋）</div>
+  </div>
+
+  <!-- Generate button -->
+  <button class="btn-gen" id="btn-gen">▶ 生成測試 Prompt</button>
+
+  <!-- Prompt output -->
+  <div class="prompt-panel" id="prompt-panel" style="margin-top:16px;display:none">
+    <div class="prompt-header">
+      <span>生成 Prompt 預覽</span>
+      <button class="btn-copy" id="btn-copy">COPY</button>
+    </div>
+    <div class="prompt-body" id="prompt-out"></div>
+  </div>
+
+  <div class="footer">PSE v6.0 · Voice Signature Prototype · 目鏡大叔 · uncle-glasses.net</div>
+</div>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────────
+var VOICE_TAGS = [
+  '沉穩','專業','幽默','溫暖','犀利','尖銳','理性','感性',
+  '接地氣','台灣味','說故事型','短句爆破','排比加速','學院派','親切型'
+];
+
+var voiceEnabled = true;
+
+var voiceProfile = (function() {
+  try {
+    return JSON.parse(localStorage.getItem('pse_voice') || 'null') || { tags:[], forbidden:'', desc:'', sample:'' };
+  } catch(e) {
+    return { tags:[], forbidden:'', desc:'', sample:'' };
+  }
+})();
+
+var SCENARIOS = [
+  { id:'blog', label:'部落格文章', desc:'視光衛教文章：為什麼近視控制要越早開始越好？' },
+  { id:'social', label:'社群貼文', desc:'Instagram 貼文：今天的驗光室，來了一個一直揉眼睛的小孩…' },
+  { id:'email', label:'電子報', desc:'月刊電子報：三月選題，從「配鏡後頭痛」談處方適應期。' },
+  { id:'review', label:'診間衛教', desc:'診間衛教說明：告訴家長關於角膜塑型片的風險與效益。' },
+  { id:'thread', label:'Threads 短文', desc:'Threads 一則：驗光師最常聽到的錯誤觀念排行榜。' }
+];
+
+var currentScenario = 'blog';
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+function saveVoice() {
+  try { localStorage.setItem('pse_voice', JSON.stringify(voiceProfile)); } catch(e) {}
+  updatePreview();
+}
+
+function updatePreview() {
+  var pv = document.getElementById('voice-preview');
+  if (!pv) return;
+  var parts = [];
+  if (voiceProfile.tags.length) parts.push('風格標籤：' + voiceProfile.tags.join(' · '));
+  if (voiceProfile.forbidden) {
+    var fw = voiceProfile.forbidden.split(/[,，]/).map(function(s){ return s.trim(); }).filter(Boolean);
+    if (fw.length) parts.push('禁用詞彙：「' + fw.join('」「') + '」');
+  }
+  if (voiceProfile.desc) parts.push('聲紋描述：' + voiceProfile.desc);
+  if (voiceProfile.sample) parts.push('[已附參考範文 ' + voiceProfile.sample.length + ' 字]');
+  pv.textContent = parts.length ? parts.join('\n') : '（尚未設定聲紋）';
+}
+
+function buildVoiceBlock() {
+  if (!voiceEnabled) return '';
+  var hasAny = voiceProfile.tags.length || voiceProfile.forbidden || voiceProfile.desc || voiceProfile.sample;
+  if (!hasAny) return '';
+
+  var out = '';
+  out += '【個人聲紋 · Voice Signature】\n';
+  if (voiceProfile.tags.length) out += '風格標籤：' + voiceProfile.tags.join(' · ') + '\n';
+  if (voiceProfile.forbidden) {
+    var fw = voiceProfile.forbidden.split(/[,，]/).map(function(s){ return s.trim(); }).filter(Boolean);
+    if (fw.length) out += '禁用詞彙：「' + fw.join('」「') + '」\n';
+  }
+  if (voiceProfile.desc) out += '聲紋描述：' + voiceProfile.desc + '\n';
+  if (voiceProfile.sample) {
+    out += '參考範文（萃取語氣，勿直接引用）：\n';
+    out += voiceProfile.sample.substring(0, 300) + (voiceProfile.sample.length > 300 ? '...' : '') + '\n';
+  }
+  out += 'Strict rule: Every sentence must pass the "would this person actually say this?" test. Mimic the voice signature precisely — tone, rhythm, forbidden words are non-negotiable.\n';
+  return out;
+}
+
+function buildPrompt() {
+  var sc = SCENARIOS.find(function(s){ return s.id === currentScenario; }) || SCENARIOS[0];
+
+  var out = '';
+  out += '【任務指令】\n';
+  out += '請根據以下情境撰寫一篇高品質的中文內容：\n';
+  out += '情境：' + sc.desc + '\n';
+  out += '\n';
+
+  var voiceBlock = buildVoiceBlock();
+  if (voiceBlock) {
+    out += voiceBlock;
+    out += '\n';
+  }
+
+  out += '【輸出要求】\n';
+  out += '- 語言：繁體中文（台灣用法）\n';
+  out += '- 讀者：一般民眾，非醫療專業人員\n';
+  out += '- 長度：約 300-500 字\n';
+  out += '- 格式：依情境判斷（部落格用段落、社群用換行斷句）\n';
+  out += '- 不得使用任何 AI 套話（「首先」「最後」「綜上所述」）\n';
+
+  return out;
+}
+
+// ── Render scenario chips ──────────────────────────────────────────────────
+function renderScenarios() {
+  var row = document.getElementById('sc-row');
+  row.innerHTML = '';
+  SCENARIOS.forEach(function(sc) {
+    var chip = document.createElement('div');
+    chip.className = 'sc-chip' + (sc.id === currentScenario ? ' active' : '');
+    chip.textContent = sc.label;
+    chip.addEventListener('click', function() {
+      currentScenario = sc.id;
+      renderScenarios();
+      document.getElementById('sc-desc').textContent = sc.desc;
+    });
+    row.appendChild(chip);
+  });
+  var active = SCENARIOS.find(function(s){ return s.id === currentScenario; });
+  if (active) document.getElementById('sc-desc').textContent = active.desc;
+}
+
+// ── Render tag chips ───────────────────────────────────────────────────────
+function renderTags() {
+  var grid = document.getElementById('tag-grid');
+  grid.innerHTML = '';
+  VOICE_TAGS.forEach(function(tag) {
+    var chip = document.createElement('div');
+    chip.className = 'disc-chip' + (voiceProfile.tags.indexOf(tag) !== -1 ? ' selected' : '');
+    chip.textContent = tag;
+    chip.addEventListener('click', function() {
+      var idx = voiceProfile.tags.indexOf(tag);
+      if (idx === -1) {
+        voiceProfile.tags.push(tag);
+        chip.classList.add('selected');
+      } else {
+        voiceProfile.tags.splice(idx, 1);
+        chip.classList.remove('selected');
+      }
+      saveVoice();
+    });
+    grid.appendChild(chip);
+  });
+}
+
+// ── Init inputs from saved state ───────────────────────────────────────────
+function initInputs() {
+  var forbIn = document.getElementById('forb-input');
+  var descIn = document.getElementById('desc-input');
+  var sampleIn = document.getElementById('sample-input');
+
+  forbIn.value = voiceProfile.forbidden || '';
+  descIn.value = voiceProfile.desc || '';
+  sampleIn.value = voiceProfile.sample || '';
+
+  forbIn.addEventListener('input', function() { voiceProfile.forbidden = this.value; saveVoice(); });
+  descIn.addEventListener('input', function() { voiceProfile.desc = this.value; saveVoice(); });
+  sampleIn.addEventListener('input', function() { voiceProfile.sample = this.value; saveVoice(); });
+
+  // Toggle
+  var tog = document.getElementById('voice-toggle');
+  tog.checked = voiceEnabled;
+  tog.addEventListener('change', function() { voiceEnabled = this.checked; });
+
+  // Sample collapsible
+  document.getElementById('sample-toggle').addEventListener('click', function() {
+    var box = document.getElementById('vf-sample-box');
+    var arrow = document.getElementById('vf-arrow');
+    var isOpen = box.style.display !== 'none';
+    box.style.display = isOpen ? 'none' : 'block';
+    arrow.textContent = isOpen ? '▶' : '▼';
+  });
+}
+
+// ── Generate button ────────────────────────────────────────────────────────
+document.getElementById('btn-gen').addEventListener('click', function() {
+  var panel = document.getElementById('prompt-panel');
+  var out = document.getElementById('prompt-out');
+  var prompt = buildPrompt();
+
+  // Highlight voice block in output
+  var voiceBlock = buildVoiceBlock();
+  if (voiceBlock) {
+    var escaped = prompt
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;');
+    var escapedVoice = voiceBlock
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;');
+    out.innerHTML = escaped.replace(escapedVoice, '<span class="prompt-voice-block">' + escapedVoice + '</span>');
+  } else {
+    out.textContent = prompt;
+  }
+
+  panel.style.display = 'block';
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+// ── Copy button ────────────────────────────────────────────────────────────
+document.getElementById('btn-copy').addEventListener('click', function() {
+  var text = document.getElementById('prompt-out').textContent;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.getElementById('btn-copy');
+      btn.textContent = 'COPIED ✓';
+      setTimeout(function() { btn.textContent = 'COPY'; }, 1800);
+    });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+});
+
+// ── Boot ───────────────────────────────────────────────────────────────────
+renderScenarios();
+renderTags();
+initInputs();
+updatePreview();
+</script>
+</body>
+</html>
