@@ -76,6 +76,12 @@ AI����__moved_backup_20260517/
 # Generated local inventory
 optometry-notes-structure.csv
 
+# Local-only working artifacts (moved to optometry-notes-local-archive/)
+scratch/
+Inbox/*.mp4
+open-notebook/
+scripts/voicebox-speak.ps1
+
 
 # Local text conversion backups
 *.bak
