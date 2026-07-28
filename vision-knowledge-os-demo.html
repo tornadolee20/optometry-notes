@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目鏡大叔 ── 陪你看懂視力這件事 | 視力家家簿 MVP</title>
+  <style>
+    :root {
+      --bg-warm: #FAF7F2;
+      --bg-card: #FFFFFF;
+      --bg-secondary: #F3EEE7;
+      --wood-primary: #5C4033;
+      --wood-warm: #8B5A2B;
+      --amber-accent: #C96F14;
+      --slate-dark: #2C3E50;
+      --text-main: #26211E;
+      --text-muted: #5C544D;
+      --border-color: #E6DFD5;
+      --radius-lg: 20px;
+      --radius-md: 12px;
+      --shadow-warm: 0 8px 24px rgba(92, 64, 51, 0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+      background-color: var(--bg-warm);
+      color: var(--text-main);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 導航列與手機端 RWD */
+    header {
+      background: rgba(253, 251, 247, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border-color);
+      padding: 1.1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .brand-group { display: flex; align-items: center; gap: 0.8rem; }
+    .brand-name { font-size: 1.4rem; font-weight: 700; color: var(--wood-primary); letter-spacing: 0.5px; display: flex; align-items: center; gap: 0.5rem; }
+    .brand-tagline { font-size: 0.9rem; color: var(--wood-warm); background: var(--bg-secondary); padding: 0.25rem 0.75rem; border-radius: 12px; font-weight: 600; }
+
+    nav { display: flex; gap: 1.8rem; }
+    nav a { text-decoration: none; color: var(--text-muted); font-size: 1rem; font-weight: 600; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--wood-warm); }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* 首頁英雄區 */
+    .hero-section {
+      margin: 2.5rem 0 3.5rem;
+      padding: 3rem 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-warm);
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-avatar-box { text-align: center; }
+    .hero-avatar-badge {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #EFE6DC;
+      border: 3px solid var(--wood-warm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.6rem;
+      color: var(--wood-primary);
+    }
+    .hero-avatar-icon { font-size: 2.8rem; line-height: 1; }
+    .hero-avatar-text { font-size: 0.75rem; font-weight: 700; margin-top: 0.2rem; }
+    .hero-author-name { font-size: 1rem; font-weight: 700; color: var(--wood-primary); }
+    .hero-author-sub { font-size: 0.8rem; color: var(--text-muted); }
+
+    .hero-title { font-size: 2.1rem; font-weight: 700; color: var(--wood-primary); line-height: 1.3; margin-bottom: 0.8rem; }
+    .hero-subtitle { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 1.8rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary { background: var(--wood-primary); color: #FFFFFF; text-decoration: none; padding: 0.85rem 1.6rem; border-radius: var(--radius-md); font-size: 1.05rem; font-weight: 700; transition: background 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: #422D24; }
+    .btn-secondary { background: var(--bg-secondary); color: var(--wood-primary); text-decoration: none; padding: 0.85rem 1.6rem; border-radius: var(--radius-md); font-size: 1.05rem; font-weight: 600; border: 1px solid var(--border-color); cursor: pointer; }
+    .btn-secondary:hover { background: #E8E0D5; }
+
+    .uncle-message-card { background: #F5EBE1; border-left: 5px solid var(--amber-accent); border-radius: var(--radius-md); padding: 1.8rem 2rem; margin-bottom: 3.5rem; }
+    .uncle-message-title { font-size: 1.15rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .uncle-message-body { font-size: 1.05rem; color: var(--text-main); line-height: 1.8; }
+
+    .section-header { margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.5rem; font-weight: 700; color: var(--wood-primary); }
+    .section-desc { font-size: 1rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* 六大情境卡片 (獨立分流與獨立 Journey) */
+    .situation-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; }
+    .situation-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 1.8rem; cursor: pointer; transition: all 0.25s ease; box-shadow: var(--shadow-warm); text-decoration: none; color: inherit; }
+    .situation-card:hover { transform: translateY(-4px); border-color: var(--wood-warm); }
+    .situation-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .situation-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.5rem; }
+    .situation-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* 獨立 Journey 分流顯示面板 */
+    .journey-panel { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2rem; margin-bottom: 3.5rem; display: none; }
+    .journey-panel-title { font-size: 1.3rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.75rem; }
+    .journey-panel-body { font-size: 1.05rem; color: var(--text-main); line-height: 1.75; }
+
+    /* 視力家家簿 MVP 模組 */
+    .family-vault-section { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 2.5rem; margin-bottom: 4rem; box-shadow: var(--shadow-warm); }
+    .vault-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--bg-secondary); }
+    .vault-title { font-size: 1.4rem; font-weight: 700; color: var(--wood-primary); }
+    .vault-sub { font-size: 0.95rem; color: var(--text-muted); }
+
+    .form-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+    .form-field label { display: block; font-size: 0.9rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.4rem; }
+    .form-field input, .form-field select { width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 8px; font-size: 0.95rem; background: #FFFFFF; color: var(--text-main); }
+    .form-field input.input-error, .form-field select.input-error { border-color: #DC2626; background: #FEF2F2; }
+
+    .error-banner { background: #FEF2F2; border: 1px solid #FCA5A5; color: #991B1B; padding: 1rem 1.25rem; border-radius: 8px; margin-bottom: 1.25rem; font-weight: 600; display: none; }
+
+    .calc-btn-wood { width: 100%; background: var(--wood-primary); color: #FFFFFF; border: none; padding: 0.95rem; border-radius: 8px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: background 0.2s; }
+    .calc-btn-wood:hover { background: #422D24; }
+
+    /* 時間線軸 (Timeline Node) */
+    .timeline-container { margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color); }
+    .timeline-title { font-size: 1.15rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 1rem; }
+    .timeline-item { background: #FAF7F2; border-left: 4px solid var(--wood-warm); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; position: relative; }
+    .timeline-date { font-weight: 700; color: var(--wood-warm); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .timeline-data-row { display: flex; gap: 1.5rem; font-size: 1rem; margin-bottom: 0.4rem; font-weight: 600; }
+    .timeline-note { font-size: 0.9rem; color: var(--text-muted); }
+
+    .result-box { margin-top: 1.5rem; padding: 1.5rem; background: #FFFFFF; border-radius: 8px; border: 1px solid #D6C8B4; display: none; }
+    .result-title { font-size: 1.1rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--bg-secondary); }
+    .result-notice { background: #FFF8F0; border-left: 4px solid var(--amber-accent); padding: 0.85rem 1rem; font-size: 0.95rem; color: #78350F; border-radius: 4px; margin-bottom: 1rem; }
+    .result-checklist { margin-top: 1rem; padding-left: 1.2rem; font-size: 0.95rem; color: var(--text-main); }
+    .result-checklist li { margin-bottom: 0.4rem; }
+
+    .daily-care-card { background: #EFECE6; border-radius: var(--radius-md); padding: 1.8rem 2rem; margin-top: 2.5rem; }
+    .daily-care-title { font-size: 1.1rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.6rem; }
+    .daily-care-body { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+
+    footer { background: #EFECE6; border-top: 1px solid var(--border-color); padding: 3.5rem 1rem 2.5rem; margin-top: 5rem; color: var(--text-muted); font-size: 0.95rem; }
+    .footer-content { max-width: 980px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem; }
+    .footer-brand { font-size: 1.2rem; font-weight: 700; color: var(--wood-primary); margin-bottom: 0.5rem; }
+    .footer-sub { font-size: 0.9rem; }
+    .footer-system-note { max-width: 980px; margin: 0 auto; padding-top: 1.5rem; border-top: 1px solid #DCD5C9; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: #8C827A; }
+
+    /* 📱 手機與熟齡無障礙媒體查詢 (Mobile Responsiveness RWD) */
+    @media (max-width: 768px) {
+      header { padding: 0.9rem 1rem; }
+      .brand-tagline { display: none; }
+      nav { gap: 0.9rem; }
+      nav a { font-size: 0.9rem; }
+      .hero-section { grid-template-columns: 1fr; text-align: center; padding: 2rem 1.25rem; gap: 1.5rem; }
+      .hero-title { font-size: 1.65rem; }
+      .hero-subtitle { font-size: 1.05rem; }
+      .hero-actions { justify-content: center; }
+      .form-grid-4 { grid-template-columns: 1fr; }
+      .timeline-data-row { flex-direction: column; gap: 0.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-group">
+      <div class="brand-name">👓 目鏡大叔</div>
+      <div class="brand-tagline">陪你看懂視力這件事</div>
+    </div>
+    <nav>
+      <a href="#situations" class="active">看懂視力</a>
+      <a href="#vault">視力家家簿</a>
+      <a href="#faq">家長常問</a>
+      <a href="#services">門市服務</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero-section">
+      <div class="hero-avatar-box">
+        <div class="hero-avatar-badge">
+          <span class="hero-avatar-icon">👓</span>
+          <span class="hero-avatar-text">自己的驗光所</span>
+        </div>
+        <div class="hero-author-name">驗光師 李錫彥</div>
+        <div class="hero-author-sub">目鏡大叔</div>
+      </div>
+      <div>
+        <h1 class="hero-title">孩子度數沒增加，眼軸卻變長了？</h1>
+        <p class="hero-subtitle">先別急著只看一個數字。我陪你把整份報告看懂。</p>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="scrollToSituations()">說說你現在遇到的問題</button>
+          <button class="btn-secondary" onclick="scrollToVault()">開啟孩子的視力家家簿</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="uncle-message-card">
+      <div class="uncle-message-title">💬 目鏡大叔先跟你說一句話</div>
+      <div class="uncle-message-body">
+        許多爸爸媽媽拿到視力檢查報告時，常被「增長了 0.2mm」或「散瞳前散瞳後」這些數字搞得好焦慮。其實配眼鏡和看報告，就像門市裡聊天一樣──我們不忙著做決定，先把孩子眼睛發育的真實狀態釐清，你自然就知道下一步該怎麼做。
+      </div>
+    </section>
+
+    <!-- 六個使用者情境卡片 (精準導向各自獨立 Journey) -->
+    <section id="situations">
+      <div class="section-header">
+        <h2 class="section-title">你現在遇到的狀況是哪一種？</h2>
+        <p class="section-desc">選擇最符合你目前焦慮的情境，大叔為你整理需要留意的重點與建議。</p>
+      </div>
+
+      <div class="situation-grid">
+        <div class="situation-card" onclick="openJourney('increase')">
+          <div class="situation-icon">📉</div>
+          <h3>孩子近視一直增加</h3>
+          <p>度數為什麼還在變？先整理年齡、追蹤條件、眼軸與目前使用的控制方式。</p>
+        </div>
+        <div class="situation-card" onclick="openJourney('report')">
+          <div class="situation-icon">📊</div>
+          <h3>看不懂視力報告</h3>
+          <p>度數、眼軸、散瞳前後代表什麼？大叔陪你逐項比對重點資料。</p>
+        </div>
+        <div class="situation-card" onclick="openJourney('options')">
+          <div class="situation-icon">🧐</div>
+          <h3>不知道控制方式怎麼選</h3>
+          <p>角膜塑型、離焦鏡片、阿托品藥水？了解不同方式的特點與客觀條件（不替你直接指定治療）。</p>
+        </div>
+        <div class="situation-card" onclick="openJourney('discomfort')">
+          <div class="situation-icon">👓</div>
+          <h3>戴眼鏡還是不舒服</h3>
+          <p>度數配對了看久卻會頭暈酸澀？了解雙眼視覺調節與配鏡舒適度。</p>
+        </div>
+        <div class="situation-card" onclick="openJourney('computer')">
+          <div class="situation-icon">💻</div>
+          <h3>長時間看電腦很累</h3>
+          <p>找出視覺疲勞、乾澀與對焦不適的可能原因與眼睛放鬆方式。</p>
+        </div>
+        <div class="situation-card" onclick="openJourney('elder')">
+          <div class="situation-icon">👵</div>
+          <h3>長輩配多焦點不適應</h3>
+          <p>漸進多焦點看遠看近切換順嗎？掌握適應期關鍵與焦段調整。</p>
+        </div>
+      </div>
+
+      <!-- 獨立 Journey 動態展開區塊 -->
+      <div class="journey-panel" id="journey-panel">
+        <div class="journey-panel-title" id="journey-title"></div>
+        <div class="journey-panel-body" id="journey-body"></div>
+      </div>
+    </section>
+
+    <!-- 視力家家簿 MVP 模組 (建立孩子 ➔ 雙眼獨立紀錄 ➔ 檢查可比較性 ➔ 時間線) -->
+    <section class="family-vault-section" id="vault">
+      <div class="vault-header">
+        <div>
+          <div class="vault-title">📖 視力家家簿 ── 兒童眼軸與視力資料整理器 (MVP)</div>
+          <div class="vault-sub">建立孩子專屬追蹤紀錄，分別保存左右眼數據，檢查兩次可比較性並儲存時間線。</div>
+        </div>
+      </div>
+
+      <div class="error-banner" id="error-banner"></div>
+
+      <!-- 建立孩子檔案與追蹤基礎 -->
+      <div class="form-grid-4">
+        <div class="form-field">
+          <label for="child-name">孩子暱稱/代號</label>
+          <input type="text" id="child-name" value="小明">
+        </div>
+        <div class="form-field">
+          <label for="child-age">目前年齡 (歲)</label>
+          <input type="number" id="child-age" min="3" max="18" value="9">
+        </div>
+      </div>
+
+      <!-- 第一筆紀錄 (上次) -->
+      <div style="font-weight:700; color:var(--wood-primary); margin:1.2rem 0 0.6rem;">📌 紀錄一（較早/上一次檢查）：</div>
+      <div class="form-grid-4">
+        <div class="form-field">
+          <label for="al1-od">右眼 OD 眼軸 (mm)</label>
+          <input type="number" id="al1-od" step="0.01" value="24.10">
+        </div>
+        <div class="form-field">
+          <label for="al1-os">左眼 OS 眼軸 (mm)</label>
+          <input type="number" id="al1-os" step="0.01" value="24.05">
+        </div>
+      </div>
+
+      <!-- 第二筆紀錄 (本次) -->
+      <div style="font-weight:700; color:var(--wood-primary); margin:1.2rem 0 0.6rem;">📌 紀錄二（最新/本次檢查）：</div>
+      <div class="form-grid-4">
+        <div class="form-field">
+          <label for="al2-od">右眼 OD 眼軸 (mm)</label>
+          <input type="number" id="al2-od" step="0.01" value="24.28">
+        </div>
+        <div class="form-field">
+          <label for="al2-os">左眼 OS 眼軸 (mm)</label>
+          <input type="number" id="al2-os" step="0.01" value="24.20">
+        </div>
+      </div>
+
+      <div class="form-grid-4">
+        <div class="form-field">
+          <label for="months">兩次檢查相隔時間 (月)</label>
+          <input type="number" id="months" value="6">
+        </div>
+        <div class="form-field">
+          <label for="same-instrument">兩次是否使用「同一台儀器」測量？</label>
+          <select id="same-instrument">
+            <option value="yes">是 (同一地點且確定同台儀器)</option>
+            <option value="no">否 / 不確定 (不同醫院門市或換過設備)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-grid-4">
+        <div class="form-field" style="grid-column: span 2;">
+          <label for="has-report">手邊是否有原始檢查報告或完整數據紀錄？</label>
+          <select id="has-report">
+            <option value="yes">有原始報告或完整紀錄</option>
+            <option value="no">只有部分數字或口頭資訊</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="calc-btn-wood" onclick="processVaultRecord()">整理紀錄並儲存至時間線</button>
+
+      <!-- 客觀資料整理結果與追蹤清單 -->
+      <div class="result-box" id="result">
+        <div class="result-title" id="res-child-title">📌 數據整理結果：</div>
+        <div id="res-primary" style="font-weight:700; color:var(--wood-primary); font-size:1.05rem; margin-bottom:0.75rem; padding:0.8rem 1rem; background:#FAF7F2; border-radius:6px; border-left:4px solid var(--wood-primary);"></div>
+        <div id="res-secondary" style="font-size:0.95rem; color:var(--text-muted); margin-bottom:1rem; padding-left:0.5rem;"></div>
+
+        <div class="result-notice">
+          ⚠️ <strong>這是數學整理，不是控制成效判定。</strong><br>
+          眼軸變化受年齡、基準長度、季節、測量品質與目前使用的控制方式多重影響。請勿僅憑換算值自行調整藥物或鏡片處置。
+        </div>
+
+        <div style="font-weight:700; color:var(--wood-primary); margin-top:1rem;">📋 下次回診或追蹤建議攜帶與確認事項：</div>
+        <ul class="result-checklist" id="res-checklist"></ul>
+      </div>
+
+      <!-- 視力家家簿時間線 (Timeline Axis) -->
+      <div class="timeline-container" id="timeline-container" style="display:none;">
+        <div class="timeline-title">📜 孩子的視力時間線紀錄 (Timeline)：</div>
+        <div id="timeline-list"></div>
+      </div>
+    </section>
+
+    <!-- 家長常問解答區塊 -->
+    <section class="content-demo-section" id="faq">
+      <span class="q-badge">家長最常問的第一名</span>
+      <h2 class="q-title">❓ 孩子度數沒增加，眼軸為什麼還會變長？</h2>
+      
+      <div class="q-answer-box">
+        <div class="q-answer-title">💡 目鏡大叔臨床觀點：</div>
+        <div class="q-answer-text">
+          度數和眼軸反映的是不同面向。眼軸能幫助我們了解眼球前後徑的變化，是近視追蹤的重要資料之一；但散瞳與未散瞳的驗光條件不同，調節狀態、角膜變化與測量方式也可能使每次度數不完全一致，因此度數與眼軸不一定同步變化。<strong>不能只靠單次眼軸或一條固定標準，就判定控制成功或失敗。</strong>
+        </div>
+      </div>
+
+      <div class="daily-care-card">
+        <div class="daily-care-title">🌿 目鏡大叔的日常保護提醒：</div>
+        <div class="daily-care-body">
+          近距離用眼時請安排規律遠眺與休息，避免長時間不中斷；戶外活動每天累積約 2 小時與延緩近視發生較有一致的研究支持，但日常護眼仍不能替代定期眼軸追蹤與個案專業評估。
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <div class="footer-brand">目鏡大叔 ── 自己的眼鏡・自己的驗光所</div>
+        <div class="footer-sub">驗光師 李錫彥 | 三峽・鶯歌・北大特區在地專業視光服務</div>
+      </div>
+      <div>
+        <a href="#about" style="color:var(--text-muted); text-decoration:none; margin-right:1rem;">關於大叔</a>
+        <a href="#services" style="color:var(--text-muted); text-decoration:none;">門市與驗光追蹤諮詢</a>
+      </div>
+    </div>
+
+    <div class="footer-system-note">
+      <div>© 2026 目鏡大叔. All Rights Reserved. 本衛教內容與整理工具不替代醫師臨床診斷與處方。</div>
+      <div>Powered by Vision Knowledge OS v0.1</div>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToSituations() { document.getElementById('situations').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToVault() { document.getElementById('vault').scrollIntoView({ behavior: 'smooth' }); }
+    function scrollToFAQ() { document.getElementById('faq').scrollIntoView({ behavior: 'smooth' }); }
+
+    // 格式化帶正負號的數值字串
+    function formatSigned(num, decimals = 2) {
+      const fixed = num.toFixed(decimals);
+      return num > 0 ? `+${fixed}` : fixed;
+    }
+
+    // 獨立 Journey 卡片分流處理
+    function openJourney(type) {
+      const panel = document.getElementById('journey-panel');
+      const title = document.getElementById('journey-title');
+      const body = document.getElementById('journey-body');
+
+      panel.style.display = 'block';
+
+      const journeys = {
+        increase: {
+          title: '📉 孩子近視度數一直增加的檢視重點',
+          body: '當近視度數增加時，大叔建議先確認：1. 孩子目前的精確年齡發育階段；2. 是否每天有足夠的戶外光照時間；3. 近距離閱讀與看螢幕的持續時間；4. 兩次驗光報告是否皆在散瞳後測量。建議先將報告資料整理好，回診時與專業人員檢視。'
+        },
+        report: {
+          title: '📊 解讀視力與眼軸報告的客觀建議',
+          body: '視力報告上的球面 (Sph) 代表近視/遠視度數，散光 (Cyl) 與軸度 (Axis) 代表角膜散光方向，而眼軸 (AL) 則是眼球前後徑長度。兩次報告比對時，必須先確認是否在同地點使用同型號儀器測量。'
+        },
+        options: {
+          title: '🧐 控制方式的客觀條件說明',
+          body: '角膜塑型片、周邊離焦鏡片與低濃度阿托品藥水各有其光學與生活便利特徵。每一位孩子的眼睛條件、角膜形狀、戶外時間與合規配戴能力不同，大叔建議帶著視力時間線紀錄，與眼科醫師探討最適切方案。'
+        },
+        discomfort: {
+          title: '👓 配戴眼鏡不舒服的可能因素',
+          body: '眼鏡度數合適但戴久容易頭暈酸澀，常見原因包括：雙眼視覺融像與調節靈敏度異常、鏡片後頂點距離或傾斜角不對、或是瞳孔中心點與鏡片光心未對準。建議進行完整的雙眼視覺功能測試。'
+        },
+        computer: {
+          title: '💻 長時間使用螢幕視覺疲勞檢視',
+          body: '長時間看電腦螢幕導致眼睛乾澀酸疼痛，多半與眨眼次數減少（正常 15-20次/分，看螢幕降至 5-7次/分）及調節肌群持續收縮有關。建議遵守「規律遠眺休息」與維持適當光線對比。'
+        },
+        elder: {
+          title: '👵 長輩漸進多焦點眼鏡的適應要領',
+          body: '多焦點鏡片涵蓋看遠、中距離螢幕與看近手機三個區域，兩側帶有物理相差區。剛配戴前兩週，看兩側物體請練習「頭跟著轉動、視線保持在中央光點」，並由專業驗光師檢查鏡框配戴位置。'
+        }
+      };
+
+      if (journeys[type]) {
+        title.textContent = journeys[type].title;
+        body.textContent = journeys[type].body;
+        panel.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 清除結果
+    function clearResults() {
+      const resultBox = document.getElementById('result');
+      const resPrimary = document.getElementById('res-primary');
+      const resSecondary = document.getElementById('res-secondary');
+      const resChecklist = document.getElementById('res-checklist');
+      
+      resultBox.style.display = 'none';
+      resPrimary.textContent = '';
+      resSecondary.textContent = '';
+      resChecklist.textContent = '';
+    }
+
+    function showError(msg, errorElementIds = []) {
+      clearResults();
+      const banner = document.getElementById('error-banner');
+      banner.style.display = 'block';
+      banner.textContent = `⚠️ 輸入資料有誤：${msg}`;
+
+      ['child-age', 'al1-od', 'al1-os', 'al2-od', 'al2-os', 'months'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('input-error');
+      });
+
+      errorElementIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('input-error');
+      });
+    }
+
+    function clearError() {
+      const banner = document.getElementById('error-banner');
+      banner.style.display = 'none';
+      banner.textContent = '';
+      ['child-age', 'al1-od', 'al1-os', 'al2-od', 'al2-os', 'months'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.classList.remove('input-error');
+      });
+    }
+
+    // 時間線儲存陣列 (Vault Storage)
+    const vaultTimeline = [];
+
+    // 視力家家簿核心處理邏輯
+    function processVaultRecord() {
+      clearError();
+
+      const childName = document.getElementById('child-name').value.trim() || '孩子';
+      const ageVal = document.getElementById('child-age').value;
+      const al1ODVal = document.getElementById('al1-od').value;
+      const al1OSVal = document.getElementById('al1-os').value;
+      const al2ODVal = document.getElementById('al2-od').value;
+      const al2OSVal = document.getElementById('al2-os').value;
+      const monthsVal = document.getElementById('months').value;
+
+      const age = parseFloat(ageVal);
+      const al1OD = parseFloat(al1ODVal);
+      const al1OS = parseFloat(al1OSVal);
+      const al2OD = parseFloat(al2ODVal);
+      const al2OS = parseFloat(al2OSVal);
+      const months = parseFloat(monthsVal);
+      const sameInstrument = document.getElementById('same-instrument').value;
+      const hasReport = document.getElementById('has-report').value;
+
+      const errors = [];
+      const errorIds = [];
+
+      // 防呆範疇非臨床界線
+      if (!Number.isFinite(age) || age < 3 || age > 18) {
+        errors.push('輸入值超出本工具可接受的格式範圍，請確認孩子年齡 (3-18 歲)');
+        errorIds.push('child-age');
+      }
+      if (!Number.isFinite(al1OD) || al1OD <= 15 || al1OD >= 35) {
+        errors.push('輸入值超出本工具可接受的格式範圍，請確認上次右眼數值 (15.00 - 35.00 mm)');
+        errorIds.push('al1-od');
+      }
+      if (!Number.isFinite(al1OS) || al1OS <= 15 || al1OS >= 35) {
+        errors.push('輸入值超出本工具可接受的格式範圍，請確認上次左眼數值 (15.00 - 35.00 mm)');
+        errorIds.push('al1-os');
+      }
+      if (!Number.isFinite(al2OD) || al2OD <= 15 || al2OD >= 35) {
+        errors.push('輸入值超出本工具可接受的格式範圍，請確認本次右眼數值 (15.00 - 35.00 mm)');
+        errorIds.push('al2-od');
+      }
+      if (!Number.isFinite(al2OS) || al2OS <= 15 || al2OS >= 35) {
+        errors.push('輸入值超出本工具可接受的格式範圍，請確認本次左眼數值 (15.00 - 35.00 mm)');
+        errorIds.push('al2-os');
+      }
+      if (!Number.isFinite(months) || months <= 0) {
+        errors.push('請填寫大於 0 的相隔月份數');
+        errorIds.push('months');
+      }
+
+      if (errors.length > 0) {
+        showError(errors.join('；'), errorIds);
+        return;
+      }
+
+      const diffOD = al2OD - al1OD;
+      const diffOS = al2OS - al1OS;
+      const annualizedOD = (diffOD * 12) / months;
+      const annualizedOS = (diffOS * 12) / months;
+
+      const resultBox = document.getElementById('result');
+      const resChildTitle = document.getElementById('res-child-title');
+      const resPrimary = document.getElementById('res-primary');
+      const resSecondary = document.getElementById('res-secondary');
+      const resChecklist = document.getElementById('res-checklist');
+
+      resultBox.style.display = 'block';
+      resChildTitle.textContent = `📌 ${childName} (${age}歲) 雙眼數據客觀整理結果：`;
+
+      // 同台儀器 vs 不同儀器 (可比較性為第一優先)
+      if (sameInstrument === 'no') {
+        resPrimary.textContent = `⚠️ 主要評估結論：因兩次使用的儀器或測量條件不同，直接相減後的差值可能同時包含儀器差異，不宜單獨解讀為實際眼軸變化。`;
+        resSecondary.textContent = `次要參考資訊：相隔 ${months} 個月。右眼 (OD) 輸入相差 ${formatSigned(diffOD)} mm；左眼 (OS) 輸入相差 ${formatSigned(diffOS)} mm。`;
+      } else {
+        // 使用同一台儀器提醒
+        let primaryMsg = `📌 數據整理結果：相隔 ${months} 個月。右眼 (OD) 相差 ${formatSigned(diffOD)} mm；左眼 (OS) 相差 ${formatSigned(diffOS)} mm。`;
+        
+        if (diffOD < 0 || diffOS < 0) {
+          primaryMsg += ` (⚠️ 出現負差值提醒：應先確認眼別、儀器型號、測量品質、輸入是否正確，以及兩次資料是否具可比較性。不建議直接解讀為眼軸縮短或控制效益。)`;
+        }
+
+        resPrimary.textContent = primaryMsg;
+
+        // 相隔時間過短 (months < 3) 風險控制
+        if (months < 3) {
+          resSecondary.textContent = `次要換算說明：追蹤間隔較短（小於 3 個月），年化換算容易放大測量波動，建議以原始差值為主。（右眼換算約 ${formatSigned(annualizedOD)} mm/年；左眼換算約 ${formatSigned(annualizedOS)} mm/年）。`;
+        } else {
+          resSecondary.textContent = `若以相同速度單純換算，右眼約為 ${formatSigned(annualizedOD)} mm／年；左眼約為 ${formatSigned(annualizedOS)} mm／年。（註：這只是方便比較的數學換算，眼軸生長非全年等速，不代表未來一年一定增加相同幅度。）`;
+        }
+      }
+
+      // 安全清單與缺漏提示
+      let checklistItems = [
+        `攜帶 ${childName} 近兩次的完整檢測報告與這份換算紀錄。`,
+        `【年齡背景說明】：${childName} 目前 ${age} 歲，年齡是解讀眼軸變化的重要背景之一。本工具不依年齡套用固定判定門檻，建議與長期紀錄及完整檢查資料一起評估。`,
+      ];
+
+      if (sameInstrument === 'no') {
+        checklistItems.push(`⚠️ 因兩次使用不同型號儀器，絕對數值無法直接扣減，回診時請專業人員確認長期趨勢。`);
+      } else {
+        checklistItems.push(`使用同一台儀器能提高可比較性，但仍需與專業人員確認眼別、測量品質與原始報告。`);
+      }
+
+      if (hasReport === 'no') {
+        checklistItems.push(
+          `⚠️ 缺少原始報告提醒：目前手邊無完整紀錄，下次回診建議向院所索取包含以下項目的原始紀錄：確切日期與儀器型號、左右眼別與原始眼軸、是否散瞳驗光、球面/散光/軸度，並視目前追蹤方式確認是否還需要角膜曲率或配戴方式紀錄。`
+        );
+      } else {
+        checklistItems.push(`手邊有完整報告，請帶至門市或診所，視目前追蹤方式，確認是否還需要散瞳屈光、角膜曲率、配戴方式或其他相關資料。`);
+      }
+
+      // 使用安全 textContent 清單渲染
+      resChecklist.innerHTML = '';
+      checklistItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        resChecklist.appendChild(li);
+      });
+
+      // 將資料新增至家家簿時間線 (Timeline Axis)
+      const now = new Date();
+      const dateStr = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2,'0')}-${now.getDate().toString().padStart(2,'0')}`;
+      
+      vaultTimeline.unshift({
+        date: dateStr,
+        childName,
+        age,
+        al1OD, al2OD, diffOD,
+        al1OS, al2OS, diffOS,
+        months,
+        sameInstrument
+      });
+
+      renderTimeline();
+    }
+
+    // 渲染家家簿時間線 (textContent 安全防護)
+    function renderTimeline() {
+      const container = document.getElementById('timeline-container');
+      const list = document.getElementById('timeline-list');
+      
+      if (vaultTimeline.length === 0) return;
+      container.style.display = 'block';
+      list.innerHTML = '';
+
+      vaultTimeline.forEach((rec, idx) => {
+        const div = document.createElement('div');
+        div.className = 'timeline-item';
+
+        const dateDiv = document.createElement('div');
+        dateDiv.className = 'timeline-date';
+        dateDiv.textContent = `📅 整理日期：${rec.date} (紀錄 #${vaultTimeline.length - idx})`;
+
+        const dataRow = document.createElement('div');
+        dataRow.className = 'timeline-data-row';
+        dataRow.textContent = `👁️ 右眼 (OD): ${rec.al1OD.toFixed(2)} ➔ ${rec.al2OD.toFixed(2)} mm (${formatSigned(rec.diffOD)}mm) | 👁️ 左眼 (OS): ${rec.al1OS.toFixed(2)} ➔ ${rec.al2OS.toFixed(2)} mm (${formatSigned(rec.diffOS)}mm)`;
+
+        const noteDiv = document.createElement('div');
+        noteDiv.className = 'timeline-note';
+        noteDiv.textContent = `相隔 ${rec.months} 個月 | 儀器：${rec.sameInstrument === 'yes' ? '同台儀器' : '不同/不確定儀器'}`;
+
+        div.appendChild(dateDiv);
+        div.appendChild(dataRow);
+        div.appendChild(noteDiv);
+        list.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
