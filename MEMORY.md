@@ -40,6 +40,15 @@ YouTube 資料擷取失敗時，絕對不要根據上下文通靈。用 curl 抓
 聲音克隆 (Voice Cloning / Fish Audio / Voicebox) 在自動化腳本、網頁 DOM 狀態與授權登入上極為繁瑣且不可控，嚴重破壞工作流效率與影音品質。
 **鐵律**：未來影片配音一律禁止使用聲音克隆，統一使用高質感、穩定流暢的雲端神經網絡語音（如 Edge-TTS 台灣在地自然男聲 `zh-TW-YunJheNeural` 雲哲）。
 
+### Shell CWD 重置問題（2026-04-15）
+Claude Code worktree session 期間，bash 的 CWD 可能自動重置到 worktree 路徑。
+對策：涉及主倉庫操作時，每個 bash 指令應明確使用：
+- `git -C "主倉庫路徑" ...`
+或
+- `cd "主倉庫路徑" && ...`
+
+執行檔案讀寫、git 操作或 build 前，先用 `pwd`／`Get-Location` 與 `git rev-parse --show-toplevel` 確認實際工作目錄。
+
 ---
 
 ## 協作原則
