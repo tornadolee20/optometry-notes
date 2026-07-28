@@ -10,6 +10,12 @@
       "source": "alchaincyf/nuwa-skill",
       "sourceType": "github",
       "computedHash": "fcc75855dc299d6e19eb1e299e7314cd9f664f16db8ec5f670d5a6bc2e502d69"
+    },
+    "social-post": {
+      "source": "Hao0321/claude-skill-social-post",
+      "sourceType": "github",
+      "skillPath": "social-post/SKILL.md",
+      "computedHash": "1ff58da666e49f8cef081ddcb1af919edb9a81fc15388425368a965547cadc5d"
     }
   }
 }
