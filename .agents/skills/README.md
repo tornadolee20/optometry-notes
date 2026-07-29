@@ -15,7 +15,7 @@
 
 ## 共用工程原則
 
-所有八個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
+所有九個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
 
 `.agents/skills/_shared/references/engineering-principles.md`
 
@@ -24,7 +24,7 @@
 | 階段 | 任務情境 | 使用 Skill | 不負責 |
 |---|---|---|---|
 | A. 接手與現況建立 | 接手 repo、開新對話、久未接觸後回來、動手前先確認現況 | `project-state-audit` | 修改、commit、push、PR、merge |
-| B. 規劃與實作 | 需要規劃改動範圍或動手寫程式 | **目前尚無專屬 Skill（GAP）** | 不得假裝由其他 Skill 覆蓋 |
+| B. Requirement to plan | 需要把模糊需求轉成可執行計畫 | `requirement-to-plan` | 修改程式碼；開始實作；建立 migration；commit／push／PR；deployment |
 | C. 驗證與除錯 | 修好一個 bug/regression，要證明測試真的抓得到問題 | `regression-negative-proof` | 一般性診斷與所有類型測試；只處理修復前後的真假證明 |
 | D. Hosted／遠端驗證 | 需要在 hosted 環境建立測試資料、驗證行為、清除乾淨 | `hosted-fixture-audit-and-cleanup` | 完整 deployment；只處理 disposable fixture、驗證與清除 |
 | E. 文件同步 | 更新長期狀態文件前，要找出與現況矛盾的舊聲明 | `stale-status-sweep` | 程式驗證與 PR 出貨 |
@@ -37,7 +37,37 @@
 `deployment-readiness-review` 的結論不等於已部署，只是判斷是否可以進入
 `hosted-deploy-smoke`。
 
-## 八個 Skill 快速選擇
+### B. Requirement to plan
+
+- Skill：`requirement-to-plan`
+- 用途：將模糊需求轉成可執行計畫
+- 涵蓋：
+  - problem statement
+  - scope／out of scope／non-goals
+  - protected behavior
+  - assumptions／open questions
+  - acceptance criteria
+  - dependency map
+  - risk matrix
+  - implementation slices
+  - verification plan
+  - rollout／rollback 思路
+  - owner decision list
+- 不負責：
+  - 修改程式碼
+  - 開始實作
+  - 建立 migration
+  - commit／push／PR
+  - deployment
+
+明確保留：
+
+- `READY FOR IMPLEMENTATION` 不等於已實作
+- `READY WITH CONDITIONS` 不得直接開始實作
+- 計畫完成不等於 issue 已建立
+- issue 已建立不等於有人執行
+
+## 九個 Skill 快速選擇
 
 ### 1. project-state-audit
 - **一句話用途**：唯讀建立一份可信的專案現況快照。
@@ -123,8 +153,31 @@
 - **下一個可能銜接的 Skill**：`hosted-deploy-smoke`（結論為 GO 或
   CONDITIONAL GO 且 owner 進一步授權部署時）。
 
+### 9. requirement-to-plan
+- **一句話用途**：將模糊需求轉成具備範圍、依賴、風險、驗收條件與
+  implementation slices 的計畫。
+- **何時使用**：
+  - 有想法但尚未拆成任務
+  - 有規格但還沒有可執行計畫
+  - 大功能需要拆小
+  - 需要 MVP／Alpha／Beta／release plan
+- **何時不要使用**：
+  - 已經開始實作
+  - 單一機械修改
+  - 正在 debug、出貨、merge 或 deployment
+- **輸出**：planning package + readiness status + owner decision list +
+  recommended execution order。
+- **上一個可能銜接的 Skill**：`project-state-audit`。
+- **下一個可能銜接的 Skill**：目前尚無專屬 implementation Skill，由
+  owner 核准後再進入實作；實作後可進入 `regression-negative-proof` 或
+  其他驗證流程。
+
 ## 常見任務選擇
 
+- **我有一個模糊功能想法，不知道怎麼拆** → `requirement-to-plan`
+- **我有 PRD，但還沒有可執行 task list** → `requirement-to-plan`
+- **我需要 scope、acceptance criteria、risk、dependency 與 slice**
+  → `requirement-to-plan`
 - **我剛接手一個 repo** → `project-state-audit`
 - **我不確定文件與程式是否一致** → 先 `project-state-audit` 建立現況，
   再用 `stale-status-sweep` 處理文件修改
@@ -156,21 +209,43 @@
 
 ## 目前缺口
 
-以下項目**只標記為未來候選**，目前沒有對應 Skill，不假設已存在，也不建立
-連結：
-
-- `requirement-to-plan`（生命週期 B 的規劃階段）
+- 需求轉計畫已由 `requirement-to-plan` 覆蓋。
+- 目前尚未建立專屬 implementation execution Skill——`requirement-to-plan`
+  只產出計畫，不執行實作，兩者不得混為一談。
+- `incremental-feature-development` 為未來候選，但目前不存在，不得假設
+  已存在或已被其他 Skill 覆蓋。
+- 不得把 `requirement-to-plan` 誤認為實作 Skill。
 
 生命週期 H 目前已由兩個 Skill 涵蓋：`deployment-readiness-review`（H1，
 部署前就緒度評估）與 `hosted-deploy-smoke`（H2，deployment execution 與
 post-deploy verification），**不再是缺口**。
 
+## 工程流程順序
+
+```text
+project-state-audit
+→ requirement-to-plan
+→ implementation（目前無專屬 Skill）
+→ regression-negative-proof
+→ stale-status-sweep
+→ pr-ship
+→ pr-final-merge
+→ deployment-readiness-review
+→ hosted-deploy-smoke
+```
+
+- `requirement-to-plan` 只產出 plan，不執行 implementation。
+- implementation 階段目前仍需人工或其他工作流執行，不得假裝由
+  `requirement-to-plan` 或任何既有 Skill 代為完成。
+- 不得跳過 owner 核准，直接從 plan 進入實作。
+
 ## Orchestrator 狀態
 
 - 目前**沒有** orchestrator。
-- 現階段採**人工選擇 Skill**，依本文件的導航表與快速選擇清單判斷。
-- 等生命週期覆蓋更完整（尤其是 B 這個 GAP 補上）、且實際出現路由混淆
-  案例後，再評估是否建立 orchestrator。
+- 現階段仍使用 Skill Map **人工選擇**，依本文件的導航表與快速選擇清單
+  判斷。
+- **不得**改成「已準備建立」。
+- 先觀察九個 Skill 的實際路由混淆案例後，再評估是否建立 orchestrator。
 - 未來若建立 orchestrator，應**只負責路由與停止條件**，不直接執行高風險
   動作（stage/commit/push/merge/deploy 等仍需回到對應專項 Skill 執行，並
   遵守各自的 owner 授權要求）。
