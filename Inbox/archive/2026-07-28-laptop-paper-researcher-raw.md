@@ -1,0 +1,2321 @@
+# 筆電 paper-researcher 原始抓取快照（稽核用）
+
+> 此檔是筆電 paper-researcher 原始抓取快照，時間範圍 2026-04-04 至 2026-07-27。
+> 共包含 147 篇論文書目、89 個批次（主題×時間戳）。
+> 其中部分 PMID（14 篇）與 origin/integrate/w7-rescue-20260728 分支上已解構的內容重疊，該 14 篇在遠端已產生對應知識卡片。
+> 本檔只供稽核與歷史保存，內容為原始未經改寫的抓取紀錄。
+> 不應直接作為待處理佇列重新執行。
+> 正式待處理項目請見：`Inbox/待深處理-筆電獨有-20260728.md`
+
+---
+
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/04 (8 篇 / 4 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-04 09:30)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] A Multimodal Multitask Artificial Intelligence Model for Orthokeratology Contact Lens Fitting: An Integrated Framework to Enhance Lens Centration and Myopia Control Effect.
+- **作者**：Zhang Z et al.
+- **期刊**：Ophthalmology science (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41783078/ DOI: 10.1016/j.xops.2026.101100
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Effect of Low-Concentration Atropine Eye Drops on Parapapillary Gamma Zone Development and Enlargement over 3 Years: The LAMP Study.
+- **作者**：Zhang XJ et al.
+- **期刊**：Ophthalmology science (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41732593/ DOI: 10.1016/j.xops.2026.101085
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Longitudinal Metabolic Alterations of the Visual Cortex in Diabetic Retinopathy Rats Using High-Field Proton Magnetic Resonance Spectroscopy.
+- **作者**：Shen D et al.
+- **期刊**：NMR in biomedicine (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41732018/ DOI: 10.1002/nbm.70253
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-04-04 09:30)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Analysis of patient adherence to emerging treatment tools for improving visual functions in amblyopia: A systematic review and meta-analysis.
+- **作者**：Asensio-Jurado L et al.
+- **期刊**：Journal of optometry (2026 Apr-J)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41309334/ DOI: 10.1016/j.optom.2025.100591
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-04 09:30)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Aging does not affect the relationship between OCT and clinical or MRI outcome measures.
+- **作者**：Kaçar S et al.
+- **期刊**：Multiple sclerosis and related disorders (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41678966/ DOI: 10.1016/j.msard.2026.107046
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] A timeline of structural and functional consequences to ipRGCs in a mouse model of Alzheimer's disease.
+- **作者**：Recio BS et al.
+- **期刊**：Neurobiology of aging (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41494407/ DOI: 10.1016/j.neurobiolaging.2025.12.007
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Potential diagnostic markers in Alzheimer's disease: current perspectives and future directions.
+- **作者**：Zheng M et al.
+- **期刊**：Neurodegenerative disease management (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/40911035/ DOI: 10.1080/17582024.2025.2554515
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-04-04 09:30)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Alterations in gut microbiota and their association with nutrition and disease progression in advanced schistosomiasis.
+- **作者**：Jiang HL et al.
+- **期刊**：Acta tropica (2026 Apr)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41688006/ DOI: 10.1016/j.actatropica.2026.108022
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/07 (3 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-07 09:23)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Re: Fedtke et al.: Spatio-temporal optical phase kit for myopia control: stage 1 results from a randomized controlled clinical trial in Chinese children (Ophthalmology. 2025;132:1344-1356).
+- **作者**：Ao S
+- **期刊**：Ophthalmology (2026 Apr 6)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41941361/ DOI: pii: S0161-6420(26)00159-4. 10.1016/j.ophtha.2026.03.010
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-04-07 09:23)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] Effects of blue-violet light filtering and surface technologies on visual performance: a retrospective clinical comparison using daily silicone hydrogel contact lenses.
+- **作者**：Güler SD et al.
+- **期刊**：Clinical & experimental optometry (2026 Apr 6)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41941759/ DOI: 10.1080/08164622.2026.2648954
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-07 09:23)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Retinal image-based cardiovascular risk prediction using AI-CRS: a multi-modal deep learning framework.
+- **作者**：Mariswari C et al.
+- **期刊**：International ophthalmology (2026 Apr 6)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41941015/ DOI: pii: 192. 10.1007/s10792-026-04044-4
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/10 (6 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-10 12:56)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Efficacy of Multifocal Spectacles for Myopia Control in Pre-myopic Children: A Multicentre Real-world Study.
+- **作者**：Rao J et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 Apr 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41954865/ DOI: 10.1007/s44402-026-00073-9
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Efficacy of repeated red-light laser therapy for myopia control in Australian children: a pilot randomised controlled trial.
+- **作者**：Bulloch G et al.
+- **期刊**：Clinical & experimental optometry (2026 Apr 8)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41951208/ DOI: 10.1080/08164622.2026.2648328
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Targeting the Hedgehog Signaling Pathway in the Retina Using Quercetin-Loaded Lipid Nanoparticles for Myopia Control.
+- **作者**：Zhao L et al.
+- **期刊**：Translational vision science & technology (2026 Apr 6)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41944664/ DOI: 10.1167/tvst.15.4.3
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-10 12:57)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Initiating Events of Retinopathy in Spontaneously Hypertensive Rats: Microvascular Rarefaction and Functional Deficits.
+- **作者**：Huang T et al.
+- **期刊**：Hypertension (Dallas, Tex. : 1979) (2026 Apr 8)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41948823/ DOI: 10.1161/HYPERTENSIONAHA.125.26116
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] The role of the choroidal nervous system in Central Serous Chorioretinopathy and associated diseases.
+- **作者**：Leclercq B et al.
+- **期刊**：Progress in retinal and eye research (2026 Apr 7)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41956354/ DOI: 10.1016/j.preteyeres.2026.101468
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Retinal imaging in gestational diabetes mellitus: systematic review.
+- **作者**：Kitmiridou D et al.
+- **期刊**：Ultrasound in obstetrics & gynecology : the official journal of the International Society of Ultrasound in Obstetrics and Gynecology (2026 Apr 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41956059/ DOI: 10.1002/uog.70218
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/13 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-13 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Stereophotographic Assessment of Intraocular Pressure Reduction in Myopic Eyes with Glaucoma-Compatible Optic Neuropathy.
+- **作者**：Zhang Y et al.
+- **期刊**：Ophthalmology and therapy (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41964730/ DOI: 10.1007/s40123-026-01368-3
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Effect of distant-image screen technology (DIST) on delaying myopia onset in pre-myopia children: study protocol for a1-year randomized controlled trial.
+- **作者**：Zou L et al.
+- **期刊**：Trials (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41963994/ DOI: 10.1186/s13063-026-09696-2
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-13 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] OCT angiography-derived biomarkers of retinal and choroidal microvascular changes in dry age-related macular degeneration.
+- **作者**：Dugiełło B et al.
+- **期刊**：Medicine (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41961694/ DOI: 10.1097/MD.0000000000048033
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/16 (2 篇 / 1 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-16 09:13)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Development of artificially intelligent tool for analysis and prediction of myopia progression among school-going children.
+- **作者**：Singh P et al.
+- **期刊**：Trials (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41981408/ DOI: 10.1186/s13063-026-09648-w
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Effectiveness of Low-Dose Atropine Combined With Bright Light Therapy for Controlling Myopic Eye Growth in Schoolchildren: Study Protocol for a Randomized Controlled Trial.
+- **作者**：Tse DY et al.
+- **期刊**：JMIR research protocols (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41973601/ DOI: 10.2196/90893
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/19 (4 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-19 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Nasotemporal Asymmetry in Ocular Biometry as a Biomarker for Myopia Progression in Chinese Children.
+- **作者**：Peng T et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41986789/ DOI: 10.1007/s44402-026-00082-8
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-19 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Effectiveness and safety of superselective ophthalmic artery thrombolysis beyond 24h in central retinal artery occlusion.
+- **作者**：Zhang KK et al.
+- **期刊**：International journal of ophthalmology (2026)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41924366/ DOI: 10.18240/ijo.2026.04.11
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Hypertension-induced retinal microvascular remodeling in women.
+- **作者**：Nampoothiry RS et al.
+- **期刊**：Journal of vascular research (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41989958/ DOI: 10.1159/000552087
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-04-19 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Metabolomic signatures suggest altered bile acid and energy metabolism in CRB1- retinopathies.
+- **作者**：Rodriguez-Martinez AC et al.
+- **期刊**：Metabolomics : Official journal of the Metabolomic Society (2026 Apr 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41998480/ DOI: pii: 52. 10.1007/s11306-026-02415-7
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/22 (3 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-22 10:33)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Intermittent myopic visual exposure triggers myopia progression via H3K27me3.
+- **作者**：Lei Y et al.
+- **期刊**：Genome medicine (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42010709/ DOI: 10.1186/s13073-026-01652-8
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-22 10:34)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Semiautomatic analysis of retinal ischemia using widefield OCTA in patients with diabetes mellitus with or without diabetic retinopathy.
+- **作者**：Lisa T et al.
+- **期刊**：European journal of ophthalmology (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42012204/ DOI: 10.1177/11206721261444772
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-04-22 10:34)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Potential role of the ocular surface microbiome in dry eye: microbial interactions and symptom alleviation.
+- **作者**：Park J-Y et al.
+- **期刊**：mSystems (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41870088/ DOI: 10.1128/msystems.00104-26
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/25 (1 篇 / 1 領域) ===== -->
+
+## 🟢 老花多焦點 — PubMed 自動抓取 (2026-04-25 09:55)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：progressive addition lens freeform design | trifocal IOL presbyopia outcomes ...
+
+### [1] Design of Progressive Addition Lens for Presbyopia: A Systematic Review.
+- **作者**：Li J et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42018248/ DOI: 10.1007/s44402-026-00056-w
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/04/28 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-04-28 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Myopia control efficacy of annular microstructure defocus spectacle lenses: a 1-year multicenter study.
+- **作者**：Yan Y et al.
+- **期刊**：BMC ophthalmology (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42035051/ DOI: 10.1186/s12886-026-04851-4
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-04-28 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Galectins as stress-integrating regulators of neuroimmune signaling and proteinopathy in the central nervous system.
+- **作者**：Siew JJ et al.
+- **期刊**：Neurobiology of disease (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42035925/ DOI: 10.1016/j.nbd.2026.107410
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] [Optical coherence tomography angiography image segmentation based on multi-scale dilated convolution and dual attention network].
+- **作者**：Zeng Q et al.
+- **期刊**：Sheng wu yi xue gong cheng xue za zhi = Journal of biomedical engineering = Shengwu yixue gongchengxue zazhi (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42037341/ DOI: 10.7507/1001-5515.202505030
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/01 (13 篇 / 6 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] KDM6A promotes diabetic retinopathy via H3K27me3-dependent ferroptosis in Müller cells.
+- **作者**：Wen Y et al.
+- **期刊**：Cell death & disease (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42049713/ DOI: 10.1038/s41419-026-08816-9
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Swept-source OCTA assessment of iris vasculature as a biomarker for myopic macular degeneration severity.
+- **作者**：Ching K et al.
+- **期刊**：Advances in ophthalmology practice and research (2026 May-J)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42011167/ DOI: 10.1016/j.aopr.2025.12.002
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Differentiating superior segment optic nerve hypoplasia from normal-tension glaucoma in Chinese patients.
+- **作者**：Ying Y et al.
+- **期刊**：Clinical & experimental optometry (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41130719/ DOI: 10.1080/08164622.2025.2569622
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Global, regional, and national burden of meningitis, its risk factors, and aetiologies, 1990-2023: a systematic analysis for the Global Burden of Disease Study 2023.
+- **作者**：GBD 2023 Meningitis & Antimicrobial Resistance Collaborators
+- **期刊**：The Lancet. Neurology (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41911930/ DOI: 10.1016/S1474-4422(26)00101-8
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Preverbal visual assessment for screening cerebral visual impairment: Diagnostic accuracy and clinical utility.
+- **作者**：Harpster KL et al.
+- **期刊**：Developmental medicine and child neurology (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41051012/ DOI: 10.1111/dmcn.70005
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] Prevalence and Risk Factors of Computer Vision Syndrome Among Bankers in Bangladesh.
+- **作者**：Barna B et al.
+- **期刊**：Public health challenges (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42058768/ DOI: 10.1002/puh2.70259
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Identifying Biomarkers Using a Portable, Home-Based Eye-Tracking System to Predict Short-Term Visual Fatigue Deterioration: Prospective Observational Feasibility Study.
+- **作者**：Song F et al.
+- **期刊**：JMIR human factors (2026 Apr 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42048137/ DOI: 10.2196/84479
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 老花多焦點 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：progressive addition lens freeform design | trifocal IOL presbyopia outcomes ...
+
+### [1] Predictions of Through-Focus Performance of Presbyopia-Correcting Intraocular Lenses in Presbyopic Subjects Using a Visual Simulator.
+- **作者**：Papadogiannis P et al.
+- **期刊**：Ophthalmology science (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41993891/ DOI: 10.1016/j.xops.2026.101140
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Impact of ocular aberrations and pupil diameter on vision with four daily multifocal contact lenses.
+- **作者**：Martínez-Plaza E et al.
+- **期刊**：Clinical & experimental optometry (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41021909/ DOI: 10.1080/08164622.2025.2565457
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Prospective validation of deep-learning algorithms for diabetic retinopathy screening: A systematic review and meta-analysis.
+- **作者**：Wang TW et al.
+- **期刊**：Survey of ophthalmology (2026 May-J)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41344407/ DOI: 10.1016/j.survophthal.2025.11.012
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Retinomics as a Tool for Glaucoma Prediction.
+- **作者**：Yusufu M et al.
+- **期刊**：Ophthalmology science (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42022047/ DOI: 10.1016/j.xops.2026.101163
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Unexplained long-term increase in intraocular pressure during the treatment of macular disease with intravitreal anti-VEGF.
+- **作者**：Eisenrauch LM et al.
+- **期刊**：Graefe's archive for clinical and experimental ophthalmology = Albrecht von Graefes Archiv fur klinische und experimentelle Ophthalmologie (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41518382/ DOI: 10.1007/s00417-025-07100-4
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-05-01 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Advocating gut-retina connection and microbiota mediated pathways in management of age-related macular degeneration: Preclinical to clinical perspective.
+- **作者**：Waghmare PV et al.
+- **期刊**：Ageing research reviews (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41759744/ DOI: 10.1016/j.arr.2026.103071
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/04 (6 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-04 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] How Orthokeratology Affects Accommodative Response and Binocular Vision: A Systematic Review and Meta-Analysis.
+- **作者**：Souza Filho CEME et al.
+- **期刊**：Eye & contact lens (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41817443/ DOI: 10.1097/ICL.0000000000001263
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-04 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Association of papilledema severity with retinal vessel tortuosity in idiopathic intracranial hypertension.
+- **作者**：Zou Y et al.
+- **期刊**：Graefe's archive for clinical and experimental ophthalmology = Albrecht von Graefes Archiv fur klinische und experimentelle Ophthalmologie (2026 May 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42068341/ DOI: 10.1007/s00417-026-07254-9
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Retinal vascular density in children with hypertension.
+- **作者**：Maćkowiak-Lewandowicz K et al.
+- **期刊**：Pediatric nephrology (Berlin, Germany) (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41504898/ DOI: 10.1007/s00467-025-07076-7
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Artifact-suppressed 3D retinal microvascular segmentation via multi-scale topology regulation.
+- **作者**：Luo T et al.
+- **期刊**：Medical image analysis (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41689982/ DOI: 10.1016/j.media.2026.103988
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-05-04 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Functional traits shape gut microbial assembly beyond phylogeny in estuarine fish.
+- **作者**：Zhou L et al.
+- **期刊**：Science China. Life sciences (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41793588/ DOI: 10.1007/s11427-025-3143-x
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Malabsorption Syndromes and Risk of Age-Related Macular Degeneration.
+- **作者**：Jeong H et al.
+- **期刊**：Ophthalmology. Retina (2026 May)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41519378/ DOI: 10.1016/j.oret.2026.01.002
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/10 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-10 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Retrospective Comparative Analysis of Myopia Control Efficacy: Orthokeratology, Defocus-Incorporated Soft Contact Lenses and Their Combination with 0.01% Atropine in Chinese Children and Adolescents.
+- **作者**：Wang J et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 May 7)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42098575/ DOI: 10.1007/s44402-026-00104-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Effect of screen time and outdoor activities on myopia progression.
+- **作者**：Zougheib Y et al.
+- **期刊**：PloS one (2026)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42102046/ DOI: 10.1371/journal.pone.0347118
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-05-10 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Gut microbiota modulation of regulatory DNA elements revealed by massively parallel functional characterization.
+- **作者**：Zaratiana C et al.
+- **期刊**：Molecular cell (2026 May 7)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42030942/ DOI: 10.1016/j.molcel.2026.03.036
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/13 (2 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-13 11:39)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Comparison of effectiveness of four myopia control interventions in Chinese children: a real-world retrospective study.
+- **作者**：Chen L et al.
+- **期刊**：Eye and vision (London, England) (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42116122/ DOI: pii: 18. 10.1186/s40662-026-00487-z
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-13 11:39)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Explainable retinal deep learning for cardiovascular risk stratification: a multiple modality analysis framework with vascular-centric interpretability and robustness.
+- **作者**：Sathya K et al.
+- **期刊**：BMC medical informatics and decision making (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42115996/ DOI: 10.1186/s12911-026-03516-y
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/16 (2 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-16 11:06)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Plasma-aqueous dual-fluid NEAT1/miR-93-5p axis may be involved in retinal ganglion cell degeneration in glaucoma: mechanistic dissection and diagnostic model construction.
+- **作者**：Chen TY et al.
+- **期刊**：Scientific reports (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42120436/ DOI: 10.1038/s41598-026-47861-4
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-16 11:06)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Renal denervation increases capillary density in hypertensive patients.
+- **作者**：Bosch A et al.
+- **期刊**：European journal of preventive cardiology (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/40576467/ DOI: 10.1093/eurjpc/zwaf387
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/19 (2 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-19 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Dose-Dependent Effects of Atropine on Accommodative and Binocular Visual Function for Myopia Control in Children: A Systematic Review and Meta-Analysis.
+- **作者**：Martínez-Pérez C et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42149424/ DOI: 10.1007/s44402-026-00093-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-19 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Clinical setting-dependent diagnostic accuracy of artificial intelligence and store-and-forward diabetic retinopathy screening: a systematic review and meta-analysis.
+- **作者**：Chen KY et al.
+- **期刊**：NPJ digital medicine (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42141103/ DOI: 10.1038/s41746-026-02627-0
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/22 (4 篇 / 4 領域) ===== -->
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-05-22 11:31)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Prevalence of Strabismus and Decreased Stereopsis in Parents of Children with Strabismus.
+- **作者**：MacKinnon S et al.
+- **期刊**：Ophthalmology (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42162761/ DOI: pii: S0161-6420(26)00364-7. 10.1016/j.ophtha.2026.05.016
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 老花多焦點 — PubMed 自動抓取 (2026-05-22 11:31)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：progressive addition lens freeform design | trifocal IOL presbyopia outcomes ...
+
+### [1] [Performance evaluation of a visual simulator for intraocular lenses].
+- **作者**：La Schiazza O et al.
+- **期刊**：Die Ophthalmologie (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42154261/ DOI: 10.1007/s00347-026-02451-7
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-05-22 11:31)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Retinal and Choroidal Vascular Alterations in Carotid Dissection Versus Atherosclerosis: Insights Into Divergent Ischemic Mechanisms.
+- **作者**：Cao L et al.
+- **期刊**：Journal of the American Heart Association (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42089161/ DOI: 10.1161/JAHA.125.048079
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-05-22 11:31)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] An Update and Overview of the Ocular and Extraocular Microbiome and Its Impact on Ophthalmic Care.
+- **作者**：Benekos K et al.
+- **期刊**：Advances in therapy (2026 May 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42154370/ DOI: 10.1007/s12325-026-03620-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/05/31 (7 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-05-31 23:59)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] A natural experiment in school lighting: observational evidence linking far-red light exposure to slower myopia progression in Chinese Uyghur schoolchildren.
+- **作者**：Liu C et al.
+- **期刊**：BMC public health (2026 May 3)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42218412/ DOI: 10.1186/s12889-026-27883-3
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Identify the Relationships Between Orthokeratology Lens Decentration and Myopia Control Efficacy in Children by Using Pentacam.
+- **作者**：Kuo YK et al.
+- **期刊**：Eye & contact lens (2026 May 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42204419/ DOI: 10.1097/ICL.0000000000001262
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Coordinated regulation using small-molecule drugs enables controlled therapeutic genome editing and enhanced genomic precision in situ.
+- **作者**：Zhang J et al.
+- **期刊**：Science translational medicine (2026 May 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42202045/ DOI: 10.1126/scitranslmed.adx7857
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-01 00:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Association of plasma glial fibrillary acidic protein and neurofilament light chain with retinal cell layer thickness: A cross-sectional study of ophthalmic surgical patients.
+- **作者**：Prasad M et al.
+- **期刊**：Journal of Alzheimer's disease : JAD (2026 May 3)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42216665/ DOI: 10.1177/13872877261452676
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Exploratory study on the synergistic use of plasma neurofilament light chain, phosphorylated Tau181, and retinal examination for assessing the risk of Alzheimer's disease and mild cognitive impairment.
+- **作者**：He X et al.
+- **期刊**：Journal of Alzheimer's disease : JAD (2026 May 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42212442/ DOI: 10.1177/13872877261453611
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] EVALUATION OF MACULAR MICROCIRCULATION IN PREDIABETIC PATIENTS USING OCT ANGIOGRAPHY.
+- **作者**：Cay Y et al.
+- **期刊**：Photodiagnosis and photodynamic therapy (2026 May 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42217714/ DOI: 10.1016/j.pdpdt.2026.105533
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-06-01 00:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Gut Microbiota-Derived Propionate: A Potential Therapeutic Target for Diabetic Retinopathy via Regulating the Gut-Retina Axis.
+- **作者**：Gao Y et al.
+- **期刊**：FASEB journal : official publication of the Federation of American Societies for Experimental Biology (2026 May 3)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42117799/ DOI: 10.1096/fj.202600264R
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/03 (13 篇 / 6 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Yi Qi Cong Ming Decoction control the progression of lens-induced myopia in rats by modulating the cAMP/PKA/HIF-1α pathway.
+- **作者**：Zhang J et al.
+- **期刊**：Phytomedicine : international journal of phytotherapy and phytopharmacology (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41861689/ DOI: 10.1016/j.phymed.2026.158071
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Enhanced STAT3 Activation in the Ocular Posterior Segment and Imbalance of Scleral MMP-2/TIMP-2 Secretion in a Guinea Pig Model of Lens-Induced Myopia.
+- **作者**：Zhao Y et al.
+- **期刊**：Current eye research (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41778361/ DOI: 10.1080/02713683.2026.2623994
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Expert Opinion on Myopia Tapering: Strategies for Managing Myopia Progression.
+- **作者**：Chen Y et al.
+- **期刊**：Ophthalmic epidemiology (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41705331/ DOI: 10.1080/09286586.2025.2612156
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Visually Guided Saccades in Amblyopia and Strabismus: The Roles of Sensory Deficits and Nystagmus.
+- **作者**：Quagraine I et al.
+- **期刊**：Investigative ophthalmology & visual science (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42223310/ DOI: 10.1167/iovs.67.6.2
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Parent-Reported Chronic Pain in Children With and Without Developmental Disabilities.
+- **作者**：Shi W et al.
+- **期刊**：JAMA pediatrics (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41910968/ DOI: 10.1001/jamapediatrics.2026.0512
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Red reflex examination for early detection of pediatric cataract using a novel red-reflex screening device.
+- **作者**：Li H et al.
+- **期刊**：Expert review of medical devices (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41830428/ DOI: 10.1080/17434440.2026.2646442
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] Study Protocol: Evaluating Traditional Chinese Medicine and Palming Techniques for Digital Eye Strain Among Young Female Adults.
+- **作者**：Dave D et al.
+- **期刊**：Medical acupuncture (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42130698/ DOI: 10.1177/19336586251396326
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 雙眼視覺 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：convergence insufficiency CITT treatment | vertical phoria prism adaptation ...
+
+### [1] Undercorrection of symptomatic esophoria after unilateral medial recession.
+- **作者**：Hofsli M et al.
+- **期刊**：Strabismus (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41070825/ DOI: 10.1080/09273972.2025.2571769
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[binocular_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Optic Disc Structural Progression in Glaucoma Suspect Eyes With Microvascular Dropout.
+- **作者**：Soltani G et al.
+- **期刊**：American journal of ophthalmology (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41825843/ DOI: 10.1016/j.ajo.2026.03.003
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Characterization of Retinal Microvascular Changes in Obstructive Sleep Apnea Using OCT Angiography: Data from the Obstructive Sleep Apnea and Retinal Microvascular NETwork Study.
+- **作者**：Germanese C et al.
+- **期刊**：Ophthalmology (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41638537/ DOI: 10.1016/j.ophtha.2026.01.030
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] The expanding horizon: Role of widefield imaging in uveitis.
+- **作者**：Sheth JU et al.
+- **期刊**：Indian journal of ophthalmology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42200731/ DOI: 10.4103/IJO.IJO_2978_25
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-06-03 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Relationship Between Omega-3 Fatty Acids and Glaucoma Risk in Patients With Dry Eye Disease: A Multinational Retrospective Cohort Study.
+- **作者**：Pan SY et al.
+- **期刊**：Translational vision science & technology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42223316/ DOI: 10.1167/tvst.15.6.2
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Mapping the Research Landscape of Gut Microbiota in Autoimmune Eye Diseases: A Bibliometric Analysis and Knowledge Evolution Study.
+- **作者**：Miao S et al.
+- **期刊**：Ocular immunology and inflammation (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42223229/ DOI: 10.1080/09273948.2025.2606819
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/06 (2 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-06 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Dopamine inhibits retinal pathological neovascularization in the oxygen-induced retinopathy mouse model.
+- **作者**：Wang Q et al.
+- **期刊**：The Journal of pathology (2026 Jun 3)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42237060/ DOI: 10.1002/path.70080
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 老花多焦點 — PubMed 自動抓取 (2026-06-06 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：progressive addition lens freeform design | trifocal IOL presbyopia outcomes ...
+
+### [1] Comparison of refraction, presbyopia, and dry eye-related parameters between monofocal and multifocal contact lens users.
+- **作者**：Ayaki M et al.
+- **期刊**：Japanese journal of ophthalmology (2026 Jun 4)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42240921/ DOI: 10.1007/s10384-026-01384-7
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/09 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-09 23:28)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Efficacy of different optical zone design with different myopia control for corneal refractive therapy (CRT): a one-year prospective cohort study.
+- **作者**：Lai WX et al.
+- **期刊**：BMC ophthalmology (2026 Jun 8)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42260405/ DOI: 10.1186/s12886-026-04961-z
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-09 23:29)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Retinal vascular features enhance short-term prediction of delivery in hypertensive disorders of pregnancy.
+- **作者**：Chi M et al.
+- **期刊**：Journal of hypertension (2026 Jun 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42253131/ DOI: 10.1097/HJH.0000000000004369
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Retinal Arterial Macroaneurysms: Clinical Features, Management and Outcomes.
+- **作者**：Zhang C et al.
+- **期刊**：Ophthalmology. Retina (2026 Jun 5)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42250603/ DOI: pii: S2468-6530(26)00271-X. 10.1016/j.oret.2026.06.001
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/13 (4 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-13 01:02)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] [Analysis of the main factors affecting myopia among Chinese primary and secondary school students].
+- **作者**：Feng CY et al.
+- **期刊**：[Zhonghua yan ke za zhi] Chinese journal of ophthalmology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42252229/ DOI: 10.3760/cma.j.cn112142-20251208-00516
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] [Evidence-based guidelines for myopia prevention and control in Chinese children and adolescents (2026)].
+- **作者**：Visual Health (Myopia Prevention and Control) Study Group of Child and Adolescent Health Branch of Chinese Preventive Medicine Association
+- **期刊**：[Zhonghua yan ke za zhi] Chinese journal of ophthalmology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42252227/ DOI: 10.3760/cma.j.cn112142-20251007-00404
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-13 01:03)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Quantitative Swept-Source Optical Coherence Tomography Angiography Indicators of Neurovascular Dysfunction in Alzheimer Disease.
+- **作者**：Zhang Y et al.
+- **期刊**：JAMA ophthalmology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42275077/ DOI: 10.1001/jamaophthalmol.2026.1986
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] A scoping review on aging and cardiovascular diseases - Molecular mediators and artificial intelligence-based advanced diagnostic methods.
+- **作者**：Sudoso AM et al.
+- **期刊**：International journal of cardiology (2026 Jun 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42263950/ DOI: 10.1016/j.ijcard.2026.134615
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/21 (7 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-21 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Long-term axial elongation in myopic children wearing DIMS spectacle lenses: an 8-to-10-year observational study.
+- **作者**：Leung TW et al.
+- **期刊**：BMJ open ophthalmology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42315249/ DOI: pii: e002780. 10.1136/bmjophth-2026-002780
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] [Analysis of the prevalence and influencing factors of myopia among primary and secondary school students in Inner Mongolia Autonomous Region in 2022].
+- **作者**：Lu L et al.
+- **期刊**：Beijing da xue xue bao. Yi xue ban = Journal of Peking University. Health sciences (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42287046/
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] [A population-based survey of myopia on primary school students in an administrative district, 2019 to 2024].
+- **作者**：Yang M et al.
+- **期刊**：Beijing da xue xue bao. Yi xue ban = Journal of Peking University. Health sciences (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42287045/
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-06-21 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Causes of Reduced Vision in Australian Children.
+- **作者**：Ilango M et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42313234/ DOI: 10.1007/s44402-026-00128-x
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-21 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Retinal Microvascular Signatures as Early Predictors of Cardiovascular Risk: Integrating Pathophysiology, Molecular Insights, and Artificial Intelligence.
+- **作者**：Bc A et al.
+- **期刊**：The American journal of cardiology (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42320613/ DOI: pii: S0002-9149(26)00411-X. 10.1016/j.amjcard.2026.05.035
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Retinal Vascular Caliber: 6 to 12 Months and 15 to 25 Years Following Hypertensive Pregnancy.
+- **作者**：Cutler HR et al.
+- **期刊**：Hypertension (Dallas, Tex. : 1979) (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42305089/ DOI: 10.1161/HYPERTENSIONAHA.126.27171
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] AVSeg-XAI: Deep learning framework for A/V segmentation with vascular features reveals retinal oculomics as biomarker for cardiovascular disease.
+- **作者**：Basit SA et al.
+- **期刊**：BioData mining (2026 Jun 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42316181/ DOI: 10.1186/s13040-026-00573-x
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/24 (3 篇 / 1 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-24 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Antioxidant enhancement and myopia progression delay by Rho-kinase inhibition in guinea pig retina.
+- **作者**：Liu Y et al.
+- **期刊**：Molecular biology reports (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42334672/ DOI: pii: 987. 10.1007/s11033-026-12150-w
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Online Survey on Myopia Progression Among Chinese Adult Undergraduates: A Pilot Study.
+- **作者**：Wu H et al.
+- **期刊**：Ophthalmic epidemiology (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42324851/ DOI: 10.1080/09286586.2026.2689748
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Choroid thickness: a potential biomarker for pseudophakic cystoid macular oedema.
+- **作者**：He W et al.
+- **期刊**：The British journal of ophthalmology (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41390159/ DOI: 10.1136/bjo-2025-328615
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/27 (2 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-27 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Repeated Low-Level Red-Light Therapy for Childhood Myopia: Efficacy, Mechanisms, Rebound Effects, Safety Boundaries, and Clinical Standardization.
+- **作者**：Wu X et al.
+- **期刊**：Photodiagnosis and photodynamic therapy (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42349599/ DOI: 10.1016/j.pdpdt.2026.105554
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-06-27 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] Occupational mental health among remote workers in Nigeria: the role of computer vision syndrome and the moderating effect of employee resilience.
+- **作者**：Omosebi TE et al.
+- **期刊**：International journal of occupational safety and ergonomics : JOSE (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42342289/ DOI: 10.1080/10803548.2026.2688000
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/06/30 (7 篇 / 4 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-06-30 12:22)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Visual and refractive outcomes of retinopathy of prematurity in school-age patients.
+- **作者**：Tseng YH et al.
+- **期刊**：Graefe's archive for clinical and experimental ophthalmology = Albrecht von Graefes Archiv fur klinische und experimentelle Ophthalmologie (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42363983/ DOI: 10.1007/s00417-026-07341-x
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Comparable myopia control efficacy of highly aspherical lenslets and diffusion optics technology spectacle lenses: a one-year real-world cohort study.
+- **作者**：Pan S et al.
+- **期刊**：BMC ophthalmology (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42365264/ DOI: 10.1186/s12886-026-05085-0
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-06-30 12:22)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Painful acute esotropia as a presenting sign of presumed post-infectious orbital myositis in a child: a case report.
+- **作者**：Alhaimi F et al.
+- **期刊**：BMC ophthalmology (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42363153/ DOI: 10.1186/s12886-026-05066-3
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-06-30 12:22)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] A single-camera video-based assessment of locomotive syndrome using pose-silhouette fusion model.
+- **作者**：Moriguchi Y et al.
+- **期刊**：PLOS digital health (2026 Jun)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42361134/ DOI: 10.1371/journal.pdig.0001530
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-06-30 12:23)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Changes in Retinal Microvasculature During Healthy Pregnancy Measured by AO.
+- **作者**：Dathan-Stumpf A et al.
+- **期刊**：Hypertension (Dallas, Tex. : 1979) (2026 Jun 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42366971/ DOI: 10.1161/HYPERTENSIONAHA.125.26521
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Association between optical coherence tomography-quantified retinal features and cardiovascular risk in cardiovascular-kidney-metabolic syndrome stages 0-3: An analysis of a prospective UK biobank cohort.
+- **作者**：Li C et al.
+- **期刊**：PloS one (2026)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42361046/ DOI: 10.1371/journal.pone.0351945
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Retinal vascular parameters as AI-driven biomarkers for pulse wave velocity assessment: a telemedicine strategy for cardiovascular risk assessment.
+- **作者**：Wang Y et al.
+- **期刊**：Annals of medicine (2026 Dec)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42360005/ DOI: 10.1080/07853890.2026.2682652
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/03 (9 篇 / 4 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-03 17:25)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Early onset primary angle closure and foveal retinoschisis associated with a pseudo-homozygous CRB1 pathogenic variant.
+- **作者**：Qiao Y et al.
+- **期刊**：Documenta ophthalmologica. Advances in ophthalmology (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42390706/ DOI: 10.1007/s10633-026-10127-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Myopic Paravascular Retinoschisis With Retinal Telangiectasia: Multimodal Imaging Insights.
+- **作者**：Li M et al.
+- **期刊**：Retina (Philadelphia, Pa.) (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42308471/ DOI: 10.1097/IAE.0000000000004730
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] A Continuous Severity Index for Keratoconus Diagnosis Based on Kolmogorov-Arnold Networks in a Chinese Population.
+- **作者**：Qiao Y et al.
+- **期刊**：Ophthalmology science (2026 Jul)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42293348/ DOI: 10.1016/j.xops.2026.101168
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-03 17:25)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Surgical Outcomes in Partially Accommodative Esotropia Using Augmented Distance-Angle Averaging With and Without Hyperopic Correction.
+- **作者**：Yehezkeli V et al.
+- **期刊**：American journal of ophthalmology (2026 Jul)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41933568/ DOI: 10.1016/j.ajo.2026.03.033
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-07-03 17:26)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] REAL-WORLD PRACTICE OF ARTIFICIAL INTELLIGENCE DIAGNOSTIC SYSTEM FOR DIABETIC RETINOPATHY IN TAIWAN.
+- **作者**：Lin CC et al.
+- **期刊**：Retina (Philadelphia, Pa.) (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41818422/ DOI: 10.1097/IAE.0000000000004826
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Revealing subcellular retinal alterations in 5xFAD B6SJLF1/J mice.
+- **作者**：Giani A et al.
+- **期刊**：Experimental neurology (2026 Jul)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41932564/ DOI: 10.1016/j.expneurol.2026.115758
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [3] Multimodal biomarker AI techniques for early neurocognitive disorder diagnosis: A systematic review.
+- **作者**：Catino F et al.
+- **期刊**：Artificial intelligence in medicine (2026 Jul)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41921464/ DOI: 10.1016/j.artmed.2026.103389
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-07-03 17:26)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Omega-3 fatty acids and tear cytokines modulation in dry eye patients with low omega-3 index. Have the beneficiaries been pinpointed?
+- **作者**：Gupta K et al.
+- **期刊**：Indian journal of ophthalmology (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41817560/ DOI: 10.4103/IJO.IJO_1506_25
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Dietary fat alters goblet cell function and microbial bile acid metabolism to promote intestinal lipid absorption in mice.
+- **作者**：Liang X et al.
+- **期刊**：Nature microbiology (2026 Jul)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42271159/ DOI: 10.1038/s41564-026-02381-9
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/09 (4 篇 / 3 領域) ===== -->
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-09 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Recessive variants in mitochondrial complex I nuclear subunits are an underrated cause of optic atrophy.
+- **作者**：Fiorini C et al.
+- **期刊**：Brain : a journal of neurology (2026 Jul 7)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/41234160/ DOI: 10.1093/brain/awaf422
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 老花多焦點 — PubMed 自動抓取 (2026-07-09 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：progressive addition lens freeform design | trifocal IOL presbyopia outcomes ...
+
+### [1] Clinical Outcomes After Bilateral Mix-and-match Implantation of Extended Depth of Focus and Trifocal Intraocular Lenses.
+- **作者**：An H et al.
+- **期刊**：Korean journal of ophthalmology : KJO (2026 Jul 8)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42415634/ DOI: 10.3341/kjo.2026.0105
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[presbyopia_multifocal]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-07-09 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Artificial Intelligence-Assisted Screening for Patients With Diabetic Retinopathy and Age-Related Macular Degeneration in Family Medicine and Geriatric and Gerontology Care: Protocol for a Pragmatic Randomized Clinical Trial.
+- **作者**：Kuo BI et al.
+- **期刊**：JMIR research protocols (2026 Jul 6)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42406913/ DOI: 10.2196/91699
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+### [2] 3D OCT-Based Retinal Biomarker Analysis for Automatic Regional-Wise Characterization of Neurodegenerative Diseases.
+- **作者**：Álvarez-Rodríguez L et al.
+- **期刊**：Journal of imaging informatics in medicine (2026 Jul 7)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42414714/ DOI: 10.1007/s10278-026-02098-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/12 (4 篇 / 3 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-12 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] [Regulation of SARM1 on SNPH expression and its participation in glaucomatous optic neuropathy].
+- **作者**：Zhang XJ et al.
+- **期刊**：[Zhonghua yan ke za zhi] Chinese journal of ophthalmology (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42379865/ DOI: 10.3760/cma.j.cn112142-20251106-00463
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-12 09:01)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] A multinational randomized clinical trial of an eye-tracking-based binocular amblyopia treatment in children aged 4-9 years.
+- **作者**：Yehezkel O et al.
+- **期刊**：Scientific reports (2026 Jul 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42426115/ DOI: 10.1038/s41598-026-60632-5
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Acute-onset esotropia and diplopia associated with transient hyperopic shift in a child with newly diagnosed diabetes.
+- **作者**：Smadar L et al.
+- **期刊**：Journal of AAPOS : the official publication of the American Association for Pediatric Ophthalmology and Strabismus (2026 Jul 9)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42425439/ DOI: 10.1016/j.jaapos.2026.104890
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-07-12 09:01)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Prediction of incident atrial fibrillation from retinal fundus images using a multimodal foundation model.
+- **作者**：Xu Y et al.
+- **期刊**：NPJ digital medicine (2026 Jul 8)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42420432/ DOI: 10.1038/s41746-026-02969-9
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/15 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-15 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Identification of ITGB2, ELN, and KLRK1 as stress granule-related biomarkers of pterygium through integrated transcriptomic analysis and machine learning.
+- **作者**：Cheng J et al.
+- **期刊**：Biochemical and biophysical research communications (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42447550/ DOI: 10.1016/j.bbrc.2026.154275
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] From Screening to Care: Delayed Clinical Follow-up After Childhood Myopia Identification and the Design of a Prospective Intervention Study.
+- **作者**：Pan W et al.
+- **期刊**：Ophthalmic & physiological optics : the journal of the British College of Ophthalmic Opticians (Optometrists) (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42446806/ DOI: 10.1007/s44402-026-00139-8
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-07-15 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] Short-term hot spring balneotherapy ameliorates sleep disorders: wrist-worn wearable-assessed sleep improvement associated with neuroimmune, tryptophan metabolic and gut microbiome alterations.
+- **作者**：Zhang X et al.
+- **期刊**：International journal of biometeorology (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42443654/ DOI: pii: 211. 10.1007/s00484-026-03273-7
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/18 (3 篇 / 2 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-18 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Diffractive optical element (D.O.E) spectacle lenses for myopia prevention and control: a small-scale pilot study among younger Chinese children.
+- **作者**：Zhu X et al.
+- **期刊**：BMJ open ophthalmology (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42463267/ DOI: pii: e002683. 10.1136/bmjophth-2025-002683
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Comparison of posterior scleral reinforcement surgery and repeated low-level red-light therapy in controlling high and super high myopia in Chinese children.
+- **作者**：Ma SY et al.
+- **期刊**：International journal of ophthalmology (2026)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42382970/ DOI: 10.18240/ijo.2026.07.17
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-18 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Real-world effectiveness of a binocular, dual-mechanism therapy in severe amblyopia: analysis from the PUPiL Registry.
+- **作者**：Kraus CL et al.
+- **期刊**：Journal of AAPOS : the official publication of the American Association for Pediatric Ophthalmology and Strabismus (2026 Jul 1)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42448098/ DOI: 10.1016/j.jaapos.2026.104901
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/24 (6 篇 / 4 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-24 10:19)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] Effects of orthokeratology with different back optic zone diameters on corneal biomechanics and myopia control: a 1-year randomized, double-blind, self-controlled study.
+- **作者**：Xie R et al.
+- **期刊**：Eye and vision (London, England) (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42482109/ DOI: 10.1186/s40662-026-00503-2
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] Long-term ocular safety and systemic exposure of doxycycline hyclate ophthalmic solution in juvenile rabbits: a 270-day preclinical GLP study.
+- **作者**：Chen YC et al.
+- **期刊**：Cutaneous and ocular toxicology (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42480058/ DOI: 10.1080/15569527.2026.2704097
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [3] To Investigate the Effect of Combined Use of 0.01% Atropine and 2% Carteolol Hydrochloride Eye Drops on Early-Onset Myopic Control in Western Chinese Children.
+- **作者**：Chen Q et al.
+- **期刊**：Ophthalmic epidemiology (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42480007/ DOI: 10.1080/09286586.2026.2706249
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-24 10:19)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Amblyopia in 2026: definitions, diagnosis, treatment, and emerging therapies.
+- **作者**：Zagui RMB
+- **期刊**：Arquivos brasileiros de oftalmologia (2026)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42484203/ DOI: 10.5935/0004-2749.2025-0327
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟡 數位眼疲勞 — PubMed 自動抓取 (2026-07-24 10:19)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：medium
+- **搜尋策略**：accommodative fatigue near work digital screen | NIBUT dry eye office workers screen time ...
+
+### [1] Computer Vision Syndrome and Ergonomic Risk Factors among Administrative Workers in Public Healthcare Facilities: A Cross-Sectional Occupational Study.
+- **作者**：Sezali MFF et al.
+- **期刊**：Journal of occupational health (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42476518/ DOI: pii: uiag040. 10.1093/joccuh/uiag040
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[digital_eyestrain]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-07-24 10:19)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Retinal structural and microvascular alterations as biomarkers of cerebral pathology and cognitive decline in Alzheimer's disease: An OCT/OCTA study.
+- **作者**：Chen Y et al.
+- **期刊**：Journal of Alzheimer's disease : JAD (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42484463/ DOI: 10.1177/13872877261470439
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+
+
+<!-- ===== PubMed 自動研究報告 2026/07/27 (5 篇 / 4 領域) ===== -->
+
+## 🔴 近視控制 — PubMed 自動抓取 (2026-07-27 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：(myopia control) AND (Taiwan OR Chinese OR Asian) | orthokeratology randomized controlled trial ...
+
+### [1] AI-based clinician decision support system for diagnosis of inherited retinal diseases: a multicenter, randomized trial.
+- **作者**：Jia H et al.
+- **期刊**：Nature medicine (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42498742/ DOI: 10.1038/s41591-026-04545-w
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+### [2] 3D Printing in Ophthalmology: From Basic Research to Clinical Transformation.
+- **作者**：Wu Z et al.
+- **期刊**：Acta biomaterialia (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42498151/ DOI: pii: S1742-7061(26)00485-X. 10.1016/j.actbio.2026.07.038
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[myopia_control]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🔴 兒童視力發展 — PubMed 自動抓取 (2026-07-27 09:00)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：high
+- **搜尋策略**：amblyopia dichoptic therapy children | convergence insufficiency reading children ...
+
+### [1] Epidemiology of refractive error and refractive changes in preschool children in Belgium.
+- **作者**：Aerschot JV et al.
+- **期刊**：Acta ophthalmologica (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42496034/ DOI: 10.1111/aos.70204
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[child_vision]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 眼睛與全身健康 — PubMed 自動抓取 (2026-07-27 09:01)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：diabetic retinopathy AI screening Taiwan | retinal biomarker Alzheimer dementia ...
+
+### [1] Treatment with dapagliflozin and empagliflozin reduces concentrations of N4-acetylcytidine in plasma, a biomarker associated with vascular damage.
+- **作者**：Gessner A et al.
+- **期刊**：Cardiovascular diabetology (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42498959/ DOI: 10.1186/s12933-026-03292-z
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[eye_systemic_health]] 相關
+
+> [待 Claude 深處理]
+
+---
+
+## 🟢 視覺營養飲食 — PubMed 自動抓取 (2026-07-27 09:01)
+- **來源**：PubMed E-utilities（自動）
+- **類型**：論文批次
+- **優先級**：normal
+- **搜尋策略**：lutein zeaxanthin myopia children | omega-3 fatty acid dry eye treatment ...
+
+### [1] The microbiome in Sjögren's syndrome: A missing link for ocular microbiome in autoimmune dry eye.
+- **作者**：Marieme K et al.
+- **期刊**：Autoimmunity reviews (2026 Jul 2)
+- **連結**：https://pubmed.ncbi.nlm.nih.gov/42492747/ DOI: 10.1016/j.autrev.2026.104142
+- **核心主張**：（待 Paper Digest 解構）
+- **建議模板**：文獻卡 (PaperNote)
+- **Antigravity 初判連結**：可能與 [[visual_nutrition]] 相關
+
+> [待 Claude 深處理]
+
+---

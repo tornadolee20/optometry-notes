@@ -74,11 +74,6 @@ Inbox/*.mp4
 open-notebook/
 scripts/voicebox-speak.ps1
 
-
-# Local text conversion backups
-*.bak
-
-
 # Hermes Configuration Sync Ignores
 hermes-config/auth.json
 hermes-config/auth.lock
@@ -94,3 +89,13 @@ hermes-config/image_cache/
 hermes-config/bootstrap-cache/
 hermes-config/sessions/
 hermes-config/pairing/
+
+# Local Obsidian UI state
+obsidian-vault/.obsidian/graph.json
+obsidian-vault/.obsidian/workspace.json
+
+# Local paper-researcher execution log
+skills/paper-researcher/fetch_log.txt
+
+# Independent nested project
+saas_sandbox/blank-page-launch-lovable/
