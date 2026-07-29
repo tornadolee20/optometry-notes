@@ -15,7 +15,7 @@
 
 ## 共用工程原則
 
-所有六個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
+所有七個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
 
 `.agents/skills/_shared/references/engineering-principles.md`
 
@@ -30,9 +30,9 @@
 | E. 文件同步 | 更新長期狀態文件前，要找出與現況矛盾的舊聲明 | `stale-status-sweep` | 程式驗證與 PR 出貨 |
 | F. Commit／Push／建立 PR | 實作完成、owner 已核准出貨 | `pr-ship` | 修 bug、final merge、deploy |
 | G. Final review／Merge | PR 已存在，owner 明確授權合併 | `pr-final-merge` | 初始實作與 production deployment |
-| H. Deploy／發布後驗證 | PR 已合併，準備部署或驗證部署結果 | **目前尚無專屬 Skill（GAP）** | **不得把 `pr-final-merge` 當作 deployment Skill** |
+| H. Deploy／發布後驗證 | PR 已合併，準備部署或驗證部署結果 | `hosted-deploy-smoke` | 規劃與實作；PR final merge；未授權的 production 操作；完整長時間回歸測試 |
 
-## 六個 Skill 快速選擇
+## 七個 Skill 快速選擇
 
 ### 1. project-state-audit
 - **一句話用途**：唯讀建立一份可信的專案現況快照。
@@ -85,9 +85,24 @@
 - **一句話用途**：對已存在的 PR 做最終審查、重新驗證、選擇策略並完成合併。
 - **何時使用**：PR 已存在，owner 明確授權合併。
 - **何時不要使用**：owner 未授權；PR 尚未建立（改用 `pr-ship`）；需要部署
-  或 production 驗證（**目前無對應 Skill，見 GAP H**）。
+  或 production 驗證（改用 `hosted-deploy-smoke`）。
 - **輸出**：合併結果 + merge 後驗證（`merged`，**不等於** `deployed`）。
-- **下一個可能銜接的 Skill**：目前無——部署階段是 GAP，見下方「目前缺口」。
+- **下一個可能銜接的 Skill**：`hosted-deploy-smoke`（若 owner 進一步授權
+  部署；merge 完成本身**不會自動觸發**部署）。
+
+### 7. hosted-deploy-smoke
+- **一句話用途**：owner 授權後對 hosted 環境執行受控部署，確認實際版本，
+  跑最小 smoke test，驗證 cleanup 與 baseline，並區分「已部署」與「已驗證」。
+- **何時使用**：變更已合併、owner 已針對本次具體部署明確授權、部署通道
+  與回退方案已知。
+- **何時不要使用**：owner 未授權；PR 尚未完成 final review（先用
+  `pr-final-merge`）；只需要唯讀稽核不涉及實際部署（改用
+  `hosted-fixture-audit-and-cleanup`）；無法判斷是否為 production。
+- **輸出**：部署與驗證報告（含 hosted version 確認、smoke test 結果、
+  fixture cleanup、baseline 比對、rollback 判斷）。
+- **上一個可能銜接的 Skill**：`pr-final-merge`（部署前提是已完成合併）。
+- **下一個可能銜接的 Skill**：`stale-status-sweep`（部署完成後若需要更新
+  長期狀態文件）。
 
 ## 常見任務選擇
 
@@ -98,9 +113,10 @@
 - **我要在 hosted 環境建立測試資料並清乾淨** → `hosted-fixture-audit-and-cleanup`
 - **功能完成了，準備 commit／push／開 PR** → `pr-ship`
 - **PR 已存在，準備做 final review** → `pr-final-merge`
-- **PR 已 merge，準備部署** → **目前沒有對應 Skill，不得誤用
-  `pr-final-merge`**。`pr-final-merge` 的職責在合併完成、驗證 base 分支
-  狀態後即結束，不涵蓋任何部署動作。
+- **PR 已 merge，準備受控部署與 hosted 驗證** → 使用 `hosted-deploy-smoke`。
+  - 必須 owner 明確授權（且是針對本次具體部署，不沿用合併時的授權）
+  - **不得因 merge 完成就自動部署**
+  - **不得把 `deployment command succeeded` 宣稱為 `hosted verified`**
 
 ## 狀態詞彙
 
@@ -122,14 +138,17 @@
 連結：
 
 - `requirement-to-plan`（生命週期 B 的規劃階段）
-- `deployment-readiness-review`（生命週期 H 前段）
-- `hosted-deploy-smoke` / `post-deploy-verification`（生命週期 H 核心）
+- `deployment-readiness-review`（生命週期 H 前段——部署前的就緒度評估，
+  仍是獨立缺口）
+
+`hosted-deploy-smoke` 已涵蓋生命週期 H 的 deployment execution 與
+post-deploy verification，**不再是缺口**。
 
 ## Orchestrator 狀態
 
 - 目前**沒有** orchestrator。
 - 現階段採**人工選擇 Skill**，依本文件的導航表與快速選擇清單判斷。
-- 等生命週期覆蓋更完整（尤其是 B、H 兩個 GAP 補上）、且實際出現路由混淆
+- 等生命週期覆蓋更完整（尤其是 B 這個 GAP 補上）、且實際出現路由混淆
   案例後，再評估是否建立 orchestrator。
 - 未來若建立 orchestrator，應**只負責路由與停止條件**，不直接執行高風險
   動作（stage/commit/push/merge/deploy 等仍需回到對應專項 Skill 執行，並
