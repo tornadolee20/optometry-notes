@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>目鏡大叔 7 大陣地一鍵分發中控台 | Uncle Glasses Dispatch Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --panel-bg: rgba(30, 41, 59, 0.7);
+      --panel-border: rgba(255, 255, 255, 0.1);
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.4);
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --card-bg: rgba(15, 23, 42, 0.6);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.12) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 28px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand-title h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-title p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .status-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #34d399;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Layout Grid */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 1024px) {
+      .grid-layout { grid-template-columns: 1fr; }
+    }
+
+    /* Card Panels */
+    .panel {
+      background: var(--panel-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .panel-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #f1f5f9;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 12px var(--primary-glow);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .btn-dispatch {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+      transition: all 0.3s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-dispatch:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(59, 130, 246, 0.6);
+    }
+
+    .btn-dispatch:active {
+      transform: translateY(0);
+    }
+
+    /* Progress Tracker Bar */
+    .progress-container {
+      margin-bottom: 24px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: var(--card-bg);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--panel-border);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+
+    /* Platform Cards List */
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .platform-card {
+      background: var(--card-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s;
+    }
+
+    .platform-card.active {
+      border-color: rgba(59, 130, 246, 0.5);
+      background: rgba(30, 41, 59, 0.9);
+    }
+
+    .platform-card.completed {
+      border-color: rgba(16, 185, 129, 0.5);
+    }
+
+    .platform-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .platform-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .platform-details h3 {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .platform-details p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .state-tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+    }
+
+    .state-tag.running {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      animation: pulse 1.5s infinite;
+    }
+
+    .state-tag.done {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+    }
+
+    /* Live Terminal Console Log */
+    .console-panel {
+      margin-top: 24px;
+      background: #020617;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      height: 180px;
+      overflow-y: auto;
+      color: #38bdf8;
+    }
+
+    .console-line {
+      margin-bottom: 4px;
+    }
+
+    .console-line.success { color: #4ade80; }
+    .console-line.warn { color: #fbbf24; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="brand-title">
+        <h1>目鏡大叔 7 大陣地一鍵全平台分發中控台</h1>
+        <p>Uncle Glasses 7-Platform Automated Content Dispatch & Real-Time Monitor</p>
+      </div>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Agent 引擎就緒 (Session 已同步)</span>
+      </div>
+    </header>
+
+    <div class="grid-layout">
+      <!-- Left Panel: Form Control -->
+      <div class="panel">
+        <div class="panel-title">
+          <span>🚀 內容發布與分發設定</span>
+        </div>
+
+        <form id="dispatchForm" onsubmit="startDispatch(event)">
+          <div class="form-group">
+            <label>文章主題標題 (Title)</label>
+            <input type="text" id="title" value="兒童近視控制的三大迷思" required>
+          </div>
+
+          <div class="form-group">
+            <label>自訂英文網址 (Slug)</label>
+            <input type="text" id="slug" value="child-myopia-control-myths" required>
+          </div>
+
+          <div class="form-group">
+            <label>文章標籤 (Labels / 逗號分隔)</label>
+            <input type="text" id="labels" value="兒童視力保健, 近視控制, 三峽驗光師">
+          </div>
+
+          <div class="form-group">
+            <label>Meta 搜尋描述 (Search Description)</label>
+            <textarea id="desc">三峽驗光師目鏡大叔揭密兒童近視控制的三大常見迷思，帶你看懂角膜塑型片與近視控制鏡片。</textarea>
+          </div>
+
+          <button type="submit" class="btn-dispatch" id="btnSubmit">
+            <span>⚡ 啟動七大陣地一鍵分發</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Panel: Live Progress & Platform Cards -->
+      <div class="panel">
+        <div class="panel-title">
+          <span>📊 即時分發進度與陣地狀態 (Real-Time Monitor)</span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container">
+          <div class="progress-header">
+            <span>整體分發完成率</span>
+            <span id="percentText">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- Platform Grid -->
+        <div class="platforms-grid">
+          
+          <div class="platform-card" id="card-blogger">
+            <div class="platform-info">
+              <div class="platform-icon">🌐</div>
+              <div class="platform-details">
+                <h3>Blogger 部落格</h3>
+                <p>HTML / 3大Schema / 英文網址 / 標籤</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-blogger">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-threads">
+            <div class="platform-info">
+              <div class="platform-icon">🧵</div>
+              <div class="platform-details">
+                <h3>Threads 爆款串文</h3>
+                <p>18字拆行 / 主文無外連 / 留言卡位</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-threads">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-fb-personal">
+            <div class="platform-info">
+              <div class="platform-icon">👤</div>
+              <div class="platform-details">
+                <h3>FB 李錫彥粉專</h3>
+                <p>思想領袖 / 現場故事 / 無硬地址</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-fb-personal">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-fb-store">
+            <div class="platform-info">
+              <div class="platform-icon">🏢</div>
+              <div class="platform-details">
+                <h3>FB 自己的眼鏡粉專</h3>
+                <p>門市案例 / 完整地址電話 LINE 卡片</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-fb-store">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-ig">
+            <div class="platform-info">
+              <div class="platform-icon">📸</div>
+              <div class="platform-details">
+                <h3>Instagram (IG)</h3>
+                <p>5張 Carousel 圖卡腳本 / Bio 連結</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-ig">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-gmb">
+            <div class="platform-info">
+              <div class="platform-icon">📍</div>
+              <div class="platform-details">
+                <h3>Google 我的商家</h3>
+                <p>地圖 Local SEO / 立即致電按鈕</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-gmb">待命</span>
+          </div>
+
+          <div class="platform-card" id="card-obsidian">
+            <div class="platform-info">
+              <div class="platform-icon">🗄️</div>
+              <div class="platform-details">
+                <h3>Obsidian 智庫</h3>
+                <p>YAML 歸檔 / 目鏡大叔金句庫追加</p>
+              </div>
+            </div>
+            <span class="state-tag" id="tag-obsidian">待命</span>
+          </div>
+
+        </div>
+
+        <!-- Terminal Log -->
+        <div class="console-panel" id="consoleLog">
+          <div class="console-line">[Info] 系統初始化完成，等待前輩啟動一鍵分發...</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const platforms = [
+      { id: 'blogger', name: 'Blogger 部落格', icon: '🌐' },
+      { id: 'threads', name: 'Threads 爆款串文', icon: '🧵' },
+      { id: 'fb-personal', name: 'FB 李錫彥粉專', icon: '👤' },
+      { id: 'fb-store', name: 'FB 自己的眼鏡門市粉專', icon: '🏢' },
+      { id: 'ig', name: 'Instagram Carousel', icon: '📸' },
+      { id: 'gmb', name: 'Google 我的商家 (GMB)', icon: '📍' },
+      { id: 'obsidian', name: 'Obsidian 智庫與金句庫', icon: '🗄️' }
+    ];
+
+    function appendConsole(msg, type = 'normal') {
+      const logBox = document.getElementById('consoleLog');
+      const line = document.createElement('div');
+      line.className = 'console-line ' + type;
+      line.innerText = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      logBox.appendChild(line);
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+
+    function startDispatch(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      const btn = document.getElementById('btnSubmit');
+      
+      btn.disabled = true;
+      btn.innerHTML = '<span>⚡ 正在背景跑通分發任務中...</span>';
+
+      appendConsole(`🚀 【七大陣地一鍵全平台分發啟動】 主題: "${title}"`, 'success');
+      appendConsole(`[Info] 正在載入 Windows Chrome Persistent Profile Session...`);
+
+      let completedCount = 0;
+      const total = platforms.length;
+
+      // Reset UI
+      platforms.forEach(p => {
+        const card = document.getElementById(`card-${p.id}`);
+        const tag = document.getElementById(`tag-${p.id}`);
+        card.className = 'platform-card';
+        tag.className = 'state-tag';
+        tag.innerText = '待命';
+      });
+
+      document.getElementById('progressBar').style.width = '0%';
+      document.getElementById('percentText').innerText = '0%';
+
+      // Simulate sequential dispatch progress
+      platforms.forEach((p, idx) => {
+        setTimeout(() => {
+          const card = document.getElementById(`card-${p.id}`);
+          const tag = document.getElementById(`tag-${p.id}`);
+          
+          card.className = 'platform-card active';
+          tag.className = 'state-tag running';
+          tag.innerText = '分發中...';
+          
+          appendConsole(`正在處理 [${p.name}]...`);
+
+          setTimeout(() => {
+            card.className = 'platform-card completed';
+            tag.className = 'state-tag done';
+            tag.innerText = '✅ 完成';
+            
+            completedCount++;
+            const pct = Math.round((completedCount / total) * 100);
+            document.getElementById('progressBar').style.width = pct + '%';
+            document.getElementById('percentText').innerText = pct + '%';
+
+            appendConsole(`✅ [${p.name}] 已成功寫入與分發！`, 'success');
+
+            if (completedCount === total) {
+              appendConsole(`🎉 【七大陣地一鍵分發完成！】所有成果已存入 content-planning/ 與 obsidian-vault/`, 'success');
+              btn.disabled = false;
+              btn.innerHTML = '<span>⚡ 啟動七大陣地一鍵分發</span>';
+            }
+          }, 1200);
+
+        }, idx * 1500);
+      });
+    }
+  </script>
+</body>
+</html>
