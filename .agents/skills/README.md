@@ -15,7 +15,7 @@
 
 ## 共用工程原則
 
-所有九個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
+所有十個 Skill 均受下列共用規範約束，遇到規則衝突時以該檔案為準：
 
 `.agents/skills/_shared/references/engineering-principles.md`
 
@@ -24,7 +24,8 @@
 | 階段 | 任務情境 | 使用 Skill | 不負責 |
 |---|---|---|---|
 | A. 接手與現況建立 | 接手 repo、開新對話、久未接觸後回來、動手前先確認現況 | `project-state-audit` | 修改、commit、push、PR、merge |
-| B. Requirement to plan | 需要把模糊需求轉成可執行計畫 | `requirement-to-plan` | 修改程式碼；開始實作；建立 migration；commit／push／PR；deployment |
+| B1. Requirement to plan | 需要把模糊需求轉成可執行計畫 | `requirement-to-plan` | 修改程式碼；開始實作；建立 migration；commit／push／PR；deployment |
+| B2. Incremental implementation | 已有 owner 核准的計畫或 slice，準備逐片實作與驗證 | `incremental-feature-development` | 規劃；出貨；合併；部署；部分完成即宣稱整體完成 |
 | C. 驗證與除錯 | 修好一個 bug/regression，要證明測試真的抓得到問題 | `regression-negative-proof` | 一般性診斷與所有類型測試；只處理修復前後的真假證明 |
 | D. Hosted／遠端驗證 | 需要在 hosted 環境建立測試資料、驗證行為、清除乾淨 | `hosted-fixture-audit-and-cleanup` | 完整 deployment；只處理 disposable fixture、驗證與清除 |
 | E. 文件同步 | 更新長期狀態文件前，要找出與現況矛盾的舊聲明 | `stale-status-sweep` | 程式驗證與 PR 出貨 |
@@ -37,7 +38,7 @@
 `deployment-readiness-review` 的結論不等於已部署，只是判斷是否可以進入
 `hosted-deploy-smoke`。
 
-### B. Requirement to plan
+### B1. Requirement to plan
 
 - Skill：`requirement-to-plan`
 - 用途：將模糊需求轉成可執行計畫
@@ -60,14 +61,32 @@
   - commit／push／PR
   - deployment
 
+### B2. Incremental implementation
+
+- Skill：`incremental-feature-development`
+- 用途：消費 `requirement-to-plan` 產出、owner 已核准的 implementation
+  slices，逐片實作、逐片驗證、逐片停止
+- 涵蓋：
+  - 一次只執行一個 slice
+  - 修改前確認 protected behavior
+  - 每個 slice 完成後立即驗證
+  - 驗證失敗先 repair，不進下一 slice
+  - scope expansion 或未確認架構決策時停止
+- 不負責：
+  - 規劃（改用 `requirement-to-plan`）
+  - 出貨、合併、部署
+
 明確保留：
 
 - `READY FOR IMPLEMENTATION` 不等於已實作
 - `READY WITH CONDITIONS` 不得直接開始實作
 - 計畫完成不等於 issue 已建立
 - issue 已建立不等於有人執行
+- partial implementation 不等於 complete
+- build passed 不等於 verified
+- implementation complete 不等於 ready to ship
 
-## 九個 Skill 快速選擇
+## 十個 Skill 快速選擇
 
 ### 1. project-state-audit
 - **一句話用途**：唯讀建立一份可信的專案現況快照。
@@ -79,8 +98,8 @@
 - **輸出**：現況快照 + 狀態分類（已完成/進行中/未驗證/blocked/歷史）+
   下一步建議（不執行）。
 - **下一個可能銜接的 Skill**：依盤點結果決定——可能是 `stale-status-sweep`
-  （若發現文件過時）、實作階段（目前 GAP）、或直接 `pr-ship`（若現況顯示
-  已可出貨）。
+  （若發現文件過時）、`requirement-to-plan`（若需要先規劃）、或直接
+  `pr-ship`（若現況顯示已可出貨）。
 
 ### 2. regression-negative-proof
 - **一句話用途**：證明修復前測試失敗、修復後測試通過，避免假陽性測試。
@@ -168,9 +187,28 @@
 - **輸出**：planning package + readiness status + owner decision list +
   recommended execution order。
 - **上一個可能銜接的 Skill**：`project-state-audit`。
-- **下一個可能銜接的 Skill**：目前尚無專屬 implementation Skill，由
-  owner 核准後再進入實作；實作後可進入 `regression-negative-proof` 或
-  其他驗證流程。
+- **下一個可能銜接的 Skill**：owner 核准計畫後，交給
+  `incremental-feature-development` 逐片實作；實作後可進入
+  `regression-negative-proof` 或其他驗證流程。
+
+### 10. incremental-feature-development
+- **一句話用途**：消費 owner 已核准的 implementation slices，逐片實作、
+  逐片驗證、逐片停止。
+- **何時使用**：
+  - 已有 owner 核准的 plan 或 slice 清單
+  - 上一個 slice 已驗證通過，準備進入下一個
+- **何時不要使用**：
+  - 尚未有 owner 核准的計畫（改用 `requirement-to-plan`）
+  - 單一機械修改，無需拆片
+  - 正在除錯既有 regression（改用 `regression-negative-proof`）
+  - 全部 slice 已完成，準備出貨（改用 `pr-ship`）
+- **輸出**：completed／partial／blocked slices + changed files +
+  verification evidence + remaining work + owner decisions needed +
+  handoff。
+- **上一個可能銜接的 Skill**：`requirement-to-plan`（前提是計畫已 owner
+  核准）。
+- **下一個可能銜接的 Skill**：`regression-negative-proof`（若牽涉 bug
+  fix 真偽證明）或 `pr-ship`（全部 slice 完成且驗證通過後）。
 
 ## 常見任務選擇
 
@@ -178,6 +216,7 @@
 - **我有 PRD，但還沒有可執行 task list** → `requirement-to-plan`
 - **我需要 scope、acceptance criteria、risk、dependency 與 slice**
   → `requirement-to-plan`
+- **我有 owner 核准的計畫，要開始逐片實作** → `incremental-feature-development`
 - **我剛接手一個 repo** → `project-state-audit`
 - **我不確定文件與程式是否一致** → 先 `project-state-audit` 建立現況，
   再用 `stale-status-sweep` 處理文件修改
@@ -210,22 +249,22 @@
 ## 目前缺口
 
 - 需求轉計畫已由 `requirement-to-plan` 覆蓋。
-- 目前尚未建立專屬 implementation execution Skill——`requirement-to-plan`
-  只產出計畫，不執行實作，兩者不得混為一談。
-- `incremental-feature-development` 為未來候選，但目前不存在，不得假設
-  已存在或已被其他 Skill 覆蓋。
-- 不得把 `requirement-to-plan` 誤認為實作 Skill。
+- Incremental implementation 已由 `incremental-feature-development`
+  覆蓋，不再是缺口。
+- 生命週期 A 到 H2 目前**沒有結構性缺口**。
+- Orchestrator 仍**刻意暫緩**（intentionally deferred）——不是缺口，是
+  刻意的階段性決定，見下方「Orchestrator 狀態」。
 
 生命週期 H 目前已由兩個 Skill 涵蓋：`deployment-readiness-review`（H1，
 部署前就緒度評估）與 `hosted-deploy-smoke`（H2，deployment execution 與
-post-deploy verification），**不再是缺口**。
+post-deploy verification）。
 
 ## 工程流程順序
 
 ```text
 project-state-audit
 → requirement-to-plan
-→ implementation（目前無專屬 Skill）
+→ incremental-feature-development
 → regression-negative-proof
 → stale-status-sweep
 → pr-ship
@@ -235,9 +274,12 @@ project-state-audit
 ```
 
 - `requirement-to-plan` 只產出 plan，不執行 implementation。
-- implementation 階段目前仍需人工或其他工作流執行，不得假裝由
-  `requirement-to-plan` 或任何既有 Skill 代為完成。
+- `incremental-feature-development` 只執行 owner 已核准的 plan／slice，
+  不規劃、不出貨、不合併、不部署。
 - 不得跳過 owner 核准，直接從 plan 進入實作。
+- plan 不等於 implementation；partial implementation 不等於
+  complete；build passed 不等於 verified；implementation complete
+  不等於 ready to ship。
 
 ## Orchestrator 狀態
 
@@ -245,7 +287,7 @@ project-state-audit
 - 現階段仍使用 Skill Map **人工選擇**，依本文件的導航表與快速選擇清單
   判斷。
 - **不得**改成「已準備建立」。
-- 先觀察九個 Skill 的實際路由混淆案例後，再評估是否建立 orchestrator。
+- 先觀察十個 Skill 的實際路由混淆案例後，再評估是否建立 orchestrator。
 - 未來若建立 orchestrator，應**只負責路由與停止條件**，不直接執行高風險
   動作（stage/commit/push/merge/deploy 等仍需回到對應專項 Skill 執行，並
   遵守各自的 owner 授權要求）。
