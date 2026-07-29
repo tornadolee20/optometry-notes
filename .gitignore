@@ -101,5 +101,7 @@ hermes-config/cache/
 hermes-config/audio_cache/
 hermes-config/image_cache/
 hermes-config/bootstrap-cache/
-hermes-config/sessions/
+
+# Agent 瀏覽器沙盒 Session 目錄
+.agent-chrome-profile/
 hermes-config/pairing/
