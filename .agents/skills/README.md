@@ -259,6 +259,39 @@
 部署前就緒度評估）與 `hosted-deploy-smoke`（H2，deployment execution 與
 post-deploy verification）。
 
+## Out-of-scope operational scenarios
+
+目前十個 Skill 涵蓋的是**計畫性**工程生命週期，**不涵蓋**正在發生的
+production incident response。
+
+當出現：
+
+- production outage
+- data corruption
+- security incident
+- active customer-impacting failure
+- unknown blast radius
+
+**不得**硬套：
+
+- `hosted-deploy-smoke`
+- `pr-final-merge`
+- `incremental-feature-development`
+
+應停止一般工作流，改由：
+
+- incident-specific runbook
+- on-call／owner
+- security／operations 人員
+- 人工判斷
+
+處理。
+
+明確說明：
+
+- 這是**刻意的範圍邊界**，不是目前工程生命週期的阻擋性缺口。
+- 本輪**不建立** incident-response Skill。
+
 ## 工程流程順序
 
 ```text

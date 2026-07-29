@@ -136,3 +136,37 @@ source of truth 現場讀取：
 - Commit message 走 conventional commits；每輪結束等 owner 一次核准
   commit + push + PR（工作流程偏好，非環境狀態；若 owner 明確改變偏好，以最新
   指示為準）。
+
+## K. Owner authority evidence（owner 核准／授權的可回查記錄）
+
+高風險階段（implementation、ship、merge、deployment、hosted write、rollback）
+需要的 owner 核准／授權，至少應能回查以下欄位：
+
+- 授權者
+- 授權的具體動作
+- 授權範圍
+- 目標 branch／PR／environment
+- 時間或 execution window
+- 限制條件
+- 是否允許：
+  - implementation
+  - ship
+  - merge
+  - deployment
+  - hosted write
+  - rollback
+
+可接受形式包括：
+
+- 當前對話中的明確指示
+- issue／ticket 核准紀錄
+- PR review／approval
+- 已保存的書面決策
+
+明確規則：
+
+- 前一階段的授權**不得**自動延續到下一個高風險階段。
+- 「計畫核准」**不等於**「合併核准」。
+- 「readiness GO」**不等於**「部署授權」。
+- 含糊語句（例如「應該可以了」「差不多了」）**不得**視為明確授權。
+- 無法回查授權時，標記 `NOT VERIFIED` 或 `blocked`，不得自行推定已獲授權。
