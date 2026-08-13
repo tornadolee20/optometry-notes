@@ -1,0 +1,37 @@
+{
+  "contractVersion": "0.1.0",
+  "commonRequired": ["id", "type", "status", "root_topic", "parent", "topic", "domain", "created", "last_updated", "related", "sources", "evidence_level", "gap_status", "human_review", "discovery_ready"],
+  "types": ["root-topic", "mother-topic", "research-question", "evidence-card", "uncle-lens", "practice-card", "field-observation", "mature-knowledge", "discovery-question", "content-draft"],
+  "statuses": ["idea", "decomposed", "researching", "evidence-ready", "waiting-human", "thinking", "field-observation", "content-ready", "published", "mature", "discovery", "candidate", "draft", "update-needed"],
+  "evidenceLevels": ["C1", "C2", "H", ""],
+  "gapStatuses": ["not-assessed", "open", "partial", "closed"],
+  "humanReviews": ["not-required", "pending", "approved", "revision-required"],
+  "discoveryRelations": ["SUPPORTS", "CONTRADICTS", "RELATED_TO", "SHARES_MECHANISM", "MAY_EXPLAIN", "MISSING_LINK", "CREATES_NEW_QUESTION"],
+  "platforms": ["facebook", "threads", "blog", "short_video", "podcast", "teaching"],
+  "persistedPlatforms": ["facebook", "threads", "blog", "short_video", "podcast", "teaching", "blog-review-draft"],
+  "idPatterns": {
+    "root-topic": "^KDF-[0-9]{3}$",
+    "mother-topic": "^KDF-[0-9]{3}-[A-H]$",
+    "research-question": "^KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "evidence-card": "^EVC-KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "uncle-lens": "^ULC-KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "practice-card": "^PRC-KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "field-observation": "^FOC-KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "mature-knowledge": "^MKC-KDF-[0-9]{3}-[A-H]-[0-9]{3}$",
+    "discovery-question": "^DQ-KDF-[0-9]{3}-[0-9]{3}$",
+    "content-draft": "^CNT-KDF-[0-9]{3}-[A-H]-[0-9]{3}-(FB|THR|BLOG|VID|POD|TEACH)-[0-9]{3}$"
+  },
+  "typeRequired": {
+    "root-topic": ["mother_topics", "state_history", "gate_1_evidence_review", "gate_2_uncle_lens", "gate_3_publish_review"],
+    "mother-topic": ["research_questions"],
+    "research-question": ["question_framework", "population", "intervention_or_exposure", "comparator", "outcomes", "search_strategy"],
+    "evidence-card": ["research_question", "search_date", "search_strategy", "study_designs", "conflicting_evidence"],
+    "uncle-lens": ["source_evidence", "observation_is_evidence", "human_confirmed", "human_source"],
+    "practice-card": ["source_evidence", "source_uncle_lens", "practice_status"],
+    "field-observation": ["source_practice", "validated_questionnaire", "observation_is_evidence", "scale_definition"],
+    "mature-knowledge": ["maturity", "source_evidence", "source_uncle_lens", "source_practice", "field_observation", "content_assets", "published_assets", "reader_feedback", "supporting_knowledge", "contradictory_knowledge", "open_questions", "new_hypotheses", "last_evidence_update", "last_field_update", "last_content_update"],
+    "discovery-question": ["origin_cards", "relation_type", "relations", "reason_generated", "missing_evidence", "priority", "human_approved"],
+    "content-draft": ["source_knowledge", "platform", "publish_approved"]
+  },
+  "parentTypes": {"root-topic": null, "mother-topic": "root-topic", "research-question": "mother-topic", "evidence-card": "research-question", "uncle-lens": "research-question", "practice-card": "research-question", "field-observation": "research-question", "mature-knowledge": "research-question", "discovery-question": "root-topic", "content-draft": "mature-knowledge"}
+}

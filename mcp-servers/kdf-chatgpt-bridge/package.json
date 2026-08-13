@@ -1,0 +1,22 @@
+{
+  "name": "@uncle-glasses/kdf-chatgpt-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local least-privilege ChatGPT and CLI bridge for the KDF Obsidian namespace",
+  "engines": {"node": ">=22"},
+  "bin": {"kdf": "dist/cli.js"},
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test dist/test/*.test.js",
+    "kdf": "npm run build --silent && node dist/cli.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.30",
+    "typescript": "^5.8.3"
+  }
+}

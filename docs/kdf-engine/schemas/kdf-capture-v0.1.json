@@ -1,0 +1,10 @@
+{
+  "contractVersion": "0.1.0",
+  "type": "capture",
+  "status": "unclassified",
+  "required": ["id", "type", "status", "created_at", "source", "source_type", "human_provided", "request_id", "content_sha256"],
+  "idPattern": "^CAP-[0-9]{8}T[0-9]{6}[0-9]{3}Z-[A-F0-9]{8}$",
+  "source": "chatgpt",
+  "source_type": "human-input",
+  "human_provided": true
+}
