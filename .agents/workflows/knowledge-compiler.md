@@ -110,3 +110,57 @@ After reading a source, answer all of these:
 4. Should the result become a card, MOC update, SOP, or skill change?
 
 If you cannot answer these, the source has not yet been compiled.
+
+## KDF Adapter
+
+Use this adapter when the input carries a stable KDF ID or comes from `/knowledge-discovery`.
+
+The adapter extends the existing compiler; all update-before-create, canonical-page, contradiction, backlink, and lint rules above still apply.
+
+### Evidence Card -> Mature Knowledge candidate
+
+Required inputs:
+
+- one KDF Research Question
+- one Evidence Card with source provenance
+- one human-sourced Uncle Lens Card
+- one Practice Card
+
+Optional input:
+
+- Field Observation records, explicitly labeled as observation rather than evidence
+
+Compile into a `mature-knowledge` object that preserves:
+
+- the original question
+- evidence summary, confidence, and unresolved gap
+- only confirmed human perspective
+- practice implications and professional boundary
+- links back to Evidence, Uncle Lens, Practice, and Field Observation
+- supporting, contradictory, and related knowledge
+- open questions and hypotheses
+
+Creating this object does not itself grant the `mature` lifecycle state. Until required Human Gates pass, keep `status: waiting-human`, `human_review: pending`, and `discovery_ready: false`.
+
+### Mature Knowledge -> relation scan -> Discovery Question
+
+Compare at least two Evidence or Mature Knowledge objects using the relation vocabulary in `docs/kdf-engine/DISCOVERY-RELATIONS.md`.
+
+The compiler may create a `discovery-question` candidate only. It must persist:
+
+- two or more origin cards
+- relation type and reason
+- missing evidence
+- priority
+- `human_approved: false` by default
+
+An unapproved candidate must not enter research.
+
+### Content file-back
+
+When a Mature Knowledge object creates a content asset:
+
+- add `source_knowledge`
+- add the asset to `published_assets` only after publication
+- if evidence changes materially, mark backlinking assets `update-needed`
+- never publish from this adapter

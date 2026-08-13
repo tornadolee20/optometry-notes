@@ -13,6 +13,27 @@ description: 一魚多吃內容繁衍飛輪。輸入一個核心主題或痛點�
 - 「一魚多吃」
 - 「幫我把這個話題展開成多種素材」
 
+## 🛂 Knowledge Source Gate
+
+Before producing formal platform content, classify the input:
+
+1. `mature-knowledge` with required Human Gates passed, or
+2. another Knowledge Card explicitly approved by a human for content use, or
+3. an unreviewed topic / pain point.
+
+Only categories 1 and 2 may enter the formal four-format compiler.
+
+Category 3 may produce an **ideation preview only**. It must not be described as evidence-grounded content, saved as a formal platform asset, or prepared for publication until it is routed through `/knowledge-discovery` or another evidence review.
+
+Every saved platform asset must include:
+
+```yaml
+source_knowledge: ["[[MKC-or-approved-card-id]]"]
+publish_approved: false
+```
+
+Public release remains a separate human decision.
+
 ---
 
 ## 🌱 輸入確認
