@@ -262,7 +262,9 @@ export class KdfService {
     if (!evidence || !stringList(evidence.frontmatter.sources).length) missing.push("Evidence Card with provenance");
     if (root.frontmatter.gate_1_evidence_review !== "approved") missing.push("Gate 1 Evidence Review approval");
     if (!uncle) missing.push("Uncle Lens");
-    else if (uncle.frontmatter.human_confirmed !== true || uncle.frontmatter.human_review !== "approved") missing.push("confirmed Uncle Lens");
+    else if (uncle.frontmatter.human_confirmed !== true || uncle.frontmatter.human_review !== "approved") {
+      throw new KdfError("HUMAN_CONFIRMATION_REQUIRED", "Mature Knowledge requires a human-confirmed Uncle Lens");
+    }
     if (!practice) missing.push("Practice Card");
     const id = "MKC-" + String(question.frontmatter.id);
     const target = this.repository.formalTarget(rootId(question), id);
@@ -312,7 +314,7 @@ export class KdfService {
       platform: input.platform, publish_approved: false, gate_3_publish_review: "pending" });
     const text = serializeMarkdown(fm, "# " + id + "｜Private Draft\n\n" + bodyInput + "\n\n## Source Knowledge\n\n" + wikilink(String(source.frontmatter.id)));
     const pre = await this.validator.validate({ path: target, text });
-    if (!pre.passed) return result("kdf_generate_content", "prepare", { save_ready: false, target, proposed_hash: sha256(text), candidate_content: bodyInput },
+    if (!pre.passed) return result("kdf_generate_content", "prepare", { save_ready: false, target, expected_hash: null, proposed_hash: sha256(text), candidate_content: bodyInput },
       { validation: { pre_write: pre, post_write: PASS }, missing_requirements: ["valid content candidate"] });
     return this.prepare("kdf_generate_content", target, id, text, null, [], { save_ready: true, target, proposed_hash: sha256(text), candidate_content: bodyInput });
   }
@@ -345,7 +347,7 @@ export class KdfService {
       + "\n\n## Why Candidate Only\n\nThis is a new question, not a scientific conclusion.\n\n## Origin Cards\n\n"
       + origins.map((v) => "- " + wikilink(v)).join("\n"));
     const pre = await this.validator.validate({ path: target, text });
-    if (!pre.passed) return result("kdf_discover", "prepare", { save_ready: false, target, proposed_hash: sha256(text), candidate_question: question },
+    if (!pre.passed) return result("kdf_discover", "prepare", { save_ready: false, target, expected_hash: null, proposed_hash: sha256(text), candidate_question: question },
       { validation: { pre_write: pre, post_write: PASS }, missing_requirements: ["valid discovery candidate"] });
     return this.prepare("kdf_discover", target, id, text, null, [], { save_ready: true, target, proposed_hash: sha256(text), candidate_question: question, human_approved: false });
   }
@@ -353,7 +355,7 @@ export class KdfService {
   private async prepare(tool: PreparedOperation["tool"], target: string, id: string, text: string, expected: string | null, missing: string[], data: Record<string, JsonValue>): Promise<ServiceResult> {
     const op = await this.prepared.create({ tool, target, card_id: id, text, proposed_hash: sha256(text), expected_hash: expected, missing_requirements: missing });
     await this.audit.append({ operation: tool + ":prepare", operation_id: op.operation_id, card_id: id, path: target, input_sha256: op.proposed_hash, result: "dry-run", validation_passed: true });
-    return result(tool, "prepare", { ...data, operation_id: op.operation_id, expires_at: op.expires_at },
+    return result(tool, "prepare", { ...data, operation_id: op.operation_id, expected_hash: op.expected_hash, expires_at: op.expires_at },
       { operation_id: op.operation_id, planned_changes: [{ action: expected ? "update" : "create", path: target }], files_affected: [target] });
   }
 

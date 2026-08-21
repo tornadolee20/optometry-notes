@@ -29,10 +29,19 @@ write to live KDF-001 artifacts.
 | 8 | traversal/drive/UNC/reparse path | rejected before access |
 | 9 | invalid frontmatter | no final file or temp residue |
 | 10 | duplicate ID | rejected, original unchanged |
+| 11 | prepare new/existing targets | explicit `expected_hash`: null/SHA-256 |
+| 12 | pending Uncle Lens compile prepare | `HUMAN_CONFIRMATION_REQUIRED`, no operation or mutation |
+| 13 | real client prepare, fixture revision, save | `HASH_MISMATCH`, helper revision preserved |
 
 Negative coverage also includes malformed restricted YAML, wrong parent type, missing
 provenance, dirty target, expected-hash conflict, concurrent writers, stale lock,
 interruption, rollback, expired/reused prepare, and audit redaction.
+
+Real-client conflict acceptance uses only a temporary `kdf-bridge-test-*` repository.
+The compiled test helper validates that the root is a direct child of the system temp
+directory and fixes the only mutable target to `MKC-KDF-001-B-001.md`. It is not an
+MCP tool, never enters the formal manifest, and removes the whole isolated fixture
+after lock, temp, prepared-operation, audit-redaction, and target-integrity checks.
 
 ## Commands and pass gate
 

@@ -1,6 +1,6 @@
 # KDF ChatGPT Bridge v0.1 Implementation Status
 
-Status: `PASS`
+Status: `REAL CLIENT ACCEPTED`
 
 Verified: 2026-08-21 (Asia/Taipei)
 
@@ -22,7 +22,8 @@ Verified: 2026-08-21 (Asia/Taipei)
 ## Verification evidence
 
 - `npm.cmd ci --cache .npm-cache --no-audit --no-fund`: PASS, 96 packages
-- `npm.cmd test`: PASS, 20 tests, 0 failed, 0 skipped
+- `npm.cmd test`: PASS, 22 tests, 0 failed, 0 skipped
+- focused core/storage safety suite: PASS, 12 tests, 0 failed, 0 skipped
 - TypeScript build: PASS
 - MCP SDK client smoke: PASS, exactly 8 tools and structured output
 - KDF-001 E2E: PASS
@@ -34,9 +35,30 @@ Verified: 2026-08-21 (Asia/Taipei)
 - protected-path audit: 0 hits
 - existing KDF artifact diff: empty
 
+## v0.1.1 contract closure
+
+- all three prepare-capable services explicitly return `data.expected_hash`;
+  a real client observed JSON `null` for a new content target and a 64-character
+  SHA-256 for an existing Mature target
+- pending Uncle Lens compile prepare returns
+  `HUMAN_CONFIRMATION_REQUIRED` immediately; real-client readback proved the Mature
+  hash unchanged, `operation_id: null`, and zero prepared-operation delta
+- Codex Desktop bundled CLI `0.148.0-alpha.21` connected to the local STDIO server
+  and discovered exactly the eight documented tools
+- the real client prepared existing target hash
+  `917bd9452f155cf6d84b59d28c6cda55346b57ecd66b522f6d7d404a87f8f722`;
+  the dedicated temp-fixture helper committed a different target hash, and save
+  returned `HASH_MISMATCH` within the unchanged 15-minute TTL
+- post-conflict readback preserved the helper marker and did not install proposal
+  content; lock/temp counts were zero, audit recorded `HASH_MISMATCH`, audit contained
+  no proposal text, and no rollback failure occurred
+- both acceptance fixtures were removed by the namespace-restricted helper; final
+  existence checks were false
+
 Manifest reconciliation started from checkpoint
-`a9542d7a4345ae3f80f81ef58b22ffda58ff682b`. No publish, migration, existing KDF
-card mutation, or v0.1.1 contract change was performed.
+`a9542d7a4345ae3f80f81ef58b22ffda58ff682b`. Contract closure changed only the
+bridge service, isolated tests/helper, and directly related bridge documents. No
+publish, migration, schema/lifecycle change, or existing KDF card mutation occurred.
 
 ## Manifest baseline reconciliation
 

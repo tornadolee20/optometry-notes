@@ -72,6 +72,11 @@ Creating a new target uses `expected_hash: null`. Updating an existing target re
 the exact SHA-256 returned by `kdf_read_card` or prepare. A mismatch is
 `HASH_MISMATCH`; the target is not overwritten.
 
+Every prepare response from `kdf_compile_mature`, `kdf_generate_content`, and
+`kdf_discover` owns an explicit `data.expected_hash` property. It is a 64-character
+lowercase SHA-256 for an existing target and JSON `null` for a new target; clients
+must not infer an omitted value.
+
 ### Prepare rule
 
 For higher-risk tools, candidate bytes are submitted during `prepare` and stored by
@@ -362,8 +367,10 @@ prepared candidate.
 - Field Observation is optional and never treated as evidence.
 - `check` never creates a prepared operation.
 - `prepare` may return a preview when incomplete, but `save_ready` stays false.
-- Saving a pending Uncle Lens returns `HUMAN_CONFIRMATION_REQUIRED`.
-- Saving other incomplete requirements returns `MISSING_REQUIREMENTS`.
+- A pending or unconfirmed Uncle Lens makes `prepare` fail immediately with
+  `HUMAN_CONFIRMATION_REQUIRED`; no prepared operation or artifact is created.
+- Other incomplete requirements remain a non-writing preview with
+  `MISSING_REQUIREMENTS` in the result.
 - A Mature Knowledge file remains a candidate unless lifecycle rules independently
   permit `status: mature`.
 
