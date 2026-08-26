@@ -46,7 +46,7 @@ test("observation request id is idempotent and cannot hide changed text", async 
     const replay = await fx.service.addObservation({ ...base, text: "本人提供的同一筆觀察。" });
     assert.equal((replay.data as { idempotent_replay: boolean }).idempotent_replay, true);
     await assert.rejects(() => fx.service.addObservation({ ...base, text: "同 request id 的不同觀察。" }),
-      (error: unknown) => error instanceof KdfError && error.code === "INVALID_INPUT");
+      (error: unknown) => error instanceof KdfError && error.code === "IDEMPOTENCY_CONFLICT");
     assert.equal((await fx.service.readCard({ id: "FOC-KDF-001-B-001" }).then((v) => (v.data as { sha256: string }).sha256)),
       (first.data as { sha256: string }).sha256);
   } finally { await fx.cleanup(); }

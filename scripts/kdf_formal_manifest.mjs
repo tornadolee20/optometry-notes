@@ -97,9 +97,7 @@ async function calculate(repoRoot) {
   const discoveredSet = new Set(discoveredPaths);
   const missing = expectedPaths.filter((item) => !discoveredSet.has(item));
   const unexpected = discoveredPaths.filter((item) => !expectedSet.has(item));
-  if (missing.length > 0 || unexpected.length > 0) {
-    throw new Error(`formal artifact membership mismatch: ${JSON.stringify({ missing, unexpected })}`);
-  }
+  if (missing.length > 0) throw new Error(`baseline artifact missing: ${JSON.stringify({ missing })}`);
 
   const artifacts = [];
   for (const relativePath of expectedPaths) {
@@ -124,6 +122,9 @@ async function calculate(repoRoot) {
     manifest_sha256: manifestSha256,
     authoritative_sha256: AUTHORITATIVE_HASH,
     matches_authoritative: manifestSha256 === AUTHORITATIVE_HASH,
+    baseline_equality: manifestSha256 === AUTHORITATIVE_HASH && unexpected.length === 0,
+    state: manifestSha256 !== AUTHORITATIVE_HASH ? "BASELINE_INTEGRITY_FAILED" : unexpected.length ? "BASELINE_CHANGED" : "BASELINE_MATCH",
+    added_since_baseline: unexpected,
     superseded_non_reproducible_sha256: SUPERSEDED_HASH,
     artifacts,
   };

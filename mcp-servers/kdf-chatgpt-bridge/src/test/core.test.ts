@@ -52,6 +52,21 @@ test("invalid candidate is never written and leaves no temp file", async () => {
   } finally { await fx.cleanup(); }
 });
 
+test("broken Wikilink is reported and never guessed or repaired", async () => {
+  const fx = await fixtureRepo();
+  try {
+    const target = path.join(fx.root, "obsidian-vault/04-知識卡片/KDF/KDF-001/KDF-001-B-001.md");
+    const before = await readFile(target, "utf8");
+    const broken = before.replace("[[KDF-001-B]]", "[[MISSING-KDF-CARD]]");
+    assert.notEqual(broken, before);
+    await writeFile(target, broken, "utf8");
+    const report = await fx.service.validate();
+    assert.equal(report.passed, false);
+    assert(report.errors.some((error) => error.includes("MISSING-KDF-CARD")));
+    assert.equal(await readFile(target, "utf8"), broken);
+  } finally { await fx.cleanup(); }
+});
+
 test("reparse/symlink escape is rejected when platform permits creation", async (t) => {
   const fx = await fixtureRepo();
   try {

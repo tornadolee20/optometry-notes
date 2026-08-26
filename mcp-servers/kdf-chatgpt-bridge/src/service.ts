@@ -9,6 +9,7 @@ import { PreparedStore, type PreparedOperation } from "./prepared-store.js";
 import { frontmatterSummary, sha256, stringList, titleFrom, VaultRepository } from "./repository.js";
 import { SafeWriter } from "./safe-writer.js";
 import { KdfValidator } from "./validator.js";
+import { runtimeSecurityAssumptions } from "./runtime-persistence.js";
 
 type SearchInput = { query?: string; type?: string; root_topic?: string; status?: string; limit?: number };
 type CaptureInput = { text: string; title?: string; tags?: string[]; related_cards?: string[]; request_id?: string; dry_run?: boolean };
@@ -27,6 +28,14 @@ function ensureStringArray(value: unknown, name: string, max: number): string[] 
   if (!Array.isArray(value) || value.length > max || !value.every((v) => typeof v === "string" && v.trim())) throw new KdfError("INVALID_INPUT", name + " must be a string array");
   return value;
 }
+function optionalRequestId(value: unknown): string | undefined {
+  if (value === undefined) return undefined;
+  if (typeof value !== "string" || !/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(value)) {
+    throw new KdfError("INVALID_INPUT", "request_id must be an opaque 1-128 character identifier");
+  }
+  return value;
+}
+function inputFingerprint(value: Record<string, JsonValue>): string { return sha256(JSON.stringify(value)); }
 function common(id: string, type: string, status: string, root: string, parent: string, topic: string): Frontmatter {
   const date = today();
   return { id, type, status, root_topic: wikilink(root), parent: parent ? wikilink(parent) : "", topic, domain: "optometry",
@@ -63,7 +72,23 @@ export class KdfService {
     this.prepared = new PreparedStore(repoRoot);
     this.audit = new AuditLog(repoRoot);
   }
-  static async create(repoRoot?: string): Promise<KdfService> { return new KdfService(await findRepoRoot(repoRoot)); }
+  static async create(repoRoot?: string): Promise<KdfService> {
+    const service = new KdfService(await findRepoRoot(repoRoot));
+    try {
+      const prepared = await service.prepared.cleanupExpired();
+      const audit = await service.audit.cleanupExpired();
+      const security = runtimeSecurityAssumptions();
+      await service.audit.append({ operation: "bridge:startup-cleanup", result: "success", validation_passed: true,
+        metadata: { prepared_scanned: prepared.scanned, prepared_removed_expired: prepared.removed_expired,
+          prepared_removed_invalid: prepared.removed_invalid, audit_scanned: audit.scanned, audit_removed: audit.removed,
+          public_temp_fallback: Boolean(security.public_temp_fallback), windows_acl_requires_owner_verification: Boolean(security.windows_acl_requires_owner_verification) } });
+    } catch (error) {
+      await service.audit.append({ operation: "bridge:startup-cleanup", result: "failure", validation_passed: false,
+        error: error instanceof KdfError ? error.code : "INTERNAL_ERROR" }).catch(() => undefined);
+      throw error;
+    }
+    return service;
+  }
 
   async search(input: SearchInput): Promise<ServiceResult> {
     if ((input.query?.length ?? 0) > 500) throw new KdfError("INVALID_INPUT", "query exceeds 500 characters");
@@ -94,70 +119,100 @@ export class KdfService {
 
   async capture(input: CaptureInput): Promise<ServiceResult> {
     const raw = requireText(input.text, "text", 50000);
+    const autoFingerprint = inputFingerprint({ text: raw, title: input.title ?? "ChatGPT Capture", tags: input.tags ?? [], related_cards: input.related_cards ?? [] });
+    const requestId = optionalRequestId(input.request_id ?? ("auto-" + autoFingerprint.slice(0, 24)))!;
+    return this.writer.locks.withLock("request:kdf_capture:" + sha256(requestId), () => this.captureLocked(input, raw, requestId));
+  }
+
+  private async captureLocked(input: CaptureInput, raw: string, requestId: string): Promise<ServiceResult> {
     const title = input.title === undefined ? "ChatGPT Capture" : requireText(input.title, "title", 200);
     const tags = ensureStringArray(input.tags, "tags", 20);
     const related = ensureStringArray(input.related_cards, "related_cards", 20);
     for (const id of related) await this.repository.find(id);
-    const requestId = input.request_id ?? ("auto-" + sha256(raw).slice(0, 24));
-    if (requestId.length > 200) throw new KdfError("INVALID_INPUT", "request_id exceeds 200 characters");
     const rawHash = sha256(raw);
+    const fingerprint = inputFingerprint({ text: raw, title, tags, related_cards: related });
     for (const prior of await this.repository.captureRecords()) {
       if (prior.frontmatter.request_id === requestId) {
-        if (prior.frontmatter.content_sha256 !== rawHash) throw new KdfError("INVALID_INPUT", "request_id was already used for different content");
+        const priorFingerprint = prior.frontmatter.bridge_input_sha256 ?? inputFingerprint({ text: raw, title: String(prior.frontmatter.title ?? "ChatGPT Capture"),
+          tags: stringList(prior.frontmatter.tags), related_cards: stringList(prior.frontmatter.related_cards).map((value) => linkTarget(value) ?? value) });
+        if (priorFingerprint !== fingerprint) throw new KdfError("IDEMPOTENCY_CONFLICT", "request_id was already used for a different capture payload");
+        await this.audit.append({ operation: "kdf_capture:replay", request_id_sha256: sha256(requestId), card_id: String(prior.frontmatter.id),
+          path: prior.path, input_sha256: rawHash, result: "success", new_hash: prior.hash, validation_passed: true });
         return result("kdf_capture", "write", { id: String(prior.frontmatter.id), path: prior.path, status: "unclassified",
-          raw_content_sha256: rawHash, sha256: prior.hash, created: false, idempotent_replay: true });
+          request_id: requestId, artifact_ref: String(prior.frontmatter.id), raw_content_sha256: rawHash, sha256: prior.hash, created: false, idempotent_replay: true });
       }
     }
     const compact = new Date().toISOString().replace(/[-:.]/g, "");
     const id = "CAP-" + compact + "-" + sha256(requestId).slice(0, 8).toUpperCase();
     const relativePath = this.repository.inboxTarget(id);
     const fm: Frontmatter = { id, type: "capture", status: "unclassified", created_at: new Date().toISOString(), source: "chatgpt",
-      source_type: "human-input", human_provided: true, request_id: requestId, content_sha256: rawHash, title, tags,
+      source_type: "human-input", human_provided: true, request_id: requestId, content_sha256: rawHash, bridge_input_sha256: fingerprint, title, tags,
       related_cards: related.map(wikilink) };
     const text = captureText(fm, raw);
     const candidate = this.validateCapture(fm, text);
     const captureAbsolute = await this.writer.policy.resolve(relativePath, ["obsidian-vault/00-收件匣/KDF"]);
-    if (input.dry_run) return result("kdf_capture", "dry-run", { id, path: relativePath, status: "unclassified",
+    if (input.dry_run) return result("kdf_capture", "dry-run", { id, path: relativePath, status: "unclassified", request_id: requestId, artifact_ref: id,
       raw_content_sha256: rawHash, sha256: sha256(text), created: false, idempotent_replay: false },
       { planned_changes: [{ action: "create", path: relativePath }], files_affected: [relativePath],
         validation: { pre_write: candidate, post_write: PASS } });
     return this.writeDirect("kdf_capture", id, relativePath, text, null, true, async () => candidate, async () => this.validateCapture(fm, await readFile(captureAbsolute, "utf8")),
-      { status: "unclassified", raw_content_sha256: rawHash, idempotent_replay: false });
+      { status: "unclassified", request_id: requestId, artifact_ref: id, raw_content_sha256: rawHash, idempotent_replay: false });
   }
 
   async createQuestion(input: QuestionInput): Promise<ServiceResult> {
     const question = requireText(input.question, "question", 2000);
     const reason = input.reason === undefined ? "" : requireText(input.reason, "reason", 5000);
     const sources = ensureStringArray(input.source_cards, "source_cards", 50);
+    const requestId = optionalRequestId(input.request_id);
+    const fingerprint = inputFingerprint({ question, root_topic: input.root_topic, parent: input.parent, reason, source_cards: sources });
     const root = await this.repository.find(input.root_topic);
     const parent = await this.repository.find(input.parent);
     if (root.frontmatter.type !== "root-topic") throw new KdfError("INVALID_PARENT_TYPE", "root_topic must identify a Root Topic");
     if (parent.frontmatter.type !== "mother-topic" || linkTarget(parent.frontmatter.root_topic) !== input.root_topic) throw new KdfError("INVALID_PARENT_TYPE", "parent must be a Mother Topic of root_topic");
     for (const id of sources) await this.repository.find(id);
-    const normalized = question.trim().toLocaleLowerCase().replace(/\s+/g, "");
-    const siblings = (await this.repository.records()).filter((r) => r.frontmatter.parent === wikilink(input.parent) && r.frontmatter.type === "research-question");
-    if (siblings.some((r) => r.body.toLocaleLowerCase().replace(/\s+/g, "").includes(normalized))) throw new KdfError("ALREADY_EXISTS", "a near-identical question already exists under this Mother Topic");
-
-    return this.writer.locks.withLock("allocate:" + input.parent, async () => {
+    const execute = () => this.writer.locks.withLock("allocate:" + input.parent, async () => {
+      const allRecords = await this.repository.records();
+      if (requestId) {
+        const replay = allRecords.find((record) => record.frontmatter.type === "research-question" && record.frontmatter.bridge_request_id === requestId);
+        if (replay) {
+          if (replay.frontmatter.bridge_input_sha256 !== fingerprint) throw new KdfError("IDEMPOTENCY_CONFLICT", "request_id was already used with a different create-question payload");
+          await this.audit.append({ operation: "kdf_create_question:replay", request_id_sha256: sha256(requestId), card_id: String(replay.frontmatter.id),
+            path: replay.path, input_sha256: fingerprint, result: "success", new_hash: replay.hash, validation_passed: true });
+          return result("kdf_create_question", "write", { id: String(replay.frontmatter.id), path: replay.path, request_id: requestId,
+            artifact_ref: String(replay.frontmatter.id), sha256: replay.hash, created: false, idempotent_replay: true });
+        }
+      }
+      const normalized = question.trim().toLocaleLowerCase().replace(/\s+/g, "");
+      const siblings = allRecords.filter((r) => r.frontmatter.parent === wikilink(input.parent) && r.frontmatter.type === "research-question");
+      if (siblings.some((r) => r.body.toLocaleLowerCase().replace(/\s+/g, "").includes(normalized))) throw new KdfError("ALREADY_EXISTS", "a near-identical question already exists under this Mother Topic");
       const numbers = siblings.map((r) => Number(String(r.frontmatter.id).match(/(\d{3})$/)?.[1] ?? 0));
       const id = input.parent + "-" + String(Math.max(0, ...numbers) + 1).padStart(3, "0");
       const relativePath = this.repository.formalTarget(input.root_topic, id);
       const fm = common(id, "research-question", "researching", input.root_topic, input.parent, question);
       Object.assign(fm, { related: [wikilink(input.parent), ...sources.map(wikilink)], question_framework: "other",
         population: "", intervention_or_exposure: "", comparator: "", outcomes: [], search_strategy: "" });
+      if (requestId) Object.assign(fm, { bridge_request_id: requestId, bridge_input_sha256: fingerprint });
       const body = "# " + id + "｜" + question + "\n\n## Research Question\n\n" + question
         + (reason ? "\n\n## Reason\n\n" + reason : "")
         + (sources.length ? "\n\n## Source Cards\n\n" + sources.map((v) => "- " + wikilink(v)).join("\n") : "");
       const text = serializeMarkdown(fm, body);
       const pre = await this.validator.validate({ path: relativePath, text });
-      if (input.dry_run) return result("kdf_create_question", "dry-run", { id, path: relativePath, sha256: sha256(text), created: false },
+      if (input.dry_run) return result("kdf_create_question", "dry-run", { id, path: relativePath, request_id: requestId ?? null,
+        artifact_ref: id, sha256: sha256(text), created: false, idempotent_replay: false },
         { planned_changes: [{ action: "create", path: relativePath }], files_affected: [relativePath], validation: { pre_write: pre, post_write: PASS } });
       return this.writeDirect("kdf_create_question", id, relativePath, text, null, false, async () => pre, async () => this.validator.validate(),
-        { created: true });
+        { request_id: requestId ?? null, artifact_ref: id, created: true, idempotent_replay: false });
     });
+    return requestId ? this.writer.locks.withLock("request:kdf_create_question:" + sha256(requestId), execute) : execute();
   }
 
   async addObservation(input: ObservationInput): Promise<ServiceResult> {
+    const requestId = optionalRequestId(input.request_id);
+    const action = () => this.addObservationLocked({ ...input, request_id: requestId });
+    return requestId ? this.writer.locks.withLock("request:kdf_add_observation:" + sha256(requestId), action) : action();
+  }
+
+  private async addObservationLocked(input: ObservationInput): Promise<ServiceResult> {
     const textInput = requireText(input.text, "text", 50000);
     const sourceRecord = input.source_record === undefined ? "" : requireText(input.source_record, "source_record", 1000);
     if (input.human_confirmed && !sourceRecord) throw new KdfError("PROVENANCE_REQUIRED", "confirmed human material requires source_record");
@@ -173,13 +228,15 @@ export class KdfService {
     const relativePath = this.repository.formalTarget(root, id);
     let prior: CardRecord | null = null;
     try { prior = await this.repository.find(id); } catch (error) { if (!(error instanceof KdfError) || error.code !== "NOT_FOUND") throw error; }
-    const requestPair = input.request_id ? input.request_id + ":" + sha256(textInput) : null;
-    if (input.request_id && input.request_id.length > 200) throw new KdfError("INVALID_INPUT", "request_id exceeds 200 characters");
+    const observationFingerprint = inputFingerprint({ kind: input.kind, research_question: input.research_question, text: textInput,
+      source_record: sourceRecord, human_confirmed: Boolean(input.human_confirmed) });
+    const requestPair = input.request_id ? input.request_id + ":" + observationFingerprint : null;
+    const legacyRequestPair = input.request_id ? input.request_id + ":" + sha256(textInput) : null;
     if (prior && input.request_id) {
       const requests = stringList(prior.frontmatter.bridge_requests);
       const matched = requests.find((entry) => entry.startsWith(input.request_id + ":"));
-      if (matched && matched !== requestPair) throw new KdfError("INVALID_INPUT", "request_id was already used for different observation content");
-      if (matched === requestPair) return result("kdf_add_observation", "write", { id, path: relativePath,
+      if (matched && matched !== requestPair && matched !== legacyRequestPair) throw new KdfError("IDEMPOTENCY_CONFLICT", "request_id was already used for a different observation payload");
+      if (matched === requestPair || matched === legacyRequestPair) return result("kdf_add_observation", "write", { id, path: relativePath, request_id: input.request_id, artifact_ref: id,
         confirmation_state: prior.frontmatter.human_confirmed === true ? "confirmed" : (input.kind === "field-observation" ? "not-applicable" : "pending_human_confirmation"),
         observation_is_evidence: false, validated_questionnaire: false, sha256: prior.hash, created: false, idempotent_replay: true });
     }
@@ -211,11 +268,11 @@ export class KdfService {
     const pre = await this.validator.validate({ path: relativePath, text: candidateText });
     const expected = prior ? (input.expected_hash ?? null) : null;
     const confirmation = input.kind === "field-observation" ? "not-applicable" : (input.human_confirmed ? "confirmed" : "pending_human_confirmation");
-    if (input.dry_run) return result("kdf_add_observation", "dry-run", { id, path: relativePath, confirmation_state: confirmation,
+    if (input.dry_run) return result("kdf_add_observation", "dry-run", { id, path: relativePath, request_id: input.request_id ?? null, artifact_ref: id, confirmation_state: confirmation,
       observation_is_evidence: false, validated_questionnaire: false, sha256: sha256(candidateText) },
       { planned_changes: [{ action: prior ? "update" : "create", path: relativePath }], files_affected: [relativePath], validation: { pre_write: pre, post_write: PASS } });
     return this.writeDirect("kdf_add_observation", id, relativePath, candidateText, expected, false, async () => pre, async () => this.validator.validate(),
-      { confirmation_state: confirmation, observation_is_evidence: false, validated_questionnaire: false });
+      { request_id: input.request_id ?? null, artifact_ref: id, confirmation_state: confirmation, observation_is_evidence: false, validated_questionnaire: false });
   }
 
   async validate(): Promise<ValidationReport> { return this.validator.validate(); }
@@ -231,15 +288,16 @@ export class KdfService {
   private async writeDirect(tool: string, id: string, relativePath: string, text: string, expectedHash: string | null, inbox: boolean,
     validateCandidate: () => Promise<ValidationReport>, validatePost: () => Promise<ValidationReport>, data: Record<string, JsonValue>): Promise<ServiceResult> {
     const auditInputHash = typeof data.raw_content_sha256 === "string" ? data.raw_content_sha256 : sha256(text);
+    const requestIdHash = typeof data.request_id === "string" ? sha256(data.request_id) : null;
     try {
       const written = await this.writer.write({ relativePath, text, expectedHash, validateCandidate, validatePost, allowInbox: inbox });
-      await this.audit.append({ operation: tool, operation_id: typeof data.operation_id === "string" ? data.operation_id : null,
+      await this.audit.append({ operation: tool, operation_id: typeof data.operation_id === "string" ? data.operation_id : null, request_id_sha256: requestIdHash,
         card_id: id, path: relativePath, input_sha256: auditInputHash, result: "success",
         old_hash: written.oldHash, new_hash: written.newHash, validation_passed: written.post.passed });
       return result(tool, "write", { id, path: relativePath, sha256: written.newHash, ...data },
         { files_affected: [relativePath], validation: { pre_write: written.pre, post_write: written.post } });
     } catch (error) {
-      await this.audit.append({ operation: tool, operation_id: typeof data.operation_id === "string" ? data.operation_id : null,
+      await this.audit.append({ operation: tool, operation_id: typeof data.operation_id === "string" ? data.operation_id : null, request_id_sha256: requestIdHash,
         card_id: id, path: relativePath, input_sha256: auditInputHash, result: "failure",
         validation_passed: false, error: error instanceof KdfError ? error.code : "INTERNAL_ERROR" });
       throw error;
@@ -355,7 +413,7 @@ export class KdfService {
   private async prepare(tool: PreparedOperation["tool"], target: string, id: string, text: string, expected: string | null, missing: string[], data: Record<string, JsonValue>): Promise<ServiceResult> {
     const op = await this.prepared.create({ tool, target, card_id: id, text, proposed_hash: sha256(text), expected_hash: expected, missing_requirements: missing });
     await this.audit.append({ operation: tool + ":prepare", operation_id: op.operation_id, card_id: id, path: target, input_sha256: op.proposed_hash, result: "dry-run", validation_passed: true });
-    return result(tool, "prepare", { ...data, operation_id: op.operation_id, expected_hash: op.expected_hash, expires_at: op.expires_at },
+    return result(tool, "prepare", { ...data, operation_id: op.operation_id, prepared_ref: op.operation_id, artifact_ref: id, expected_hash: op.expected_hash, expires_at: op.expires_at },
       { operation_id: op.operation_id, planned_changes: [{ action: expected ? "update" : "create", path: target }], files_affected: [target] });
   }
 
@@ -366,7 +424,7 @@ export class KdfService {
     if ((expectedHash ?? null) !== op.expected_hash) throw new KdfError("HASH_MISMATCH", "save expected_hash does not match prepared operation");
     const pre = await this.validator.validate({ path: op.target, text: op.text });
     const saved = await this.writeDirect(tool, op.card_id, op.target, op.text, op.expected_hash, false, async () => pre, async () => this.validator.validate(),
-      { operation_id: op.operation_id, saved: true });
+      { operation_id: op.operation_id, prepared_ref: op.operation_id, artifact_ref: op.card_id, saved: true });
     await this.prepared.remove(id);
     return saved;
   }
@@ -376,7 +434,7 @@ export class KdfService {
     const op = await this.prepared.get(id, tool);
     if ((expectedHash ?? null) !== op.expected_hash) throw new KdfError("HASH_MISMATCH", "save expected_hash does not match prepared operation");
     const pre = await this.validator.validate({ path: op.target, text: op.text });
-    return result(tool, "dry-run", { operation_id: op.operation_id, target: op.target, expected_hash: op.expected_hash,
+    return result(tool, "dry-run", { operation_id: op.operation_id, prepared_ref: op.operation_id, artifact_ref: op.card_id, target: op.target, expected_hash: op.expected_hash,
       proposed_hash: op.proposed_hash, save_ready: op.missing_requirements.length === 0 && pre.passed, expires_at: op.expires_at },
       { operation_id: op.operation_id, planned_changes: [{ action: op.expected_hash ? "update" : "create", path: op.target }],
         files_affected: [op.target], validation: { pre_write: pre, post_write: PASS }, missing_requirements: op.missing_requirements });

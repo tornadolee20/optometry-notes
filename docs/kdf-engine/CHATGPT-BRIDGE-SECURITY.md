@@ -78,12 +78,26 @@ Prepare validates and stores exact candidate bytes in local expiring state. Save
 only `operation_id` and `expected_hash`; it cannot substitute new prose. Expired,
 missing, already-consumed, or hash-mismatched operations fail without writing.
 
+Prepared records are atomically created in the repository-scoped runtime directory
+and retain the exact candidate bytes for 15 minutes. Every service startup scans that
+directory and removes expired or malformed records. Cleanup failure stops startup;
+the Bridge does not silently fall back to a public temp directory.
+
 ## Logging and privacy
 
 Runtime files under `logs/kdf-bridge/` are Git-ignored. Each write event records time,
 operation, operation ID, card ID, repo-relative path, input SHA-256 summary, result,
 old/new hashes, validation summary, and stable error code. It does not record raw note
 bodies, observation text, secrets, host environment, or unrelated absolute paths.
+Audit files are retained for 90 days. Startup removes older daily JSONL files. Request
+IDs are logged only as SHA-256; request IDs accepted by write tools must be opaque
+ASCII identifiers rather than user prose.
+
+On POSIX hosts the Bridge requests owner-only directory/file modes. On Windows, Node
+mode bits do not establish NTFS ACL isolation. The security boundary therefore relies
+on the repository being inside the owner's profile, records this limitation at
+startup, and documents `icacls logs\kdf-bridge` as an owner verification step. It does
+not claim that Node enforced the Windows ACL.
 
 ## Known residual risks
 
@@ -94,3 +108,5 @@ bodies, observation text, secrets, host environment, or unrelated absolute paths
   implementation fails closed instead of retrying indefinitely.
 - Markdown remains prompt-injection-capable content. Adapters must treat retrieved text
   as data, and server-side rules remain authoritative.
+- A local account or inherited Windows ACL with repository write permission can read
+  still-live prepared candidate bytes until they expire.

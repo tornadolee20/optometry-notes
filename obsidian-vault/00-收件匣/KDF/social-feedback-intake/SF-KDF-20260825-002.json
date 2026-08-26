@@ -1,0 +1,348 @@
+{
+  "schema_version": "SOCIAL_FEEDBACK_TO_KDF_INTAKE_V0_1",
+  "batch_id": "SF-KDF-20260825-002",
+  "created_at": "2026-08-25T03:00:00+08:00",
+  "capture_mode": "MANUAL_ENTRY",
+  "ingest_constraints": {
+    "api_used": false,
+    "cookies_used": false,
+    "private_login_used": false
+  },
+  "privacy_policy_version": "SOCIAL_FEEDBACK_PRIVACY_V0_1",
+  "candidates": [
+    {
+      "feedback_id": "SFI-20260825-SYNTH-A",
+      "captured_at": "2026-08-25T02:51:00+08:00",
+      "source_channel": "OTHER_MANUAL_SOURCE",
+      "source_context": {
+        "visibility": "IN_PERSON",
+        "source_locator_type": "LOCAL_OPAQUE_REF",
+        "source_locator": "SYNTHETIC-PILOT-A",
+        "source_occurred_at": null,
+        "capture_method": "FIELD_NOTE",
+        "captured_by": "synthetic-pilot-generator",
+        "record_verification_status": "UNVERIFIED",
+        "text_fidelity": "FIELD_NOTE",
+        "redaction_status": "NOT_REDACTED_WITH_BASIS",
+        "privacy_class": "INTERNAL",
+        "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "1bc5800bcac49f466d0026f021a18bb38bef56fef2189a900a880a0284d963b3",
+        "pii_minimized": true,
+        "cookies_stored": false,
+        "tokens_stored": false,
+        "login_data_stored": false
+      },
+      "original_text": "孩子戴離焦鏡片後，為什麼看旁邊會覺得怪怪的？",
+      "normalized_summary": "純合成問題：詢問兒童配戴離焦鏡片時的周邊觀看異樣感，不代表任何真實兒童或回饋紀錄。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {"id": "KDF-001", "type": "root-topic", "match_basis": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE"], "match_strength": "HIGH", "note": "Synthetic question falls within the root topic's child peripheral-defocus visual-quality scope."},
+        {"id": "KDF-001-B", "type": "mother-topic", "match_basis": ["TOPIC", "OUTCOME", "CONTEXT"], "match_strength": "HIGH", "note": "The mother topic already covers central/peripheral and adaptation-related visual quality."},
+        {"id": "KDF-001-B-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "RESEARCH_GAP"], "match_strength": "EXACT", "note": "The existing question explicitly covers off-axis visual quality and subjective adaptation."},
+        {"id": "KDF-001-F", "type": "mother-topic", "match_basis": ["TOPIC", "PARENT_RELATIONSHIP"], "match_strength": "LOW", "note": "Individual differences are a boundary consideration, not the primary home for this general question."},
+        {"id": "KDF-001-F-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "TIMEFRAME"], "match_strength": "LOW", "note": "RPR-to-axial-length response is a different outcome and timeframe from peripheral visual sensation."}
+      ],
+      "feedback_type": "QUESTION",
+      "sentiment_or_stance": {
+        "label": "QUESTIONING",
+        "target": "配戴離焦鏡片時的周邊視覺感受",
+        "basis": "原文是詢問原因，沒有宣稱療效、風險或發生率。",
+        "assessed_by": "HUMAN",
+        "confidence": "HIGH"
+      },
+      "claim_or_question": {
+        "kind": "QUESTION",
+        "text": "孩子戴離焦鏡片後，為什麼看旁邊會覺得怪怪的？",
+        "claim_verification_status": "NOT_APPLICABLE",
+        "target_claim": null
+      },
+      "anecdotal_scope": {
+        "scope": "SINGLE_EVENT",
+        "denominator_status": "NONE",
+        "population_boundary": "純合成的一個兒童配鏡提問情境",
+        "context_boundary": "只涉及側看時的主觀異樣感，沒有個案、產品或活動資料",
+        "prevalence_inference_allowed": false,
+        "generalization_allowed": false,
+        "scope_note": "本項為 synthetic prompt，只能測試分類與內容澄清路由。"
+      },
+      "contradiction_type": {
+        "type": "NONE",
+        "target_node_ids": [],
+        "target_claim": null,
+        "structured_comparison": null,
+        "alternative_explanations": [],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "NOT_APPLICABLE"
+      },
+      "evidence_relevance": {
+        "role": "QUESTION_GENERATING",
+        "rationale": "這是內容理解入口，不是 Evidence；既有 KDF 已有對應問題與缺口。",
+        "evidence_card_eligible": false,
+        "influenced_by_engagement_metrics": false
+      },
+      "research_gap_candidate": {
+        "is_candidate": false,
+        "gap_dimensions": [],
+        "description": "KDF-001-B-001 與既有 Discovery Questions 已涵蓋周邊感受與真實生活適應。",
+        "bounded_question_candidate": null,
+        "real_gap_established": false,
+        "verification_needed": false
+      },
+      "cross_node_analysis": {
+        "decision": "REUSE",
+        "checked_at": "2026-08-25T02:58:00+08:00",
+        "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {
+            "node_id": "KDF-001",
+            "node_type": "root-topic",
+            "alignment": "RELATED_ONLY",
+            "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "SAME_GAP", "rationale": "The synthetic question sits inside the broad root scope but makes no claim."},
+            "rationale": "The root already asks whether children's visual function and adaptation are sufficiently understood."
+          },
+          {
+            "node_id": "KDF-001-B",
+            "node_type": "mother-topic",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "SAME_GAP", "rationale": "Peripheral visual quality and adaptation are already explicit mother-topic dimensions."},
+            "rationale": "Different wording does not establish a new research concept."
+          },
+          {
+            "node_id": "KDF-001-B-001",
+            "node_type": "research-question",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "SAME_GAP", "rationale": "The feedback asks about the same off-axis subjective-adaptation domain already represented by KDF-001-B-001."},
+            "rationale": "This is best answered through content clarification grounded in the existing question."
+          },
+          {
+            "node_id": "KDF-001-F",
+            "node_type": "mother-topic",
+            "alignment": "RELATED_ONLY",
+            "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "NO_GAP", "rationale": "Individual-difference research may matter later, but this general why-question does not identify a predictor or responder subgroup."},
+            "rationale": "KDF-001-F is a boundary node rather than the reusable primary placement."
+          },
+          {
+            "node_id": "KDF-001-F-001",
+            "node_type": "research-question",
+            "alignment": "RELATED_ONLY",
+            "comparison": {"population": "SAME", "intervention_or_exposure": "DIFFERENT", "comparator": "DIFFERENT", "outcomes": "DIFFERENT", "mechanism": "DIFFERENT", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "NO_GAP", "rationale": "Baseline RPR predicting five-year axial-length response is not the same outcome, mechanism, or timeframe as side-view discomfort."},
+            "rationale": "The existing RPR question must not absorb a visual-quality content question."
+          }
+        ],
+        "summary": {"existing_node_alignment": "CONSISTENT_WITH", "supports_existing_node": false, "conflicts_with_existing_node": false, "case_difference_only": false, "exposes_new_research_gap": false, "forms_new_question_candidate": false}
+      },
+      "duplicate_risk": {
+        "level": "MEDIUM",
+        "decision": "REUSE",
+        "reason": "The wording is new but the population, exposure, outcome and research gap are already represented by KDF-001-B-001.",
+        "checked_at": "2026-08-25T02:58:00+08:00",
+        "method_version": "social-feedback-dedup-v0.1",
+        "matched_feedback_ids": [],
+        "matched_kdf_ids": ["KDF-001", "KDF-001-B", "KDF-001-B-001", "KDF-001-F", "KDF-001-F-001"],
+        "comparison_dimensions": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]
+      },
+      "kdf_recommendation": "CONTENT_ONLY",
+      "recommendation_reason": "Reuse the existing visual-quality explanation; do not create a Research Question from wording variation.",
+      "owner_review_status": "PENDING",
+      "intake_state": "STAGED",
+      "route_result": {"route_status": "NOT_STARTED", "route_action": "NONE", "target_flow": "NONE", "formal_ids": []}
+    },
+    {
+      "feedback_id": "SFI-20260825-SYNTH-B",
+      "captured_at": "2026-08-25T02:52:00+08:00",
+      "source_channel": "OTHER_MANUAL_SOURCE",
+      "source_context": {
+        "visibility": "IN_PERSON", "source_locator_type": "LOCAL_OPAQUE_REF", "source_locator": "SYNTHETIC-PILOT-B", "source_occurred_at": null,
+        "capture_method": "FIELD_NOTE", "captured_by": "synthetic-pilot-generator", "record_verification_status": "UNVERIFIED", "text_fidelity": "FIELD_NOTE",
+        "redaction_status": "NOT_REDACTED_WITH_BASIS", "privacy_class": "INTERNAL", "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "0b0c3b1a82c72e7495e4062a7bcf9718049ffc412367d9fa8c42a103c902214d",
+        "pii_minimized": true, "cookies_stored": false, "tokens_stored": false, "login_data_stored": false
+      },
+      "original_text": "你說很多孩子可能會慢慢適應，但我家孩子戴了半年，跑樓梯時還是覺得不舒服。",
+      "normalized_summary": "純合成單一案例：假設一名配戴者六個月後在樓梯情境仍不舒服；不代表真實個案或發生率。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {"id": "KDF-001-B-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME"], "match_strength": "HIGH", "note": "Existing question covers adaptation and stair-related daily function."},
+        {"id": "EVC-KDF-001-B-001", "type": "evidence-card", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Evidence states some group differences diminish but individual trajectories and daily tasks remain unresolved."},
+        {"id": "MKC-KDF-001-B-001", "type": "mature-knowledge", "match_basis": ["OUTCOME", "CONTEXT", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Mature candidate explicitly rejects both no-cost and inevitable-safety-harm overclaims."},
+        {"id": "DQ-KDF-001-001", "type": "discovery-question", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Discovery candidate already asks about real-life off-axis performance and adaptation trajectory."},
+        {"id": "KDF-001-F", "type": "mother-topic", "match_basis": ["POPULATION", "OUTCOME", "RESEARCH_GAP"], "match_strength": "MEDIUM", "note": "Persistent non-adaptation belongs to individual-difference and responder-heterogeneity review."},
+        {"id": "KDF-001-F-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "TIMEFRAME"], "match_strength": "LOW", "note": "RPR-to-axial response remains a different outcome from persistent daily-task discomfort."}
+      ],
+      "feedback_type": "COUNTEREXAMPLE",
+      "sentiment_or_stance": {"label": "SKEPTICAL", "target": "部分研究中的逐漸適應描述", "basis": "合成敘述提出一個持續不舒服的單一案例。", "assessed_by": "HUMAN", "confidence": "HIGH"},
+      "claim_or_question": {"kind": "CLAIM", "text": "你說很多孩子可能會慢慢適應，但我家孩子戴了半年，跑樓梯時還是覺得不舒服。", "claim_verification_status": "NEEDS_CONTEXT", "target_claim": "部分研究中若干短期視覺差異於數月後不再呈現群體差異，但個體適應軌跡尚未確定。"},
+      "anecdotal_scope": {"scope": "SINGLE_CASE", "denominator_status": "NONE", "population_boundary": "純合成的一名未具身分或產品資訊的兒童配戴者", "context_boundary": "六個月後跑樓梯仍主觀不舒服的假設情境", "prevalence_inference_allowed": false, "generalization_allowed": false, "scope_note": "單一 synthetic case 不能估計盛行率、否定群體研究或代表所有鏡片。"},
+      "contradiction_type": {
+        "type": "CLAIM_SCOPE_MISMATCH",
+        "target_node_ids": ["EVC-KDF-001-B-001", "MKC-KDF-001-B-001"],
+        "target_claim": "特定研究中的群體平均差異可能隨時間減少；這不等於每位兒童都會在固定期限內完全適應。",
+        "structured_comparison": {"population": "DIFFERENT", "intervention_or_exposure": "UNKNOWN", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "A single persistent stair-discomfort report differs from group-level laboratory and questionnaire outcomes and extends the known individual-trajectory gap."},
+        "alternative_explanations": ["鏡片設計或配適條件不同", "實際配戴與活動暴露未知", "其他視覺或非視覺因素未知", "研究群體平均與單一個體軌跡不可直接互換"],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "CASE_DIFFERENCE"
+      },
+      "evidence_relevance": {"role": "CONTRADICTION_REVIEW", "rationale": "只可提示個體差異與適應期異質性，不是 Evidence。", "evidence_card_eligible": false, "influenced_by_engagement_metrics": false},
+      "research_gap_candidate": {"is_candidate": true, "gap_dimensions": ["POPULATION", "OUTCOME", "TIMEFRAME", "IMPLEMENTATION"], "description": "既有 KDF 已指出哪些孩子適應較慢或不適應仍未知；本合成案例只延伸長期日常任務不適的 responder-heterogeneity 維度。", "bounded_question_candidate": "哪些光學、配適、行為或個體因素與配戴六個月後仍存在的樓梯等日常任務不適有關？", "real_gap_established": true, "verification_needed": true},
+      "cross_node_analysis": {
+        "decision": "EXTEND", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {"node_id": "KDF-001-B-001", "node_type": "research-question", "alignment": "CASE_VARIATION", "comparison": {"population": "DIFFERENT", "intervention_or_exposure": "UNKNOWN", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "A single six-month stair complaint is narrower and more individual than the existing broad visual-quality question."}, "rationale": "The case extends individual adaptation trajectory without contradicting the question."},
+          {"node_id": "EVC-KDF-001-B-001", "node_type": "evidence-card", "alignment": "CASE_VARIATION", "comparison": {"population": "DIFFERENT", "intervention_or_exposure": "UNKNOWN", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The Evidence Card reports heterogeneous group studies and explicitly leaves long-term real-life adaptation unresolved."}, "rationale": "One synthetic case cannot invalidate C2 evidence and instead points to the card's existing heterogeneity boundary."},
+          {"node_id": "MKC-KDF-001-B-001", "node_type": "mature-knowledge", "alignment": "CASE_VARIATION", "comparison": {"population": "DIFFERENT", "intervention_or_exposure": "UNKNOWN", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The mature candidate already states that preserved central acuity does not prove every child has no functional cost."}, "rationale": "The feedback is compatible with unresolved individual trajectories, not a material contradiction."},
+          {"node_id": "DQ-KDF-001-001", "node_type": "discovery-question", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The discovery question already asks for adaptation time and stair-related outcomes; six-month persistence sharpens the timeframe."}, "rationale": "This is an extension of an existing discovery gap rather than a new formal contradiction."},
+          {"node_id": "KDF-001-F", "node_type": "mother-topic", "alignment": "QUESTION_CANDIDATE", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "Persistent adaptation difficulty could add a bounded responder-heterogeneity dimension to individual differences."}, "rationale": "The mother topic can contain later review, subject to verification and owner gate."},
+          {"node_id": "KDF-001-F-001", "node_type": "research-question", "alignment": "RELATED_ONLY", "comparison": {"population": "SAME", "intervention_or_exposure": "DIFFERENT", "comparator": "DIFFERENT", "outcomes": "DIFFERENT", "mechanism": "DIFFERENT", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "NO_GAP", "rationale": "Baseline RPR predicting axial-length response does not answer persistent visual adaptation or stair discomfort."}, "rationale": "Do not merge responder prediction for myopia efficacy with functional adaptation heterogeneity."}
+        ],
+        "summary": {"existing_node_alignment": "CASE_VARIATION", "supports_existing_node": false, "conflicts_with_existing_node": false, "case_difference_only": true, "exposes_new_research_gap": true, "forms_new_question_candidate": true}
+      },
+      "duplicate_risk": {"level": "MEDIUM", "decision": "EXTEND", "reason": "The topic overlaps existing visual-quality and discovery nodes but adds a bounded six-month individual adaptation trajectory.", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-dedup-v0.1", "matched_feedback_ids": [], "matched_kdf_ids": ["KDF-001-B-001", "EVC-KDF-001-B-001", "MKC-KDF-001-B-001", "DQ-KDF-001-001", "KDF-001-F", "KDF-001-F-001"], "comparison_dimensions": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]},
+      "kdf_recommendation": "HOLD_FOR_VERIFICATION",
+      "recommendation_reason": "Retain as a synthetic responder-heterogeneity lead only; verify with appropriate research before any promotion proposal.",
+      "owner_review_status": "PENDING", "intake_state": "STAGED",
+      "route_result": {"route_status": "NOT_STARTED", "route_action": "NONE", "target_flow": "NONE", "formal_ids": []}
+    },
+    {
+      "feedback_id": "SFI-20260825-SYNTH-C",
+      "captured_at": "2026-08-25T02:53:00+08:00",
+      "source_channel": "OTHER_MANUAL_SOURCE",
+      "source_context": {
+        "visibility": "IN_PERSON", "source_locator_type": "LOCAL_OPAQUE_REF", "source_locator": "SYNTHETIC-PILOT-C", "source_occurred_at": null,
+        "capture_method": "FIELD_NOTE", "captured_by": "synthetic-pilot-generator", "record_verification_status": "UNVERIFIED", "text_fidelity": "FIELD_NOTE",
+        "redaction_status": "NOT_REDACTED_WITH_BASIS", "privacy_class": "INTERNAL", "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "e32f8376fdab7b2b42441d1fba2ee4f89df36de16b09e94fc51083c09668038e",
+        "pii_minimized": true, "cookies_stored": false, "tokens_stored": false, "login_data_stored": false
+      },
+      "original_text": "所以戴離焦鏡片之後，就一定不會再近視了嗎？",
+      "normalized_summary": "純合成誤解：把近視控制的群體平均效果誤解為每名兒童都保證停止進展。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {"id": "KDF-001", "type": "root-topic", "match_basis": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE"], "match_strength": "MEDIUM", "note": "The root separates myopia-control evidence from broader visual-quality and individual-difference questions."},
+        {"id": "KDF-001-F", "type": "mother-topic", "match_basis": ["POPULATION", "OUTCOME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Individual differences are incompatible with a guaranteed identical response claim."},
+        {"id": "KDF-001-F-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "TIMEFRAME"], "match_strength": "HIGH", "note": "A predictor question about axial response presupposes outcome variation rather than guaranteed cessation."},
+        {"id": "EVC-KDF-001-B-001", "type": "evidence-card", "match_basis": ["INTERVENTION_OR_EXPOSURE", "OUTCOME"], "match_strength": "LOW", "note": "This Evidence Card concerns visual function, not proof of guaranteed myopia cessation; it is a scope boundary."}
+      ],
+      "feedback_type": "MISUNDERSTANDING",
+      "sentiment_or_stance": {"label": "CONFUSED", "target": "近視控制效果的個體確定性", "basis": "問題把控制解讀為一定停止。", "assessed_by": "HUMAN", "confidence": "HIGH"},
+      "claim_or_question": {"kind": "MIXED", "text": "所以戴離焦鏡片之後，就一定不會再近視了嗎？", "claim_verification_status": "NEEDS_CONTEXT", "target_claim": "近視控制不等於保證停止進展，群體平均效果也不等於每名兒童結果相同。"},
+      "anecdotal_scope": {"scope": "SINGLE_EVENT", "denominator_status": "NONE", "population_boundary": "純合成的一次內容理解問題", "context_boundary": "只涉及療效保證式措辭，沒有個體結果資料", "prevalence_inference_allowed": false, "generalization_allowed": false, "scope_note": "不得把一個 synthetic misunderstanding 解讀為常見誤解比例。"},
+      "contradiction_type": {"type": "NONE", "target_node_ids": [], "target_claim": null, "structured_comparison": null, "alternative_explanations": [], "existing_evidence_invalidated": false, "formal_contradiction_created": false, "resolution_status": "NOT_APPLICABLE"},
+      "evidence_relevance": {"role": "NONE", "rationale": "這是 claim-strength 澄清，不是 Evidence 或研究缺口。", "evidence_card_eligible": false, "influenced_by_engagement_metrics": false},
+      "research_gap_candidate": {"is_candidate": false, "gap_dimensions": [], "description": "現有個體差異與 RPR responder question 已顯示反應不應被表述為人人相同。", "bounded_question_candidate": null, "real_gap_established": false, "verification_needed": false},
+      "cross_node_analysis": {
+        "decision": "REUSE", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {"node_id": "KDF-001", "node_type": "root-topic", "alignment": "RELATED_ONLY", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "DIFFERENT", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "The implied guarantee is stronger than the root's bounded evidence-and-gap framing."}, "rationale": "The root provides a content boundary but is not an efficacy guarantee card."},
+          {"node_id": "KDF-001-F", "node_type": "mother-topic", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "A universal cessation claim is stronger than an individual-difference framework."}, "rationale": "Use the individual-variation concept to correct the overclaim without creating research."},
+          {"node_id": "KDF-001-F-001", "node_type": "research-question", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "DIFFERENT", "outcomes": "SAME", "mechanism": "DIFFERENT", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "Asking whether baseline RPR predicts axial response assumes heterogeneous outcomes and does not support guaranteed cessation."}, "rationale": "The question supplies a boundary against the misunderstanding, not evidence for a new question."},
+          {"node_id": "EVC-KDF-001-B-001", "node_type": "evidence-card", "alignment": "RELATED_ONLY", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "DIFFERENT", "outcomes": "DIFFERENT", "mechanism": "DIFFERENT", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "Visual-function evidence cannot be converted into a guarantee that myopia progression ceases."}, "rationale": "This is a scope check preventing misuse of existing Evidence."}
+        ],
+        "summary": {"existing_node_alignment": "CONSISTENT_WITH", "supports_existing_node": false, "conflicts_with_existing_node": false, "case_difference_only": false, "exposes_new_research_gap": false, "forms_new_question_candidate": false}
+      },
+      "duplicate_risk": {"level": "MEDIUM", "decision": "REUSE", "reason": "The issue is an overclaim already bounded by individual-response concepts; no new gap is established.", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-dedup-v0.1", "matched_feedback_ids": [], "matched_kdf_ids": ["KDF-001", "KDF-001-F", "KDF-001-F-001", "EVC-KDF-001-B-001"], "comparison_dimensions": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"]},
+      "kdf_recommendation": "CONTENT_ONLY",
+      "recommendation_reason": "Clarify that control is probabilistic and requires follow-up; do not create research to correct an overclaim.",
+      "owner_review_status": "PENDING", "intake_state": "STAGED",
+      "route_result": {"route_status": "NOT_STARTED", "route_action": "NONE", "target_flow": "NONE", "formal_ids": []}
+    },
+    {
+      "feedback_id": "SFI-20260825-SYNTH-D",
+      "captured_at": "2026-08-25T02:54:00+08:00",
+      "source_channel": "PRACTICE_NOTE",
+      "source_context": {
+        "visibility": "IN_PERSON", "source_locator_type": "LOCAL_OPAQUE_REF", "source_locator": "SYNTHETIC-PILOT-D", "source_occurred_at": null,
+        "capture_method": "FIELD_NOTE", "captured_by": "synthetic-pilot-generator", "record_verification_status": "UNVERIFIED", "text_fidelity": "FIELD_NOTE",
+        "redaction_status": "NOT_REDACTED_WITH_BASIS", "privacy_class": "INTERNAL", "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "343de5d2ec0e6fcfbe7a9dc57b9c065ebfd00b1f58cd26af4bad6254ffe9456d",
+        "pii_minimized": true, "cookies_stored": false, "tokens_stored": false, "login_data_stored": false
+      },
+      "original_text": "門市反覆遇到部分孩子反映中央視線清楚，但快速轉頭、走樓梯或戶外活動時，周邊視覺感受比較不舒服。",
+      "normalized_summary": "純合成門市模式敘述：僅測試既有 Practice／FOC 承接能力；沒有真實門市、兒童、次數或頻率資料。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {"id": "KDF-001-B-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT"], "match_strength": "HIGH", "note": "Existing question explicitly covers central/off-axis quality, rapid gaze, stairs and outdoor tasks."},
+        {"id": "PRC-KDF-001-B-001", "type": "practice-card", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "PARENT_RELATIONSHIP"], "match_strength": "EXACT", "note": "Practice Card already asks about these daily contexts but remains candidate-pending-evidence-review."},
+        {"id": "FOC-KDF-001-B-001", "type": "field-observation", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "PARENT_RELATIONSHIP"], "match_strength": "EXACT", "note": "FOC already has these fields but record_count remains zero and cannot be incremented by synthetic text."},
+        {"id": "MKC-KDF-001-B-001", "type": "mature-knowledge", "match_basis": ["OUTCOME", "CONTEXT", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Mature candidate distinguishes central clarity from unresolved dynamic real-life experience."},
+        {"id": "DQ-KDF-001-001", "type": "discovery-question", "match_basis": ["OUTCOME", "CONTEXT", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Discovery candidate already covers rapid gaze, stairs, outdoor activity and adaptation."}
+      ],
+      "feedback_type": "FIELD_OBSERVATION_CANDIDATE",
+      "sentiment_or_stance": {"label": "NEUTRAL", "target": "合成的門市視覺適應模式", "basis": "敘述形式像現場觀察，但來源明確標示為 synthetic。", "assessed_by": "HUMAN", "confidence": "HIGH"},
+      "claim_or_question": {"kind": "CLAIM", "text": "門市反覆遇到部分孩子反映中央視線清楚，但快速轉頭、走樓梯或戶外活動時，周邊視覺感受比較不舒服。", "claim_verification_status": "UNVERIFIED", "target_claim": null},
+      "anecdotal_scope": {"scope": "LOCAL_PATTERN_UNVERIFIED", "denominator_status": "UNKNOWN", "population_boundary": "純合成的部分兒童門市情境，沒有真實樣本", "context_boundary": "中央清楚但快速轉頭、樓梯與戶外活動的周邊感受", "prevalence_inference_allowed": false, "generalization_allowed": false, "scope_note": "『反覆』是測試文字的一部分，不代表發生次數、比例或門市實況。"},
+      "contradiction_type": {"type": "NONE", "target_node_ids": [], "target_claim": null, "structured_comparison": null, "alternative_explanations": [], "existing_evidence_invalidated": false, "formal_contradiction_created": false, "resolution_status": "NOT_APPLICABLE"},
+      "evidence_relevance": {"role": "IMPLEMENTATION_CONTEXT", "rationale": "只能測試 practice-review 分流，不能成為 Field Observation 或 Evidence。", "evidence_card_eligible": false, "influenced_by_engagement_metrics": false},
+      "research_gap_candidate": {"is_candidate": false, "gap_dimensions": [], "description": "既有 RQ、PRC、FOC、Mature 與 Discovery nodes 已涵蓋相同情境；synthetic wording 不新增資料。", "bounded_question_candidate": null, "real_gap_established": false, "verification_needed": true},
+      "cross_node_analysis": {
+        "decision": "REUSE", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question", "practice-card", "field-observation"],
+        "matches": [
+          {"node_id": "KDF-001-B-001", "node_type": "research-question", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "SAME_GAP", "rationale": "The synthetic text asserts a repeated pattern, which is stronger than the existing question, but covers the same outcomes and contexts."}, "rationale": "Reuse the existing question boundary without treating the assertion as observed frequency."},
+          {"node_id": "PRC-KDF-001-B-001", "node_type": "practice-card", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "The exact daily contexts are already listed, while the synthetic repeated-occurrence claim cannot upgrade the candidate Practice Card."}, "rationale": "Practice status remains candidate-pending-evidence-review and requires Owner Gate."},
+          {"node_id": "FOC-KDF-001-B-001", "node_type": "field-observation", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "NO_GAP", "rationale": "The FOC already contains these contexts but has record_count zero; synthetic wording cannot claim observations."}, "rationale": "No Field Observation write or record-count change is eligible."},
+          {"node_id": "MKC-KDF-001-B-001", "node_type": "mature-knowledge", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "SAME_GAP", "rationale": "The mature candidate recognizes the same central-versus-dynamic-context gap but does not establish prevalence."}, "rationale": "The synthetic statement cannot support or update the waiting-human Mature card."},
+          {"node_id": "DQ-KDF-001-001", "node_type": "discovery-question", "alignment": "CONSISTENT_WITH", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "NOT_APPLICABLE", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "SAME", "timeframe": "UNKNOWN", "claim_strength": "STRONGER", "research_gap_alignment": "SAME_GAP", "rationale": "The Discovery Question already lists rapid gaze, stairs, sport and daily-life outcomes."}, "rationale": "No lexical novelty or synthetic repetition creates another discovery path."}
+        ],
+        "summary": {"existing_node_alignment": "CONSISTENT_WITH", "supports_existing_node": false, "conflicts_with_existing_node": false, "case_difference_only": false, "exposes_new_research_gap": false, "forms_new_question_candidate": false}
+      },
+      "duplicate_risk": {"level": "MEDIUM", "decision": "REUSE", "reason": "The synthetic contexts are already represented by RQ, PRC, FOC, Mature and Discovery nodes.", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-dedup-v0.1", "matched_feedback_ids": [], "matched_kdf_ids": ["KDF-001-B-001", "PRC-KDF-001-B-001", "FOC-KDF-001-B-001", "MKC-KDF-001-B-001", "DQ-KDF-001-001"], "comparison_dimensions": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]},
+      "kdf_recommendation": "PRACTICE_REVIEW",
+      "recommendation_reason": "Review against the existing candidate Practice Card only; no eligible formal observation exists and FOC record_count must remain zero.",
+      "owner_review_status": "PENDING", "intake_state": "STAGED",
+      "route_result": {"route_status": "NOT_STARTED", "route_action": "NONE", "target_flow": "NONE", "formal_ids": []}
+    },
+    {
+      "feedback_id": "SFI-20260825-SYNTH-E",
+      "captured_at": "2026-08-25T02:55:00+08:00",
+      "source_channel": "PRACTICE_NOTE",
+      "source_context": {
+        "visibility": "IN_PERSON", "source_locator_type": "LOCAL_OPAQUE_REF", "source_locator": "SYNTHETIC-PILOT-E", "source_occurred_at": null,
+        "capture_method": "FIELD_NOTE", "captured_by": "synthetic-pilot-generator", "record_verification_status": "UNVERIFIED", "text_fidelity": "FIELD_NOTE",
+        "redaction_status": "NOT_REDACTED_WITH_BASIS", "privacy_class": "INTERNAL", "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "d1a3636b18cc409a0ecde780d7e0615a5c523488fc74c699098ffdfdd05141bd",
+        "pii_minimized": true, "cookies_stored": false, "tokens_stored": false, "login_data_stored": false
+      },
+      "original_text": "配離焦鏡片之前，是不是應該先做一些周邊視覺、動態視覺或生活情境的基線評估，看看哪些孩子之後比較容易不適應？",
+      "normalized_summary": "純合成 practice signal：詢問配鏡前功能／動態／生活情境基線評估能否預測後續適應困難。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {"id": "KDF-001-B-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Existing question covers adaptation outcomes but not a defined pre-fitting functional predictor battery."},
+        {"id": "PRC-KDF-001-B-001", "type": "practice-card", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Practice Card follows initial wear through 2-4 weeks; it does not establish predictive pre-fitting baseline tests."},
+        {"id": "FOC-KDF-001-B-001", "type": "field-observation", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME"], "match_strength": "MEDIUM", "note": "FOC tracks post-dispensing contexts and has record_count zero; it is not a validated baseline predictor tool."},
+        {"id": "KDF-001-F", "type": "mother-topic", "match_basis": ["POPULATION", "OUTCOME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "The signal extends individual-difference research with functional baseline predictors."},
+        {"id": "KDF-001-F-001", "type": "research-question", "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "TIMEFRAME"], "match_strength": "MEDIUM", "note": "RPR predicts long-term axial response; this signal instead asks about functional baseline predictors of visual adaptation."},
+        {"id": "DQ-KDF-001-001", "type": "discovery-question", "match_basis": ["OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"], "match_strength": "HIGH", "note": "Existing discovery gap covers real-life outcomes and adaptation time; baseline prediction is an extension."}
+      ],
+      "feedback_type": "PRACTICE_SIGNAL",
+      "sentiment_or_stance": {"label": "QUESTIONING", "target": "配鏡前功能性基線評估", "basis": "原文提出一個 practice-evaluation question，未宣稱評估已有效。", "assessed_by": "HUMAN", "confidence": "HIGH"},
+      "claim_or_question": {"kind": "QUESTION", "text": "配離焦鏡片之前，是不是應該先做一些周邊視覺、動態視覺或生活情境的基線評估，看看哪些孩子之後比較容易不適應？", "claim_verification_status": "NOT_ASSESSED", "target_claim": null},
+      "anecdotal_scope": {"scope": "SINGLE_EVENT", "denominator_status": "NONE", "population_boundary": "純合成的一次 practice-evaluation 提問", "context_boundary": "配鏡前基線評估與後續視覺適應／日常任務困難", "prevalence_inference_allowed": false, "generalization_allowed": false, "scope_note": "這是研究與實務評估線索，不表示任何基線測試具有預測效度。"},
+      "contradiction_type": {"type": "NONE", "target_node_ids": [], "target_claim": null, "structured_comparison": null, "alternative_explanations": [], "existing_evidence_invalidated": false, "formal_contradiction_created": false, "resolution_status": "NOT_APPLICABLE"},
+      "evidence_relevance": {"role": "MEASUREMENT_LEAD", "rationale": "可能形成 measurement/practice gap，但 synthetic question 不是 Evidence。", "evidence_card_eligible": false, "influenced_by_engagement_metrics": false},
+      "research_gap_candidate": {"is_candidate": true, "gap_dimensions": ["MEASUREMENT", "OUTCOME", "TIMEFRAME", "IMPLEMENTATION"], "description": "現有 PRC/FOC 聚焦配戴後追蹤，既有 DQ 聚焦真實生活結果；尚未界定配鏡前功能／動態／生活情境基線是否能預測後續適應困難。", "bounded_question_candidate": "配戴周邊離焦鏡片前的周邊視覺、動態視覺或生活情境基線評估，能否預測後續主觀適應或日常任務困難？", "real_gap_established": true, "verification_needed": true},
+      "cross_node_analysis": {
+        "decision": "EXTEND", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question", "practice-card", "field-observation"],
+        "matches": [
+          {"node_id": "KDF-001-B-001", "node_type": "research-question", "alignment": "QUESTION_CANDIDATE", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The existing question covers adaptation outcomes; the signal adds pre-fitting functional predictors and a before-to-after timeframe."}, "rationale": "This is a bounded extension, not a replacement for the existing visual-quality question."},
+          {"node_id": "PRC-KDF-001-B-001", "node_type": "practice-card", "alignment": "QUESTION_CANDIDATE", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "PRC begins at initial wear and tracks later change; the signal asks whether pre-fitting functional measures predict that trajectory."}, "rationale": "Practice review is appropriate, but predictive use is not yet authorized or validated."},
+          {"node_id": "FOC-KDF-001-B-001", "node_type": "field-observation", "alignment": "RELATED_ONLY", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "FOC is a post-dispensing observation framework with zero records, not a pre-fitting predictive assessment."}, "rationale": "No formal observation or record-count change follows from this signal."},
+          {"node_id": "KDF-001-F", "node_type": "mother-topic", "alignment": "QUESTION_CANDIDATE", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The signal adds functional baseline predictors to the individual-difference topic."}, "rationale": "This may become a future bounded question only after verification and owner approval."},
+          {"node_id": "KDF-001-F-001", "node_type": "research-question", "alignment": "RELATED_ONLY", "comparison": {"population": "SAME", "intervention_or_exposure": "DIFFERENT", "comparator": "DIFFERENT", "outcomes": "DIFFERENT", "mechanism": "DIFFERENT", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "DIFFERENT_SCOPE", "research_gap_alignment": "NEW_GAP", "rationale": "Baseline RPR to five-year axial-length response is distinct from functional/dynamic/lifestyle baseline to later visual adaptation or task difficulty."}, "rationale": "The two predictor concepts must remain separate despite both using baseline assessment."},
+          {"node_id": "DQ-KDF-001-001", "node_type": "discovery-question", "alignment": "QUESTION_CANDIDATE", "comparison": {"population": "SAME", "intervention_or_exposure": "SAME", "comparator": "UNKNOWN", "outcomes": "SAME", "mechanism": "UNKNOWN", "context": "DIFFERENT", "timeframe": "DIFFERENT", "claim_strength": "NOT_APPLICABLE", "research_gap_alignment": "EXTENDS_EXISTING_GAP", "rationale": "The discovery gap covers real-life outcomes and adaptation time; pre-fitting prediction adds a measurement and timeframe dimension."}, "rationale": "Extend the existing gap rather than create a generic new AI-like branch or automatic RQ."}
+        ],
+        "summary": {"existing_node_alignment": "QUESTION_CANDIDATE", "supports_existing_node": false, "conflicts_with_existing_node": false, "case_difference_only": false, "exposes_new_research_gap": true, "forms_new_question_candidate": true}
+      },
+      "duplicate_risk": {"level": "MEDIUM", "decision": "EXTEND", "reason": "The adaptation topic overlaps existing nodes, but pre-fitting functional predictors are distinct from both post-fitting tracking and baseline RPR-to-axial response.", "checked_at": "2026-08-25T02:58:00+08:00", "method_version": "social-feedback-dedup-v0.1", "matched_feedback_ids": [], "matched_kdf_ids": ["KDF-001-B-001", "PRC-KDF-001-B-001", "FOC-KDF-001-B-001", "KDF-001-F", "KDF-001-F-001", "DQ-KDF-001-001"], "comparison_dimensions": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "COMPARATOR", "OUTCOME", "MECHANISM", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]},
+      "kdf_recommendation": "PRACTICE_REVIEW",
+      "recommendation_reason": "Review the measurement and practice-evaluation gap without automatically entering Research Intake or treating baseline tests as validated predictors.",
+      "owner_review_status": "PENDING", "intake_state": "STAGED",
+      "route_result": {"route_status": "NOT_STARTED", "route_action": "NONE", "target_flow": "NONE", "formal_ids": []}
+    }
+  ]
+}

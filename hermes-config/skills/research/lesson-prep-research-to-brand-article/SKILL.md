@@ -294,6 +294,7 @@ This skill has reusable support files that should be used before hand-building a
 - `references/myopia-control-validation-example.md` — prior validated example used as a quality benchmark.
 - `references/cycloplegic-refraction-parent-communication-case.md` — real-topic validation run for「兒童散瞳驗光與家長溝通」including DOI/PMID source set, output paths, explicit-consent pitfall, and final verification anchors.
 - `references/vision-issues-research-map-case.md` — broad optometry agenda-map case: use master-lens topic architecture, two-pass PubMed scanning, noisy-result refinement, and item-by-item optometrist entry-point synthesis.
+- `references/kdf-discovery-evidence-plan-case.md` — KDF-specific optometry workflow: turn an abstract clinical insight into a concrete discovery-question candidate, keep it human-approved=false, then build a separate Evidence Search Plan with PubMed query seeds, PMID leads, evidence buckets, and overclaiming guardrails.
 
 For a new real topic, prefer this order:
 
@@ -323,6 +324,22 @@ Verify at least:
 - Workflow note links final outputs.
 
 If using a temporary script, create it under the OS temp directory with filename prefix `hermes-verify-`, run it, remove it when possible, and report it as **ad-hoc verification**.
+
+## KDF Discovery / Evidence-Plan Mini-Workflow
+
+When the user is working inside the KDF knowledge system and brings an abstract optometry insight, do not rush to Evidence or Mature Knowledge. First translate the idea into plain clinical language, map it to existing KDF cards, classify the proper artifact type, and use dry-run/prepare before writes.
+
+Preferred flow:
+
+1. Plain-language translation: reduce abstract phrases like「能力與需求失配」to something the user and future readers can understand, e.g.「看得清楚，不等於生活中用得順」.
+2. Read-only mapping: search/read existing KDF cards before proposing a new artifact.
+3. Classification: raw ideas → capture; broad new gap → discovery-question candidate; bounded PICO/PECO → research-question; source synthesis → evidence-card; gated synthesis → mature-knowledge.
+4. If creating a discovery candidate, keep it `status: candidate` and `human_approved: false`.
+5. Build a separate Evidence Search Plan before creating/updating Evidence. Include PICO/PECO, PubMed query strings, inclusion/exclusion criteria, PMID leads, extraction template, evidence buckets, and overclaiming guardrails.
+6. If a prepared KDF operation expires, re-run prepare and save in the same turn rather than trying to reuse the stale `operation_id`.
+7. After real KDF writes, run the KDF validator and report artifact-count changes honestly; a newly approved write can legitimately change counts.
+
+Detailed example: `references/kdf-discovery-evidence-plan-case.md`.
 
 ## Common Pitfalls
 

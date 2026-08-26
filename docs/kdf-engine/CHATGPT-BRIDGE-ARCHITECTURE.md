@@ -89,9 +89,10 @@ The machine-readable contracts are:
 - `docs/kdf-engine/schemas/kdf-contract-v0.1.json`
 - `docs/kdf-engine/schemas/kdf-capture-v0.1.json`
 
-The TypeScript generic validator is the canonical executable implementation.
-`scripts/validate_kdf.py` is a compatibility launcher and contains no KDF business
-rules. KDF-001 exact counts are a separate fixture regression, not generic rules.
+The TypeScript generic validator is the canonical executable implementation. As of
+v0.1.2, Node.js 22 is the only Bridge runtime and the obsolete Python compatibility
+launcher has been removed. KDF-001 exact counts are a separate fixture regression,
+not generic rules.
 
 ```text
 Generic validation
@@ -100,7 +101,8 @@ Generic validation
 
 KDF-001 regression
   - KDF-001 subtree only
-  - 17 artifacts, 9 templates, 162 Wikilinks
+  - immutable v0.1 release: 17 artifacts and 162 Wikilinks
+  - current owner-created state at v0.1.2 preflight: 18 artifacts and 172 Wikilinks
   - 0 errors, warnings, broken links, or orphans
 ```
 
@@ -184,7 +186,12 @@ obsidian-vault/00-收件匣/KDF/CAP-<UTC timestamp>-<random>.md
 
 `hash` is the SHA-256 of the raw UTF-8 user text, not a self-referential whole-file
 hash. When `request_id` is supplied, a repeated request returns the existing capture.
-The same request ID with different text is rejected as `INVALID_INPUT`.
+The same request ID with different text is rejected as `IDEMPOTENCY_CONFLICT`.
+
+Research Question creation uses the same principle: an opaque request ID and stable
+input fingerprint are persisted on the created artifact. A retry returns that artifact;
+the same request ID with a different payload fails closed. The Vault artifact remains
+the authoritative ledger and audit metadata supplies the operation trace.
 
 ## 9. Local ChatGPT boundary
 

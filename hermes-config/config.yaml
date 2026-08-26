@@ -1,5 +1,5 @@
 model:
-  default: gpt-5.5
+  default: gpt-5.6-luna
   provider: openai-codex
   base_url: https://chatgpt.com/backend-api/codex
 fallback_providers: []
@@ -643,3 +643,12 @@ platform_toolsets:
 known_plugin_toolsets:
   cli:
     - spotify
+mcp_servers:
+  kdf:
+    command: node
+    args:
+      - C:\Users\torna_3j3fz9h\Desktop\optometry-notes\mcp-servers\kdf-chatgpt-bridge\dist\index.js
+    env:
+      KDF_REPO_ROOT: C:\Users\torna_3j3fz9h\Desktop\optometry-notes
+    connect_timeout: 60.0
+    enabled: true

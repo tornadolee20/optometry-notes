@@ -15,6 +15,7 @@ test("MCP exposes exactly eight bounded tools and supports structured search", a
   const client = new Client({ name: "kdf-test-client", version: "0.1.0" });
   try {
     await client.connect(transport);
+    assert.equal(client.getServerVersion()?.version, "0.1.2");
     const listed = await client.listTools();
     assert.deepEqual(listed.tools.map((tool) => tool.name).sort(), [
       "kdf_add_observation", "kdf_capture", "kdf_compile_mature", "kdf_create_question",

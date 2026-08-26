@@ -1,0 +1,72 @@
+{
+  "schema_version": "AGENT_REACH_TO_KDF_INTAKE_V0_1",
+  "batch_id": "AR-KDF-20260824-001",
+  "discovery_method": {
+    "channels": [
+      "WEB",
+      "RSS"
+    ],
+    "private_auth_used": false,
+    "cookies_used": false
+  },
+  "candidates": [
+    {
+      "discovery_id": "ARD-20260824-SYNTH001",
+      "discovered_at": "2026-08-24T10:30:00+08:00",
+      "topic": "Synthetic optometry discovery intake validation",
+      "original_question": "What verification would a synthetic public optometry source need before it could enter a formal KDF research workflow?",
+      "source_urls": [
+        "https://example.com/synthetic-optometry-discovery"
+      ],
+      "source_type": [
+        "RSS_ITEM"
+      ],
+      "source_date": [
+        null
+      ],
+      "source_verification_status": [
+        "UNVERIFIED"
+      ],
+      "freshness_window": {
+        "start": "2026-08-18",
+        "end": "2026-08-24",
+        "days": 7,
+        "counting_basis": "INCLUSIVE_CALENDAR_DAYS",
+        "timezone": "Asia/Taipei"
+      },
+      "social_signal_type": "PUBLIC_RSS_SURFACING",
+      "social_signal_strength": "LOW",
+      "social_signal_basis": "Synthetic RSS surfacing only; no engagement metric was collected or inferred.",
+      "evidence_candidate": "Synthetic placeholder for validating provenance and evidence gates; it is not research evidence.",
+      "evidence_level": "",
+      "research_gap": "The source is synthetic and unverified, so primary-source identity, publication date, methods, results, and independent corroboration are all missing.",
+      "claim_status": "UNVERIFIED",
+      "kdf_recommendation": "HOLD_FOR_VERIFICATION",
+      "recommendation_basis": [
+        "SOURCE_VERIFICATION_REQUIRED"
+      ],
+      "recommendation_reason": "Keep the candidate in staging until its source and underlying claim can be verified independently of public pickup.",
+      "priority": "LOW",
+      "related_existing_nodes": [],
+      "duplicate_risk": {
+        "level": "NONE",
+        "decision": "CREATE",
+        "reason": "Synthetic fixture only; no formal KDF node is asserted as related.",
+        "checked_at": "2026-08-24T10:35:00+08:00",
+        "method_version": "agent-reach-kdf-dedup-v0.1",
+        "matched_node_ids": []
+      },
+      "owner_review_status": "PENDING",
+      "intake_state": "STAGED",
+      "promotion_ready": false,
+      "promotion_result": {
+        "promotion_status": "NOT_STARTED",
+        "promotion_action": "NONE",
+        "formal_ids": [],
+        "promoted_at": null,
+        "promoted_by": null,
+        "promotion_note": null
+      }
+    }
+  ]
+}

@@ -82,7 +82,7 @@ Root Topic
 | templates | `obsidian-vault/06-模板 (Templates)/KDF/` |
 | KDF fixture cards | `obsidian-vault/04-知識卡片/KDF/KDF-001/` |
 | draft content asset | `obsidian-vault/07-長篇專欄與企劃/KDF/` |
-| validator | `scripts/validate_kdf.py` |
+| validator | `node mcp-servers/kdf-chatgpt-bridge/dist/cli.js validate` |
 
 ## Research Mandala vs Content Mandala
 
@@ -125,7 +125,7 @@ This separation lets v0.1 test the complete artifact chain without faking human 
 - six documents under `docs/kdf-engine/`
 - nine templates under `obsidian-vault/06-模板 (Templates)/KDF/`
 - `.agents/workflows/knowledge-discovery.md`
-- `scripts/validate_kdf.py`
+- `mcp-servers/kdf-chatgpt-bridge/src/validator.ts`
 - KDF-001 cards under `obsidian-vault/04-知識卡片/KDF/KDF-001/`
 - one content draft under `obsidian-vault/07-長篇專欄與企劃/KDF/`
 

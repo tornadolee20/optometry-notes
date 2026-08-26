@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uncle-glasses.local/kdf/social-feedback-intake-v0.1.json",
+  "title": "Social Feedback to KDF Intake v0.1",
+  "description": "Wire-compatible through contract v0.1.2. Staging-only manual audience and field feedback with a bounded non-formal route ledger. Feedback is never Evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "batch_id", "created_at", "capture_mode", "ingest_constraints", "privacy_policy_version", "candidates"],
+  "properties": {
+    "schema_version": {"const": "SOCIAL_FEEDBACK_TO_KDF_INTAKE_V0_1"},
+    "batch_id": {"type": "string", "pattern": "^SF-KDF-[0-9]{8}-[0-9]{3}$"},
+    "created_at": {"$ref": "#/$defs/awareDateTime"},
+    "capture_mode": {"enum": ["MANUAL_ENTRY", "OWNER_PROVIDED_TRANSCRIPT", "OWNER_PROVIDED_SUMMARY"]},
+    "ingest_constraints": {"$ref": "#/$defs/ingestConstraints"},
+    "privacy_policy_version": {"const": "SOCIAL_FEEDBACK_PRIVACY_V0_1"},
+    "candidates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/candidate"}}
+  },
+  "$defs": {
+    "awareDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(?:[zZ]|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "awareDateTimeOrNull": {
+      "anyOf": [{"$ref": "#/$defs/awareDateTime"}, {"type": "null"}]
+    },
+    "stringOrNull": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "ingestConstraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api_used", "cookies_used", "private_login_used"],
+      "properties": {
+        "api_used": {"const": false},
+        "cookies_used": {"const": false},
+        "private_login_used": {"const": false}
+      }
+    },
+    "sourceContext": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "visibility", "source_locator_type", "source_locator", "source_occurred_at",
+        "capture_method", "captured_by", "record_verification_status", "text_fidelity",
+        "redaction_status", "privacy_class", "consent_basis", "original_text_sha256",
+        "pii_minimized", "cookies_stored", "tokens_stored", "login_data_stored"
+      ],
+      "properties": {
+        "visibility": {"enum": ["PUBLIC", "PRIVATE", "CLOSED_GROUP", "IN_PERSON"]},
+        "source_locator_type": {"enum": ["URL", "PLATFORM_RECORD_ID", "LOCAL_OPAQUE_REF", "EVENT_REF", "NONE"]},
+        "source_locator": {"$ref": "#/$defs/stringOrNull"},
+        "source_occurred_at": {"$ref": "#/$defs/awareDateTimeOrNull"},
+        "capture_method": {"enum": ["MANUAL_COPY", "MANUAL_TRANSCRIPTION", "OWNER_PROVIDED_TRANSCRIPT", "OWNER_PROVIDED_SUMMARY", "FIELD_NOTE"]},
+        "captured_by": {"type": "string", "minLength": 1, "maxLength": 200},
+        "record_verification_status": {"enum": ["SOURCE_VIEWED", "TRANSCRIPT_CONFIRMED", "OWNER_ATTESTED", "UNVERIFIED"]},
+        "text_fidelity": {"enum": ["VERBATIM_PUBLIC", "VERBATIM_WITH_CONSENT", "REDACTED_VERBATIM", "OWNER_SUMMARY", "FIELD_NOTE"]},
+        "redaction_status": {"enum": ["NOT_REQUIRED", "REDACTED", "NOT_REDACTED_WITH_BASIS"]},
+        "privacy_class": {"enum": ["PUBLIC", "INTERNAL", "CONFIDENTIAL", "SENSITIVE"]},
+        "consent_basis": {"enum": ["PUBLIC_POST", "EXPLICIT_CONSENT", "PROFESSIONAL_OPERATIONAL_NOTE", "OWNER_PROVIDED", "NOT_RECORDED", "NOT_APPLICABLE"]},
+        "original_text_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "pii_minimized": {"const": true},
+        "cookies_stored": {"const": false},
+        "tokens_stored": {"const": false},
+        "login_data_stored": {"const": false}
+      }
+    },
+    "publishedContent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["content_id", "url", "platform", "title", "relation", "verification_status"],
+      "properties": {
+        "content_id": {"$ref": "#/$defs/stringOrNull"},
+        "url": {"anyOf": [{"type": "string", "format": "uri", "pattern": "^https?://"}, {"type": "null"}]},
+        "platform": {"enum": ["FACEBOOK", "THREADS", "YOUTUBE", "BLOG", "TEACHING", "OTHER"]},
+        "title": {"type": "string", "maxLength": 500},
+        "relation": {"enum": ["SOURCE_OF_FEEDBACK", "RESPONSE_TO_CONTENT", "RELATED_CONTEXT"]},
+        "verification_status": {"enum": ["VERIFIED", "OWNER_ATTESTED", "UNVERIFIED"]}
+      },
+      "anyOf": [
+        {"properties": {"content_id": {"type": "string", "minLength": 1}}},
+        {"properties": {"url": {"type": "string", "format": "uri", "pattern": "^https?://"}}}
+      ]
+    },
+    "comparisonDimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["population", "intervention_or_exposure", "comparator", "outcomes", "mechanism", "context", "timeframe", "claim_strength", "research_gap_alignment", "rationale"],
+      "properties": {
+        "population": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "intervention_or_exposure": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "comparator": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "outcomes": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "mechanism": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "context": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "timeframe": {"enum": ["SAME", "DIFFERENT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "claim_strength": {"enum": ["SAME", "STRONGER", "WEAKER", "DIFFERENT_SCOPE", "UNKNOWN", "NOT_APPLICABLE"]},
+        "research_gap_alignment": {"enum": ["SAME_GAP", "EXTENDS_EXISTING_GAP", "NEW_GAP", "NO_GAP", "UNKNOWN", "NOT_APPLICABLE"]},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 5000}
+      }
+    },
+    "relatedKdfNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "match_basis", "match_strength", "note"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "type": {"enum": ["root-topic", "mother-topic", "research-question", "evidence-card", "uncle-lens", "practice-card", "field-observation", "mature-knowledge", "discovery-question", "content-draft"]},
+        "match_basis": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "COMPARATOR", "OUTCOME", "MECHANISM", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP", "SOURCE_CONTENT"]}},
+        "match_strength": {"enum": ["EXACT", "HIGH", "MEDIUM", "LOW"]},
+        "note": {"type": "string", "minLength": 1, "maxLength": 5000}
+      }
+    },
+    "sentimentOrStance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "target", "basis", "assessed_by", "confidence"],
+      "properties": {
+        "label": {"enum": ["QUESTIONING", "SUPPORTIVE", "SKEPTICAL", "DISPUTING", "CONFUSED", "NEUTRAL", "MIXED", "NOT_ASSESSED"]},
+        "target": {"$ref": "#/$defs/stringOrNull"},
+        "basis": {"type": "string", "maxLength": 2000},
+        "assessed_by": {"enum": ["HUMAN", "ASSISTED_CLASSIFICATION", "NOT_ASSESSED"]},
+        "confidence": {"enum": ["HIGH", "MEDIUM", "LOW", "NOT_ASSESSED"]}
+      }
+    },
+    "claimOrQuestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "text", "claim_verification_status", "target_claim"],
+      "properties": {
+        "kind": {"enum": ["QUESTION", "CLAIM", "MIXED", "NONE"]},
+        "text": {"type": "string", "maxLength": 10000},
+        "claim_verification_status": {"enum": ["NOT_ASSESSED", "UNVERIFIED", "NEEDS_CONTEXT", "CONSISTENT_WITH_EXISTING_KDF", "APPARENT_CONFLICT", "NOT_APPLICABLE"]},
+        "target_claim": {"$ref": "#/$defs/stringOrNull"}
+      }
+    },
+    "anecdotalScope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scope", "denominator_status", "population_boundary", "context_boundary", "prevalence_inference_allowed", "generalization_allowed", "scope_note"],
+      "properties": {
+        "scope": {"enum": ["SINGLE_CASE", "SINGLE_EVENT", "MULTIPLE_UNCOUNTED", "LOCAL_PATTERN_UNVERIFIED", "NOT_APPLICABLE"]},
+        "denominator_status": {"enum": ["NONE", "UNKNOWN", "KNOWN_ELSEWHERE"]},
+        "population_boundary": {"type": "string", "maxLength": 2000},
+        "context_boundary": {"type": "string", "maxLength": 2000},
+        "prevalence_inference_allowed": {"const": false},
+        "generalization_allowed": {"const": false},
+        "scope_note": {"type": "string", "minLength": 1, "maxLength": 5000}
+      }
+    },
+    "contradictionAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "target_node_ids", "target_claim", "structured_comparison", "alternative_explanations", "existing_evidence_invalidated", "formal_contradiction_created", "resolution_status"],
+      "properties": {
+        "type": {"enum": ["NONE", "POPULATION_DIFFERENCE", "INTERVENTION_DIFFERENCE", "COMPARATOR_DIFFERENCE", "OUTCOME_DIFFERENCE", "MEASUREMENT_DIFFERENCE", "TIMEFRAME_DIFFERENCE", "IMPLEMENTATION_DIFFERENCE", "ADHERENCE_DIFFERENCE", "CLAIM_SCOPE_MISMATCH", "POSSIBLE_MATERIAL_CONTRADICTION", "UNDETERMINED"]},
+        "target_node_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "target_claim": {"$ref": "#/$defs/stringOrNull"},
+        "structured_comparison": {"anyOf": [{"$ref": "#/$defs/comparisonDimensions"}, {"type": "null"}]},
+        "alternative_explanations": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 2000}},
+        "existing_evidence_invalidated": {"const": false},
+        "formal_contradiction_created": {"const": false},
+        "resolution_status": {"enum": ["NOT_APPLICABLE", "UNASSESSED", "CASE_DIFFERENCE", "NEEDS_RESEARCH_REVIEW"]}
+      }
+    },
+    "evidenceRelevance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "rationale", "evidence_card_eligible", "influenced_by_engagement_metrics"],
+      "properties": {
+        "role": {"enum": ["NONE", "QUESTION_GENERATING", "GAP_SIGNAL", "IMPLEMENTATION_CONTEXT", "MEASUREMENT_LEAD", "ADHERENCE_SIGNAL", "CONTRADICTION_REVIEW"]},
+        "rationale": {"type": "string", "maxLength": 5000},
+        "evidence_card_eligible": {"const": false},
+        "influenced_by_engagement_metrics": {"const": false}
+      }
+    },
+    "researchGapCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["is_candidate", "gap_dimensions", "description", "bounded_question_candidate", "real_gap_established", "verification_needed"],
+      "properties": {
+        "is_candidate": {"type": "boolean"},
+        "gap_dimensions": {"type": "array", "uniqueItems": true, "items": {"enum": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "COMPARATOR", "OUTCOME", "MECHANISM", "IMPLEMENTATION", "ADHERENCE", "MEASUREMENT", "COMMUNICATION", "TIMEFRAME", "OTHER"]}},
+        "description": {"type": "string", "maxLength": 5000},
+        "bounded_question_candidate": {"$ref": "#/$defs/stringOrNull"},
+        "real_gap_established": {"type": "boolean"},
+        "verification_needed": {"type": "boolean"}
+      }
+    },
+    "crossNodeMatch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["node_id", "node_type", "alignment", "comparison", "rationale"],
+      "properties": {
+        "node_id": {"type": "string", "minLength": 1},
+        "node_type": {"enum": ["root-topic", "mother-topic", "research-question", "evidence-card", "uncle-lens", "practice-card", "field-observation", "mature-knowledge", "discovery-question", "content-draft"]},
+        "alignment": {"enum": ["CONSISTENT_WITH", "APPARENT_CONFLICT", "CASE_VARIATION", "NEW_GAP", "QUESTION_CANDIDATE", "RELATED_ONLY", "UNRESOLVED"]},
+        "comparison": {"$ref": "#/$defs/comparisonDimensions"},
+        "rationale": {"type": "string", "minLength": 1, "maxLength": 5000}
+      }
+    },
+    "crossNodeSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["existing_node_alignment", "supports_existing_node", "conflicts_with_existing_node", "case_difference_only", "exposes_new_research_gap", "forms_new_question_candidate"],
+      "properties": {
+        "existing_node_alignment": {"enum": ["CONSISTENT_WITH", "APPARENT_CONFLICT", "CASE_VARIATION", "NEW_GAP", "QUESTION_CANDIDATE", "RELATED_ONLY", "UNRESOLVED"]},
+        "supports_existing_node": {"type": "boolean"},
+        "conflicts_with_existing_node": {"type": "boolean"},
+        "case_difference_only": {"type": "boolean"},
+        "exposes_new_research_gap": {"type": "boolean"},
+        "forms_new_question_candidate": {"type": "boolean"}
+      }
+    },
+    "crossNodeAnalysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "checked_at", "method_version", "checked_node_types", "matches", "summary"],
+      "properties": {
+        "decision": {"enum": ["REUSE", "EXTEND", "CREATE", "HOLD"]},
+        "checked_at": {"$ref": "#/$defs/awareDateTime"},
+        "method_version": {"const": "social-feedback-cross-node-v0.1"},
+        "checked_node_types": {"type": "array", "uniqueItems": true, "items": {"enum": ["root-topic", "mother-topic", "research-question", "evidence-card", "uncle-lens", "practice-card", "field-observation", "mature-knowledge", "discovery-question", "content-draft"]}},
+        "matches": {"type": "array", "items": {"$ref": "#/$defs/crossNodeMatch"}},
+        "summary": {"$ref": "#/$defs/crossNodeSummary"}
+      }
+    },
+    "duplicateRisk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "decision", "reason", "checked_at", "method_version", "matched_feedback_ids", "matched_kdf_ids", "comparison_dimensions"],
+      "properties": {
+        "level": {"enum": ["NONE", "LOW", "MEDIUM", "HIGH", "CONFIRMED_DUPLICATE"]},
+        "decision": {"enum": ["REUSE", "EXTEND", "CREATE", "HOLD"]},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 5000},
+        "checked_at": {"$ref": "#/$defs/awareDateTime"},
+        "method_version": {"const": "social-feedback-dedup-v0.1"},
+        "matched_feedback_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "matched_kdf_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "comparison_dimensions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["SOURCE_LOCATOR", "TEXT_HASH", "PUBLISHED_CONTENT", "TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "COMPARATOR", "OUTCOME", "MECHANISM", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]}}
+      }
+    },
+    "routeResult": {
+      "type": "object",
+      "description": "A ledger record, never a command. Contract v0.1.2 permits ROUTED plus HOLD only for Owner-approved CONTENT_ONLY closure to CONTENT_CLARIFICATION with no formal IDs; cross-field enforcement is performed by the validator.",
+      "additionalProperties": false,
+      "required": ["route_status", "route_action", "target_flow", "formal_ids"],
+      "properties": {
+        "route_status": {"enum": ["NOT_STARTED", "READY", "ROUTED", "REJECTED"]},
+        "route_action": {"enum": ["NONE", "REUSE", "EXTEND", "CREATE", "HOLD"]},
+        "target_flow": {"enum": ["NONE", "RESEARCH_INTAKE", "CONTENT_CLARIFICATION", "PRACTICE_REVIEW", "FORMAL_FIELD_OBSERVATION"]},
+        "formal_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "required_research_question_id": {"$ref": "#/$defs/stringOrNull"},
+        "required_practice_card_id": {"$ref": "#/$defs/stringOrNull"},
+        "routed_at": {"$ref": "#/$defs/awareDateTimeOrNull"},
+        "routed_by": {"$ref": "#/$defs/stringOrNull"},
+        "route_note": {"$ref": "#/$defs/stringOrNull"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "feedback_id", "captured_at", "source_channel", "source_context", "original_text",
+        "normalized_summary", "related_published_content", "related_kdf_nodes", "feedback_type",
+        "sentiment_or_stance", "claim_or_question", "anecdotal_scope", "contradiction_type",
+        "evidence_relevance", "research_gap_candidate", "cross_node_analysis", "duplicate_risk",
+        "kdf_recommendation", "recommendation_reason", "owner_review_status", "intake_state", "route_result"
+      ],
+      "properties": {
+        "feedback_id": {"type": "string", "pattern": "^SFI-[0-9]{8}-[A-Z0-9][A-Z0-9-]{2,63}$"},
+        "captured_at": {"$ref": "#/$defs/awareDateTime"},
+        "source_channel": {"enum": ["FACEBOOK_COMMENT", "THREADS_REPLY", "YOUTUBE_COMMENT", "PRIVATE_MESSAGE", "STORE_IN_PERSON", "LECTURE_IN_PERSON", "PROFESSIONAL_GROUP", "CLIENT_FOLLOWUP", "PRACTICE_NOTE", "OTHER_MANUAL_SOURCE"]},
+        "source_context": {"$ref": "#/$defs/sourceContext"},
+        "original_text": {"type": "string", "minLength": 1, "maxLength": 50000},
+        "normalized_summary": {"type": "string", "minLength": 1, "maxLength": 10000},
+        "related_published_content": {"type": "array", "items": {"$ref": "#/$defs/publishedContent"}},
+        "related_kdf_nodes": {"type": "array", "items": {"$ref": "#/$defs/relatedKdfNode"}},
+        "feedback_type": {"enum": ["QUESTION", "COUNTEREXAMPLE", "MISUNDERSTANDING", "FIELD_OBSERVATION_CANDIDATE", "HYPOTHESIS", "RESEARCH_LEAD", "PRACTICE_SIGNAL", "CONTENT_REACTION", "NOISE"]},
+        "sentiment_or_stance": {"$ref": "#/$defs/sentimentOrStance"},
+        "claim_or_question": {"$ref": "#/$defs/claimOrQuestion"},
+        "anecdotal_scope": {"$ref": "#/$defs/anecdotalScope"},
+        "contradiction_type": {"$ref": "#/$defs/contradictionAssessment"},
+        "evidence_relevance": {"$ref": "#/$defs/evidenceRelevance"},
+        "research_gap_candidate": {"$ref": "#/$defs/researchGapCandidate"},
+        "cross_node_analysis": {"$ref": "#/$defs/crossNodeAnalysis"},
+        "duplicate_risk": {"$ref": "#/$defs/duplicateRisk"},
+        "kdf_recommendation": {"enum": ["ENTER_RESEARCH_INTAKE", "HOLD_FOR_VERIFICATION", "CONTENT_ONLY", "PRACTICE_REVIEW", "REJECT"]},
+        "recommendation_reason": {"type": "string", "minLength": 1, "maxLength": 5000},
+        "owner_review_status": {"enum": ["PENDING", "APPROVED", "REJECTED"]},
+        "reviewed_by": {"type": "string", "minLength": 1, "maxLength": 200},
+        "reviewed_at": {"$ref": "#/$defs/awareDateTime"},
+        "review_note": {"type": "string", "minLength": 1, "maxLength": 5000},
+        "intake_state": {"enum": ["STAGED", "CLOSED"]},
+        "route_result": {"$ref": "#/$defs/routeResult"}
+      }
+    }
+  }
+}

@@ -30,5 +30,7 @@ export const FORMAL_ROOTS = [
 ] as const;
 export const INBOX_ROOT = "obsidian-vault/00-收件匣/KDF";
 export const RUNTIME_ROOT = "logs/kdf-bridge";
+export const PREPARED_TTL_MS = 15 * 60 * 1000;
+export const AUDIT_RETENTION_DAYS = 90;
 export const CONTRACT_PATH = "docs/kdf-engine/schemas/kdf-contract-v0.1.json";
 export const CAPTURE_CONTRACT_PATH = "docs/kdf-engine/schemas/kdf-capture-v0.1.json";

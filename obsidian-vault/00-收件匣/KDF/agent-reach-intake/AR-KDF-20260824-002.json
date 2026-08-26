@@ -1,0 +1,206 @@
+{
+  "schema_version": "AGENT_REACH_TO_KDF_INTAKE_V0_1",
+  "batch_id": "AR-KDF-20260824-002",
+  "discovery_method": {
+    "channels": [
+      "WEB",
+      "RSS"
+    ],
+    "private_auth_used": false,
+    "cookies_used": false
+  },
+  "candidates": [
+    {
+      "discovery_id": "ARD-20260824-DIMSRPR1",
+      "discovered_at": "2026-08-24T20:35:44.260+08:00",
+      "topic": "DIMS long-term myopia control and baseline RPR responder stratification",
+      "original_question": "離焦鏡片成效不佳，可能不是鏡片無效，而是孩子的周邊屈光型態不同嗎？",
+      "source_urls": [
+        "https://www.reviewofoptometry.com/news/article/dims-lenses-maintain-myopia-control-effect-beyond-eight-years",
+        "https://link.springer.com/article/10.1007/s44402-026-00170-9"
+      ],
+      "source_type": [
+        "PROFESSIONAL_MEDIA",
+        "RESEARCH_PAPER"
+      ],
+      "source_date": [
+        "2026-08-19",
+        "2026-08-15"
+      ],
+      "source_verification_status": [
+        "PUBLIC_SOURCE_VERIFIED",
+        "PRIMARY_SOURCE_VERIFIED"
+      ],
+      "freshness_window": {
+        "start": "2026-08-17",
+        "end": "2026-08-24",
+        "days": 7,
+        "counting_basis": "ROLLING_24_HOUR_PERIODS",
+        "timezone": "Asia/Taipei"
+      },
+      "social_signal_type": "PROFESSIONAL_MEDIA_PLACEMENT",
+      "social_signal_strength": "HIGH",
+      "social_signal_basis": "The study was surfaced through a current professional optometry news placement and its public journal page during the seven-day window; no likes, comments, shares, impressions, or other engagement metric was collected or inferred.",
+      "evidence_candidate": "A public observational follow-up reports outcomes beyond eight years for prior DIMS wearers. The continuous-wear subgroup was small, and the reported 0.57 mm lower axial elongation and estimated 56% inhibition concerned a hyperopic baseline relative peripheral refraction subgroup compared with historical controls, so this is a predictor-stratification candidate rather than a product-wide effectiveness conclusion.",
+      "evidence_level": "",
+      "research_gap": "Test baseline relative peripheral refraction as a pre-specified predictor of long-term axial response in a sufficiently powered prospective cohort with concurrent controls, adherence tracking, and product-history control. Keep three constructs separate: long-term DIMS effectiveness, RPR-based responder stratification, and visual-quality or adaptation outcomes from peripheral-defocus optics. Also distinguish ocular RPR in this study from the vault's non-formal mRCRP concept for post-orthokeratology relative corneal refractive power.",
+      "claim_status": "RESEARCH_EVIDENCE",
+      "kdf_recommendation": "ENTER_KDF",
+      "recommendation_basis": [
+        "EXISTING_NODE_EXTENSION",
+        "EVIDENCE_GAP",
+        "RESEARCH_RELEVANCE"
+      ],
+      "recommendation_reason": "If the owner approves intake, extend the existing peripheral-defocus root through its mechanism and individual-difference branches. Do not reuse the existing visual-quality research question as though it measured axial efficacy or RPR-defined response.",
+      "priority": "HIGH",
+      "related_existing_nodes": [
+        {
+          "id": "KDF-001",
+          "type": "root-topic",
+          "match_basis": [
+            "TOPIC",
+            "POPULATION",
+            "INTERVENTION_OR_EXPOSURE",
+            "GRAPH_RELATION"
+          ],
+          "match_strength": "MEDIUM",
+          "note": "Same child peripheral-defocus domain and DIMS exposure, but KDF-001 asks whether visual-function evidence keeps pace with efficacy evidence; the pilot asks about long-term axial effectiveness and response prediction."
+        },
+        {
+          "id": "KDF-001-A",
+          "type": "mother-topic",
+          "match_basis": [
+            "TOPIC",
+            "INTERVENTION_OR_EXPOSURE",
+            "GRAPH_RELATION",
+            "MANUAL_REVIEW"
+          ],
+          "match_strength": "MEDIUM",
+          "note": "Baseline peripheral refractive profile is a plausible optical-mechanism branch, but this mother topic is only a skeleton and has no existing responder-prediction question."
+        },
+        {
+          "id": "KDF-001-F",
+          "type": "mother-topic",
+          "match_basis": [
+            "POPULATION",
+            "TOPIC",
+            "GRAPH_RELATION",
+            "MANUAL_REVIEW"
+          ],
+          "match_strength": "HIGH",
+          "note": "RPR responder stratification is an individual-difference question. The mother topic is structurally appropriate but currently has no research question."
+        },
+        {
+          "id": "KDF-001-B-001",
+          "type": "research-question",
+          "match_basis": [
+            "POPULATION",
+            "INTERVENTION_OR_EXPOSURE",
+            "MANUAL_REVIEW"
+          ],
+          "match_strength": "LOW",
+          "note": "Population and DIMS exposure overlap, but the existing outcomes are central/off-axis visual quality, low-contrast performance, adaptation, and daily function. They do not cover long-term axial elongation or RPR as an effect modifier."
+        }
+      ],
+      "duplicate_risk": {
+        "level": "MEDIUM",
+        "decision": "EXTEND",
+        "reason": "Structured comparison found the same child population and DIMS/peripheral-defocus exposure under Root KDF-001, with a strong conceptual home in Mother KDF-001-F and a mechanism link to KDF-001-A. Comparator and outcomes differ from KDF-001-B-001: this pilot concerns historical or concurrent controls, axial elongation, long-term effectiveness, and baseline RPR effect modification, while the existing research question concerns visual quality and adaptation. The research gap is therefore adjacent but not duplicative; extending the root is safer than reusing or merging the visual-quality node.",
+        "checked_at": "2026-08-24T22:19:27+08:00",
+        "method_version": "agent-reach-kdf-dedup-v0.1",
+        "matched_node_ids": [
+          "KDF-001",
+          "KDF-001-A",
+          "KDF-001-F",
+          "KDF-001-B-001"
+        ]
+      },
+      "owner_review_status": "APPROVED",
+      "reviewed_by": "owner-approved-bounded-write",
+      "reviewed_at": "2026-08-24T16:30:46.873Z",
+      "review_note": "Owner approved this intake candidate for EXTEND into the formal research path before the bounded write. Timestamp is synchronized to the verified promotion audit; Evidence and downstream Human Gates remain pending.",
+      "intake_state": "CLOSED",
+      "promotion_ready": false,
+      "promotion_result": {
+        "promotion_status": "PROMOTED",
+        "promotion_action": "EXTEND",
+        "formal_ids": [
+          "KDF-001-F-001"
+        ],
+        "promoted_at": "2026-08-24T16:30:46.873Z",
+        "promoted_by": "owner-approved-bounded-write",
+        "promotion_note": "Owner-approved EXTEND route completed. Formal Research Question KDF-001-F-001 created. No Evidence Card created; research remains pending."
+      }
+    },
+    {
+      "discovery_id": "ARD-20260824-AIGOV001",
+      "discovered_at": "2026-08-24T20:35:44.260+08:00",
+      "topic": "AI adoption, privacy, integration, documentation, and responsibility governance in optometry",
+      "original_question": "視光機構導入 AI 時，疾病偵測與 AI scribe／紀錄摘要的採用、資料隱私、軟體整合及責任／保險治理，應如何分層評估，而不是視為單一 AI 導入問題？",
+      "source_urls": [
+        "https://www.visionmonday.com/eyecare/article/ai-interest-is-growing-in-healthcare-and-optometry-but-privacy-and-integration-concerns-persist/",
+        "https://www.aop.org.uk/ot/features/2026/08/19/how-can-cyber-insurance-cover-optometry-practices-when-using-ai-apps-and-software"
+      ],
+      "source_type": [
+        "PROFESSIONAL_MEDIA",
+        "PROFESSIONAL_MEDIA"
+      ],
+      "source_date": [
+        "2026-08-24",
+        "2026-08-19"
+      ],
+      "source_verification_status": [
+        "PUBLIC_SOURCE_VERIFIED",
+        "PUBLIC_SOURCE_VERIFIED"
+      ],
+      "freshness_window": {
+        "start": "2026-08-17",
+        "end": "2026-08-24",
+        "days": 7,
+        "counting_basis": "ROLLING_24_HOUR_PERIODS",
+        "timezone": "Asia/Taipei"
+      },
+      "social_signal_type": "PROFESSIONAL_MEDIA_PLACEMENT",
+      "social_signal_strength": "MEDIUM",
+      "social_signal_basis": "Two specialist eyecare publications surfaced related adoption and governance concerns during the same seven-day window. This is a qualitative editorial-placement signal only; no engagement count or unsupported popularity metric was collected or inferred.",
+      "evidence_candidate": "One professional-media article reports vendor or industry survey observations about optometry and healthcare AI use, including limited reported disease-detection use, privacy concern, and lack of software-stack integration. A second professional-association feature uses AI call recording and summarization to outline data-processing agreements, storage location, encryption, access control, breach handling, patient notice, and insurance disclosure. These are bounded adoption and governance leads, not verified clinical-effectiveness evidence.",
+      "evidence_level": "",
+      "research_gap": "Build separate verification tracks for: AI disease-detection performance and referral responsibility; AI scribe or documentation accuracy and record correction; privacy, retention, controller/processor and cross-border data duties; interoperability and duplicate-entry burden; and professional responsibility, liability, incident response, and insurance. Determine how these tracks map to Taiwan PDPA, local medical-record duties, optometrist scope, vendor contracts, and insurer requirements. Existing non-formal vault notes cover disease-detection examples, but not this cross-workflow governance question.",
+      "claim_status": "PROFESSIONAL_MEDIA",
+      "kdf_recommendation": "ENTER_KDF",
+      "recommendation_basis": [
+        "RESEARCH_RELEVANCE",
+        "EVIDENCE_GAP"
+      ],
+      "recommendation_reason": "If the owner approves intake, create a new governance-oriented research path with explicit subquestions. Professional-media and vendor-survey claims must remain source leads and cannot become evidence without primary-source and jurisdiction-specific verification.",
+      "priority": "HIGH",
+      "related_existing_nodes": [],
+      "duplicate_risk": {
+        "level": "NONE",
+        "decision": "CREATE",
+        "reason": "All 18 formal KDF artifacts were compared by population, exposure, comparator, outcomes, mechanism, research gap, and Root/Mother/Research Question relationships. The formal tree concerns children wearing peripheral-defocus myopia-control lenses; this pilot concerns optometry practices using disease-detection and documentation AI, with governance outcomes around privacy, integration, accountability, liability, and insurance. Vault-wide context includes non-formal AI disease-detection paper notes, but no formal KDF ID covers AI scribe workflows, data governance, software integration, or responsibility allocation. No formal node is suitable for REUSE or EXTEND.",
+        "checked_at": "2026-08-24T22:19:27+08:00",
+        "method_version": "agent-reach-kdf-dedup-v0.1",
+        "matched_node_ids": []
+      },
+      "owner_review_status": "APPROVED",
+      "reviewed_by": "owner-approved-bounded-write",
+      "reviewed_at": "2026-08-24T16:39:17.131Z",
+      "review_note": "Owner approved this intake candidate for CREATE into the formal research path before the bounded write. Timestamp is synchronized to the verified promotion audit; Evidence and downstream Human Gates remain pending.",
+      "intake_state": "CLOSED",
+      "promotion_ready": false,
+      "promotion_result": {
+        "promotion_status": "PROMOTED",
+        "promotion_action": "CREATE",
+        "formal_ids": [
+          "KDF-002",
+          "KDF-002-A",
+          "KDF-002-A-001"
+        ],
+        "promoted_at": "2026-08-24T16:39:17.131Z",
+        "promoted_by": "owner-approved-bounded-write",
+        "promotion_note": "Owner-approved CREATE route completed. Root KDF-002, Mother KDF-002-A, and Research Question KDF-002-A-001 created. No Evidence Card created; research remains pending."
+      }
+    }
+  ]
+}

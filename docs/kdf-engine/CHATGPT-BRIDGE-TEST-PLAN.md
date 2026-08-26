@@ -1,4 +1,4 @@
-# KDF ChatGPT Bridge v0.1 Test Plan
+# KDF ChatGPT Bridge v0.1.2 Test Plan
 
 Status: `FROZEN`
 
@@ -10,7 +10,8 @@ Status: `FROZEN`
 4. Adapter: MCP schemas and CLI route into the same service.
 5. Fixture: isolated temporary copy of KDF-001 plus generated writes.
 6. Regression: canonical validator and protected-path diff check.
-7. Baseline: fixed-membership KDF-001 formal manifest with canonical newline handling.
+7. Baseline/snapshot: immutable 17-card baseline plus deterministic current Vault state.
+8. Operations: request replay/conflict, startup retention, privacy, permission denial.
 
 Tests use temporary repositories with `.git` and `obsidian-vault` sentinels and never
 write to live KDF-001 artifacts.
@@ -52,14 +53,19 @@ npm.cmd run build
 npm.cmd test
 npm.cmd run kdf -- validate
 cd ..\..
-python scripts\validate_kdf.py
+node mcp-servers\kdf-chatgpt-bridge\dist\cli.js validate
+node scripts\kdf_current_snapshot.mjs current
 node scripts\kdf_formal_manifest.mjs
 git diff --check
 ```
 
-Final status is `PASS` only if all new tests, compatibility validation, KDF-001 fixture
-regression, protected-path checks, formal manifest verification, and `git diff --check`
-pass. The manifest command must reproduce
+Final status is `PASS` only if all new tests, Node validation, KDF-001 fixture
+regression, snapshot generation, protected-path checks, formal baseline verification,
+and `git diff --check` pass. The immutable baseline command must reproduce
 `991ae3bf286ffecc823c44239de6b1bb14dc20de4e314c4a9f5ce939b98921fd`.
 Its exact membership and serialization rules are frozen in
 `KDF-FORMAL-MANIFEST.md`.
+
+A valid artifact added after v0.1 must leave the validator green, change the current
+snapshot, and report `BASELINE_CHANGED`; it must not be classified as corruption.
+Actual ChatGPT frontend acceptance is tracked separately in `CHATGPT-E2E-v0.1.2.md`.

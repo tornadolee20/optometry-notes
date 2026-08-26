@@ -57,8 +57,9 @@ is defined exactly:
 6. Aggregate lines are `path=sha256`, joined by one LF with no trailing LF,
    then UTF-8 encoded and SHA-256 hashed.
 7. Hidden, Inbox, runtime, lock, temp, audit, and any non-allowlisted files are
-   excluded. An unexpected direct Markdown artifact in either baseline root is
-   a membership error rather than silently entering the manifest.
+   excluded from the immutable baseline. A new formal artifact is reported under
+   `added_since_baseline` with state `BASELINE_CHANGED`; it does not alter the frozen
+   hash and is validated separately as part of the current Vault.
 
 The explicit `\` aggregate token is retained because changing it to `/` would
 invent a third baseline hash during reconciliation. Cross-platform stability
@@ -74,6 +75,16 @@ From the repository root:
 node scripts\kdf_formal_manifest.mjs
 ```
 
-The command prints the algorithm metadata, all 17 POSIX paths and per-file
-hashes, and the aggregate hash. It exits non-zero for missing/unexpected
-membership or an authoritative-hash mismatch.
+The command prints the algorithm metadata, all 17 POSIX paths and per-file hashes,
+the aggregate hash, and additions since that release. It exits non-zero only when a
+baseline member is missing or its authoritative hash no longer matches. Valid growth
+returns `BASELINE_CHANGED` with exit code zero. Generate the current Vault snapshot
+separately with:
+
+```powershell
+node scripts\kdf_current_snapshot.mjs current
+```
+
+Promotion is explicit and documented in
+`CHATGPT-BRIDGE-v0.1.2-OPERATIONAL-CLOSURE.md`; it never changes this historical v0.1
+record automatically.

@@ -1,0 +1,50 @@
+name: KDF Bridge Windows
+
+on:
+  push:
+    paths:
+      - "mcp-servers/kdf-chatgpt-bridge/**"
+      - "scripts/kdf_*.mjs"
+      - "docs/kdf-engine/**"
+      - "obsidian-vault/04-知識卡片/KDF/**"
+      - "obsidian-vault/07-長篇專欄與企劃/KDF/**"
+      - ".github/workflows/kdf-bridge-windows.yml"
+  pull_request:
+    paths:
+      - "mcp-servers/kdf-chatgpt-bridge/**"
+      - "scripts/kdf_*.mjs"
+      - "docs/kdf-engine/**"
+      - "obsidian-vault/04-知識卡片/KDF/**"
+      - "obsidian-vault/07-長篇專欄與企劃/KDF/**"
+      - ".github/workflows/kdf-bridge-windows.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: mcp-servers/kdf-chatgpt-bridge/package-lock.json
+      - name: Install bridge dependencies
+        working-directory: mcp-servers/kdf-chatgpt-bridge
+        run: npm ci
+      - name: Build bridge
+        working-directory: mcp-servers/kdf-chatgpt-bridge
+        run: npm run build
+      - name: Run bridge tests
+        working-directory: mcp-servers/kdf-chatgpt-bridge
+        run: npm test
+      - name: Validate current Vault
+        run: node mcp-servers/kdf-chatgpt-bridge/dist/cli.js validate
+      - name: Generate current snapshot
+        run: node scripts/kdf_current_snapshot.mjs current
+      - name: Verify immutable v0.1 baseline integrity
+        run: node scripts/kdf_formal_manifest.mjs
+      - name: Check patch whitespace
+        run: git diff --check

@@ -47,7 +47,7 @@ The test target is the KDF namespace and the KDF-created content draft. Legacy c
 Use the bundled Python runtime because the system Python launcher is broken in this checkout:
 
 ```powershell
-& 'C:\Users\torna_3j3fz9h\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' scripts/validate_kdf.py
+node mcp-servers\kdf-chatgpt-bridge\dist\cli.js validate
 ```
 
 Additional review:

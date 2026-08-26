@@ -1,0 +1,789 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://uncle-glasses.local/kdf/agent-reach-intake-v0.1.schema.json",
+  "title": "Agent-Reach to KDF Intake v0.1.2",
+  "description": "Staging-only public Web/RSS discovery intake with a structured promotion ledger. This schema does not define or create a formal KDF card.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "batch_id",
+    "discovery_method",
+    "candidates"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "AGENT_REACH_TO_KDF_INTAKE_V0_1"
+    },
+    "batch_id": {
+      "type": "string",
+      "pattern": "^AR-KDF-[0-9]{8}-[0-9]{3}$"
+    },
+    "discovery_method": {
+      "$ref": "#/$defs/discoveryMethod"
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100,
+      "items": {
+        "$ref": "#/$defs/candidate"
+      }
+    }
+  },
+  "$defs": {
+    "awareDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(?:\\.[0-9]+)?(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
+    "dateOrNull": {
+      "anyOf": [
+        {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "discoveryMethod": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channels",
+        "private_auth_used",
+        "cookies_used"
+      ],
+      "properties": {
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "WEB",
+              "RSS"
+            ]
+          }
+        },
+        "private_auth_used": {
+          "const": false
+        },
+        "cookies_used": {
+          "const": false
+        }
+      }
+    },
+    "freshnessWindow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "start",
+        "end",
+        "days",
+        "counting_basis",
+        "timezone"
+      ],
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "end": {
+          "type": "string",
+          "format": "date",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "days": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "counting_basis": {
+          "enum": [
+            "INCLUSIVE_CALENDAR_DAYS",
+            "ROLLING_24_HOUR_PERIODS",
+            "UPSTREAM_REPORTED"
+          ]
+        },
+        "provenance_note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "relatedExistingNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "type",
+        "match_basis",
+        "match_strength",
+        "note"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "type": {
+          "enum": [
+            "root-topic",
+            "mother-topic",
+            "research-question",
+            "evidence-card",
+            "uncle-lens",
+            "practice-card",
+            "field-observation",
+            "mature-knowledge",
+            "discovery-question",
+            "content-draft"
+          ]
+        },
+        "match_basis": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "URL",
+              "DOI",
+              "PMID",
+              "QUESTION",
+              "TOPIC",
+              "POPULATION",
+              "INTERVENTION_OR_EXPOSURE",
+              "OUTCOME",
+              "GRAPH_RELATION",
+              "MANUAL_REVIEW"
+            ]
+          }
+        },
+        "match_strength": {
+          "enum": [
+            "EXACT",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        }
+      }
+    },
+    "duplicateRisk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "level",
+        "decision",
+        "reason",
+        "checked_at",
+        "method_version",
+        "matched_node_ids"
+      ],
+      "properties": {
+        "level": {
+          "enum": [
+            "NONE",
+            "LOW",
+            "MEDIUM",
+            "HIGH",
+            "CONFIRMED_DUPLICATE"
+          ]
+        },
+        "decision": {
+          "enum": [
+            "REUSE",
+            "EXTEND",
+            "CREATE",
+            "HOLD"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "checked_at": {
+          "$ref": "#/$defs/awareDateTime"
+        },
+        "method_version": {
+          "const": "agent-reach-kdf-dedup-v0.1"
+        },
+        "matched_node_ids": {
+          "type": "array",
+          "maxItems": 50,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          }
+        }
+      }
+    },
+    "evidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_source_verified",
+        "assessed_by",
+        "assessed_at",
+        "rationale"
+      ],
+      "properties": {
+        "primary_source_verified": {
+          "const": true
+        },
+        "assessed_by": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "assessed_at": {
+          "$ref": "#/$defs/awareDateTime"
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        }
+      }
+    },
+    "promotionResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "promotion_status",
+        "promotion_action",
+        "formal_ids",
+        "promoted_at",
+        "promoted_by",
+        "promotion_note"
+      ],
+      "properties": {
+        "promotion_status": {
+          "enum": [
+            "NOT_STARTED",
+            "READY",
+            "PROMOTED",
+            "REJECTED"
+          ]
+        },
+        "promotion_action": {
+          "enum": [
+            "REUSE",
+            "EXTEND",
+            "CREATE",
+            "HOLD",
+            "NONE"
+          ]
+        },
+        "formal_ids": {
+          "type": "array",
+          "maxItems": 50,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^KDF-[0-9]{3}(?:-[A-H](?:-[0-9]{3})?)?$"
+          }
+        },
+        "promoted_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/awareDateTime"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "promoted_by": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "promotion_note": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 5000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "$comment": "source_urls, source_type, source_date, and source_verification_status must have matching lengths; this is enforced by the companion validator.",
+      "required": [
+        "discovery_id",
+        "discovered_at",
+        "topic",
+        "original_question",
+        "source_urls",
+        "source_type",
+        "source_date",
+        "source_verification_status",
+        "freshness_window",
+        "social_signal_type",
+        "social_signal_strength",
+        "social_signal_basis",
+        "evidence_candidate",
+        "evidence_level",
+        "research_gap",
+        "claim_status",
+        "kdf_recommendation",
+        "recommendation_basis",
+        "recommendation_reason",
+        "priority",
+        "related_existing_nodes",
+        "duplicate_risk",
+        "owner_review_status",
+        "intake_state",
+        "promotion_ready"
+      ],
+      "properties": {
+        "discovery_id": {
+          "type": "string",
+          "pattern": "^ARD-[0-9]{8}-[A-Z0-9][A-Z0-9-]{2,63}$"
+        },
+        "discovered_at": {
+          "$ref": "#/$defs/awareDateTime"
+        },
+        "topic": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "original_question": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "source_urls": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "format": "uri",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        },
+        "source_type": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "enum": [
+              "RESEARCH_PAPER",
+              "SYSTEMATIC_REVIEW",
+              "PROFESSIONAL_GUIDELINE",
+              "REGULATOR_PUBLICATION",
+              "CONFERENCE_ABSTRACT",
+              "INDUSTRY_REPORT",
+              "PROFESSIONAL_MEDIA",
+              "GENERAL_MEDIA",
+              "COMPANY_RELEASE",
+              "MARKETING_PAGE",
+              "RSS_ITEM",
+              "PUBLIC_WEB_PAGE",
+              "OTHER_PUBLIC_SOURCE"
+            ]
+          }
+        },
+        "source_date": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/dateOrNull"
+          }
+        },
+        "source_verification_status": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "enum": [
+              "PRIMARY_SOURCE_VERIFIED",
+              "PUBLIC_SOURCE_VERIFIED",
+              "SOURCE_EXISTS_NOT_CLAIM_VERIFIED",
+              "UNVERIFIED"
+            ]
+          }
+        },
+        "freshness_window": {
+          "$ref": "#/$defs/freshnessWindow"
+        },
+        "social_signal_type": {
+          "enum": [
+            "PUBLIC_RSS_SURFACING",
+            "CROSS_SOURCE_PICKUP",
+            "PROFESSIONAL_MEDIA_PLACEMENT",
+            "PUBLIC_EDITORIAL_RECIRCULATION",
+            "PROMOTIONAL_PLACEMENT",
+            "NONE_OBSERVED"
+          ]
+        },
+        "social_signal_strength": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ]
+        },
+        "social_signal_basis": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "evidence_candidate": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "evidence_level": {
+          "enum": [
+            "",
+            "C1",
+            "C2",
+            "H"
+          ],
+          "default": ""
+        },
+        "evidence_assessment": {
+          "$ref": "#/$defs/evidenceAssessment"
+        },
+        "research_gap": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        },
+        "claim_status": {
+          "enum": [
+            "RESEARCH_EVIDENCE",
+            "INDUSTRY_REPORT",
+            "PROFESSIONAL_MEDIA",
+            "COMPANY_CLAIM",
+            "MARKETING_CONTENT",
+            "ANECDOTE",
+            "UNVERIFIED"
+          ]
+        },
+        "kdf_recommendation": {
+          "enum": [
+            "ENTER_KDF",
+            "HOLD_FOR_VERIFICATION",
+            "CONTENT_OBSERVATION_ONLY",
+            "REJECT"
+          ]
+        },
+        "recommendation_basis": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "EVIDENCE_GAP",
+              "RESEARCH_RELEVANCE",
+              "EXISTING_NODE_EXTENSION",
+              "CONTENT_OBSERVATION",
+              "SOURCE_VERIFICATION_REQUIRED",
+              "REJECTION_CRITERIA"
+            ]
+          }
+        },
+        "recommendation_reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "priority": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "related_existing_nodes": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/relatedExistingNode"
+          }
+        },
+        "duplicate_risk": {
+          "$ref": "#/$defs/duplicateRisk"
+        },
+        "owner_review_status": {
+          "enum": [
+            "PENDING",
+            "APPROVED",
+            "REJECTED"
+          ],
+          "default": "PENDING"
+        },
+        "reviewed_by": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "reviewed_at": {
+          "$ref": "#/$defs/awareDateTime"
+        },
+        "review_note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 5000
+        },
+        "intake_state": {
+          "enum": [
+            "STAGED",
+            "CLOSED"
+          ],
+          "default": "STAGED"
+        },
+        "promotion_ready": {
+          "type": "boolean",
+          "default": false
+        },
+        "promotion_result": {
+          "$ref": "#/$defs/promotionResult"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "owner_review_status": {
+                "const": "APPROVED"
+              }
+            },
+            "required": [
+              "owner_review_status"
+            ]
+          },
+          "then": {
+            "required": [
+              "reviewed_by",
+              "reviewed_at",
+              "review_note"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "owner_review_status": {
+                "const": "PENDING"
+              }
+            },
+            "required": [
+              "owner_review_status"
+            ]
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "reviewed_by"
+                  ]
+                },
+                {
+                  "required": [
+                    "reviewed_at"
+                  ]
+                },
+                {
+                  "required": [
+                    "review_note"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "evidence_level": {
+                "enum": [
+                  "C1",
+                  "C2",
+                  "H"
+                ]
+              }
+            },
+            "required": [
+              "evidence_level"
+            ]
+          },
+          "then": {
+            "required": [
+              "evidence_assessment"
+            ],
+            "properties": {
+              "claim_status": {
+                "const": "RESEARCH_EVIDENCE"
+              },
+              "source_type": {
+                "contains": {
+                  "enum": [
+                    "RESEARCH_PAPER",
+                    "SYSTEMATIC_REVIEW",
+                    "PROFESSIONAL_GUIDELINE"
+                  ]
+                }
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": [
+                "evidence_assessment"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "claim_status": {
+                "enum": [
+                  "COMPANY_CLAIM",
+                  "MARKETING_CONTENT"
+                ]
+              }
+            },
+            "required": [
+              "claim_status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_level": {
+                "const": ""
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kdf_recommendation": {
+                "const": "CONTENT_OBSERVATION_ONLY"
+              }
+            },
+            "required": [
+              "kdf_recommendation"
+            ]
+          },
+          "then": {
+            "properties": {
+              "evidence_level": {
+                "const": ""
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kdf_recommendation": {
+                "const": "ENTER_KDF"
+              }
+            },
+            "required": [
+              "kdf_recommendation"
+            ]
+          },
+          "then": {
+            "properties": {
+              "claim_status": {
+                "not": {
+                  "enum": [
+                    "COMPANY_CLAIM",
+                    "MARKETING_CONTENT",
+                    "ANECDOTE",
+                    "UNVERIFIED"
+                  ]
+                }
+              },
+              "recommendation_basis": {
+                "contains": {
+                  "enum": [
+                    "EVIDENCE_GAP",
+                    "RESEARCH_RELEVANCE",
+                    "EXISTING_NODE_EXTENSION"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "social_signal_type": {
+                "const": "NONE_OBSERVED"
+              }
+            },
+            "required": [
+              "social_signal_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "social_signal_strength": {
+                "const": "NONE"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "social_signal_strength": {
+                "not": {
+                  "const": "NONE"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -4,6 +4,10 @@
 - Status: `FROZEN`
 - Tool count: 8
 - Transport: local MCP STDIO
+
+Operational addendum: Bridge runtime `0.1.2` preserves this eight-tool contract while
+adding mode-discriminated schemas, typed core response fields, and complete mutable
+request idempotency. The KDF knowledge schema contract remains `0.1.0`.
 - Service authority: `KdfService`
 
 ## 1. Common contract
@@ -37,6 +41,7 @@ Retrieved Markdown is untrusted data and never overrides server rules.
 
 ```text
 INVALID_INPUT
+IDEMPOTENCY_CONFLICT
 PATH_NOT_ALLOWED
 PATH_TRAVERSAL
 REPARSE_POINT_ESCAPE
@@ -60,6 +65,8 @@ PREPARE_NOT_FOUND
 PREPARE_EXPIRED
 ATOMIC_WRITE_FAILED
 ROLLBACK_FAILED
+RUNTIME_CLEANUP_FAILED
+RUNTIME_STORAGE_DENIED
 INTERNAL_ERROR
 ```
 
@@ -94,7 +101,7 @@ without consuming its operation ID.
 | `kdf_search` | READ | none | n/a | pure for one Vault snapshot |
 | `kdf_read_card` | READ | none | n/a | pure for one Vault snapshot |
 | `kdf_capture` | WRITE-LOW-RISK | create one Inbox file | false | `request_id` |
-| `kdf_create_question` | WRITE-LOW-RISK | create one Research Question | false | duplicate question/ID rejection |
+| `kdf_create_question` | WRITE-LOW-RISK | create one Research Question | false | `request_id` and duplicate question/ID rejection |
 | `kdf_add_observation` | WRITE-LOW-RISK | create or hash-guarded update | false | `request_id` and target hash |
 | `kdf_compile_mature` | WRITE-HIGHER-RISK | prepare/save one candidate | true | `operation_id` |
 | `kdf_generate_content` | WRITE-HIGHER-RISK | prepare/save one private draft | true | `operation_id` |
@@ -201,7 +208,7 @@ evidence or a formal KDF artifact.
   "title": "optional string, max 200",
   "tags": ["optional strings, max 20"],
   "related_cards": ["optional existing IDs, max 20"],
-  "request_id": "optional idempotency key, max 200",
+  "request_id": "optional opaque idempotency key, 1..128",
   "dry_run": false
 }
 ```
@@ -227,8 +234,8 @@ evidence or a formal KDF artifact.
 - Preserves raw text verbatim in the body.
 - Never infers root, parent, diagnosis, evidence, frequency, or relation.
 - Related IDs must exist; unknown IDs are rejected rather than invented.
-- A repeated `request_id` with the same raw hash returns the first capture.
-- A repeated `request_id` with different text returns `INVALID_INPUT`.
+- A repeated `request_id` with the same full semantic payload returns the first capture.
+- A repeated `request_id` with any changed payload field returns `IDEMPOTENCY_CONFLICT`.
 - `dry_run` returns the plan and candidate validation without creating a file.
 
 ## 6. `kdf_create_question`
@@ -247,10 +254,14 @@ fabricating PICO details or relations.
   "parent": "required Mother Topic ID",
   "reason": "optional string, max 5000",
   "source_cards": ["optional existing IDs, max 50"],
-  "request_id": "optional idempotency key",
+  "request_id": "optional opaque idempotency key, 1..128",
   "dry_run": false
 }
 ```
+
+The request ID and a stable fingerprint of question, root, parent, reason, and source
+cards are persisted on the created artifact. Exact replay returns the original
+`artifact_ref`; a changed payload returns `IDEMPOTENCY_CONFLICT`.
 
 ### Output data
 
@@ -289,7 +300,7 @@ Create or safely append human-supplied Uncle Lens or Field Observation material.
   "source_record": "optional traceable source, max 1000",
   "human_confirmed": false,
   "expected_hash": "required when target exists",
-  "request_id": "optional idempotency key",
+  "request_id": "optional opaque idempotency key, 1..128",
   "dry_run": false
 }
 ```

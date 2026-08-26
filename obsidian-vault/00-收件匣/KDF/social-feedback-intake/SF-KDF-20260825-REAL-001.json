@@ -1,0 +1,640 @@
+{
+  "schema_version": "SOCIAL_FEEDBACK_TO_KDF_INTAKE_V0_1",
+  "batch_id": "SF-KDF-20260825-003",
+  "created_at": "2026-08-25T03:16:04+08:00",
+  "capture_mode": "OWNER_PROVIDED_SUMMARY",
+  "ingest_constraints": {
+    "api_used": false,
+    "cookies_used": false,
+    "private_login_used": false
+  },
+  "privacy_policy_version": "SOCIAL_FEEDBACK_PRIVACY_V0_1",
+  "candidates": [
+    {
+      "feedback_id": "SFI-20260825-REAL-SOCIAL-001",
+      "captured_at": "2026-08-25T03:10:00+08:00",
+      "source_channel": "OTHER_MANUAL_SOURCE",
+      "source_context": {
+        "visibility": "PUBLIC",
+        "source_locator_type": "LOCAL_OPAQUE_REF",
+        "source_locator": "LOCAL-FEEDBACK-20260825-001",
+        "source_occurred_at": null,
+        "capture_method": "OWNER_PROVIDED_SUMMARY",
+        "captured_by": "codex-manual-owner-material-review",
+        "record_verification_status": "OWNER_ATTESTED",
+        "text_fidelity": "OWNER_SUMMARY",
+        "redaction_status": "REDACTED",
+        "privacy_class": "INTERNAL",
+        "consent_basis": "PUBLIC_POST",
+        "original_text_sha256": "dd97faf66a87d7038e0d77be03e2cbe94d12bc4604a8009389dc7a36e9896c93",
+        "pii_minimized": true,
+        "cookies_stored": false,
+        "tokens_stored": false,
+        "login_data_stored": false
+      },
+      "original_text": "某位公開 Google 評論者表示，因網路平台推薦與欣賞店家文章而到店，並認為服務兼具專業與人情味；另於店內說明過去鏡片與實際配戴感受有落差。",
+      "normalized_summary": "一則由 Owner 公開文章轉述、已移除評論者名稱的 Google 評論：內容肯定文章與服務，也提到過往鏡片和實際配戴感受曾有落差。未保存原評論 permalink、帳號或可識別資訊。",
+      "related_published_content": [
+        {
+          "content_id": null,
+          "url": "https://www.uncle-glasses.net/2025/04/glasses-and-human-touch.html",
+          "platform": "BLOG",
+          "title": "【三峽眼鏡行故事】你以為只是配眼鏡？她卻說我們配進了人情味",
+          "relation": "SOURCE_OF_FEEDBACK",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "related_kdf_nodes": [
+        {
+          "id": "KDF-001",
+          "type": "root-topic",
+          "match_basis": ["OUTCOME", "CONTEXT"],
+          "match_strength": "LOW",
+          "note": "Both concern lived eyewear experience, but this feedback is about service, trust, and an unspecified prior lens rather than child peripheral-defocus visual quality."
+        }
+      ],
+      "feedback_type": "CONTENT_REACTION",
+      "sentiment_or_stance": {
+        "label": "SUPPORTIVE",
+        "target": "店家文章與服務體驗",
+        "basis": "Owner summary records positive reaction to the published content and service; the separate prior-lens mismatch is descriptive rather than a research claim.",
+        "assessed_by": "ASSISTED_CLASSIFICATION",
+        "confidence": "MEDIUM"
+      },
+      "claim_or_question": {
+        "kind": "CLAIM",
+        "text": "文章與服務讓一位評論者感到專業且有人情味；其過往鏡片曾與實際配戴感受有落差。",
+        "claim_verification_status": "UNVERIFIED",
+        "target_claim": null
+      },
+      "anecdotal_scope": {
+        "scope": "SINGLE_EVENT",
+        "denominator_status": "NONE",
+        "population_boundary": "一則已去識別的公開評論轉述，不代表其他讀者、客戶或鏡片使用者",
+        "context_boundary": "文章導引到店、服務感受，以及一段未具體化的過往配鏡經驗",
+        "prevalence_inference_allowed": false,
+        "generalization_allowed": false,
+        "scope_note": "只有單一 owner-attributed record；不得推論文章轉換率、顧客滿意比例或鏡片不適比例。"
+      },
+      "contradiction_type": {
+        "type": "NONE",
+        "target_node_ids": [],
+        "target_claim": null,
+        "structured_comparison": null,
+        "alternative_explanations": [],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "NOT_APPLICABLE"
+      },
+      "evidence_relevance": {
+        "role": "IMPLEMENTATION_CONTEXT",
+        "rationale": "The record may inform content and service review, but it contains no study design, comparator, measurement, or denominator and is not Evidence.",
+        "evidence_card_eligible": false,
+        "influenced_by_engagement_metrics": false
+      },
+      "research_gap_candidate": {
+        "is_candidate": false,
+        "gap_dimensions": [],
+        "description": "The saved meaning does not establish a bounded optometry research gap; the prior-lens mismatch lacks lens design, population, outcome, and timeframe detail.",
+        "bounded_question_candidate": null,
+        "real_gap_established": false,
+        "verification_needed": true
+      },
+      "cross_node_analysis": {
+        "decision": "HOLD",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {
+            "node_id": "KDF-001",
+            "node_type": "root-topic",
+            "alignment": "RELATED_ONLY",
+            "comparison": {
+              "population": "UNKNOWN",
+              "intervention_or_exposure": "DIFFERENT",
+              "comparator": "UNKNOWN",
+              "outcomes": "DIFFERENT",
+              "mechanism": "UNKNOWN",
+              "context": "DIFFERENT",
+              "timeframe": "UNKNOWN",
+              "claim_strength": "DIFFERENT_SCOPE",
+              "research_gap_alignment": "NO_GAP",
+              "rationale": "KDF-001 concerns schoolchildren using peripheral-defocus myopia-control spectacles and visual-function outcomes. This record concerns one public content/service reaction plus an unspecified prior-lens mismatch; population, lens design, outcome measure, and timeframe are unavailable."
+            },
+            "rationale": "The broad eyewear-experience overlap is insufficient for REUSE, EXTEND, or CREATE. No mother topic, research question, Evidence, Mature, or Discovery node is an appropriate container."
+          }
+        ],
+        "summary": {
+          "existing_node_alignment": "RELATED_ONLY",
+          "supports_existing_node": false,
+          "conflicts_with_existing_node": false,
+          "case_difference_only": false,
+          "exposes_new_research_gap": false,
+          "forms_new_question_candidate": false
+        }
+      },
+      "duplicate_risk": {
+        "level": "NONE",
+        "decision": "HOLD",
+        "reason": "No existing Social Feedback intake item or bounded formal KDF node was identified as the same record; the source article remains the provenance reference.",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-dedup-v0.1",
+        "matched_feedback_ids": [],
+        "matched_kdf_ids": [],
+        "comparison_dimensions": ["SOURCE_LOCATOR", "TEXT_HASH", "PUBLISHED_CONTENT", "TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"]
+      },
+      "kdf_recommendation": "CONTENT_ONLY",
+      "recommendation_reason": "Retain as a privacy-safe content/service reaction. The record is too underspecified for formal research or practice routing and must not be treated as effectiveness evidence.",
+      "owner_review_status": "APPROVED",
+      "reviewed_by": "owner",
+      "reviewed_at": "2026-08-25T09:00:39+08:00",
+      "review_note": "Owner approved the CONTENT_ONLY disposition and non-formal closure; this does not approve Evidence or a formal KDF route.",
+      "intake_state": "CLOSED",
+      "route_result": {
+        "route_status": "ROUTED",
+        "route_action": "HOLD",
+        "target_flow": "CONTENT_CLARIFICATION",
+        "formal_ids": [],
+        "routed_at": "2026-08-25T09:00:39+08:00",
+        "routed_by": "codex-owner-authorized-ledger-closure",
+        "route_note": "Closed as a content clarification signal under Owner authorization; no formal KDF artifact or content-generation command was created or invoked."
+      }
+    },
+    {
+      "feedback_id": "SFI-20260825-REAL-STORE-001",
+      "captured_at": "2026-08-25T03:11:00+08:00",
+      "source_channel": "STORE_IN_PERSON",
+      "source_context": {
+        "visibility": "IN_PERSON",
+        "source_locator_type": "LOCAL_OPAQUE_REF",
+        "source_locator": "LOCAL-FEEDBACK-20260825-002",
+        "source_occurred_at": null,
+        "capture_method": "OWNER_PROVIDED_SUMMARY",
+        "captured_by": "codex-manual-owner-material-review",
+        "record_verification_status": "OWNER_ATTESTED",
+        "text_fidelity": "OWNER_SUMMARY",
+        "redaction_status": "REDACTED",
+        "privacy_class": "CONFIDENTIAL",
+        "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "8c12743e213d6d6d6d257290cae25ad6868949f4e69fffcdd1cdfb79afececf1",
+        "pii_minimized": true,
+        "cookies_stored": false,
+        "tokens_stored": false,
+        "login_data_stored": false
+      },
+      "original_text": "一位門市來客表示自己有依照 20-20-20 用眼休息方式執行，但休息後眼睛仍感到乾澀，頸部仍感僵硬，並詢問原因。",
+      "normalized_summary": "一則去識別的門市提問：執行 20-20-20 後仍有眼睛乾澀與頸部僵硬，詢問為何單一休息規則沒有解決不適。來源只記載相對時間，故未推定實際發生日期。",
+      "related_published_content": [
+        {
+          "content_id": null,
+          "url": "https://www.uncle-glasses.net/2026/03/20-20-20-rule-not-working-body-movement",
+          "platform": "BLOG",
+          "title": "每隔 20 分鐘看遠，為什麼肩膀還是很痠？三峽驗光師：你少做了最後一步",
+          "relation": "SOURCE_OF_FEEDBACK",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "related_kdf_nodes": [
+        {
+          "id": "KDF-001",
+          "type": "root-topic",
+          "match_basis": ["OUTCOME", "CONTEXT"],
+          "match_strength": "LOW",
+          "note": "Both involve lived visual comfort, but the exposure, population, outcomes, mechanism, and research path differ."
+        }
+      ],
+      "feedback_type": "QUESTION",
+      "sentiment_or_stance": {
+        "label": "QUESTIONING",
+        "target": "20-20-20 用眼休息方式",
+        "basis": "The owner summary records a request for an explanation after the expected relief did not occur.",
+        "assessed_by": "ASSISTED_CLASSIFICATION",
+        "confidence": "HIGH"
+      },
+      "claim_or_question": {
+        "kind": "MIXED",
+        "text": "依照 20-20-20 休息後仍有眼睛乾澀與頸部僵硬，為什麼？",
+        "claim_verification_status": "NEEDS_CONTEXT",
+        "target_claim": "20-20-20 足以處理所有眼睛乾澀與頸部僵硬"
+      },
+      "anecdotal_scope": {
+        "scope": "SINGLE_CASE",
+        "denominator_status": "NONE",
+        "population_boundary": "一位已去識別的門市來客；年齡、處方、診斷與其他背景未知",
+        "context_boundary": "自行執行 20-20-20 後的眼睛乾澀與頸部僵硬主觀感受",
+        "prevalence_inference_allowed": false,
+        "generalization_allowed": false,
+        "scope_note": "這是一人的提問，不表示 20-20-20 對其他人無效，也不建立任何症狀成因或發生率。"
+      },
+      "contradiction_type": {
+        "type": "NONE",
+        "target_node_ids": [],
+        "target_claim": null,
+        "structured_comparison": null,
+        "alternative_explanations": ["執行方式或休息期間的活動未完整記錄", "乾澀與頸部僵硬可能涉及不同因素", "個人屈光、雙眼視覺、姿勢或環境狀況未知"],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "NOT_APPLICABLE"
+      },
+      "evidence_relevance": {
+        "role": "QUESTION_GENERATING",
+        "rationale": "The question can improve content clarification, but one subjective report without examination, denominator, comparator, or outcome protocol is not Evidence.",
+        "evidence_card_eligible": false,
+        "influenced_by_engagement_metrics": false
+      },
+      "research_gap_candidate": {
+        "is_candidate": false,
+        "gap_dimensions": ["COMMUNICATION"],
+        "description": "The owner article already treats the misunderstanding that a single rest rule should resolve every symptom. This record does not establish a new bounded research gap within the current KDF.",
+        "bounded_question_candidate": null,
+        "real_gap_established": false,
+        "verification_needed": true
+      },
+      "cross_node_analysis": {
+        "decision": "HOLD",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {
+            "node_id": "KDF-001",
+            "node_type": "root-topic",
+            "alignment": "RELATED_ONLY",
+            "comparison": {
+              "population": "UNKNOWN",
+              "intervention_or_exposure": "DIFFERENT",
+              "comparator": "UNKNOWN",
+              "outcomes": "DIFFERENT",
+              "mechanism": "DIFFERENT",
+              "context": "DIFFERENT",
+              "timeframe": "UNKNOWN",
+              "claim_strength": "DIFFERENT_SCOPE",
+              "research_gap_alignment": "NO_GAP",
+              "rationale": "KDF-001 is bounded to child peripheral-defocus spectacles and visual quality/adaptation. This question concerns a general screen-rest practice and dry-eye/neck symptoms, with no child population, defocus lens, comparator, or matching outcome."
+            },
+            "rationale": "The broad visual-comfort overlap does not justify reuse or extension of KDF-001, and the existing KDF-002 AI-governance path is unrelated."
+          }
+        ],
+        "summary": {
+          "existing_node_alignment": "RELATED_ONLY",
+          "supports_existing_node": false,
+          "conflicts_with_existing_node": false,
+          "case_difference_only": false,
+          "exposes_new_research_gap": false,
+          "forms_new_question_candidate": false
+        }
+      },
+      "duplicate_risk": {
+        "level": "LOW",
+        "decision": "HOLD",
+        "reason": "The same owner-provided story appears in draft and historical article copies; the text hash and published-content URL should prevent duplicate future intake, but no existing Social Feedback candidate matches it.",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-dedup-v0.1",
+        "matched_feedback_ids": [],
+        "matched_kdf_ids": [],
+        "comparison_dimensions": ["SOURCE_LOCATOR", "TEXT_HASH", "PUBLISHED_CONTENT", "TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "MECHANISM", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"]
+      },
+      "kdf_recommendation": "CONTENT_ONLY",
+      "recommendation_reason": "Use the existing article to clarify that one rest rule does not explain or resolve every symptom. Do not open research or treat the case as efficacy evidence.",
+      "owner_review_status": "APPROVED",
+      "reviewed_by": "owner",
+      "reviewed_at": "2026-08-25T09:00:39+08:00",
+      "review_note": "Owner approved the CONTENT_ONLY disposition and non-formal closure; this does not infer diagnosis, treatment failure, Evidence, or a formal KDF route.",
+      "intake_state": "CLOSED",
+      "route_result": {
+        "route_status": "ROUTED",
+        "route_action": "HOLD",
+        "target_flow": "CONTENT_CLARIFICATION",
+        "formal_ids": [],
+        "routed_at": "2026-08-25T09:00:39+08:00",
+        "routed_by": "codex-owner-authorized-ledger-closure",
+        "route_note": "Closed as content clarification only under Owner authorization; no diagnosis, Research Question, Evidence Card, or formal KDF artifact was created."
+      }
+    },
+    {
+      "feedback_id": "SFI-20260825-REAL-PRACTICE-001",
+      "captured_at": "2026-08-25T03:12:00+08:00",
+      "source_channel": "PRACTICE_NOTE",
+      "source_context": {
+        "visibility": "IN_PERSON",
+        "source_locator_type": "LOCAL_OPAQUE_REF",
+        "source_locator": "LOCAL-FEEDBACK-20260825-003",
+        "source_occurred_at": null,
+        "capture_method": "OWNER_PROVIDED_SUMMARY",
+        "captured_by": "codex-manual-owner-material-review",
+        "record_verification_status": "OWNER_ATTESTED",
+        "text_fidelity": "OWNER_SUMMARY",
+        "redaction_status": "REDACTED",
+        "privacy_class": "CONFIDENTIAL",
+        "consent_basis": "OWNER_PROVIDED",
+        "original_text_sha256": "e4cae3f1d9f8e153a3aad2eab75a5c1d0d2ad78fb35023289797fc8b929556fd",
+        "pii_minimized": true,
+        "cookies_stored": false,
+        "tokens_stored": false,
+        "login_data_stored": false
+      },
+      "original_text": "前輩提供的臨床觀察：部分兒童初次配戴周邊離焦鏡片時，主觀感受可能不自然。",
+      "normalized_summary": "一則已去識別且未附樣本數的 owner-provided practice observation：部分兒童初次配戴周邊離焦鏡片時可能主觀感到不自然。未保存兒童資料，也未將「部分」轉為比例或頻率。",
+      "related_published_content": [],
+      "related_kdf_nodes": [
+        {
+          "id": "KDF-001",
+          "type": "root-topic",
+          "match_basis": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT"],
+          "match_strength": "HIGH",
+          "note": "The root explicitly asks about child visual quality, adaptation, and individual experience under peripheral-defocus spectacles."
+        },
+        {
+          "id": "KDF-001-B",
+          "type": "mother-topic",
+          "match_basis": ["TOPIC", "OUTCOME", "CONTEXT", "TIMEFRAME"],
+          "match_strength": "HIGH",
+          "note": "The visual-quality mother topic includes adaptation and central/off-axis conditions."
+        },
+        {
+          "id": "KDF-001-B-001",
+          "type": "research-question",
+          "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"],
+          "match_strength": "EXACT",
+          "note": "The existing question already covers subjective adaptation and real-life visual-function gaps."
+        },
+        {
+          "id": "EVC-KDF-001-B-001",
+          "type": "evidence-card",
+          "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "TIMEFRAME", "RESEARCH_GAP"],
+          "match_strength": "MEDIUM",
+          "note": "Evidence distinguishes preserved central performance from some condition-specific differences, but the owner observation cannot alter its C2 level."
+        },
+        {
+          "id": "MKC-KDF-001-B-001",
+          "type": "mature-knowledge",
+          "match_basis": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"],
+          "match_strength": "EXACT",
+          "note": "The waiting-human Mature candidate already records the same owner observation as non-evidence."
+        },
+        {
+          "id": "DQ-KDF-001-001",
+          "type": "discovery-question",
+          "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP"],
+          "match_strength": "HIGH",
+          "note": "The Discovery Question already asks about daily-life off-axis function and adaptation trajectories."
+        },
+        {
+          "id": "PRC-KDF-001-B-001",
+          "type": "practice-card",
+          "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "PARENT_RELATIONSHIP"],
+          "match_strength": "EXACT",
+          "note": "The candidate Practice Card already asks about initial wear and later adaptation but remains pending evidence review."
+        },
+        {
+          "id": "FOC-KDF-001-B-001",
+          "type": "field-observation",
+          "match_basis": ["POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "PARENT_RELATIONSHIP"],
+          "match_strength": "HIGH",
+          "note": "The framework is relevant, but record_count remains zero and this intake item is not a formal observation record."
+        },
+        {
+          "id": "ULC-KDF-001-B-001",
+          "type": "uncle-lens",
+          "match_basis": ["TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "OUTCOME", "CONTEXT", "TIMEFRAME", "PARENT_RELATIONSHIP"],
+          "match_strength": "EXACT",
+          "note": "The Uncle Lens card is the existing formal location of this owner-provided, non-evidence observation."
+        }
+      ],
+      "feedback_type": "FIELD_OBSERVATION_CANDIDATE",
+      "sentiment_or_stance": {
+        "label": "NEUTRAL",
+        "target": "兒童初次配戴周邊離焦鏡片的主觀自然度",
+        "basis": "The statement reports a practical observation without approval/disapproval or an asserted causal mechanism.",
+        "assessed_by": "ASSISTED_CLASSIFICATION",
+        "confidence": "HIGH"
+      },
+      "claim_or_question": {
+        "kind": "CLAIM",
+        "text": "部分兒童初次配戴周邊離焦鏡片時，主觀感受可能不自然。",
+        "claim_verification_status": "CONSISTENT_WITH_EXISTING_KDF",
+        "target_claim": "初次配戴周邊離焦鏡片時，部分兒童可能感到不自然。"
+      },
+      "anecdotal_scope": {
+        "scope": "LOCAL_PATTERN_UNVERIFIED",
+        "denominator_status": "UNKNOWN",
+        "population_boundary": "未計數、未識別的兒童配戴情境；沒有樣本數、比例、產品分層或對照組",
+        "context_boundary": "周邊離焦鏡片初次配戴時的主觀不自然感",
+        "prevalence_inference_allowed": false,
+        "generalization_allowed": false,
+        "scope_note": "『部分』只保留 owner-provided 語意，不得轉換成發生頻率，也不得外推至所有兒童或所有鏡片設計。"
+      },
+      "contradiction_type": {
+        "type": "NONE",
+        "target_node_ids": [],
+        "target_claim": null,
+        "structured_comparison": null,
+        "alternative_explanations": ["鏡片設計與離軸區域不同", "鏡架配適或注視策略不同", "適應時間與生活情境不同", "其他視覺或健康因素未記錄"],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "NOT_APPLICABLE"
+      },
+      "evidence_relevance": {
+        "role": "IMPLEMENTATION_CONTEXT",
+        "rationale": "The observation can guide owner review of the existing practice framework, but it has no denominator, standardized measure, comparator, or source study and is not Evidence.",
+        "evidence_card_eligible": false,
+        "influenced_by_engagement_metrics": false
+      },
+      "research_gap_candidate": {
+        "is_candidate": false,
+        "gap_dimensions": [],
+        "description": "The same adaptation and real-life function gap is already represented by KDF-001-B-001, MKC-KDF-001-B-001, and DQ-KDF-001-001; this record does not establish a new gap.",
+        "bounded_question_candidate": null,
+        "real_gap_established": false,
+        "verification_needed": true
+      },
+      "cross_node_analysis": {
+        "decision": "REUSE",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": ["root-topic", "mother-topic", "research-question", "evidence-card", "uncle-lens", "practice-card", "field-observation", "mature-knowledge", "discovery-question"],
+        "matches": [
+          {
+            "node_id": "KDF-001",
+            "node_type": "root-topic",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "The owner observation concerns the same children, peripheral-defocus exposure, subjective visual-quality outcome, and initial-adaptation context, but it is weaker than research evidence and has no denominator."
+            },
+            "rationale": "It fits the existing root boundary without creating a new root or supporting an evidence-level change."
+          },
+          {
+            "node_id": "KDF-001-B",
+            "node_type": "mother-topic",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "KDF-001-B already covers visual quality and adaptation; the field statement adds no measured mechanism, comparator, or new timeframe."
+            },
+            "rationale": "Reuse the visual-quality mother topic rather than extending the RPR responder branch."
+          },
+          {
+            "node_id": "KDF-001-B-001",
+            "node_type": "research-question",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "The formal question already covers subjective adaptation and daily visual function. The feedback is an uncounted practical statement, not an answer to the question."
+            },
+            "rationale": "The feedback belongs to the existing research boundary but cannot create or resolve a formal Research Question."
+          },
+          {
+            "node_id": "EVC-KDF-001-B-001",
+            "node_type": "evidence-card",
+            "alignment": "RELATED_ONLY",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "DIFFERENT",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "DIFFERENT",
+              "timeframe": "DIFFERENT",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "The Evidence Card synthesizes controlled and comparative research. This owner observation lacks design, comparator, measurement, timing precision, and denominator, so it cannot change C2 evidence."
+            },
+            "rationale": "The observation explains why the gap matters but neither supports nor contradicts the Evidence Card."
+          },
+          {
+            "node_id": "MKC-KDF-001-B-001",
+            "node_type": "mature-knowledge",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "SAME",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "The waiting-human Mature candidate already stores the same owner observation, explicitly labels it non-evidence, and preserves the real-life adaptation gap."
+            },
+            "rationale": "This is provenance reuse, not a Mature Knowledge update or approval."
+          },
+          {
+            "node_id": "DQ-KDF-001-001",
+            "node_type": "discovery-question",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "SAME_GAP",
+              "rationale": "The discovery candidate already asks about off-axis daily-life experience and adaptation. The observation does not establish additional missing evidence."
+            },
+            "rationale": "No new Discovery Question should be created."
+          },
+          {
+            "node_id": "PRC-KDF-001-B-001",
+            "node_type": "practice-card",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "WEAKER",
+              "research_gap_alignment": "NO_GAP",
+              "rationale": "The Practice Card already asks about initial-wear naturalness and follow-up; it remains candidate-pending-evidence-review."
+            },
+            "rationale": "Owner review may consider the existing practice route, but no practice status changes are authorized."
+          },
+          {
+            "node_id": "FOC-KDF-001-B-001",
+            "node_type": "field-observation",
+            "alignment": "CONSISTENT_WITH",
+            "comparison": {
+              "population": "SAME",
+              "intervention_or_exposure": "SAME",
+              "comparator": "NOT_APPLICABLE",
+              "outcomes": "SAME",
+              "mechanism": "UNKNOWN",
+              "context": "SAME",
+              "timeframe": "SAME",
+              "claim_strength": "NOT_APPLICABLE",
+              "research_gap_alignment": "NO_GAP",
+              "rationale": "The FOC has a matching initial-wear field but record_count is zero. This staging candidate is not an eligible formal observation and does not increment that count."
+            },
+            "rationale": "Only eligibility is assessed; kdf_add_observation is prohibited."
+          }
+        ],
+        "summary": {
+          "existing_node_alignment": "CONSISTENT_WITH",
+          "supports_existing_node": false,
+          "conflicts_with_existing_node": false,
+          "case_difference_only": false,
+          "exposes_new_research_gap": false,
+          "forms_new_question_candidate": false
+        }
+      },
+      "duplicate_risk": {
+        "level": "CONFIRMED_DUPLICATE",
+        "decision": "REUSE",
+        "reason": "The same owner-provided observation is already preserved as non-evidence in ULC-KDF-001-B-001 and MKC-KDF-001-B-001, with a matching Practice/FOC chain. The staging item must not create another formal node or observation record.",
+        "checked_at": "2026-08-25T03:15:00+08:00",
+        "method_version": "social-feedback-dedup-v0.1",
+        "matched_feedback_ids": [],
+        "matched_kdf_ids": ["KDF-001", "KDF-001-B", "KDF-001-B-001", "EVC-KDF-001-B-001", "MKC-KDF-001-B-001", "DQ-KDF-001-001", "PRC-KDF-001-B-001", "FOC-KDF-001-B-001", "ULC-KDF-001-B-001"],
+        "comparison_dimensions": ["TEXT_HASH", "TOPIC", "POPULATION", "INTERVENTION_OR_EXPOSURE", "COMPARATOR", "OUTCOME", "MECHANISM", "CONTEXT", "TIMEFRAME", "RESEARCH_GAP", "PARENT_RELATIONSHIP"]
+      },
+      "kdf_recommendation": "PRACTICE_REVIEW",
+      "recommendation_reason": "Owner may review whether the already-existing candidate Practice Card is the correct future operational container. No formal observation, record-count change, new question, or evidence update is eligible in this pilot.",
+      "owner_review_status": "APPROVED",
+      "reviewed_by": "owner",
+      "reviewed_at": "2026-08-25T09:00:39+08:00",
+      "review_note": "Owner approved the PRACTICE_REVIEW disposition and reuse of the existing practice context only; this does not approve Evidence, a Practice Card, a Field Observation, or Gate 1.",
+      "intake_state": "CLOSED",
+      "route_result": {
+        "route_status": "ROUTED",
+        "route_action": "REUSE",
+        "target_flow": "PRACTICE_REVIEW",
+        "formal_ids": [],
+        "routed_at": "2026-08-25T09:00:39+08:00",
+        "routed_by": "codex-owner-authorized-ledger-closure",
+        "route_note": "Closed as a practice-review handoff under Owner authorization; no observation was added, no Practice Card was promoted, and no formal KDF artifact was modified."
+      }
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "@uncle-glasses/kdf-chatgpt-bridge",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "description": "Local least-privilege ChatGPT and CLI bridge for the KDF Obsidian namespace",

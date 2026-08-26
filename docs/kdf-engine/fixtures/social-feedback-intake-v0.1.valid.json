@@ -1,0 +1,130 @@
+{
+  "schema_version": "SOCIAL_FEEDBACK_TO_KDF_INTAKE_V0_1",
+  "batch_id": "SF-KDF-20260825-001",
+  "created_at": "2026-08-25T10:15:00+08:00",
+  "capture_mode": "MANUAL_ENTRY",
+  "ingest_constraints": {
+    "api_used": false,
+    "cookies_used": false,
+    "private_login_used": false
+  },
+  "privacy_policy_version": "SOCIAL_FEEDBACK_PRIVACY_V0_1",
+  "candidates": [
+    {
+      "feedback_id": "SFI-20260825-PUBLIC-001",
+      "captured_at": "2026-08-25T10:05:00+08:00",
+      "source_channel": "FACEBOOK_COMMENT",
+      "source_context": {
+        "visibility": "PUBLIC",
+        "source_locator_type": "URL",
+        "source_locator": "https://example.org/public-comment/123",
+        "source_occurred_at": "2026-08-25T09:55:00+08:00",
+        "capture_method": "MANUAL_COPY",
+        "captured_by": "synthetic-test",
+        "record_verification_status": "SOURCE_VIEWED",
+        "text_fidelity": "VERBATIM_PUBLIC",
+        "redaction_status": "NOT_REQUIRED",
+        "privacy_class": "PUBLIC",
+        "consent_basis": "PUBLIC_POST",
+        "original_text_sha256": "e60ed4f8a7ab27fe4366c67cb29ba669cdc2490f53f5345a7294448abbd2f397",
+        "pii_minimized": true,
+        "cookies_stored": false,
+        "tokens_stored": false,
+        "login_data_stored": false
+      },
+      "original_text": "Does this lens affect side vision when my child uses stairs?",
+      "normalized_summary": "A parent asks whether the lens can affect side vision while using stairs.",
+      "related_published_content": [],
+      "related_kdf_nodes": [],
+      "feedback_type": "QUESTION",
+      "sentiment_or_stance": {
+        "label": "QUESTIONING",
+        "target": "side vision on stairs",
+        "basis": "The text is phrased as a question.",
+        "assessed_by": "HUMAN",
+        "confidence": "HIGH"
+      },
+      "claim_or_question": {
+        "kind": "QUESTION",
+        "text": "Does this lens affect side vision when my child uses stairs?",
+        "claim_verification_status": "NOT_APPLICABLE",
+        "target_claim": null
+      },
+      "anecdotal_scope": {
+        "scope": "SINGLE_EVENT",
+        "denominator_status": "NONE",
+        "population_boundary": "One synthetic public commenter",
+        "context_boundary": "One comment about stair use",
+        "prevalence_inference_allowed": false,
+        "generalization_allowed": false,
+        "scope_note": "This records one question and cannot support a frequency claim."
+      },
+      "contradiction_type": {
+        "type": "NONE",
+        "target_node_ids": [],
+        "target_claim": null,
+        "structured_comparison": null,
+        "alternative_explanations": [],
+        "existing_evidence_invalidated": false,
+        "formal_contradiction_created": false,
+        "resolution_status": "NOT_APPLICABLE"
+      },
+      "evidence_relevance": {
+        "role": "QUESTION_GENERATING",
+        "rationale": "The feedback may help frame a question but is not Evidence.",
+        "evidence_card_eligible": false,
+        "influenced_by_engagement_metrics": false
+      },
+      "research_gap_candidate": {
+        "is_candidate": false,
+        "gap_dimensions": [],
+        "description": "",
+        "bounded_question_candidate": null,
+        "real_gap_established": false,
+        "verification_needed": true
+      },
+      "cross_node_analysis": {
+        "decision": "HOLD",
+        "checked_at": "2026-08-25T10:10:00+08:00",
+        "method_version": "social-feedback-cross-node-v0.1",
+        "checked_node_types": [
+          "root-topic",
+          "mother-topic",
+          "research-question",
+          "evidence-card",
+          "mature-knowledge",
+          "discovery-question"
+        ],
+        "matches": [],
+        "summary": {
+          "existing_node_alignment": "UNRESOLVED",
+          "supports_existing_node": false,
+          "conflicts_with_existing_node": false,
+          "case_difference_only": false,
+          "exposes_new_research_gap": false,
+          "forms_new_question_candidate": false
+        }
+      },
+      "duplicate_risk": {
+        "level": "LOW",
+        "decision": "HOLD",
+        "reason": "No exact source or intake duplicate was found in the synthetic case.",
+        "checked_at": "2026-08-25T10:10:00+08:00",
+        "method_version": "social-feedback-dedup-v0.1",
+        "matched_feedback_ids": [],
+        "matched_kdf_ids": [],
+        "comparison_dimensions": ["SOURCE_LOCATOR", "TEXT_HASH", "TOPIC", "CONTEXT"]
+      },
+      "kdf_recommendation": "HOLD_FOR_VERIFICATION",
+      "recommendation_reason": "The question needs structured verification before any research route is proposed.",
+      "owner_review_status": "PENDING",
+      "intake_state": "STAGED",
+      "route_result": {
+        "route_status": "NOT_STARTED",
+        "route_action": "NONE",
+        "target_flow": "NONE",
+        "formal_ids": []
+      }
+    }
+  ]
+}

@@ -9,8 +9,8 @@ test("KDF-001 end-to-end bridge contract", async () => {
   try {
     const baseline = await fx.service.validate();
     assert.equal(baseline.passed, true);
-    assert.equal(baseline.counts?.artifacts, 17);
-    assert.equal(baseline.counts?.wikilinks, 162);
+    assert.equal(baseline.counts?.artifacts, 18);
+    assert.equal(baseline.counts?.wikilinks, 172);
 
     const search = await fx.service.search({ query: "周邊離焦", limit: 50 });
     const searchItems = (search.data as { items: Array<{ id: string }> }).items;
