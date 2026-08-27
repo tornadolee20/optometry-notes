@@ -1,4 +1,4 @@
-import type { IntakeCandidate, KdfCard, KdfSnapshot } from "./types";
+import type { IntakeCandidate, KdfCard, KdfSnapshot } from "./types.ts";
 
 export interface GraphEntity {
   id: string;

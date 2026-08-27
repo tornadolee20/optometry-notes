@@ -8,6 +8,7 @@ import { SearchPalette } from "./search-palette";
 import { AskSessionMandala, AskWorkbench } from "./ask-ui";
 import type { AskAnalysisSession } from "./ask-engine";
 import { DiscoveryLab } from "./discovery-lab";
+import { QuestionLab } from "./question-lab";
 import type { DiscoveryGraphOverlay } from "./cross-node-engine";
 import type { IntakeCandidate, IntakeSummary, KdfCard, KdfSnapshot, NavKey } from "./types";
 
@@ -15,6 +16,7 @@ const pages: Array<{ key: NavKey; label: string; eyebrow: string; path: string }
   { key: "dashboard", label: "總覽", eyebrow: "DASHBOARD", path: "/" },
   { key: "ask", label: "Ask KDF", eyebrow: "ASK KDF WORKBENCH", path: "/ask" },
   { key: "discovery", label: "Discovery Lab", eyebrow: "CROSS-NODE DISCOVERY", path: "/discovery-lab" },
+  { key: "questions", label: "Question Lab", eyebrow: "QUESTION REGENERATION", path: "/question-lab" },
   { key: "research", label: "研究問題", eyebrow: "RESEARCH QUESTIONS", path: "/research" },
   { key: "mandala", label: "曼陀羅", eyebrow: "MANDALA THINKING", path: "/mandala" },
   { key: "evidence", label: "證據", eyebrow: "EVIDENCE", path: "/evidence" },
@@ -26,6 +28,7 @@ const pages: Array<{ key: NavKey; label: string; eyebrow: string; path: string }
 function currentPage(pathname: string) {
   if (pathname.startsWith("/ask")) return pages.find((page) => page.key === "ask")!;
   if (pathname.startsWith("/discovery-lab")) return pages.find((page) => page.key === "discovery")!;
+  if (pathname.startsWith("/question-lab")) return pages.find((page) => page.key === "questions")!;
   if (pathname.startsWith("/research")) return pages.find((page) => page.key === "research")!;
   if (pathname.startsWith("/mandala")) return pages.find((page) => page.key === "mandala")!;
   if (pathname.startsWith("/evidence")) return pages.find((page) => page.key === "evidence")!;
@@ -190,6 +193,7 @@ function ConsoleRoutes({ snapshot, askSession, graphOverlay, onAskSession, onGra
     <Route path="/ask" element={<AskWorkbench snapshot={snapshot} session={askSession} onSession={onAskSession} />} />
     <Route path="/ask/mandala" element={<AskSessionMandala snapshot={snapshot} session={askSession} />} />
     <Route path="/discovery-lab" element={<DiscoveryLab snapshot={snapshot} onGraph={onGraph} />} />
+    <Route path="/question-lab" element={<QuestionLab snapshot={snapshot} askSession={askSession} />} />
     <Route path="/research" element={<ResearchList snapshot={snapshot} />} />
     <Route path="/research/:id" element={<ResearchDetail snapshot={snapshot} />} />
     <Route path="/mandala" element={<MandalaIndex snapshot={snapshot} />} />

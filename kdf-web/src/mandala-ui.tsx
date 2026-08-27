@@ -4,6 +4,7 @@ import { BackButton, Badge, Breadcrumbs, Empty } from "./components";
 import { buildMandala, type MandalaCell } from "./mandala-engine";
 import { entityIndex } from "./relationships";
 import { discoverCrossNodeCandidates } from "./cross-node-engine";
+import { buildQuestionRegeneration, questionLabCandidateForOrigin, type QuestionRegenerationSnapshot } from "./question-regeneration-engine";
 import type { KdfSnapshot } from "./types";
 
 type Mode = "EXPLORE" | "EVIDENCE" | "DISCOVERY";
@@ -23,7 +24,7 @@ function MandalaCellButton({ cell, mode, crossNodeCount, onClick, className = ""
   </button>;
 }
 
-function CellDrawer({ cell, snapshot, crossNodeCount, draft, onDraft }: { cell?: MandalaCell; snapshot: KdfSnapshot; crossNodeCount: number; draft: string; onDraft(value: string): void }) {
+function CellDrawer({ cell, snapshot, crossNodeCount, draft, onDraft, questionModel }: { cell?: MandalaCell; snapshot: KdfSnapshot; crossNodeCount: number; draft: string; onDraft(value: string): void; questionModel: QuestionRegenerationSnapshot }) {
   if (!cell) return null;
   const entities = entityIndex(snapshot);
   const groups: Array<[string, string[]]> = [
@@ -32,11 +33,14 @@ function CellDrawer({ cell, snapshot, crossNodeCount, draft, onDraft }: { cell?:
     ["Practice signals", cell.related_practice], ["Discovery Questions", cell.related_discovery], ["Existing gap-status context", cell.open_gap_nodes],
   ];
   const candidate = cell.level === 2 && cell.evidence_coverage !== "COVERED";
+  const questionCandidate = questionLabCandidateForOrigin(cell.cell_id, questionModel);
+  const questionCluster = questionCandidate ? questionModel.clusters[questionModel.regenerated_candidates.findIndex((item) => item.regeneration_id === questionCandidate.regeneration_id)] : undefined;
   return <aside className="mandala-context" aria-label="Mandala cell context">
     <header><p>CELL CONTEXT · UI DERIVED</p><h2>{cell.label}</h2><code>{cell.cell_id}</code></header>
     <section><h3>What this cell is asking</h3><p>{cell.question_text}</p><Badge value={cell.evidence_coverage} /><Badge value={cell.candidate_state} /></section>
     <section><h3>判定理由</h3><p>{cell.reason}</p><p>Duplicate risk：<b>{cell.duplicate_risk}</b>；Gap signal：<b>{cell.gap_signal ? "YES" : "NO"}</b></p></section>
     <section className="mandala-cross-node-panel"><h3>Cross-node candidates</h3><p><b>{crossNodeCount}</b> 個 session-derived candidate 與此 cell 的既有節點重疊；不是 formal relation。</p><Link to="/discovery-lab">開啟 Discovery Lab →</Link></section>
+    {questionCluster && <section className="mandala-question-lab-hint"><p>QUESTION REGENERATION · UI DERIVED</p><Link to={`/question-lab?cluster=${encodeURIComponent(questionCluster.cluster_id)}`}>Question Lab candidate available →</Link></section>}
     <section><h3>Known limitations</h3>{cell.known_limitations.length ? cell.known_limitations.map((item, index) => <p key={index}>{item}</p>) : <Empty>現有 Evidence 沒有可結構化投影到此 cell 的限制段落。</Empty>}</section>
     {groups.map(([label, ids]) => <section key={label}><h3>{label}</h3>{ids.length ? <ul>{ids.map((id) => { const entity = entities.get(id); return entity ? <li key={id}><Link to={entity.route}><code>{id}</code><span>{entity.title}</span></Link></li> : null; })}</ul> : <Empty>沒有明示資料。</Empty>}</section>)}
     <section><h3>Related Articles (not Evidence)</h3>{cell.related_articles.length ? <ul>{cell.related_articles.map((id) => {
@@ -58,6 +62,7 @@ export function MandalaView({ snapshot }: { snapshot: KdfSnapshot }) {
   const navigate = useNavigate();
   const model = useMemo(() => id ? buildMandala(snapshot, id) : undefined, [id, snapshot]);
   const crossNodeCandidates = useMemo(() => discoverCrossNodeCandidates(snapshot), [snapshot]);
+  const questionModel = useMemo(() => buildQuestionRegeneration(snapshot), [snapshot]);
   const [mode, setMode] = useState<Mode>("EXPLORE");
   const [selected, setSelected] = useState<MandalaCell | undefined>();
   const [drafts, setDrafts] = useState<Record<string, string>>({});
@@ -79,6 +84,6 @@ export function MandalaView({ snapshot }: { snapshot: KdfSnapshot }) {
     <div className="mandala-layout"><div className="mandala-grid">
       {outer.map((cell, index) => <div className="mandala-slot" style={{ gridArea: `${Math.floor(positions[index] / 3) + 1} / ${(positions[index] % 3) + 1}` }} key={cell.cell_id}><MandalaCellButton cell={cell} mode={mode} crossNodeCount={crossNodeCount(cell)} onClick={() => openCell(cell)} /></div>)}
       <div className="mandala-slot mandala-slot--core" style={{ gridArea: "2 / 2" }}><MandalaCellButton cell={center} mode={mode} crossNodeCount={crossNodeCount(center)} onClick={() => setSelected(center)} className="mandala-cell--core" /></div>
-    </div><CellDrawer cell={selected} snapshot={snapshot} crossNodeCount={selected ? crossNodeCount(selected) : 0} draft={selected ? drafts[selected.cell_id] ?? "" : ""} onDraft={(value) => selected && setDrafts((current) => ({ ...current, [selected.cell_id]: value }))} /></div>
+    </div><CellDrawer cell={selected} snapshot={snapshot} crossNodeCount={selected ? crossNodeCount(selected) : 0} draft={selected ? drafts[selected.cell_id] ?? "" : ""} onDraft={(value) => selected && setDrafts((current) => ({ ...current, [selected.cell_id]: value }))} questionModel={questionModel} /></div>
   </div>;
 }

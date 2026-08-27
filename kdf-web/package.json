@@ -9,6 +9,7 @@
     "typecheck": "tsc -b --pretty false",
     "test:ask": "node --experimental-strip-types --test src/ask-engine.test.ts",
     "test:discovery": "node --experimental-strip-types --test src/cross-node-engine.test.ts",
+    "test:questions": "node --experimental-strip-types --test src/question-regeneration-engine.test.ts",
     "preview": "vite preview --host 127.0.0.1 --port 3000 --strictPort"
   },
   "dependencies": {

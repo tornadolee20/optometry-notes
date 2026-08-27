@@ -188,4 +188,4 @@ export interface KdfSnapshot {
   };
 }
 
-export type NavKey = "dashboard" | "ask" | "discovery" | "research" | "mandala" | "evidence" | "feedback" | "review" | "articles";
+export type NavKey = "dashboard" | "ask" | "discovery" | "questions" | "research" | "mandala" | "evidence" | "feedback" | "review" | "articles";

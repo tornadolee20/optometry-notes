@@ -1,6 +1,6 @@
-import { entityIndex, relationshipsFor } from "./relationships";
-import { findMandalaTemplate, type MandalaDimensionTemplate } from "./mandala-templates";
-import type { KdfSnapshot } from "./types";
+import { entityIndex, relationshipsFor } from "./relationships.ts";
+import { findMandalaTemplate, type MandalaDimensionTemplate } from "./mandala-templates.ts";
+import type { KdfSnapshot } from "./types.ts";
 
 export type MandalaCoverage = "COVERED" | "PARTIALLY_COVERED" | "OPEN" | "SIGNAL_ONLY" | "UNKNOWN";
 export type MandalaMark = "NEW_SIGNAL" | "EXISTING_GAP" | "POSSIBLE_EXTENSION" | "DUPLICATE_RISK" | "NEEDS_VERIFICATION";

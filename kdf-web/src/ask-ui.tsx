@@ -4,6 +4,7 @@ import { analyzeWithKdf, ASK_UNKNOWN, type AskAnalysisSession } from "./ask-engi
 import { Badge, Empty, routeForCard, Section } from "./components";
 import { buildQuestionMandala, type MandalaCell } from "./mandala-engine";
 import { discoverCrossNodeCandidates } from "./cross-node-engine";
+import { buildQuestionRegeneration, findQuestionLabOverlap } from "./question-regeneration-engine";
 import type { KdfSnapshot } from "./types";
 
 const examples = [
@@ -45,7 +46,10 @@ function AskResults({ analysis, snapshot }: { analysis: AskAnalysisSession; snap
     const matched = new Set([...analysis.matched_nodes.map((item) => item.id), ...analysis.relation_assessment.related_node_ids]);
     return discoverCrossNodeCandidates(snapshot).filter((candidate) => candidate.source_nodes.some((node) => matched.has(node.id))).slice(0, 5);
   }, [analysis, snapshot]);
-  return <div className="ask-results" aria-live="polite">
+  const questionLab = useMemo(() => buildQuestionRegeneration(snapshot, analysis), [analysis, snapshot]);
+  const questionOverlap = useMemo(() => findQuestionLabOverlap(analysis.original_question, questionLab), [analysis.original_question, questionLab]);
+  const questionCluster = questionOverlap ? questionLab.clusters[questionLab.regenerated_candidates.findIndex((item) => item.regeneration_id === questionOverlap.regeneration_id)] : undefined;
+  return <div className="ask-results" aria-live="polite">{questionCluster && <Link className="ask-question-lab-hint" to={`/question-lab?cluster=${encodeURIComponent(questionCluster.cluster_id)}`}>Question Lab 有相近候選 →</Link>}
     <Section title="1. 原始問題" note={`SESSION ONLY · ${analysis.analysis_id}`}><blockquote className="ask-question">{analysis.original_question}</blockquote>{strongestLegacy && <div className="ask-memory-signal"><p>你以前寫過相關內容</p><strong>{strongestLegacy.publication_date ? `你在 ${strongestLegacy.publication_date.slice(0, 4)} 年曾寫過：` : "你曾寫過："}</strong><Link to={`/article/${encodeURIComponent(strongestLegacy.id)}`}>《{strongestLegacy.title}》</Link><small>RELATED CONTENT · 不是 Formal Evidence</small></div>}</Section>
     <Section title="2. 問題結構化解讀" note="未能安全辨識的欄位保留 UNKNOWN"><dl className="ask-dimensions">{dimensions.map(([key, value]) => <div key={key}><dt>{key.replaceAll("_", " ")}</dt><dd className={value === ASK_UNKNOWN ? "is-unknown" : ""}>{value}</dd></div>)}</dl></Section>
     <Section title="3. 對應的正式 KDF 節點" note="依 deterministic concept / wording match 排序；可點擊回查原節點">

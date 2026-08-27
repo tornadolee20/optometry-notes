@@ -190,6 +190,9 @@ export function compareRawQuestionCandidates(left: RawQuestionCandidate, right: 
   const sameGap = left.origin_gap_id !== QUESTION_UNKNOWN && left.origin_gap_id === right.origin_gap_id;
   const sameCrossRelation = left.cross_relation_id !== QUESTION_UNKNOWN && left.cross_relation_id === right.cross_relation_id;
   const sameMandalaDimension = left.mandala_dimension !== QUESTION_UNKNOWN && left.mandala_dimension === right.mandala_dimension && sameRoot;
+  const adaptationScope = (value: string) => /初次|初期|適應|不自然/iu.test(value);
+  const dynamicScope = (value: string) => /高動態|戶外|運動|樓梯|動態任務/iu.test(value);
+  if (sameRoot && ((adaptationScope(left.original_question) && dynamicScope(right.original_question) && !dynamicScope(left.original_question)) || (adaptationScope(right.original_question) && dynamicScope(left.original_question) && !dynamicScope(right.original_question)))) return "SAME_CORE_DIFFERENT_SCOPE";
   if (sameRoot && differences.some((key) => ["outcome", "measurement", "context", "timeframe", "practice_context"].includes(key)) && shared.length >= 1) return "SAME_CORE_DIFFERENT_SCOPE";
   const textSimilarity = similarity(left.original_question, right.original_question);
   if ((sameGap || sameCrossRelation) && (shared.length >= 1 || textSimilarity >= 0.16)) return "OVERLAPPING";
@@ -280,7 +283,7 @@ function pilotRawCandidates(snapshot: KdfSnapshot) {
   const card = (id: string) => snapshot.formal.cards.find((item) => item.id === id);
   const pilot = (id: string, sourceClass: QuestionSourceClass, question: string, ids: string[], root = "KDF-001", gap = QUESTION_UNKNOWN) => {
     const context = contextForIds(snapshot, ids);
-    return rawCandidate({ raw_candidate_id: `PILOT:${id}`, source_class: sourceClass, original_question: question, origin_ids: ids, origin_label: `Pilot ${id} · owner-approved acceptance input`, root_topic: root, parent: ids.map((value) => card(value)?.parent).find(Boolean) ?? QUESTION_UNKNOWN, origin_gap_id: gap === QUESTION_UNKNOWN ? context.gaps[0] ?? QUESTION_UNKNOWN : gap, cross_relation_id: QUESTION_UNKNOWN, mandala_dimension: QUESTION_UNKNOWN, related_kdf_ids: ids, evidence_ids: context.evidence, signal_ids: context.practice, legacy_ids: context.legacy, limitations: context.limitations, exploratory: false });
+    return rawCandidate({ raw_candidate_id: `PILOT:${id}`, source_class: sourceClass, original_question: question, origin_ids: ids, origin_label: `Pilot ${id} · owner-approved acceptance input`, root_topic: root, parent: ids.map((value) => card(value)?.parent).find(Boolean) ?? QUESTION_UNKNOWN, origin_gap_id: gap === QUESTION_UNKNOWN ? context.gaps[0] ?? QUESTION_UNKNOWN : gap, cross_relation_id: QUESTION_UNKNOWN, mandala_dimension: QUESTION_UNKNOWN, related_kdf_ids: ids, evidence_ids: context.evidence, signal_ids: unique([...context.practice, ...ids.filter((value) => /^SFI-|^ARD-/u.test(value))]), legacy_ids: context.legacy, limitations: context.limitations, exploratory: false });
   };
   return [
     pilot("B-PRACTICE", "PRACTICE_SIGNAL", "兒童初次配戴周邊離焦鏡片時的主觀不自然感與初期適應，如何連結日常功能表現？", ["KDF-001-B-001", "KDF-001-F-001", "PRC-KDF-001-B-001", "SFI-20260825-REAL-PRACTICE-001"], "KDF-001", "DQ-KDF-001-001"),
@@ -339,7 +342,7 @@ function safeCausalLanguage(question: string) {
 function pilotWording(cluster: QuestionCluster) {
   const ids = new Set(cluster.raw_candidates.flatMap((candidate) => [candidate.raw_candidate_id, ...candidate.origin_ids]));
   if (ids.has("PILOT:B-PRACTICE")) return "在兒童初次配戴周邊離焦鏡片的適應期間，主觀不自然感與日常功能表現如何呈現，且不同配戴情境是否伴隨個體差異？";
-  if (ids.has("PILOT:C-MEASUREMENT")) return "在兒童近視控制成效評估中，單一眼軸變化是否足以代表治療反應，或仍需結合視覺功能與配戴表現等不同 outcome？";
+  if (ids.has("PILOT:C-MEASUREMENT")) return "在兒童近視控制成效評估中，單一眼軸變化是否足以代表治療反應，或仍需結合視覺功能與配戴表現等不同結果面向？";
   if (ids.has("PILOT:D-GOVERNANCE")) return cluster.raw_candidates.find((candidate) => candidate.origin_ids.includes("KDF-002-A-001"))?.original_question ?? cluster.raw_candidates[0].original_question;
   const origins = cluster.raw_candidates.flatMap((candidate) => candidate.origin_ids);
   if (origins.includes("KDF-001-B-001") && origins.includes("KDF-001-F-001") && cluster.raw_candidates.some((candidate) => candidate.source_class === "CROSS_NODE")) return "在配戴周邊離焦鏡片的兒童中，初期中央／離軸視覺與功能表現是否與長期眼軸增長反應的個體差異相關？";
@@ -355,10 +358,11 @@ function formulate(cluster: QuestionCluster, dimensions: NormalizedQuestionDimen
     return questionB - questionA || sourceRank[left.source_class] - sourceRank[right.source_class] || left.original_question.length - right.original_question.length;
   });
   let question = ranked[0].original_question.trim();
-  if (/適合嗎[？?]?$/u.test(question)) {
+  if (/適不適合|適合嗎/iu.test(question)) {
     const context = dimensions.context !== QUESTION_UNKNOWN ? dimensions.context : "既定情境";
     const outcome = dimensions.outcome !== QUESTION_UNKNOWN ? dimensions.outcome : "可觀察的功能表現";
-    question = `在${context}下，${dimensions.intervention_or_exposure !== QUESTION_UNKNOWN ? dimensions.intervention_or_exposure : dimensions.topic_scope}的${outcome}如何呈現？`;
+    const population = dimensions.population !== QUESTION_UNKNOWN ? dimensions.population : "既定研究族群";
+    question = `在${population}的${context}下，${dimensions.intervention_or_exposure !== QUESTION_UNKNOWN ? dimensions.intervention_or_exposure : dimensions.topic_scope}的${outcome}如何呈現？`;
   } else if (/有沒有影響/iu.test(question)) {
     const exposure = dimensions.intervention_or_exposure !== QUESTION_UNKNOWN ? dimensions.intervention_or_exposure : dimensions.topic_scope;
     const outcome = dimensions.outcome !== QUESTION_UNKNOWN ? dimensions.outcome : "明確 outcome";
@@ -439,7 +443,7 @@ export function regenerateCluster(snapshot: KdfSnapshot, cluster: QuestionCluste
   const gapBasis: RegenerationGapBasis = { originating_gaps: gaps, evidence_limitations: limitations, unresolved_dimensions: unique([...cluster.preserved_scope_differences, ...rqs[0]?.new_dimensions ?? []]), why_existing_rq_does_not_close: exactRq ? `${exactRq.id} 已實質涵蓋相同問題，因此不需要新增 RQ。` : rqs[0] ? `${rqs[0].id} 提供最接近的正式範圍，但仍未閉合：${(rqs[0].new_dimensions.length ? rqs[0].new_dimensions : ["交叉情境仍需 Owner 判斷"]).join("、")}。` : "目前沒有足以閉合此候選的正式 RQ。", state: exploratory ? "EXPLORATORY" : "BOUNDED_GAP" };
   return {
     regeneration_id: stableId("QRG", cluster.raw_candidates.map((candidate) => candidate.raw_candidate_id).sort()), raw_candidate_ids: cluster.raw_candidates.map((candidate) => candidate.raw_candidate_id), origin_types: originTypes, origin_ids: originIds,
-    regenerated_question: question, alternative_formulations: alternatives(question, dimensions), structured_dimensions: dimensions, closest_existing_rqs: rqs, closest_discovery_questions: dqs, overlap_state: cluster.overlap_state,
+    regenerated_question: question, alternative_formulations: ["NO_NEW_RQ_NEEDED", "USE_EXISTING_DISCOVERY_QUESTION", "INSUFFICIENT_FOR_REGENERATION"].includes(recommendation) ? [] : alternatives(question, dimensions), structured_dimensions: dimensions, closest_existing_rqs: rqs, closest_discovery_questions: dqs, overlap_state: cluster.overlap_state,
     quality_scope: scope, answerability: scope === "BOUNDED" ? "RESEARCHABLE" : scope === "UNKNOWN" ? "PARTIALLY_RESEARCHABLE" : "INSUFFICIENT_CONTEXT", novelty,
     evidence_readiness: evidenceIds.length ? limitations.length ? "PARTIAL_EVIDENCE" : "EVIDENCE_AVAILABLE" : originTypes.some((type) => ["PRACTICE_SIGNAL", "FEEDBACK_SIGNAL", "AGENT_REACH_SIGNAL"].includes(type)) ? "NEEDS_EXTERNAL_VERIFICATION" : "EVIDENCE_MISSING",
     duplicate_risk: duplicateRisk, owner_priority: recommendation === "NO_NEW_RQ_NEEDED" || recommendation === "USE_EXISTING_DISCOVERY_QUESTION" ? "LOW" : recommendation === "REGENERATED_EXTENSION_CANDIDATE" ? "HIGH" : "MEDIUM", gap_basis: gapBasis,
