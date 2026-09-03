@@ -180,6 +180,37 @@ Maintenance cost
 
 A capability is worth skillizing when it is repeatable, has clear I/O, is reusable across contexts, can be tested, and supports workflows. If it is a fixed layout, make it a template. If it is a multi-step composition, make it a workflow. If it is just an execution phrasing, keep it as a prompt.
 
+## Domain Product Triage: Evidence, Clinical, Engineering, and Content
+
+For domain-product ideas—especially health, optometry, education, or other high-stakes services—route the work before implementation. Do not collapse a useful observation or workflow product into a diagnostic product merely because it collects structured data.
+
+First classify the proposed capability into four work classes:
+
+- **Research / evidence:** claims about validity, reliability, causality, efficacy, prediction, thresholds, safety, or generalizability.
+- **Clinical analysis:** formal measurements, clinical classification, treatment or prescription logic, referral criteria, or interpretation requiring professional governance.
+- **Engineering:** schemas, interfaces, reminders, dashboards, trend display, flags, integrations, privacy controls, and automated tests.
+- **Content / UX:** question wording, education, onboarding, labels, reports, and communication design; UX testing does not by itself establish clinical validity.
+
+Use a five-party routing pattern:
+
+| Workstream | Default owner | Boundary |
+|---|---|---|
+| Product boundary and clinical governance | Human / Owner | Defines allowed claims, prohibited automation, escalation/referral rules, consent, and thresholds. |
+| Evidence and research ledger | Knowledge system / KDF | Separates evidence, mature knowledge, field observation, and open gaps; read existing cards before proposing new research. |
+| Workflow orchestration and specification | Hermes | Converts approved boundaries into workflows, field dictionaries, schemas, prompts, and acceptance criteria without inventing clinical rules. |
+| Implementation and verification | Coding agent / Codex | Builds only after the contract is frozen; tests data separation, privacy, and no-diagnosis guardrails. |
+| Formal clinical computation | Clinical decision engine | Optional adapter for validated measurements only; keep subjective reports, clinical measurements, and evidence as distinct namespaces. |
+
+For a subjective, longitudinal observation product, the minimum viable value is usually **structured task-level reporting plus time trends and human follow-up**, not a composite clinical score. Prefer labels such as `observation`, `trend`, `data_insufficient`, and `follow_up_needed`; avoid `diagnosis`, `severity`, `lens_good_bad`, `treatment_success`, or automatic prescription actions unless separately validated and governed.
+
+Before implementation, write a one-page MVP observation protocol and data dictionary containing: task list, fixed question wording, response scale semantics, required/optional/prohibited fields, safety escalation signals, consent rules, and the explicit separation `subjective observation ≠ clinical measurement ≠ evidence`. This is the single highest-leverage gate for preventing scope drift.
+
+For sensitive populations such as children, collect the minimum necessary pseudonymous data: age band rather than full birth date, consent status, dispensing event, task/context, self- or caregiver-reported impact, change direction, free-text context, and human follow-up state. Avoid names, school identifiers, precise location, face media, unnecessary medical history, disease labels, efficacy claims, and prescription-driving fields in an early MVP.
+
+Evidence gaps must be stated explicitly. A field framework or operational scale can support question selection and service workflow, but does not establish questionnaire validity, clinical cut-offs, causal attribution to a product, adherence prediction, or product-to-product superiority. If a KDF card says `validated_questionnaire: false`, `observation_is_evidence: false`, or review is pending, preserve those limits in the product specification.
+
+Do not start with a large SaaS or a clinical-engine engine. Validate the smallest recurring workflow first, then add research, integrations, and commercialization only when inputs, outputs, review gates, and governance are stable.
+
 ## Dependency Rules
 
 Use composition over inheritance.
