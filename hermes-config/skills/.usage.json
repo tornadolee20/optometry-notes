@@ -74,14 +74,14 @@
     "created_by": null,
     "last_patched_at": "2026-07-01T07:45:57.157585+00:00",
     "last_reused_patch_generation": 0,
-    "last_used_at": "2026-08-29T07:12:46.440113+00:00",
-    "last_viewed_at": "2026-08-29T07:12:46.433114+00:00",
+    "last_used_at": "2026-09-06T15:28:04.660370+00:00",
+    "last_viewed_at": "2026-09-06T15:28:04.648673+00:00",
     "patch_count": 1,
     "patch_generation": 0,
     "pinned": false,
     "state": "active",
-    "use_count": 9,
-    "view_count": 9
+    "use_count": 10,
+    "view_count": 10
   },
   "hermes-agent-skill-authoring": {
     "archived_at": null,
