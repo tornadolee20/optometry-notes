@@ -1,0 +1,756 @@
+{
+  "version": "content-identity-map.v1",
+  "website_count": 79,
+  "obsidian_markdown_count": 88,
+  "counts": {
+    "EXACT": 14,
+    "LEGACY_MATCH": 61,
+    "REVIEW_REQUIRED": 4
+  },
+  "policy": {
+    "website_is_published_truth": true,
+    "obsidian_is_knowledge_mirror": true,
+    "automatic_overwrite": false,
+    "human_gate_for_review": true
+  },
+  "rows": [
+    {
+      "article_idx": 81,
+      "title": "近視管理鏡片如果度數增加就換片，這真的叫管理嗎？從第二等級醫材到追蹤責任",
+      "slug": "myopia-control-lens-regulation-followup-taiwan",
+      "published_date": "2026-09-28",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-28-myopia-control-lens-regulation-followup-taiwan.md"
+    },
+    {
+      "article_idx": 80,
+      "title": "台灣隱形眼鏡為什麼需要專業管理？從醫療器材、驗配到分階段制度看真正風險",
+      "slug": "contact-lens-professional-management-taiwan",
+      "published_date": "2026-09-28",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-28-contact-lens-professional-management-taiwan.md"
+    },
+    {
+      "article_idx": 79,
+      "title": "為什麼台灣驗光師要正名 Optometrist？從「名不正，言不順」看專業名稱與工作權",
+      "slug": "optometrist-taiwan-name-professional-identity",
+      "published_date": "2026-09-28",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-28-optometrist-taiwan-name-professional-identity.md"
+    },
+    {
+      "article_idx": 77,
+      "title": "我都27歲了，近視怎麼還在增加？成年後度數變化怎麼看",
+      "slug": "adult-myopia-progression",
+      "published_date": "2026-09-22",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-22-adult-myopia-progression.md"
+    },
+    {
+      "article_idx": 76,
+      "title": "配眼鏡一副一萬合理嗎？",
+      "slug": "glasses-price-10000-worth-it",
+      "published_date": "2026-09-14",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-14-glasses-price-10000-worth-it.md"
+    },
+    {
+      "article_idx": 74,
+      "title": "戴隱形眼鏡可以洗澡、游泳嗎？水碰鏡片的真正風險｜目鏡大叔",
+      "slug": "contact-lenses-water-shower-swimming-risk",
+      "published_date": "2026-09-14",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-14-contact-lenses-water-shower-swimming-risk.md"
+    },
+    {
+      "article_idx": 1,
+      "title": "孩子近視只是手機害的嗎？Screen Time、近距離用眼與戶外時間怎麼看",
+      "slug": "child-myopia-screen-time-visual-habits",
+      "published_date": "2026-09-03",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-03-child-myopia-screen-time-visual-habits.md"
+    },
+    {
+      "article_idx": 2,
+      "title": "眼睛累、乾澀就吃葉黃素嗎？驗光師提醒先找出不舒服原因",
+      "slug": "lutein-eye-fatigue-source-check",
+      "published_date": "2026-08-07",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-08-07-lutein-eye-fatigue-source-check.md"
+    },
+    {
+      "article_idx": 3,
+      "title": "孩子確定近視後怎麼辦？兒童近視控制先看 6 個評估重點",
+      "slug": "children-myopia-control-evaluation",
+      "published_date": "2026-07-22",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-07-22-children-myopia-control-evaluation.md"
+    },
+    {
+      "article_idx": 4,
+      "title": "長輩拿錯藥、認錯人，不一定都是失智：一場高齡視覺講座裡我最想提醒家人的事",
+      "slug": "vision-loss-dementia-healthy-aging",
+      "published_date": "2026-07-18",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-07-18-vision-loss-dementia-healthy-aging.md"
+    },
+    {
+      "article_idx": 5,
+      "title": "新北學童視力公聽會：孩子視力問題的制度挑戰",
+      "slug": "new-taipei-children-vision-hearing",
+      "published_date": "2026-07-15",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-07-15-new-taipei-children-vision-hearing.md"
+    },
+    {
+      "article_idx": 6,
+      "title": "孩子視力 1.0 就沒事嗎？遠視儲備不是倒數計時，但能看出近視風險",
+      "slug": "child-myopia-1-0-interview",
+      "published_date": "2026-07-12",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-07-12-child-myopia-1-0-interview.md"
+    },
+    {
+      "article_idx": 7,
+      "title": "電子紙真的比較護眼嗎？驗光師拆解「護眼模式」真相｜寰宇新聞受訪",
+      "slug": "epaper-blue-light-myth-interview",
+      "published_date": "2026-07-12",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-07-12-epaper-blue-light-myth-interview.md"
+    },
+    {
+      "article_idx": 8,
+      "title": "45 歲後手機越拿越遠？老花早期 6 個生活訊號，哪些不是老花",
+      "slug": "presbyopia-signs",
+      "published_date": "2026-04-26",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260426-剪指甲老是剪到手-老花在找你.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 9,
+      "title": "70歲高齡換照新制已上路：視力0.8就代表能安全開車嗎？家屬真正該看的是這些",
+      "slug": "senior-driving-vision-safety",
+      "published_date": "2026-04-04",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-04-05-115年高齡換照下修70歲-驗光師-檢查眼睛的行車執照.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 10,
+      "title": "每隔 20 分鐘看遠，為什麼肩膀還是很痠？三峽驗光師：因為你少做了最後一步",
+      "slug": "20-20-20-rule-not-working-body-movement",
+      "published_date": "2026-03-27",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260327-20-20-20為什麼有時沒用.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 11,
+      "title": "電腦看久眼睛累、肩頸也痠？視覺負荷、螢幕距離與姿勢怎麼一起影響你",
+      "slug": "neck-pain-and-ciliary-muscle-strain",
+      "published_date": "2026-03-26",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260326-電腦族頸肩痠痛與睫狀肌.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 12,
+      "title": "孩子視力 1.0，為什麼看書還是容易累？雙眼視覺、CISS 與注意力怎麼看",
+      "slug": "child-vision-1-0-lacking-focus-overload",
+      "published_date": "2026-03-20",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260320-視力1.0卻坐不住-視覺超載真相.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 13,
+      "title": "兒童驗光為什麼分這麼細？從未滿6歲到6–15歲，看懂眼科醫師與驗光人員的制度分工",
+      "slug": "child-optometry-legal-gray-zone",
+      "published_date": "2026-03-14",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260314-「醫師有親自幫你家小孩驗光嗎？」揭開六歲以下視力檢查的法律灰色地帶.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 14,
+      "title": "長輩越來越不想出門？別只看視力表：暗處、眩光與對比敏感度更重要",
+      "slug": "vision-dementia-brain-power-saving",
+      "published_date": "2026-03-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.99,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/20260312-【三峽驗光師】長輩反應變慢、不愛講話？破解「認知負載」，一招幫大腦省電，少背一個失智風險因子.md",
+      "note": "manually verified legacy mapping"
+    },
+    {
+      "article_idx": 15,
+      "title": "【三峽驗光師】遮雨棚下的一堂課：一段我看不見的畫面，卻改變了一個孩子的人生",
+      "slug": "awning-lesson-child-myopia-story",
+      "published_date": "2026-03-04",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-03-04-【三峽驗光師】遮雨棚下的一堂課：一段我看不見的畫面，卻改變了一個孩子的人生.md"
+    },
+    {
+      "article_idx": 16,
+      "title": "【三峽驗光師】清潔劑噴到眼睛怎麼辦？化學灼傷先沖水、別中和",
+      "slug": "eye-safety-cleaning-chemical-burns",
+      "published_date": "2026-02-15",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.4,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-02-15-【三峽驗光師】大掃除清潔劑噴到眼睛？別讓除夕掃除變「化學戰爭」！護眼急救全攻略.md"
+    },
+    {
+      "article_idx": 17,
+      "title": "【三峽兒童配鏡】手拿醫師處方別焦慮，目鏡大叔陪孩子跨出「視覺探索」第一步",
+      "slug": "toddler-first-glasses-story-sanxia",
+      "published_date": "2025-12-14",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-12-14-【三峽兒童配鏡】手拿醫師處方別焦慮，目鏡大叔陪孩子跨出「視覺探索」第一步.md"
+    },
+    {
+      "article_idx": 18,
+      "title": "孩子第一次被說近視怎麼辦？6–15歲先走對眼科、驗光與配鏡流程",
+      "slug": "pseudomyopia-children-vision-care-guide",
+      "published_date": "2025-12-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.286,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-12-13-【三峽驗光師】孩子假性近視怎麼辦？先過法規這關再配鏡.md"
+    },
+    {
+      "article_idx": 19,
+      "title": "【三峽驗光師觀點】政治賽局如配鏡：誰在下那盤「不想輸」的棋？",
+      "slug": "game-theory-politics-optometry-perspective",
+      "published_date": "2025-12-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-12-12-【三峽驗光師觀點】政治賽局如配鏡：誰在下那盤「不想輸」的棋？.md"
+    },
+    {
+      "article_idx": 20,
+      "title": "散光會讓晚上開車更吃力嗎？研究怎麼看星芒、眩光與夜間駕駛",
+      "slug": "astigmatism-night-driving",
+      "published_date": "2025-12-06",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.148,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-12-06-為什麼有散光，晚上開車特別痛苦？驗光師揭開「光學真相」與解法_目鏡大叔.md"
+    },
+    {
+      "article_idx": 21,
+      "title": "40 歲後上班看電腦、手機越來越吃力？先把 4 種工作距離分清楚",
+      "slug": "anti-aging-progressive-lenses-sanxia",
+      "published_date": "2025-11-29",
+      "status": "REVIEW_REQUIRED",
+      "confidence": 0.062,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-29-【三峽配眼鏡】40_歲後的隱形高跟鞋！驗光師教妳用「多焦鏡片」找回眼神的輕盈感_目鏡大叔.md"
+    },
+    {
+      "article_idx": 22,
+      "title": "【三峽驗光師】腸道不好眼睛也遭殃？從「腸眼軸」看視力保健的新觀點｜目鏡大叔",
+      "slug": "gut-eye-axis-vision-health",
+      "published_date": "2025-11-28",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-28-【三峽驗光師】腸道不好眼睛也遭殃？從「腸眼軸」看視力保健的新觀點_目鏡大叔.md"
+    },
+    {
+      "article_idx": 23,
+      "title": "孩子近視管理總是吵架？把「不要看手機」改成 5 個全家做得到的共同規則",
+      "slug": "child-myopia-parenting-war-cooperation",
+      "published_date": "2025-11-28",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.123,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-28-孩子近視飆升怎麼辦？別急著沒收手機_三峽驗光師教你「合作式用眼」化解親��衝突.md"
+    },
+    {
+      "article_idx": 24,
+      "title": "長輩眼睛變差，是老花還是眼病？8 個不能只當正常老化的警訊",
+      "slug": "10-questions-about-aging-eyes",
+      "published_date": "2025-11-18",
+      "status": "REVIEW_REQUIRED",
+      "confidence": 0.078,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-18-【三峽驗光師】長輩怕跌倒、怕失智？視力退化的_10_個訊號與解方.md"
+    },
+    {
+      "article_idx": 25,
+      "title": "防藍光眼鏡有必要嗎？買鏡片前先看懂 4 個常見話術",
+      "slug": "blue-light-myths-debunked-by-optometrist",
+      "published_date": "2025-10-10",
+      "status": "REVIEW_REQUIRED",
+      "confidence": 0.041,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-10-10-藍光終極指南！驗光師帶你戳破3大迷思，教你聰明用光！_目鏡大叔.md"
+    },
+    {
+      "article_idx": 26,
+      "title": "孩子總是瞇眼、靠很近、歪頭？5 個視覺警訊，別急著只當不專心",
+      "slug": "children-vision-problem-5-signs",
+      "published_date": "2025-09-20",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.131,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-09-20-我家孩子是不是近視了？5個視力求救訊號別當作不專心_三峽・鶯歌・樹林_自己的眼鏡.md"
+    },
+    {
+      "article_idx": 27,
+      "title": "孩子近視又加深，先別急著罵：拿到驗光單後家長先做這 4 件事",
+      "slug": "child-myopia-vision-truth",
+      "published_date": "2025-09-11",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.316,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-09-11-拿到孩子的驗光單，先別急著罵人！度數加深真相_三峽自己的眼鏡_視光門市.md"
+    },
+    {
+      "article_idx": 28,
+      "title": "兒童近視 5 大迷思：手機、看綠色、散瞳、戴眼鏡一次說清楚",
+      "slug": "myopia-myths-kids-vision-sanxia",
+      "published_date": "2025-09-03",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.218,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-09-03-破解兒童近視5大迷思_度數加深怎麼辦？三峽目鏡大叔專業分享_自己的眼鏡.md"
+    },
+    {
+      "article_idx": 29,
+      "title": "教師節這天，我真的有點快樂不起來：當我重新拆解台灣驗光師的專業定位與下一代",
+      "slug": "optometrist-professional-dilemma",
+      "published_date": "2026-09-28",
+      "status": "EXACT",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2026-09-28-optometrist-professional-dilemma.md"
+    },
+    {
+      "article_idx": 30,
+      "title": "多焦點眼鏡適合誰？先看 5 種生活需求，再決定要不要配",
+      "slug": "multifocal-lenses-for-presbyopia-guide",
+      "published_date": "2025-08-26",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.115,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-08-26-「老花」不只讓你手變長！多焦點鏡片一次解決所有視線困擾_自己的眼鏡.md"
+    },
+    {
+      "article_idx": 31,
+      "title": "土城配眼鏡也推薦｜三峽專業驗光，貼心服務讓她「配過就回不去了」",
+      "slug": "tucheng-eyeglasses-recommend-sanjia",
+      "published_date": "2025-08-25",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-08-25-土城配眼鏡也推薦_三峽專業驗光，貼心服務讓她「配過就回不去了」.md"
+    },
+    {
+      "article_idx": 32,
+      "title": "台灣學童近視率真的一路升？先看懂 93–113 學年度「視力不良率」20 年資料",
+      "slug": "taiwan-student-vision-report-93-113",
+      "published_date": "2025-08-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.143,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-08-12-一條無法回頭的視力危機：驗光師用20年數據全解析，揭開學童近視惡化的殘酷真相.md"
+    },
+    {
+      "article_idx": 33,
+      "title": "多焦點眼鏡真的很難戴嗎？影響適應的 6 個關鍵，比朋友經驗更重要",
+      "slug": "multifocal-lens-hard-to-wear-myth",
+      "published_date": "2025-07-09",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.145,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-07-09-「朋友說配多焦點會後���」是真的嗎？三峽驗光師告訴你兩大真相.md"
+    },
+    {
+      "article_idx": 34,
+      "title": "不是龜毛，是真情！這副眼鏡，讓他牽手走得更安心",
+      "slug": "elderly-couple-holding-hands-sunset-walking-glasses-fit",
+      "published_date": "2025-06-20",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-06-20-不是龜毛，是真情！這副眼鏡，讓他牽手走得更安心.md"
+    },
+    {
+      "article_idx": 35,
+      "title": " 驗光椅的祕密：一句話點亮潛能的「皮格馬力翁效應」",
+      "slug": "pygmalion-effect-optometry",
+      "published_date": "2025-06-20",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.976,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-06-20-_驗光椅的祕密：一句話點亮潛能的「皮格馬力翁效應」.md"
+    },
+    {
+      "article_idx": 36,
+      "title": "新眼鏡看得清楚卻戴不舒服？先排查度數、鏡框、定位與使用距離這 6 類問題",
+      "slug": "uncomfortable-glasses-sanxia-eye-exam",
+      "published_date": "2025-06-08",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.103,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-06-08-「眼鏡不舒服，原來不該將就。」一位老客人的故事，與三峽的安心驗光.md"
+    },
+    {
+      "article_idx": 37,
+      "title": "【三峽驗光師科普】人類可以看到不存在的顏色？淺談視覺科學新發現「olo色」",
+      "slug": "see-colors-that-never-existed",
+      "published_date": "2025-06-06",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-06-06-【三峽驗光師科普】人類可以看到不存在的顏色？淺談視覺科學新發現「olo色」.md"
+    },
+    {
+      "article_idx": 38,
+      "title": "晚上開車看不清楚？先分清楚散光、眩光、乾眼與白內障這 6 類夜間視覺問題",
+      "slug": "night-driving-vision-glare-glasses",
+      "published_date": "2025-06-02",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.286,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-06-02-【三峽鶯歌驗光師】晚上開車看不清楚？別再硬撐！一篇文看懂夜間駕駛的視覺科學.md"
+    },
+    {
+      "article_idx": 39,
+      "title": "老花眼總整理｜看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略",
+      "slug": "presbyopia-guide-glasses-options",
+      "published_date": "2025-05-29",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md"
+    },
+    {
+      "article_idx": 40,
+      "title": "車燈爆開、雨夜特別難開？一位鶯歌夜班司機的夜間視覺排查故事",
+      "slug": "night-driving-vision-solution-uncle-glasses",
+      "published_date": "2025-05-27",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.218,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-27-夜間駕駛車燈眩光？一個鶯歌司機的故事，告訴你問題不只老花_目鏡大叔.md"
+    },
+    {
+      "article_idx": 41,
+      "title": "三峽兒童配眼鏡推薦｜媽媽實際驗光經驗分享，為什麼都選「自己的眼鏡」",
+      "slug": "mom-trust-eyewear-child-sansia",
+      "published_date": "2025-05-18",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-18-三峽兒童配眼鏡推薦_媽媽實際驗光經驗分享，為什麼都選「自己的眼鏡」.md"
+    },
+    {
+      "article_idx": 42,
+      "title": "從外勤轉內勤後，原本的眼鏡怎麼突然怪怪的？一位鶯歌上班族的故事",
+      "slug": "glasses-feel-weird-young-man-story",
+      "published_date": "2025-05-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.143,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-13-【鶯歌配眼鏡推薦】眼鏡清楚卻「怪怪的」？三峽驗光師聽懂你說不出的不舒服.md"
+    },
+    {
+      "article_idx": 43,
+      "title": "奶奶為什麼會把孫子帶來？一間眼鏡店的信任，是這樣慢慢累積的",
+      "slug": "sanxia-optical-shop-grandma-story",
+      "published_date": "2025-05-11",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.367,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-11-一間眼鏡行的故事：原來信任，是慢慢累積的_三峽配眼鏡推薦.md"
+    },
+    {
+      "article_idx": 44,
+      "title": "她剛升主管，卻說：「我不想看起來像我媽。」一副眼鏡，怎麼找到現在的自己",
+      "slug": "sanxia-glasses-not-like-mom",
+      "published_date": "2025-05-08",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.436,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-08-【三峽驗光故事】她32歲，剛升主管，走進店裡說：「我不想看起來像我媽。」.md"
+    },
+    {
+      "article_idx": 45,
+      "title": "隱形眼鏡戴到眼睛痛、怕光？角膜感染警訊與正確處置｜目鏡大叔",
+      "slug": "keratitis-pseudomonas-sanxia-taozijiao",
+      "published_date": "2025-05-07",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.14,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-07-別玩角膜輪盤！驗光師警告：隱形眼鏡上的綠膿桿菌，能在數小時內毀掉你的視力.md"
+    },
+    {
+      "article_idx": 46,
+      "title": "【三峽驗光故事】一次「沒配成功的眼鏡」，如何換來兩年後的跨世代信任？",
+      "slug": "trust-return-optometry-sansia",
+      "published_date": "2025-05-05",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-05-【三峽驗光故事】一次「沒配成功的眼鏡」，如何換來兩年後的跨世代信任？.md"
+    },
+    {
+      "article_idx": 47,
+      "title": "鶯歌配眼鏡推薦｜自己的眼鏡",
+      "slug": "yingge-glasses",
+      "published_date": "2025-05-01",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-01-鶯歌配眼鏡推薦_自己的眼鏡.md"
+    },
+    {
+      "article_idx": 48,
+      "title": "鶯歌上班族搭981來三峽配鏡｜多焦點老花眼鏡幫她在簡報台上找回自信",
+      "slug": "yingge-eye-exam-progressive-glasses",
+      "published_date": "2025-05-01",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-05-01-鶯歌上班族搭981來三峽配鏡_多焦點老花眼鏡幫她在簡報台上找回自信.md"
+    },
+    {
+      "article_idx": 49,
+      "title": "孩子做視力檢查總是不敢回答？先別把「不知道」當成不配合",
+      "slug": "sanxia-eye-exam-courage",
+      "published_date": "2025-04-28",
+      "status": "REVIEW_REQUIRED",
+      "confidence": 0.044,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-28-三峽驗光推薦_驗光不只是量度數，找到孩子看世界的勇氣.md"
+    },
+    {
+      "article_idx": 50,
+      "title": "黃色鏡片真的讓反應更快嗎？實驗室結果和夜間駕駛，其實是兩回事",
+      "slug": "tinted-lens-yellow-reaction-vision",
+      "published_date": "2025-04-25",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.131,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-25-【三峽配鏡科普】戴黃色鏡片反應比較快？驗光師解析科學研究，教你依情境選對鏡片顏色.md"
+    },
+    {
+      "article_idx": 51,
+      "title": "【三峽配鏡故事】一副阿公留下的老鏡框，讓少年戴上了整個家族的記憶",
+      "slug": "sanxia-first-glasses-old-frame",
+      "published_date": "2025-04-23",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-23-【三峽配鏡故事】一副阿公留下的老鏡框，讓少年戴上了整個家族的記憶.md"
+    },
+    {
+      "article_idx": 52,
+      "title": "【三峽驗光師觀點】別只怪手機：教室燈光、桌椅高度與孩子用眼環境怎麼看？",
+      "slug": "classroom-lighting-desk-vision-trap",
+      "published_date": "2025-04-21",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.633,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-21-【三峽驗光師觀點】別只怪手機！教室燈光與桌椅高度，才是孩子近視加深的真兇.md"
+    },
+    {
+      "article_idx": 53,
+      "title": "明明看不清楚，為什麼還是不想戴老花眼鏡？很多人抗拒的其實不是眼鏡",
+      "slug": "presbyopia-psychology-glasses",
+      "published_date": "2025-04-19",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.105,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-19-【三峽北大配眼鏡】看近模糊？我們不只配老花鏡，更陪你走過不想認老的坎.md"
+    },
+    {
+      "article_idx": 54,
+      "title": "多焦點眼鏡戴不舒服，別只叫自己適應：一位媽媽撐了半年的配鏡故事",
+      "slug": "multifocal-glasses-mistake-story",
+      "published_date": "2025-04-17",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.346,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-17-【三峽驗光推薦】多焦點眼鏡戴不舒服？別讓孩子的孝心變負擔！.md"
+    },
+    {
+      "article_idx": 55,
+      "title": "眼鏡行一定要有驗光所才專業嗎？先看懂驗光師、執業場所與責任分工",
+      "slug": "sanxia-optometry-recommend",
+      "published_date": "2025-04-16",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.192,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-16-為什麼越來越多人問：你們是有驗光所的眼鏡行嗎？_三峽驗光所推薦.md"
+    },
+    {
+      "article_idx": 56,
+      "title": "【三峽眼鏡行故事】你以為只是配眼鏡？她卻說我們配進了人情味",
+      "slug": "glasses-and-human-touch",
+      "published_date": "2025-04-15",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-15-【三峽眼鏡行故事】你以為只是配眼鏡？她卻說我們配進了人情味.md"
+    },
+    {
+      "article_idx": 57,
+      "title": "為什麼叫《自己的眼鏡》？一個三峽雨夜，讓我更確定想做的是這件事",
+      "slug": "sanxia-eyeglasses-human-touch",
+      "published_date": "2025-04-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.222,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-13-【三峽驗光師介紹】我的店在三峽，名叫《自己的眼鏡》，這是我寫給你的邀請函.md"
+    },
+    {
+      "article_idx": 58,
+      "title": "乾眼和微塑膠有關嗎？2025研究找到新線索，但還不能說它就是元兇",
+      "slug": "microplastic-eye-dryness",
+      "published_date": "2025-03-26",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-03-26-【三峽驗光師提醒】乾眼症越來越嚴重？小心體內微塑膠危機！教你如何主動排塑.md"
+    },
+    {
+      "article_idx": 59,
+      "title": "行銷的關鍵是降低決策成本！驗光師分享4個建立品牌信任的門市策略",
+      "slug": "lower-decision-cost-marketing-eyewear",
+      "published_date": "2025-03-25",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-03-25-行銷的關鍵是降低決策成本！驗光師分享4個建立品牌信任的門市策略.md"
+    },
+    {
+      "article_idx": 60,
+      "title": "大叔修的不是眼鏡，是歲月裡的溫柔：一副17年老眼鏡的故事",
+      "slug": "17-year-old-glasses-repair",
+      "published_date": "2025-02-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-02-12-大叔修的不是眼鏡，是歲月裡的溫柔：一副17年老眼鏡的故事.md"
+    },
+    {
+      "article_idx": 61,
+      "title": "如何識破稻草人論證、製造恐慌？5種常見輿論操作的破解手冊",
+      "slug": "how-to-identify-public-opinion-traps",
+      "published_date": "2025-01-27",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-01-27-如何識破稻草人論證、製造恐慌？5種常見輿論操作的破解手冊.md"
+    },
+    {
+      "article_idx": 62,
+      "title": "【三峽驗光師建議】如何用燈光保護視力？一篇看懂居家辦公最佳照度",
+      "slug": "best-lighting-for-eye-health",
+      "published_date": "2024-10-03",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.909,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2024-10-03-【三峽驗光師建議】如何用燈光保��視力？一篇看懂居家辦公最佳照度.md"
+    },
+    {
+      "article_idx": 63,
+      "title": "Google評論操作的風險：為何誠實經營比購買五星評價更重要？",
+      "slug": "google-review-discount-long-term-risk",
+      "published_date": "2024-09-26",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2024-09-26-Google評論操作的風險：為何誠實經營比購買五星評價更重要？.md"
+    },
+    {
+      "article_idx": 64,
+      "title": "視力不好會增加失智風險嗎？2024 Lancet：未治療視力喪失值得重視，但不是因果證明",
+      "slug": "dementia-early-signs-vision-warning",
+      "published_date": "2024-09-22",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.125,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2024-09-22-【三峽驗光師提醒】視力變差恐增失智風險！保護大腦，從眼睛開始.md"
+    },
+    {
+      "article_idx": 65,
+      "title": "如何回應Google負評？驗光師分享4個危機處理技巧，贏得潛在顧客",
+      "slug": "handle-negative-reviews-build-brand-reputation",
+      "published_date": "2024-09-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2024-09-12-如何回應Google負評？驗光師分享4個危機處理技巧，贏得潛在顧客.md"
+    },
+    {
+      "article_idx": 66,
+      "title": "甜食真的會傷眼嗎？從高糖飲食、血糖與糖化反應看眼睛健康",
+      "slug": "hidden-dangers-of-sugar-on-vision",
+      "published_date": "2024-08-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.204,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2024-08-13-【三峽驗光師提醒】甜食是視力殺手！了解「糖化反應」，保護你的眼睛.md"
+    },
+    {
+      "article_idx": 67,
+      "title": "Omega-3 能預防黃斑部病變、改善乾眼嗎？把研究證據一次說清楚",
+      "slug": "how-omega-fatty-acids-affect-your-eyes",
+      "published_date": "2023-07-25",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.407,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2023-07-25-_Omega-3對眼睛的好處：如何平衡脂肪酸攝取，預防黃斑部病變與乾眼？.md"
+    },
+    {
+      "article_idx": 68,
+      "title": "藍光真的會傷眼嗎？螢幕、眼疲勞與睡眠一次說清楚",
+      "slug": "how-to-deal-with-blue-light-the-right-way",
+      "published_date": "2023-07-19",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.085,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2023-07-19-_藍光的真相：除了傷眼，還有提神、改善情緒等益處？一篇看懂如何管理.md"
+    },
+    {
+      "article_idx": 69,
+      "title": "太陽眼鏡怎麼選？紫外線對眼睛的慢性傷害，驗光師教你 3 層防護策略",
+      "slug": "2023-07-blog-post",
+      "published_date": "2023-07-07",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.897,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2023-07-07-太陽眼鏡怎麼選？紫外線對眼睛的慢性傷害，驗光師教你_3_層防護策略.md"
+    },
+    {
+      "article_idx": 70,
+      "title": "【三峽驗光師｜行為心理學】損失趨避：為什麼「怕失去」比「想得到」更巨大？（配鏡實戰）｜目鏡大叔",
+      "slug": "loss-aversion",
+      "published_date": "2022-05-19",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2022-05-19-【三峽驗光師_行為心理學】損失趨避：為什麼「怕失去」比「想得到」更巨大？（配鏡實戰）_目鏡大叔.md"
+    },
+    {
+      "article_idx": 71,
+      "title": "∣行為心理學∣「這副鏡框不貴啊」——錨定效應，在配鏡現場的魔法時刻",
+      "slug": "anchoring-effect",
+      "published_date": "2022-05-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2022-05-13-∣行為心理學∣「這副鏡框不貴啊」——錨定效應，在配鏡現場的魔法時刻.md"
+    },
+    {
+      "article_idx": 72,
+      "title": "∣生活隨筆∣總算換我接到博客來的詐騙電話了",
+      "slug": "2022-05-blog-post",
+      "published_date": "2022-05-12",
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2022-05-12-∣生活隨筆∣總算換我接到博客來的詐騙電話了.md"
+    },
+    {
+      "article_idx": 73,
+      "title": "【三峽驗光師】隱形眼鏡怎麼保養？降低角膜感染風險的 6 個重點",
+      "slug": "2018-05-blog-post",
+      "published_date": "2018-05-13",
+      "status": "LEGACY_MATCH",
+      "confidence": 0.417,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2018-05-13-【三峽驗光師】隱形眼鏡保養：4_祕訣防綠膿桿菌角膜炎.md"
+    }
+  ],
+  "orphan_files": [
+    "obsidian-vault/10-歷史文章智庫/2025-08-31-驗光師的觀察室_左手仿單排除你，右手課程綁定你：誰在踐踏專業？_目鏡大叔.md",
+    "obsidian-vault/10-歷史文章智庫/2026-03-14-近視控制鏡片-不再只是看清，更要讓眼球「煞車」的視光科學.md",
+    "obsidian-vault/10-歷史文章智庫/2026-07-07-兒童近視控制不是保證不加深-專業文章草稿.md",
+    "obsidian-vault/10-歷史文章智庫/2026-07-07-兒童近視控制不是保證不加深-目鏡大叔品牌版.md",
+    "obsidian-vault/10-歷史文章智庫/2026-07-08-兒童散瞳驗光與家長溝通-專業文章草稿.md",
+    "obsidian-vault/10-歷史文章智庫/2026-07-08-兒童散瞳驗光與家長溝通-目鏡大叔品牌版.md",
+    "obsidian-vault/10-歷史文章智庫/20260312-視力1.0的迷思.md",
+    "obsidian-vault/10-歷史文章智庫/20260319-明明1.0卻看不清.md",
+    "obsidian-vault/10-歷史文章智庫/文章評審報告-兒童散瞳驗光與家長溝通.md"
+  ],
+  "special_relations": [
+    {
+      "type": "LEGACY_PREDECESSOR",
+      "website_article_idx": 29,
+      "current_slug": "optometrist-professional-dilemma",
+      "legacy_file": "obsidian-vault/10-歷史文章智庫/2025-08-31-驗光師的觀察室_左手仿單排除你，右手課程綁定你：誰在踐踏專業？_目鏡大叔.md",
+      "note": "Older Blogger-era predecessor with same topic/legacy URL identity; keep as historical version, do not treat as current mirror."
+    }
+  ]
+}
