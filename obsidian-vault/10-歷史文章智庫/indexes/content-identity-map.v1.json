@@ -4,8 +4,7 @@
   "obsidian_markdown_count": 88,
   "counts": {
     "EXACT": 14,
-    "LEGACY_MATCH": 61,
-    "REVIEW_REQUIRED": 4
+    "LEGACY_MATCH": 65
   },
   "policy": {
     "website_is_published_truth": true,
@@ -260,9 +259,10 @@
       "title": "40 歲後上班看電腦、手機越來越吃力？先把 4 種工作距離分清楚",
       "slug": "anti-aging-progressive-lenses-sanxia",
       "published_date": "2025-11-29",
-      "status": "REVIEW_REQUIRED",
-      "confidence": 0.062,
-      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-29-【三峽配眼鏡】40_歲後的隱形高跟鞋！驗光師教妳用「多焦鏡片」找回眼神的輕盈感_目鏡大叔.md"
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-29-【三峽配眼鏡】40_歲後的隱形高跟鞋！驗光師教妳用「多焦鏡片」找回眼神的輕盈感_目鏡大叔.md",
+      "note": "verified by legacy Blogger URL slug matching current website slug"
     },
     {
       "article_idx": 22,
@@ -287,18 +287,20 @@
       "title": "長輩眼睛變差，是老花還是眼病？8 個不能只當正常老化的警訊",
       "slug": "10-questions-about-aging-eyes",
       "published_date": "2025-11-18",
-      "status": "REVIEW_REQUIRED",
-      "confidence": 0.078,
-      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-18-【三峽驗光師】長輩怕跌倒、怕失智？視力退化的_10_個訊號與解方.md"
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-11-18-【三峽驗光師】長輩怕跌倒、怕失智？視力退化的_10_個訊號與解方.md",
+      "note": "verified by legacy Blogger URL slug matching current website slug"
     },
     {
       "article_idx": 25,
       "title": "防藍光眼鏡有必要嗎？買鏡片前先看懂 4 個常見話術",
       "slug": "blue-light-myths-debunked-by-optometrist",
       "published_date": "2025-10-10",
-      "status": "REVIEW_REQUIRED",
-      "confidence": 0.041,
-      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-10-10-藍光終極指南！驗光師帶你戳破3大迷思，教你聰明用光！_目鏡大叔.md"
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-10-10-藍光終極指南！驗光師帶你戳破3大迷思，教你聰明用光！_目鏡大叔.md",
+      "note": "verified by legacy Blogger URL slug matching current website slug"
     },
     {
       "article_idx": 26,
@@ -512,9 +514,10 @@
       "title": "孩子做視力檢查總是不敢回答？先別把「不知道」當成不配合",
       "slug": "sanxia-eye-exam-courage",
       "published_date": "2025-04-28",
-      "status": "REVIEW_REQUIRED",
-      "confidence": 0.044,
-      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-28-三峽驗光推薦_驗光不只是量度數，找到孩子看世界的勇氣.md"
+      "status": "LEGACY_MATCH",
+      "confidence": 1,
+      "obsidian_file": "obsidian-vault/10-歷史文章智庫/2025-04-28-三峽驗光推薦_驗光不只是量度數，找到孩子看世界的勇氣.md",
+      "note": "verified by legacy Blogger URL slug matching current website slug"
     },
     {
       "article_idx": 50,
