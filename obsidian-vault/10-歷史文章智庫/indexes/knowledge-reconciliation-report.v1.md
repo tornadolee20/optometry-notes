@@ -42,6 +42,16 @@ The existing `scripts/build_site_index.py` was also intentionally limited to thr
 
 That means the current website publishing flow has no complete Website -> Obsidian ingestion path.
 
+## Backfill Status
+
+The 14 high-confidence missing articles published since 2026-07-01 have now been backfilled into the branch as individual Markdown mirrors.
+
+- Backfilled: **14 / 14**
+- Source: live Website MCP `article_get`
+- Body preservation: published HTML snapshot retained
+- Frontmatter includes: canonical URL, slug, published date, website article idx, source platform/type, tags and category IDs
+- Main branch remains unchanged until PR review/merge
+
 ## Decision
 
 Do not restore the old Blogger importer.
