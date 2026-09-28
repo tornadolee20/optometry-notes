@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 from typing import Any
@@ -7,8 +8,9 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 HISTORY_DIR = ROOT / "obsidian-vault" / "10-歷史文章智庫"
-OUTPUT_PATH = HISTORY_DIR / "indexes" / "site-index.sample.v1.json"
-MCP_BLOGGER_OUTPUT_PATH = HISTORY_DIR / "indexes" / "site-index.mcp-blogger.sample.json"
+INDEX_DIR = HISTORY_DIR / "indexes"
+OUTPUT_PATH = INDEX_DIR / "site-index.v1.json"
+RECONCILIATION_PATH = INDEX_DIR / "reconciliation-report.v1.json"
 
 SAMPLE_FILES = [
     "2025-05-29-老花眼總整理_看近模糊怎麼辦？從成因、症狀到眼鏡選擇全攻略.md",
@@ -117,64 +119,24 @@ def normalize_array(value: Any) -> list[Any]:
     return [value]
 
 
-def unique_strings(values: list[Any]) -> list[str]:
-    seen: set[str] = set()
-    result: list[str] = []
-    for value in values:
-        if not isinstance(value, str):
-            continue
-        normalized = value.strip()
-        if not normalized or normalized in seen:
-            continue
-        seen.add(normalized)
-        result.append(normalized)
-    return result
+def normalize_url(url: str) -> str:
+    return url.strip().rstrip("/")
 
 
-def build_mcp_blogger_entry(
-    file_name: str,
-    post: dict[str, Any],
-    warnings: list[dict[str, str]],
-) -> dict[str, Any]:
-    labels = unique_strings(normalize_array(post.get("tags", [])))
-    keywords = unique_strings(
-        normalize_array(post.get("seoKeywords", []))
-        + labels
-        + normalize_array(post.get("secondaryTopics", []))
-    )
-    internal_link_use_cases = unique_strings(normalize_array(post.get("suggestedAnchorTexts", [])))
-    if not internal_link_use_cases:
-        internal_link_use_cases = unique_strings([post.get("title", "")])
-        warn(
-            warnings,
-            file_name,
-            "missing_suggested_anchor_texts",
-            "suggestedAnchorTexts missing; using title as internal_link_use_cases fallback.",
-        )
-
-    topic = post.get("primaryTopic") or post.get("articleSection") or ""
-    notes_parts = [
-        f"summary: {post.get('summary', '')}",
-        f"outdatedRisk: {post.get('outdatedRisk', '')}",
-        f"reviewRequired: {bool(post.get('reviewRequired', False))}",
-    ]
-
-    return {
-        "title": post.get("title", ""),
-        "url": post.get("url", ""),
-        "labels": labels,
-        "topic": topic,
-        "keywords": keywords,
-        "internal_link_use_cases": internal_link_use_cases,
-        "representative": bool(post.get("representative", False)),
-        "notes": "\n".join(notes_parts),
-    }
+def derive_slug(post: dict[str, Any]) -> str:
+    slug = str(post.get("slug") or "").strip()
+    if slug:
+        return slug
+    url = str(post.get("canonicalUrl") or post.get("url") or "").strip()
+    if not url:
+        return ""
+    return url.rstrip("/").rsplit("/", 1)[-1].removesuffix(".html")
 
 
 def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[str, str]]) -> dict[str, Any] | None:
     title = frontmatter.get("title", "")
     url = frontmatter.get("url", "")
-    status = frontmatter.get("status", "")
+    status = frontmatter.get("status", "published")
 
     if not title:
         warn(warnings, file_name, "missing_title", "Missing title; article skipped.")
@@ -186,7 +148,7 @@ def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[
         warn(warnings, file_name, "deprecated_skipped", "Deprecated article skipped.")
         return None
     if status == "draft":
-        warn(warnings, file_name, "draft_skipped", "Draft article skipped in sample export.")
+        warn(warnings, file_name, "draft_skipped", "Draft article skipped.")
         return None
 
     canonical_url = frontmatter.get("canonicalUrl", "")
@@ -200,20 +162,10 @@ def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[
     if not canonical_url:
         warn(warnings, file_name, "missing_canonical_url", "canonicalUrl missing; using url as fallback.")
         canonical_url = url
-    if not is_safe_short_slug(slug):
+    if slug and not is_safe_short_slug(slug):
         warn(warnings, file_name, "invalid_slug", "slug must be a short value without http or slash.")
-    if not is_safe_short_slug(permalink):
+    if permalink and not is_safe_short_slug(permalink):
         warn(warnings, file_name, "invalid_permalink", "permalink must be a short value without http or slash.")
-    if not frontmatter.get("summary"):
-        warn(warnings, file_name, "missing_summary", "summary missing.")
-    if not frontmatter.get("primaryTopic"):
-        warn(warnings, file_name, "missing_primary_topic", "primaryTopic missing.")
-    if frontmatter.get("outdatedRisk") == "medium":
-        warn(warnings, file_name, "medium_outdated_risk", "Medium outdatedRisk requires review before final use.")
-    if frontmatter.get("outdatedRisk") == "high":
-        warn(warnings, file_name, "high_outdated_risk", "High outdatedRisk must not be auto-recommended.")
-    if frontmatter.get("needsReview") is True:
-        warn(warnings, file_name, "review_required", "needsReview is true; mark reviewRequired in site-index.")
 
     post: dict[str, Any] = {}
     for field in OUTPUT_FIELDS:
@@ -224,18 +176,31 @@ def build_post(file_name: str, frontmatter: dict[str, Any], warnings: list[dict[
         else:
             post[field] = frontmatter.get(field, "")
 
+    post["sourceFile"] = file_name
     post["reviewRequired"] = bool(frontmatter.get("needsReview", False))
     post["autoRecommendable"] = frontmatter.get("outdatedRisk") != "high"
+    post["slug"] = derive_slug(post)
     return post
 
 
-def main() -> int:
+def history_files(sample_only: bool) -> list[Path]:
+    if sample_only:
+        return [HISTORY_DIR / name for name in SAMPLE_FILES]
+
+    files: list[Path] = []
+    for path in sorted(HISTORY_DIR.glob("*.md")):
+        if path.name.startswith("_"):
+            continue
+        files.append(path)
+    return files
+
+
+def build_site_index(sample_only: bool = False) -> dict[str, Any]:
     warnings: list[dict[str, str]] = []
     posts: list[dict[str, Any]] = []
-    mcp_blogger_posts: list[dict[str, Any]] = []
 
-    for file_name in SAMPLE_FILES:
-        path = HISTORY_DIR / file_name
+    for path in history_files(sample_only):
+        file_name = path.name
         try:
             frontmatter = read_frontmatter(path)
         except OSError as exc:
@@ -248,32 +213,143 @@ def main() -> int:
         post = build_post(file_name, frontmatter, warnings)
         if post is not None:
             posts.append(post)
-            mcp_blogger_posts.append(build_mcp_blogger_entry(file_name, post, warnings))
 
-    site_index = {
+    return {
         "version": "site-index.v1",
         "generatedAt": "",
         "source": {
             "type": "obsidian-history-vault",
             "path": str(HISTORY_DIR.relative_to(ROOT)).replace("\\", "/"),
-            "sampleOnly": True,
-            "sampleFiles": SAMPLE_FILES,
+            "sampleOnly": sample_only,
+        },
+        "counts": {
+            "sourceMarkdownFiles": len(history_files(sample_only)),
+            "publishedPosts": len(posts),
+            "warnings": len(warnings),
         },
         "posts": posts,
         "warnings": warnings,
     }
 
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(site_index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    MCP_BLOGGER_OUTPUT_PATH.write_text(
-        json.dumps(mcp_blogger_posts, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
 
-    print(f"Wrote {OUTPUT_PATH}")
-    print(f"Wrote {MCP_BLOGGER_OUTPUT_PATH}")
-    print(f"posts={len(posts)} warnings={len(warnings)}")
-    print(f"mcp_blogger_posts={len(mcp_blogger_posts)}")
+def load_inventory(path: Path) -> list[dict[str, Any]]:
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    if isinstance(raw, list):
+        return raw
+    if isinstance(raw, dict):
+        for key in ("items", "posts", "assets"):
+            value = raw.get(key)
+            if isinstance(value, list):
+                return value
+    raise ValueError("Inventory JSON must be a list or contain items/posts/assets list.")
+
+
+def reconcile(site_index: dict[str, Any], inventory: list[dict[str, Any]]) -> dict[str, Any]:
+    obsidian_posts = site_index["posts"]
+
+    by_slug = {
+        str(post.get("slug") or "").strip(): post
+        for post in obsidian_posts
+        if str(post.get("slug") or "").strip()
+    }
+    by_url = {
+        normalize_url(str(post.get("canonicalUrl") or post.get("url") or "")): post
+        for post in obsidian_posts
+        if str(post.get("canonicalUrl") or post.get("url") or "").strip()
+    }
+
+    missing_in_obsidian: list[dict[str, Any]] = []
+    matched: list[dict[str, Any]] = []
+
+    for item in inventory:
+        slug = str(item.get("slug") or "").strip()
+        url = normalize_url(str(item.get("url") or item.get("canonicalUrl") or "").strip())
+        match = by_slug.get(slug) if slug else None
+        if match is None and url:
+            match = by_url.get(url)
+
+        compact = {
+            "article_idx": item.get("article_idx") or item.get("idx"),
+            "title": item.get("title") or item.get("subject"),
+            "slug": slug,
+            "url": item.get("url") or item.get("canonicalUrl"),
+            "published_at": item.get("published_at") or item.get("post_time"),
+        }
+
+        if match is None:
+            missing_in_obsidian.append(compact)
+        else:
+            matched.append({
+                **compact,
+                "obsidian_source_file": match.get("sourceFile"),
+            })
+
+    inventory_slugs = {
+        str(item.get("slug") or "").strip()
+        for item in inventory
+        if str(item.get("slug") or "").strip()
+    }
+    inventory_urls = {
+        normalize_url(str(item.get("url") or item.get("canonicalUrl") or "").strip())
+        for item in inventory
+        if str(item.get("url") or item.get("canonicalUrl") or "").strip()
+    }
+
+    missing_in_website = []
+    for post in obsidian_posts:
+        slug = str(post.get("slug") or "").strip()
+        url = normalize_url(str(post.get("canonicalUrl") or post.get("url") or "").strip())
+        if (slug and slug in inventory_slugs) or (url and url in inventory_urls):
+            continue
+        missing_in_website.append({
+            "title": post.get("title"),
+            "slug": slug,
+            "url": post.get("canonicalUrl") or post.get("url"),
+            "source_file": post.get("sourceFile"),
+        })
+
+    return {
+        "version": "reconciliation-report.v1",
+        "counts": {
+            "websiteInventory": len(inventory),
+            "obsidianPublished": len(obsidian_posts),
+            "matched": len(matched),
+            "missingInObsidian": len(missing_in_obsidian),
+            "missingInWebsite": len(missing_in_website),
+        },
+        "matched": matched,
+        "missingInObsidian": missing_in_obsidian,
+        "missingInWebsite": missing_in_website,
+        "policy": {
+            "automaticOverwrite": False,
+            "conflictResolution": "human_gate",
+            "websiteOwnsPublishedState": True,
+            "obsidianOwnsKnowledgeNotes": True,
+        },
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--sample", action="store_true", help="Build only the original three-file sample.")
+    parser.add_argument("--inventory-json", type=Path, help="Optional current website/content-portfolio inventory JSON for reconciliation.")
+    args = parser.parse_args()
+
+    INDEX_DIR.mkdir(parents=True, exist_ok=True)
+    site_index = build_site_index(sample_only=args.sample)
+
+    output_path = INDEX_DIR / ("site-index.sample.v1.json" if args.sample else "site-index.v1.json")
+    output_path.write_text(json.dumps(site_index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {output_path}")
+    print(json.dumps(site_index["counts"], ensure_ascii=False))
+
+    if args.inventory_json:
+        inventory = load_inventory(args.inventory_json)
+        report = reconcile(site_index, inventory)
+        RECONCILIATION_PATH.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote {RECONCILIATION_PATH}")
+        print(json.dumps(report["counts"], ensure_ascii=False))
+
     return 0
 
 
