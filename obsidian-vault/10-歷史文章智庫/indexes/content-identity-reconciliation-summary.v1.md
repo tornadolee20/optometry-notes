@@ -41,3 +41,19 @@ Classify the 9 orphan files into one of four buckets:
 4. `DUPLICATE` — safe candidate for consolidation after human review.
 
 Do not delete anything automatically. The current website remains the published source of truth; Obsidian remains the knowledge mirror.
+
+
+## Orphan Classification Result
+
+All 9 previously unresolved Obsidian files have now been classified. None should be treated as a missing website sync error.
+
+- HISTORICAL_VERSION: **2**
+- KNOWLEDGE_ONLY: **3**
+- DRAFT: **4**
+- DUPLICATE: **0**
+
+Machine-readable registry:
+
+`obsidian-vault/10-歷史文章智庫/indexes/orphan-registry.v1.json`
+
+Future reconciliation should exclude these registered files from unresolved-orphan alerts while preserving them in the knowledge vault. No files were deleted.
