@@ -1,0 +1,91 @@
+{
+  "version": "orphan-registry.v1",
+  "policy": {
+    "delete_automatically": false,
+    "website_is_published_truth": true,
+    "obsidian_can_retain_nonpublished_knowledge_assets": true
+  },
+  "items": [
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2025-08-31-驗光師的觀察室_左手仿單排除你，右手課程綁定你：誰在踐踏專業？_目鏡大叔.md",
+      "classification": "HISTORICAL_VERSION",
+      "relation": {
+        "website_article_idx": 29,
+        "current_slug": "optometrist-professional-dilemma"
+      },
+      "rationale": "已公開的 Blogger 舊前身，後續被 2026-09-28 新版重寫取代；保留歷史脈絡，不當成目前網站 mirror。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2026-03-14-近視控制鏡片-不再只是看清，更要讓眼球「煞車」的視光科學.md",
+      "classification": "KNOWLEDGE_ONLY",
+      "relation": {
+        "topic": "兒童近視控制／近視控制鏡片"
+      },
+      "rationale": "內容完整但目前網站 79 篇沒有對應正式 identity；適合作為研究與寫作知識資產，不能冒充現行網站文章。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2026-07-07-兒童近視控制不是保證不加深-專業文章草稿.md",
+      "classification": "DRAFT",
+      "relation": {
+        "topic": "兒童近視控制"
+      },
+      "rationale": "工作流專業文章草稿，非公開網站文章。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2026-07-07-兒童近視控制不是保證不加深-目鏡大叔品牌版.md",
+      "classification": "DRAFT",
+      "relation": {
+        "topic": "兒童近視控制"
+      },
+      "rationale": "品牌聲紋版本，屬工作流產物；目前沒有獨立網站文章 identity。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2026-07-08-兒童散瞳驗光與家長溝通-專業文章草稿.md",
+      "classification": "DRAFT",
+      "relation": {
+        "topic": "兒童散瞳驗光與家長溝通"
+      },
+      "rationale": "frontmatter 明確為 workflow-asset / professional-article；非公開網站文章。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/2026-07-08-兒童散瞳驗光與家長溝通-目鏡大叔品牌版.md",
+      "classification": "DRAFT",
+      "relation": {
+        "topic": "兒童散瞳驗光與家長溝通"
+      },
+      "rationale": "frontmatter 明確為 workflow-asset / brand-voice-article；非公開網站文章。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/20260312-視力1.0的迷思.md",
+      "classification": "KNOWLEDGE_ONLY",
+      "relation": {
+        "topic": "兒童視力 1.0／近視風險"
+      },
+      "rationale": "內容為知識摘要與舊發布線索，URL 甚至不是完整 https；目前沒有一對一網站 identity，保留作知識資產。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/20260319-明明1.0卻看不清.md",
+      "classification": "HISTORICAL_VERSION",
+      "relation": {
+        "website_article_idx": 12,
+        "current_slug": "child-vision-1-0-lacking-focus-overload"
+      },
+      "rationale": "2026-03-19 前置版本，隔日 2026-03-20 已有正式文章 identity；保留作內容演化紀錄。"
+    },
+    {
+      "path": "obsidian-vault/10-歷史文章智庫/文章評審報告-兒童散瞳驗光與家長溝通.md",
+      "classification": "KNOWLEDGE_ONLY",
+      "relation": {
+        "topic": "兒童散瞳驗光與家長溝通",
+        "asset_type": "review-report"
+      },
+      "rationale": "明確為 review-report workflow asset；應由知識工作流管理，不應被視為網站文章。"
+    }
+  ],
+  "counts": {
+    "HISTORICAL_VERSION": 2,
+    "KNOWLEDGE_ONLY": 3,
+    "DRAFT": 4,
+    "DUPLICATE": 0
+  }
+}
