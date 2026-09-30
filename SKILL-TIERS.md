@@ -112,3 +112,13 @@ Core status should mean:
 This file is the current skill constitution snapshot.
 
 If the skill system is the brain, this file is the ranked organ map.
+
+
+## Provisional Production Skills
+
+| Asset | Recommended Tier | Blocker |
+| --- | --- | --- |
+| `skills/uncle-motion-os/` | supporting | 需累積實戰案例、Outcome、QA 命中紀錄並完成正式 review |
+
+Governance note: `uncle-motion-os` v0.1 may be used as a narrow production-director skill, but it is not architecture-defining core yet.
+

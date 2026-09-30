@@ -265,3 +265,27 @@ The shared brain should feel like one mind with specialized modules behind it.
 
 The user speaks in goals.
 The system handles routing.
+
+
+## Supporting Production Skill: Programmatic Video
+
+### Uncle Motion OS
+
+- Skill: `skills/uncle-motion-os/SKILL.md`
+- Current status: `provisional / supporting`
+- Use when the task requires: reference-driven storyboard, static keyframe planning, motion grammar, audio timeline, render handoff, or video QA.
+- Do not treat it as a render runtime. Rendering remains downstream.
+- Do not promote it to core until formal review and real case evidence exist.
+
+Typical route:
+
+```
+content / evidence
+-> narrative decision
+-> visual direction
+-> uncle-motion-os
+-> renderer / runtime
+-> outcome
+-> learning
+```
+
