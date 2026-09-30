@@ -1,6 +1,6 @@
 # Uncle Motion OS
 
-Version: **0.1**
+Version: **0.2**
 Status: **Provisional / Supporting**
 Repository role: reusable production skill inside `optometry-notes`.
 
@@ -55,3 +55,20 @@ v0.1 只建立「大腦與規格」。
 - App / SaaS product demo
 
 先用小案例驗證，不先建大型 runtime。
+
+
+## v0.2 additions
+
+Case-driven upgrade from the first production test.
+
+Added:
+
+- Delivery Spec
+- Evidence Lock
+- Retention Map
+- Continuity Bible
+- Production Method Map
+
+Reason:
+
+The first real case showed that storyboard and motion decisions are not enough. A production skill must lock factual confidence, viewer attention, format, continuity, and shot-production method before motion design begins.
