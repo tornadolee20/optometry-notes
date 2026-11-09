@@ -5,7 +5,9 @@ rem Obsidian public-site intake backup only.
 rem This repository is PUBLIC. Do not auto-stage personal, customer, or unpublished notes.
 rem The repository is located relative to this script, not at a hard-coded user path.
 for %%D in ("%~dp0..") do set "REPO=%%~fD"
-set "LOG=%~dp0git-auto-push.log"
+set "LOGDIR=%LOCALAPPDATA%\UncleObsidian"
+if not exist "%LOGDIR%" mkdir "%LOGDIR%" >nul 2>&1
+set "LOG=%LOGDIR%\public-push.log"
 
 if not exist "%REPO%\.git" (
   echo [%date% %time%] ERROR: Git repository not found at "%REPO%" >> "%LOG%"
