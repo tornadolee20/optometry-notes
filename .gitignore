@@ -1,50 +1,50 @@
-# 安全性與環境變數
+# å®‰å…¨æ€§èˆ‡ç’°å¢ƒè®Šæ•¸
 .env
 .env.local
 .env.*.local
 *.secret
 keys/
 
-# Google OAuth2 憑證（絕對不能推上去）
+# Google OAuth2 æ†‘è­‰ï¼ˆçµ•å°ä¸èƒ½æŽ¨ä¸ŠåŽ»ï¼‰
 credentials.json
 token.json
 
-# Python / Node 暫存
+# Python / Node æš«å­˜
 __pycache__/
 node_modules/
 *.pyc
 
-# 作業系統暫存
+# ä½œæ¥­ç³»çµ±æš«å­˜
 .DS_Store
 Thumbs.db
 
-# 備份檔案
+# å‚™ä»½æª”æ¡ˆ
 *.bak
 backup/
 
-# AI Agents & IDE 快取 (避免混淆與被追蹤)
+# AI Agents & IDE å¿«å– (é¿å…æ··æ·†èˆ‡è¢«è¿½è¹¤)
 .gemini/
 .cursor/
 .windsurf/
 
-# .agents/ 的 cache 排除，但 workflows/skills 需同步
+# .agents/ çš„ cache æŽ’é™¤ï¼Œä½† workflows/skills éœ€åŒæ­¥
 .agents/.cache/
 .agents/sessions/
 
-# .claude/ 的本機設定排除，但 skills 需同步
+# .claude/ çš„æœ¬æ©Ÿè¨­å®šæŽ’é™¤ï¼Œä½† skills éœ€åŒæ­¥
 .claude/settings.local.json
 .claude/settings.local.json.tmp.*
 .claude/scheduled_tasks.lock
 .claude/todos/
 .claude/worktrees/
 
-# 根目錄暫存檔
+# æ ¹ç›®éŒ„æš«å­˜æª”
 temp_*.txt
 temp_*.py
 recent_files.txt
 tmp/
 
-# 大型二進位檔（不推上 GitHub）
+# å¤§åž‹äºŒé€²ä½æª”ï¼ˆä¸æŽ¨ä¸Š GitHubï¼‰
 ffmpeg-7.0.2-amd64-static/
 ffmpeg.tar.xz
 media/
@@ -52,17 +52,17 @@ apps/
 bin/
 avatars/
 
-# 大型非視光專案目錄（不應被 AI 索引）
+# å¤§åž‹éžè¦–å…‰å°ˆæ¡ˆç›®éŒ„ï¼ˆä¸æ‡‰è¢« AI ç´¢å¼•ï¼‰
 saas_sandbox/
-AI之眼/
+AIä¹‹çœ¼/
 projects/
 
-# Dropbox 防污染：巢狀同名資料夾
+# Dropbox é˜²æ±¡æŸ“ï¼šå·¢ç‹€åŒåè³‡æ–™å¤¾
 */*/.dropbox
 */*/.dropbox.cache
 
 # Local moved archives
-AI����__moved_backup_20260517/
+AI¤§²´__moved_backup_20260517/
 *__moved_backup_*/
 
 # Generated local inventory
@@ -88,3 +88,7 @@ hermes-config/image_cache/
 hermes-config/bootstrap-cache/
 hermes-config/sessions/
 hermes-config/pairing/
+
+# Avoid leaking local sync execution logs (if older tasks still use scripts folder)
+scripts/git-auto-push.log
+scripts/obsidian-pull-from-github.log
