@@ -1,0 +1,49 @@
+name: Obsidian - public site article intake
+
+on:
+  schedule:
+    # UTC: 01:15 and 13:15 = Taipei 09:15 and 21:15
+    - cron: '15 1,13 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/import_site_feed_to_obsidian.py'
+      - 'tests/test_import_site_feed.py'
+      - '.github/workflows/obsidian-public-site-intake.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: obsidian-public-article-intake
+  cancel-in-progress: false
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline safety and parsing tests
+        run: python -m unittest discover -s tests -p 'test_import_site_feed.py' -v
+      - name: Import public site articles into intake (scheduled or manually triggered)
+        if: github.event_name != 'push'
+        run: python scripts/import_site_feed_to_obsidian.py --since 2026-11-01 --write
+      - name: Commit intake notes only (never publish or copy private notes)
+        if: github.event_name != 'push'
+        run: |
+          if [ -z "$(git status --porcelain -- 'obsidian-vault/00-收件匣/網站文章待整理/')" ]; then
+            echo "No new public article notes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- 'obsidian-vault/00-收件匣/網站文章待整理/'
+          git diff --cached --check
+          git diff --cached --quiet || git commit -m "chore(obsidian): capture public website posts"
+          git push origin HEAD:main
