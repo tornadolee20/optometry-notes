@@ -32,7 +32,7 @@ FEED_CANDIDATES = [
     "https://www.uncle-glasses.net/rss.xml",
 ]
 URL_PATTERN = re.compile(
-    r'^\\s*(?:url|canonicalUrl|source_url):\\s*["\\\']?(https?://[^\\s"\\\'<>]+)',
+    r'^\s*(?:url|canonicalUrl|source_url):\s*["\\']?(https?://[^\s"\\'<>]+)',
     re.IGNORECASE | re.MULTILINE,
 )
 
@@ -83,13 +83,13 @@ class HTMLText(HTMLParser):
         if tag in ("script", "style"):
             self.skip += 1
         elif tag in ("p", "div", "li", "br", "h1", "h2", "h3", "blockquote"):
-            self.parts.append("\\n")
+            self.parts.append("\n")
 
     def handle_endtag(self, tag: str) -> None:
         if tag in ("script", "style") and self.skip:
             self.skip -= 1
         elif tag in ("p", "div", "li", "h1", "h2", "h3", "blockquote"):
-            self.parts.append("\\n")
+            self.parts.append("\n")
 
     def handle_data(self, data: str) -> None:
         if not self.skip:
@@ -99,7 +99,7 @@ class HTMLText(HTMLParser):
 def plain_text(value: str) -> str:
     parser = HTMLText()
     parser.feed(value)
-    return re.sub(r"\\n{3,}", "\\n\\n", re.sub(r"[ \\t]+", " ", "".join(parser.parts))).strip()
+    return re.sub(r"\n{3,}", "\n\n", re.sub(r"[ \t]+", " ", "".join(parser.parts))).strip()
 
 
 def parse_feed(xml_bytes: bytes) -> list[dict[str, str | date]]:
@@ -189,34 +189,34 @@ def known_urls(vault: Path) -> set[str]:
 
 
 def render_note(item: dict[str, str | date], feed_url: str) -> str:
-    title = plain_text(str(item["title"])).replace("\\n", " ") or "未命名文章"
+    title = plain_text(str(item["title"])).replace("\n", " ") or "未命名文章"
     published = str(item["published"])
     url = str(item["url"])
     body = plain_text(str(item["body"]))[:18000]
     now = datetime.now(timezone.utc).date().isoformat()
     return (
-        "---\\n"
-        f"title: {json.dumps(title, ensure_ascii=False)}\\n"
-        f"source_url: {json.dumps(url, ensure_ascii=False)}\\n"
-        f"published: {json.dumps(published)}\\n"
-        f"captured_at: {json.dumps(now)}\\n"
-        'type: published-site-intake\\n'
-        'status: 待整理\\n'
-        'review_required: true\\n'
-        'tags: [網站新文, 待整理, 目鏡大叔]\\n'
-        "---\\n\\n"
-        f"# {title}\\n\\n"
-        f"- 原始文章：{url}\\n"
-        f"- 發表日期：{published}\\n"
-        f"- 進料來源：{feed_url}\\n"
-        "- 注意：這是公開網站的自動進料，來源 Feed 可能只提供節錄，尚未進行醫學查證。\\n\\n"
-        "## 擷取內容（可能不完整）\\n\\n"
-        f"{body or '來源未提供文章內文，請開啟原始連結。'}\\n\\n"
-        "## 下一步\\n\\n"
-        "- [ ] 核對是否已收錄到歷史文章智庫，並檢查網址與標題。\\n"
-        "- [ ] 補齊完整文章（如 Feed 僅提供節錄）。\\n"
-        "- [ ] 需要衛教引用時重新核對來源及醫學證據。\\n"
-        "- [ ] 完成審稿才移入正式文章智庫／相關知識卡。\\n"
+        "---\n"
+        f"title: {json.dumps(title, ensure_ascii=False)}\n"
+        f"source_url: {json.dumps(url, ensure_ascii=False)}\n"
+        f"published: {json.dumps(published)}\n"
+        f"captured_at: {json.dumps(now)}\n"
+        'type: published-site-intake\n'
+        'status: 待整理\n'
+        'review_required: true\n'
+        'tags: [網站新文, 待整理, 目鏡大叔]\n'
+        "---\n\n"
+        f"# {title}\n\n"
+        f"- 原始文章：{url}\n"
+        f"- 發表日期：{published}\n"
+        f"- 進料來源：{feed_url}\n"
+        "- 注意：這是公開網站的自動進料，來源 Feed 可能只提供節錄，尚未進行醫學查證。\n\n"
+        "## 擷取內容（可能不完整）\n\n"
+        f"{body or '來源未提供文章內文，請開啟原始連結。'}\n\n"
+        "## 下一步\n\n"
+        "- [ ] 核對是否已收錄到歷史文章智庫，並檢查網址與標題。\n"
+        "- [ ] 補齊完整文章（如 Feed 僅提供節錄）。\n"
+        "- [ ] 需要衛教引用時重新核對來源及醫學證據。\n"
+        "- [ ] 完成審稿才移入正式文章智庫／相關知識卡。\n"
     )
 
 
