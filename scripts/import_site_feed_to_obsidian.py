@@ -32,7 +32,7 @@ FEED_CANDIDATES = [
     "https://www.uncle-glasses.net/rss.xml",
 ]
 URL_PATTERN = re.compile(
-    r'^\s*(?:url|canonicalUrl|source_url):\s*["\\']?(https?://[^\s"\\'<>]+)',
+    r"""^\s*(?:url|canonicalUrl|source_url|canonical_url):\s*["']?(https?://[^\s"'<>]+)""",
     re.IGNORECASE | re.MULTILINE,
 )
 
