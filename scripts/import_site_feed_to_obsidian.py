@@ -99,7 +99,9 @@ class HTMLText(HTMLParser):
 def plain_text(value: str) -> str:
     parser = HTMLText()
     parser.feed(value)
-    return re.sub(r"\n{3,}", "\n\n", re.sub(r"[ \t]+", " ", "".join(parser.parts))).strip()
+    normalized = re.sub(r"[ \t]+", " ", "".join(parser.parts))
+    cleaned_lines = "\n".join(line.rstrip() for line in normalized.splitlines())
+    return re.sub(r"\n{3,}", "\n\n", cleaned_lines).strip()
 
 
 def parse_feed(xml_bytes: bytes) -> list[dict[str, str | date]]:
