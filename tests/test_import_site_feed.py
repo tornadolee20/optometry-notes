@@ -55,6 +55,17 @@ class IntakeTests(unittest.TestCase):
         )
         self.assertIsNone(importer.canonical_url("https://other.example/2026/11/a"))
 
+    def test_generated_markdown_has_no_trailing_whitespace(self):
+        sample = {
+            "title": "測試文章",
+            "url": "https://www.uncle-glasses.net/2026/10/sample",
+            "published": date(2026, 10, 3),
+            "body": "<div>第一行  </div><p>  </p><p>下一行  </p>",
+        }
+        note = importer.render_note(sample, "test-feed")
+        self.assertIn("下一行", note)
+        self.assertTrue(all(line == line.rstrip() for line in note.splitlines()))
+
     def test_dryrun_write_once_and_no_overwrite(self):
         with tempfile.TemporaryDirectory() as root:
             root = Path(root)
