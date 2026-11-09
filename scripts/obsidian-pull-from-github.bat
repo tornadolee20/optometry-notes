@@ -5,7 +5,9 @@ rem Restore GitHub -> local Obsidian Vault without overwriting local edits.
 rem Requires a Windows Git clone of tornadolee20/optometry-notes.
 rem Do NOT run a Git clone inside a Dropbox/iCloud/OneDrive synced folder.
 for %%D in ("%~dp0..") do set "REPO=%%~fD"
-set "LOG=%~dp0obsidian-pull-from-github.log"
+set "LOGDIR=%LOCALAPPDATA%\UncleObsidian"
+if not exist "%LOGDIR%" mkdir "%LOGDIR%" >nul 2>&1
+set "LOG=%LOGDIR%\pull.log"
 
 if not exist "%REPO%\.git" (
     echo [%date% %time%] ERROR: Git repository not found: "%REPO%" >> "%LOG%"
@@ -23,13 +25,6 @@ if /i not "%BRANCH%"=="main" (
 )
 
 rem Fail closed if user has local changes; never discard or auto-stash.
-git status --porcelain --untracked-files=normal > "%TEMP%\uncle-obsidian-pull-status-%RANDOM%.txt"
-if errorlevel 1 (
-    echo [%date% %time%] ERROR: unable to inspect working tree >> "%LOG%"
-    popd
-    exit /b 4
-)
-rem Do not require the TEMP status file to persist; use direct porcelain output.
 for /f "usebackq delims=" %%S in (`git status --porcelain --untracked-files=normal 2^>nul`) do (
     echo [%date% %time%] SKIP: local files changed; manual Git review required >> "%LOG%"
     popd
