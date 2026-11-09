@@ -26,9 +26,9 @@ ROOT = Path(__file__).resolve().parents[1]
 VAULT = ROOT / "obsidian-vault"
 INBOX = VAULT / "00-收件匣" / "網站文章待整理"
 FEED_CANDIDATES = [
+    "https://www.uncle-glasses.net/feed.xml",
     "https://www.uncle-glasses.net/feeds/posts/default?alt=atom&max-results=50",
     "https://www.uncle-glasses.net/feeds/posts/default?alt=rss&max-results=50",
-    "https://www.uncle-glasses.net/feed.xml",
     "https://www.uncle-glasses.net/rss.xml",
 ]
 URL_PATTERN = re.compile(
@@ -230,6 +230,9 @@ def main() -> int:
 
     raw, feed_url = obtain_feed(args.feed_file)
     entries = parse_feed(raw)
+    if entries:
+        dates = [item["published"] for item in entries]
+        print(f"Feed time span: {min(dates)} .. {max(dates)}; since={args.since}")
     known = known_urls(args.vault)
     inbox = args.vault / "00-收件匣" / "網站文章待整理"
     new_count = 0
