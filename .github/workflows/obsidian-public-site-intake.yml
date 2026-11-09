@@ -33,7 +33,7 @@ jobs:
         run: python -m unittest discover -s tests -p 'test_import_site_feed.py' -v
       - name: Import public site articles into intake (scheduled or manually triggered)
         if: github.ref == 'refs/heads/main'
-        run: python scripts/import_site_feed_to_obsidian.py --since 2026-11-01 --write
+        run: python scripts/import_site_feed_to_obsidian.py --since 2026-01-01 --write
       - name: Commit intake notes only (never publish or copy private notes)
         if: github.ref == 'refs/heads/main'
         run: |
