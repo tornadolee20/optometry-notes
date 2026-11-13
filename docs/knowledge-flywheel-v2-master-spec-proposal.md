@@ -160,3 +160,12 @@
 
 ---
 建立日期：2026-11-13。版本：v2.0-proposal（僅文件草案；不代表系統部署、全自動閉環或 KDF 正式驗收）。
+
+
+## 10｜Knowledge Reconciliation 2.1：只讀調和工具（2026-11-13）
+
+- 新增 scripts/knowledge_reconciliation.py：在兩個本機 Vault 之間檢查相對路徑與雜湊的差異、跨路徑相同 ID／DOI、成熟節點變動、人工審核缺漏及 Wiki 回鏈影響。
+- 新增 tests/test_knowledge_reconciliation.py：14 個合成測試情境；當前不宣稱已完成 GitHub PR 內的正式 CI 驗收。
+- 新增 docs/knowledge-reconciliation-v2-1-usage.md：Windows 使用步驟、輸出格式、私人檔名保護、人工調和流程。
+- **只輸出 review queue，不決定醫學主張、不自動更新卡片、不合併雙倉庫。**
+- 下一個 Gate：先在本機確認兩個 Vault 路徑並進行只讀真實掃描，再逐件判定差異；私有資料不允許直接匯入 public repo。
