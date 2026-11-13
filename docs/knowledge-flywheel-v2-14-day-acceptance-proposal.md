@@ -5,7 +5,7 @@
 ## 起始風險與盤點
 
 - [ ] 實際的 Windows Obsidian Vault 路徑已查明。
-- [ ] `tornadolee20/optometry-notes`（public）與 `tornadolee1720/obsidian-private-20261109-145449`（private）的差異已盤點。
+- [ ] `tornadolee20/optometry-notes`（public）與 `私人的 Obsidian 工作副本（名稱不列入公開規格）`（private）的差異已盤點。
 - [ ] **私人、個案、未公開研究材料不會流入 public**。
 - [ ] 正式 KDF 的現有 Schema/validator/Bridge、Human Gate 與 staging 路徑已核對。
 - [ ] 每題建立原始 baseline：回答現有問題需要多久、需查哪些卡、已有矛盾有哪些。
