@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>秋天許願楓樹林</title>
+<link rel="stylesheet" href="./node_modules/@fontsource/noto-sans-tc/700.css">
+<style>
+  html,body{margin:0;padding:0;background:#000;width:1080px;height:1920px;overflow:hidden}
+  canvas{display:block}
+  #title{position:absolute;left:0;top:0;width:1080px;height:1920px;display:flex;align-items:center;justify-content:center;
+    pointer-events:none;opacity:0;font-family:'Noto Sans TC',sans-serif;font-weight:700;font-size:108px;letter-spacing:0.06em;
+    color:#fff;text-shadow:0 0 28px rgba(255,186,120,.55),0 0 60px rgba(255,140,70,.35),0 3px 12px rgba(50,15,0,.55)}
+  #title span{display:block;transform:translateY(-60px)}
+</style>
+<script type="importmap">
+{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}
+</script>
+</head>
+<body>
+<div id="title"><span>今年辛苦了。</span></div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
