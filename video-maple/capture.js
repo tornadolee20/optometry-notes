@@ -1,12 +1,12 @@
-// 逐格擷取 450 格（15 秒 × 30fps），直接串流給 ffmpeg 編成無聲影片
-// 用法：node capture.js <輸出.mp4>（需先在本資料夾啟動 http 伺服器於 8765 埠）
+// 逐格擷取 450 格（15 秒 × 30fps）
+// 用法：node capture.js <影格資料夾>（需先在本資料夾啟動 http 伺服器於 8765 埠）
+// 每格存成 JPEG，已存在的影格會跳過，可中斷續跑；之後用 ffmpeg 編成影片
 const { chromium } = require('playwright');
-const { spawn } = require('child_process');
+const fs = require('fs'), path = require('path');
 (async () => {
-  const out = process.argv[2] || 'video_noaudio.mp4';
+  const dir = process.argv[2] || 'frames';
+  fs.mkdirSync(dir, { recursive: true });
   const FPS = 30, N = 450;
-  const ff = spawn('ffmpeg', ['-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-',
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '16', '-pix_fmt', 'yuv420p', '-r', String(FPS), out], { stdio: ['pipe', 'ignore', 'inherit'] });
   const browser = await chromium.launch({ args: ['--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--ignore-gpu-blocklist'] });
   const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   page.on('pageerror', e => console.log('[pageerror]', e.message));
@@ -15,13 +15,13 @@ const { spawn } = require('child_process');
   await page.evaluate(() => window.sceneReady);
   const t0 = Date.now();
   for (let f = 0; f < N; f++) {
+    const file = path.join(dir, `f${String(f).padStart(4, '0')}.jpg`);
+    if (fs.existsSync(file)) continue;
     await page.evaluate(t => window.renderAt(t), f / FPS);
-    const buf = await page.screenshot({ type: 'jpeg', quality: 95 });
-    if (!ff.stdin.write(buf)) await new Promise(r => ff.stdin.once('drain', r));
+    await page.screenshot({ type: 'jpeg', quality: 95, path: file + '.tmp.jpg' });
+    fs.renameSync(file + '.tmp.jpg', file);
     if (f % 30 === 0) console.log(`frame ${f}/${N}  ${((Date.now() - t0) / 1000).toFixed(0)}s`);
   }
-  ff.stdin.end();
-  await new Promise(r => ff.on('close', r));
   await browser.close();
-  console.log('done', out);
+  console.log('done', dir);
 })();
